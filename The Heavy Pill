@@ -1,0 +1,14 @@
+Q. You have 20 bottles of pills. 
+19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams. 
+Given a scale that provides an exact measurement, how would you find the heavy bottle?
+You can only use the scale once.
+
+Solution
+1. Take number of pills from each bottle according to the position number of the bottle
+
+2. multiply each bottle weigh with it's position number starting from 1 to 20
+
+3. if all bottles were of weigh 1 
+wt = n*(n-1)/2 = 20*21/2 = 210
+
+4. position number of heavier pills bottle = (ActualWTcalculated - wt)/0.1
