@@ -1,0 +1,46 @@
+#include <iostream>
+#include <set>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	int T,N;
+	cin>>T;
+	while(T--)
+	{
+		cin>>N;
+		vector<int> ani;
+		multiset<int> sharp;
+		
+		for(int i = 0; i < N; i++)
+		{
+			int x;
+			cin>>x;
+			sharp.insert(x);
+		}
+		for(int i = 0; i < N; i++)
+		{
+			int x;
+			cin>>x;
+			ani.push_back(x);
+		}
+		bool NO = 0;
+		for(auto& an : ani)
+		{
+			auto x = sharp.lower_bound(an);
+			if(x != sharp.end())
+			{
+				sharp.erase(x);
+			}
+			else{
+				cout<<"NO"<<endl;
+				NO = 1;
+				break;
+			}
+		}
+		if(not NO)
+		cout<<"YES"<<endl;
+	}
+    return 0;
+}
