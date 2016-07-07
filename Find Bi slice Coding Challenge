@@ -1,0 +1,47 @@
+You're given an array of unsorted integers arr. Find the maximum length of a contiguous subarray that contains at most 2 different integers (possibly several times).
+
+Example
+
+For arr = [7, 4, 5, 4, 4, 6], the output should be
+findBiSlice(arr) = 4.
+
+The longest contiguous subarray that consists of only 2 integers is [4, 5, 4, 4], and it contains 4 elements.
+
+int findBiSlice(std::vector<int> arr) {
+    int len = arr.size();
+    if(arr.empty()) return -1;
+    int frst = arr[0], sec = arr[1];
+    int maxL = 2;
+    int L = 2;
+    for(int i = 2; i < len; i++)
+    {
+        if(arr[i] == frst or arr[i] == sec)
+        {
+            L++;
+        }
+        else if(frst == sec)
+        {
+            sec = arr[i];
+            L++;
+        }
+        else
+        {
+            int temp = (frst==arr[i-1])?sec:frst;
+            frst = (temp==sec)?frst:sec;
+            sec = arr[i];
+            for(int j = i-1; j > i - maxL; j--)
+            {
+                if(arr[j] == temp)
+                {
+                    L = (i - j);
+                    break;
+                }
+            }
+        }
+        maxL = maxL<L?L:maxL;
+
+    }
+    return maxL;
+}
+
+
