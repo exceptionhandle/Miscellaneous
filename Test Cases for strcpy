@@ -1,0 +1,36 @@
+Test cases:
+
+*Src stands for source and dst for destination
+
+    Src and dst are of same size i.e 10 bytes each with null terminated.
+    Src and dst are of same size i.e 10 bytes each without null terminated.
+    Src and dst are of different size:
+
+3.1    Src of size 10 bytes, dst of 4 bytes
+
+3.2   Src of size 5 bytes, dst of 10 bytes both null terminated
+
+3.3   Src of size 5 bytes, dst of 10 bytes both not null terminated
+
+3.4   Src of size 5 bytes, dst of 10 bytes, src null terminated, dst not
+
+3.5   Src of size 5 bytes, dst of 10 bytes, dst null terminated, src not
+
+    Large size src and dst with billions of characters. Monitor performance based upon different data.
+
+4.1. keep on increasing the size of src and dst to break the limit of unsigned int. and report it as limitation or ask for fix.
+
+    Src and dst both NULL
+    Src NULL, dst not NULL
+    Src is null string “” with valid dst
+    Src is valid C string while dst is just a raw char pointer.
+    Src and dst both are just raw char pointers without null character.
+    Src and tst are both null string . i.e. “”
+    Src does hold a char pointer only with values say ‘A’ and dst is valid cstring.
+    Src is void pinter typecased to char*, dst is valid cstring And Vice versa
+    Src is int pointer typecased to char*, dst is valid cstring And Vice versa
+    Src and dst are overlapping.
+    Src and dst are same char*pointer.
+    Dst has been passed a read only memory location like 0X01
+    Src has been passed a read only memory location like 0X01
+    Run program on different OS. Windows, Linux etc
