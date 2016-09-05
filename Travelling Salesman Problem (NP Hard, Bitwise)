@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+#define INT_MAX (1<<31)-1
+int shortestTSP(vector<vector<int>> dis)
+{
+	int n = dis.size();
+	int lim = (1<<n);
+	vector<vector<int>> dp(lim, vector<int>(n, INT_MAX));
+	for(int mask = 0; mask < lim; mask++)
+	{
+		for(int last = 0; last < n; last++)
+		{
+			if((mask&(1<<last)) == 0) continue;
+			for(int curr = 0; curr < n; curr++)
+			{
+				if((mask&(1<<curr)) == 0) continue;
+				// find the minimum distance visiting all the nodes in the mask to curr
+				// through last as the last element visited
+				// mask contains all the nodes already visited
+				dp[mask][curr] = min(dp[mask][curr], dp[(mask^(1<<curr))][last]+dis[last][curr]);
+			}
+		}
+	}
+	int ans = INT_MAX;
+	for(int i = 0; i < n; i++)
+	{
+		ans = min(ans, dp[lim-1][i]);
+	}
+	return ans;
+}
+
