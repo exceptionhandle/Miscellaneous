@@ -1,0 +1,15 @@
+map<int, map<int, int>> incl, excl;
+
+vector<int> reward;
+
+void dfs ( TeeNode* root)
+{
+  if(root == nullptr) return;
+  incl[root->val] = reward[root->val];
+  for(auto& ch : root->child)
+  {
+    dfs(ch);
+    incl[root->val] += excl[ch->val];
+    excl[root->val] += max(incl[ch->val], excl[ch->val]);
+  }
+}
