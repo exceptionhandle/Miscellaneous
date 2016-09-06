@@ -1,0 +1,15 @@
+// Numbers of Bits between 0 and 2^1 is 2 (1, 10)
+// Numbers of Bits between 0 and 2^2 is 5 (1, 10, 11, 100) 
+// rightmost 1 in the last count now comes 2 times , so multiply number of last outcomes by 2 (without considering last number 2)
+// and the leftmost bit 1 will repeat the number of times equal its value . complexity O(n)
+int numOfBits(int n)
+{
+  if(n == 0) return 1;
+  int dp[n];
+  dp[0] = 1;
+  for(int i = 1; i < n; i++)
+  {
+    dp[i] = dp[i-1]<<1 + (1<<i);
+  }
+  return dp[n-1]+1;
+}
