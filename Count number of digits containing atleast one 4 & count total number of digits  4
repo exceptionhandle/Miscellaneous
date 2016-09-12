@@ -1,0 +1,44 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+		long ans = 0;
+		int n = 44;
+        for(long m = 1; m <= n; m *= 10)
+        {
+      			// hack to check how many number will contain 4 so that to include all the number in least significant digit to                                
+            // account for 4 in sum using digit*m (where m says the number of 10's digit place)
+			
+			      int digit = ((n/m + 5)/10);
+			      if(digit >= 4) digit--;
+            ans += digit*m + ((n/m)%10 == 4)*((n%m)+1);
+        }
+        cout<<ans;
+	
+	return 0;
+}
+
+
+Count of the number of 4 digits
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+		long ans = 0;
+		int n = 44;
+        for(long m = 1; m <= n; m *= 10)
+        {
+			      // hack to check how many number will contain 4 so that to include all the number in least significant digit to                                
+            // account for 4 in sum using digit*m (where m says the number of 10's digit place)
+			
+			      int digit = ((n/m + 5)/10);
+			      ans += digit*m + ((n/m)%10 == 4)*((n%m)+1);
+        }
+        cout<<ans;
+	
+	return 0;
+}
+
