@@ -1,37 +1,36 @@
 #include<iostream>
 #include<functional>
 #include<vector>
-
 using namespace std;
-
 
 template<typename T>
 class Key
 {
-	
-  T key;
+    T key;
   public:
     Key(T x):key(x){};
-    T get(){ return key;}
+    T get()
+    {
+    	return key;
+    }
     T myHash()
     {
-      return hash<T>()(get());
+        return hash<T>()(get());
     }
     bool operator==(Key x)
     {
     	return x.myHash() == myHash();
     }
-
 };
 class Value
 {
-	int v;
-	public:
-	Value(int x):v(x){}
-	int get()
-	{
-		return v;
-	}
+    int v;
+  public:
+    Value(int x):v(x){}
+    int get()
+    {
+	return v;
+    }
 };
 template<typename T>
 class HashMap
@@ -43,83 +42,83 @@ class HashMap
         Key<T> k;
         Value v;
         listnode *next, *prev;
-      listnode(Key<T> key, Value val):k(key),v(val), next(NULL), prev(NULL){}
+        listnode(Key<T> key, Value val):k(key),v(val), next(NULL), prev(NULL){}
     };
     vector<listnode*> arr;
     int size;
-    public:
+  public:
     HashMap(int capacity = 100):arr(capacity), size(capacity)
     {
     }
     int getIndex(Key<T> k)
     {
-      return k.myHash()%size;
+       return k.myHash()%size;
     }
     listnode *getlistNode(Key<T> k)
     {
-      int ind = getIndex(k);
-      listnode *n = arr[ind];
-      while(n)
-      {
-        if(n->k == k)
-        {
-          return n;
-        }
-        n = n->next;
-      }
-      return NULL;
+       int ind = getIndex(k);
+       listnode *n = arr[ind];
+       while(n)
+       {
+          if(n->k == k)
+          {
+              return n;
+          }
+          n = n->next;
+       }
+       return NULL;
     }
     void put(Key<T> k, Value v)
     {
-      listnode *node = getlistNode(k);
-      if(node)
-      {
-        node->v = v;
-        return;
-      }
-      listnode *nii = new listnode(k, v);
-      int index = getIndex(k);
+       listnode *node = getlistNode(k);
+       if(node)
+       {
+           node->v = v;
+           return;
+       }
+       listnode *nii = new listnode(k, v);
+       int index = getIndex(k);
 
-      nii->next = arr[index];
-      if(arr[index])
-	      arr[index]->prev = nii;
-      arr[index] = nii;
+       nii->next = arr[index];
+       if(arr[index])
+	  arr[index]->prev = nii;
+          arr[index] = nii;
     }
     Value get(Key<T> k)
     {
-      listnode *n = getlistNode(k);
-      return n?n->v:NULL;
+        listnode *n = getlistNode(k);
+        return n?n->v:NULL;
     }
     void remove(Key<T> k)
     {
-      int ind = getIndex(k);
-      listnode *n = arr[ind];
-      while(not n)
-      {
-        if(n->k == k)
+        int ind = getIndex(k);
+        listnode *n = arr[ind];
+        while(not n)
         {
-          if(n->prev)
-          {
-            (n->prev)->next = n->next;
-          }
-          if(n->next)
-          {
-            (n->next)->prev = n->prev;
-          }
-          free(n);
-          return;
+            if(n->k == k)
+            {
+                if(n->prev)
+                {
+                    (n->prev)->next = n->next;
+                }
+                if(n->next)
+                {
+                    (n->next)->prev = n->prev;
+                }
+                free(n);
+                return;
+            }
+            n = n->next;
         }
-        n = n->next;
-      }
     }
 };
+
 int main()
 {
-	Key<int> x(12);
-	Value y(14);
-	HashMap<int> hm(10);
-	hm.put(x,y);
-	cout<<hm.get(x).get();
-	return 0;
+    Key<int> x(12);
+    Value y(14);
+    HashMap<int> hm(10);
+    hm.put(x,y);
+    cout<<hm.get(x).get();
+    return 0;
 }
-
