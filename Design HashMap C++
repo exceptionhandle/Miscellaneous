@@ -22,17 +22,18 @@ class Key
     	return x.myHash() == myHash();
     }
 };
+template<typename T>
 class Value
 {
-    int v;
+    T v;
   public:
-    Value(int x):v(x){}
-    int get()
+    Value(T x):v(x){}
+    T get()
     {
 	return v;
     }
 };
-template<typename T>
+template<typename T, typename U>
 class HashMap
 {
   private:
@@ -40,9 +41,9 @@ class HashMap
     {
       public:
         Key<T> k;
-        Value v;
+        Value<U> v;
         listnode *next, *prev;
-        listnode(Key<T> key, Value val):k(key),v(val), next(NULL), prev(NULL){}
+        listnode(Key<T> key, Value<U> val):k(key),v(val), next(NULL), prev(NULL){}
     };
     vector<listnode*> arr;
     int size;
@@ -68,7 +69,7 @@ class HashMap
        }
        return NULL;
     }
-    void put(Key<T> k, Value v)
+    void put(Key<T> k, Value<U> v)
     {
        listnode *node = getlistNode(k);
        if(node)
@@ -84,7 +85,7 @@ class HashMap
 	  arr[index]->prev = nii;
           arr[index] = nii;
     }
-    Value get(Key<T> k)
+    Value<U> get(Key<T> k)
     {
         listnode *n = getlistNode(k);
         return n?n->v:NULL;
@@ -116,8 +117,8 @@ class HashMap
 int main()
 {
     Key<int> x(12);
-    Value y(14);
-    HashMap<int> hm(10);
+    Value<int> y(14);
+    HashMap<int, int> hm(10);
     hm.put(x,y);
     cout<<hm.get(x).get();
     return 0;
