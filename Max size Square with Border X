@@ -1,0 +1,45 @@
+#include <iostream>
+#include <map>
+#include <vector>
+using namespace std;
+vector<vector<char>> cross{{'X','O','X','X','X'},
+						{'X','O','X','O','X'},
+						{'X','O','X','O','X'},
+						{'X','O','X','X','X'},
+							
+							};
+
+
+int main() {
+	map<int, map<int, pair<int, int>>> widthHt;
+	for(int i = 0; i < cross.size(); i++)
+	{
+		for(int j = 0; j < cross[0].size(); j++)
+		{
+			if(cross[i][j] == 'X')
+				widthHt[i][j] = {widthHt[i][j-1].first+1, widthHt[i-1][j].second+1};
+			else
+				widthHt[i][j] = {0, 0};
+			cout<<widthHt[i][j].first<<","<<(widthHt[i][j].second)<<" ";
+		}
+		cout<<endl;
+	}
+	
+	int maxi = 0;
+	for(int i = cross.size()-1; i >= 0; i--)
+	{
+		for(int j = cross[0].size()-1; j >= 0; j--)
+		{
+			int minSq = min(widthHt[i][j].first, widthHt[i][j].second);
+			for(int x = minSq-1; (x >= 0) and (maxi < x+1); x--)
+			{
+				if((widthHt[i][j-x].second >= x+1) and (widthHt[i-x][j].first >= x+1))
+				{
+					maxi = x+1;
+				}
+			}
+		}
+	}
+	cout<<maxi<<endl;
+	return 0;
+}
