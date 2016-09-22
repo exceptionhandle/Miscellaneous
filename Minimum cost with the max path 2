@@ -1,0 +1,40 @@
+#include <iostream>
+#include <map>
+#include <vector>
+using namespace std;
+	map<char, map<char, int>> cost{{'a', {{'a', 0}, {'b', 2}, {'c', 8}, {'d', 7}}},
+									{'b', {{'a', 3}, {'b', 0}, {'c', 3}, {'d', 1}}},
+									{'c', {{'a', 1}, {'b', 5}, {'c', 0}, {'d', 9}}},
+									{'d', {{'a', 1}, {'b', 2}, {'c', 3}, {'d', 0}}},
+                                    };
+int findMin(char from, char to)
+{
+	int mini = cost[from][to];
+	for(auto p = cost[from].begin(); p!= cost[from].end(); p++)
+	{
+		if((*p).first == to)
+		{
+			continue;
+		}
+		else
+		{
+			mini = min(mini, cost[from][(*p).first] + cost[(*p).first][to]);
+		}
+	}
+	return mini;
+}
+
+int main() {
+	string in = "abcd";
+	string out = "dcba";
+	int i = 0;
+	int cst = 0;
+	for(auto from : in)
+	{
+		char to = out[i++];
+		cst += findMin(from, to);
+	}
+	cout<<cst<<endl;
+
+	return 0;
+}
