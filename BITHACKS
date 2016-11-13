@@ -4,3 +4,10 @@ int secondRightmostZeroBit(int n) {
   return (~n&(((n+1)|n)+1));
 }
 
+Find first different bit between 2 numbers
+
+int differentRightmostBit(int n, int m) {
+  return (~(n^m)+1)&(((n^m)-1)^((n^m)));
+}
+
+
