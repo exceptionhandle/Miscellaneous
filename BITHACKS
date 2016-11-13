@@ -1,0 +1,6 @@
+Find second unset bit from right
+
+int secondRightmostZeroBit(int n) {
+  return (~n&(((n+1)|n)+1));
+}
+
