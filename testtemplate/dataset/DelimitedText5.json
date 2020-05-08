@@ -1,0 +1,108 @@
+{
+	"name": "DelimitedText5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "adhocextract"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "member_id",
+				"type": "String"
+			},
+			{
+				"name": " address_1",
+				"type": "String"
+			},
+			{
+				"name": "      address_2",
+				"type": "String"
+			},
+			{
+				"name": "      city",
+				"type": "String"
+			},
+			{
+				"name": "        state",
+				"type": "String"
+			},
+			{
+				"name": "        zip",
+				"type": "String"
+			},
+			{
+				"name": "        date_of_birth",
+				"type": "String"
+			},
+			{
+				"name": " first_name",
+				"type": "String"
+			},
+			{
+				"name": "       last_name ",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "       Referred",
+				"type": "String"
+			},
+			{
+				"name": "   Geographic Market",
+				"type": "String"
+			},
+			{
+				"name": " Market Segment",
+				"type": "String"
+			},
+			{
+				"name": " Line of Business",
+				"type": "String"
+			},
+			{
+				"name": "   Member ID",
+				"type": "String"
+			},
+			{
+				"name": " Member First Name",
+				"type": "String"
+			},
+			{
+				"name": "   Member Last Name",
+				"type": "String"
+			},
+			{
+				"name": "   DOB",
+				"type": "String"
+			},
+			{
+				"name": "dob_check",
+				"type": "String"
+			},
+			{
+				"name": "first_name_check",
+				"type": "String"
+			},
+			{
+				"name": "last_name_check",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

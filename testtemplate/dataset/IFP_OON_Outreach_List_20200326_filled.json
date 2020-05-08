@@ -1,0 +1,60 @@
+{
+	"name": "IFP_OON_Outreach_List_20200326_filled",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "adhocextract"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "       Referred",
+				"type": "String"
+			},
+			{
+				"name": "   Geographic Market",
+				"type": "String"
+			},
+			{
+				"name": " Market Segment",
+				"type": "String"
+			},
+			{
+				"name": " Line of Business",
+				"type": "String"
+			},
+			{
+				"name": "   Member ID",
+				"type": "String"
+			},
+			{
+				"name": " Member First Name",
+				"type": "String"
+			},
+			{
+				"name": "   Member Last Name",
+				"type": "String"
+			},
+			{
+				"name": "   DOB",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
