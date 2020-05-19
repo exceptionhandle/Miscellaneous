@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://abusiveexperiencereport.googleapis.com",
+					"url": "https://abusiveexperiencereport.googleapis.com/v1/",
 					"method": "GET",
 					"headers": {
 						"name": "sites"
