@@ -1,0 +1,40 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://abusiveexperiencereport.googleapis.com",
+					"method": "GET",
+					"headers": {
+						"name": "sites"
+					},
+					"linkedServices": [
+						{
+							"referenceName": "AzureStorageLinkedService",
+							"type": "LinkedServiceReference"
+						}
+					],
+					"datasets": [
+						{
+							"referenceName": "DelimitedText3",
+							"type": "DatasetReference"
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
