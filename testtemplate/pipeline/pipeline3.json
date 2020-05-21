@@ -1,0 +1,31 @@
+{
+	"name": "pipeline3",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=69cef1c4668f420880e3253e7308ca1f",
+					"method": "GET",
+					"datasets": [
+						{
+							"referenceName": "DelimitedText5",
+							"type": "DatasetReference"
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
