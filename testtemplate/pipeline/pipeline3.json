@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=69cef1c4668f420880e3253e7308ca1f",
+					"url": "https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=abcedfgh",
 					"method": "GET",
 					"datasets": [
 						{
