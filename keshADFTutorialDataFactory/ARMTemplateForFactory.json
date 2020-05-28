@@ -1087,7 +1087,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "adhocextractnew"
+						"container": "adhocextract"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
