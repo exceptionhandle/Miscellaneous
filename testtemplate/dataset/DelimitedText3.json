@@ -11,6 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "IFP_OON_Outreach_Processed (1).csv",
+				"folderPath": "input/test",
 				"container": "adhocextract"
 			},
 			"columnDelimiter": ",",
