@@ -857,8 +857,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "output/mydataflow123partfiles",
-						"container": "mycontainer"
+						"container": "adhocextractnew"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
