@@ -1460,7 +1460,7 @@
 						}
 					],
 					"transformations": [],
-					"script": "source(output(\n\t\tDate as string,\n\t\t{       Referred} as string,\n\t\t{   Geographic Market} as string,\n\t\t{ Market Segment} as string,\n\t\t{ Line of Business} as string,\n\t\t{   Member ID} as string,\n\t\t{ Member First Name} as string,\n\t\t{   Member Last Name} as string,\n\t\t{   DOB} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmoveFiles: ['','IFP_OON_Outreach_Processed']) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+					"script": "source(output(\n\t\t{Member ID} as decimal(38,2) '000,000,000.000'\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmoveFiles: ['','IFP_OON_Outreach_Processed']) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
 			},
 			"dependsOn": [
