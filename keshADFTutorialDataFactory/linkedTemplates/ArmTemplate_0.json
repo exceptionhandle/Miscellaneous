@@ -198,8 +198,9 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "processedinput",
-						"container": "adhocextractnew"
+						"fileName": "IFP_OON_Outreach_Processed (1).csv",
+						"folderPath": "input",
+						"container": "adhocextract"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",

@@ -1,0 +1,80 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "keshADFTutorialDataFactory"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureStorageLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IFP_OON_Outreach_Processed (1).csv",
+						"folderPath": "input",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "       Referred",
+						"type": "String"
+					},
+					{
+						"name": "   Geographic Market",
+						"type": "String"
+					},
+					{
+						"name": " Market Segment",
+						"type": "String"
+					},
+					{
+						"name": " Line of Business",
+						"type": "String"
+					},
+					{
+						"name": "   Member ID",
+						"type": "String"
+					},
+					{
+						"name": " Member First Name",
+						"type": "String"
+					},
+					{
+						"name": "   Member Last Name",
+						"type": "String"
+					},
+					{
+						"name": "   DOB",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		}
+	]
+}
