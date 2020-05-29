@@ -857,7 +857,6 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "output.csv",
 						"container": "adhocextract"
 					},
 					"columnDelimiter": ",",
