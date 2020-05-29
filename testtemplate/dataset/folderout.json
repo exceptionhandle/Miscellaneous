@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "output.csv",
+				"fileName": "output.csv",
 				"container": "adhocextract"
 			},
 			"columnDelimiter": ",",
