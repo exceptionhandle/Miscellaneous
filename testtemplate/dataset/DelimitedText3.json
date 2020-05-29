@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "IFP_OON_Outreach_Processed (1).csv",
+				"fileName": "IFP_OON_Outreach_Processed.csv",
 				"folderPath": "input/test",
 				"container": "adhocextract"
 			},
