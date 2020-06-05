@@ -1,0 +1,36 @@
+{
+	"name": "Parquet4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureStorageLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "parquetfiles"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "PATENT_ID",
+				"type": "UTF8"
+			},
+			{
+				"name": "PATENT_TITLE",
+				"type": "UTF8"
+			},
+			{
+				"name": "CREATED_DATE",
+				"type": "INT96"
+			},
+			{
+				"name": "PATENT_KEY",
+				"type": "INT64"
+			}
+		]
+	}
+}

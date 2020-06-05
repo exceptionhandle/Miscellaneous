@@ -1,20 +1,28 @@
 {
-	"name": "dataflow4",
+	"name": "smallParqDF",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedText11",
+						"referenceName": "Parquet5",
 						"type": "DatasetReference"
 					},
 					"name": "PatentSurrogateKey"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet4",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> PatentSurrogateKey"
+			"script": "source(output(\n\t\tPATENT_ID as string,\n\t\tPATENT_TITLE as string,\n\t\tPROJECT_ID as string,\n\t\tPATENT_ORG_NAME as string,\n\t\tLOAD_FILE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet') ~> PatentSurrogateKey\nPatentSurrogateKey sink(input(\n\t\tPATENT_ID as string,\n\t\tPATENT_TITLE as string,\n\t\tCREATED_DATE as timestamp,\n\t\tPATENT_KEY as long\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }
