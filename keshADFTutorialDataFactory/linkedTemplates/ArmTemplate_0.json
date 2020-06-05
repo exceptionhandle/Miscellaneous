@@ -129,6 +129,32 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText10')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureStorageLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "parquetfiles"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DelimitedText2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -790,7 +816,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/adhocExtractNewOutput')]",
+			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -799,43 +825,36 @@
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "DelimitedText",
+				"type": "Parquet",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "adhocextractnew"
+						"fileName": "Patent-00001",
+						"folderPath": "parq1",
+						"container": "parquetfiles"
 					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
+					"compressionCodec": "snappy"
 				},
 				"schema": [
 					{
-						"type": "String"
+						"name": "PATENT_ID",
+						"type": "UTF8"
 					},
 					{
-						"type": "String"
+						"name": "PATENT_TITLE",
+						"type": "UTF8"
 					},
 					{
-						"type": "String"
+						"name": "PROJECT_ID",
+						"type": "UTF8"
 					},
 					{
-						"type": "String"
+						"name": "PATENT_ORG_NAME",
+						"type": "UTF8"
 					},
 					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
+						"name": "LOAD_FILE",
+						"type": "UTF8"
 					}
 				]
 			},
@@ -844,7 +863,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/folderout')]",
+			"name": "[concat(parameters('factoryName'), '/Parquet2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -853,150 +872,61 @@
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "DelimitedText",
+				"type": "Parquet",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "adhocextract"
+						"fileName": "Patent-00002",
+						"folderPath": "parq1",
+						"container": "parquetfiles"
 					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "PATENT_ID",
+						"type": "UTF8"
+					},
+					{
+						"name": "PATENT_TITLE",
+						"type": "UTF8"
+					},
+					{
+						"name": "PROJECT_ID",
+						"type": "UTF8"
+					},
+					{
+						"name": "PATENT_ORG_NAME",
+						"type": "UTF8"
+					},
+					{
+						"name": "LOAD_FILE",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureStorageLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation"
+					},
+					"compressionCodec": "snappy"
 				},
 				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/newAdhocExtract')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IFP_OON_Outreach_Processed.csv",
-						"folderPath": "input",
-						"container": "adhocextractnew"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "Date",
-						"type": "String"
-					},
-					{
-						"name": "       Referred",
-						"type": "String"
-					},
-					{
-						"name": "   Geographic Market",
-						"type": "String"
-					},
-					{
-						"name": " Market Segment",
-						"type": "String"
-					},
-					{
-						"name": " Line of Business",
-						"type": "String"
-					},
-					{
-						"name": "   Member ID",
-						"type": "String"
-					},
-					{
-						"name": " Member First Name",
-						"type": "String"
-					},
-					{
-						"name": "   Member Last Name",
-						"type": "String"
-					},
-					{
-						"name": "   DOB",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/newAdhocExtractTemplate')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IFP_OON_Outreach_Template_vw.csv",
-						"folderPath": "input",
-						"container": "adhocextractnew"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "member_id",
-						"type": "String"
-					},
-					{
-						"name": " address_1",
-						"type": "String"
-					},
-					{
-						"name": "      address_2",
-						"type": "String"
-					},
-					{
-						"name": "      city",
-						"type": "String"
-					},
-					{
-						"name": "        state",
-						"type": "String"
-					},
-					{
-						"name": "        zip",
-						"type": "String"
-					},
-					{
-						"name": "        date_of_birth",
-						"type": "String"
-					},
-					{
-						"name": " first_name",
-						"type": "String"
-					},
-					{
-						"name": "       last_name ",
-						"type": "String"
-					}
-				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
