@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "IFP_OON_Outreach_Processed.csv",
+				"fileName": "output.txt",
 				"container": "adhocextract"
 			},
 			"columnDelimiter": ",",
