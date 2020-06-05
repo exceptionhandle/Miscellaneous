@@ -922,7 +922,8 @@
 				"type": "Parquet",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobStorageLocation"
+						"type": "AzureBlobStorageLocation",
+						"container": "parquetfiles"
 					},
 					"compressionCodec": "snappy"
 				},
