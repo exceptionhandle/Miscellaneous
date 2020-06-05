@@ -20,10 +20,6 @@
 						"type": "DataFlowReference"
 					},
 					"staging": {
-						"linkedService": {
-							"referenceName": "AzureDataLakeStorage1",
-							"type": "LinkedServiceReference"
-						},
 						"folderPath": "parquetfiles"
 					},
 					"compute": {
