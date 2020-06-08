@@ -6,14 +6,14 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Parquet2",
+						"referenceName": "Parquet1",
 						"type": "DatasetReference"
 					},
 					"name": "StagePatents"
 				},
 				{
 					"dataset": {
-						"referenceName": "Parquet1",
+						"referenceName": "Parquet2",
 						"type": "DatasetReference"
 					},
 					"name": "DefaultDimPatent"
