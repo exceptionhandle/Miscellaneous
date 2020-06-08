@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"folderPath": "Sink2Output",
 				"container": "adhocextract"
 			},
 			"columnDelimiter": ",",
