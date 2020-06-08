@@ -1,0 +1,100 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "keshADFTutorialDataFactory"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/parquetPipeline_copy1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "dataflow3_copy",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dataflow3_copy1",
+								"type": "DataFlowReference"
+							},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							}
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflow3_copy1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow3_copy1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Parquet1",
+								"type": "DatasetReference"
+							},
+							"name": "StagePatents"
+						},
+						{
+							"dataset": {
+								"referenceName": "Parquet2",
+								"type": "DatasetReference"
+							},
+							"name": "DefaultDimPatent"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "MapPatents"
+						},
+						{
+							"name": "AggregatePatents"
+						},
+						{
+							"name": "SelectDistinctPatents"
+						}
+					],
+					"script": "source(output(\n\t\tPATENT_ID as string,\n\t\tPATENT_TITLE as string,\n\t\tPROJECT_ID as string,\n\t\tPATENT_ORG_NAME as string,\n\t\tLOAD_FILE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tformat: 'parquet') ~> StagePatents\nsource(output(\n\t\tPATENT_ID as string,\n\t\tPATENT_TITLE as string,\n\t\tPROJECT_ID as string,\n\t\tPATENT_ORG_NAME as string,\n\t\tLOAD_FILE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet') ~> DefaultDimPatent\nStagePatents derive(PATENT_ID = rtrim(substring(byName('PATENT_ID'), 1, 30)),\n\t\tPATENT_TITLE = rtrim(substring(byName('PATENT_TITLE'), 1, 500)),\n\t\tPROJECT_ID = rtrim(substring(byName('PROJECT_ID'), 1, 30)),\n\t\tCREATED_DATE = currentTimestamp()) ~> MapPatents\nMapPatents aggregate(groupBy(PATENT_ID),\n\teach(match(name!='PATENT_ID'), $$ = first($$))) ~> AggregatePatents\nAggregatePatents select(mapColumn(\n\t\tPATENT_ID,\n\t\tPATENT_TITLE,\n\t\tCREATED_DATE\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectDistinctPatents\nSelectDistinctPatents sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
