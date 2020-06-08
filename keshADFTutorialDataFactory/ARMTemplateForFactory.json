@@ -1938,14 +1938,14 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "Parquet2",
+								"referenceName": "Parquet1",
 								"type": "DatasetReference"
 							},
 							"name": "StagePatents"
 						},
 						{
 							"dataset": {
-								"referenceName": "Parquet1",
+								"referenceName": "Parquet2",
 								"type": "DatasetReference"
 							},
 							"name": "DefaultDimPatent"
@@ -2002,8 +2002,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Parquet2')]",
 				"[concat(variables('factoryId'), '/datasets/Parquet1')]",
+				"[concat(variables('factoryId'), '/datasets/Parquet2')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText10')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
 			]
