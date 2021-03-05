@@ -1,0 +1,29 @@
+{
+	"name": "Webhook",
+	"properties": {
+		"activities": [
+			{
+				"name": "WebHook1",
+				"type": "WebHook",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/keshADFTutorialDataFactory/pipelines/web/createRun?api-version=2018-07-01-preview",
+					"method": "POST",
+					"body": {
+						"test": "another"
+					},
+					"timeout": "00:01:00",
+					"reportStatusOnCallBack": false,
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-19T02:14:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

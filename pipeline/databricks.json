@@ -1,0 +1,30 @@
+{
+	"name": "databricks",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/kesharma@microsoft.com/pythonNotebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksMSI",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-01-30T01:12:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

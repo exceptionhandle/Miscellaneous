@@ -1,0 +1,30 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "unique",
+				"type": "nchar"
+			},
+			{
+				"name": "firstcol",
+				"type": "nchar"
+			},
+			{
+				"name": "seccol",
+				"type": "nchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "HugeTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

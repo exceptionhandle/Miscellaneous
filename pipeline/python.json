@@ -1,0 +1,37 @@
+{
+	"name": "python",
+	"properties": {
+		"activities": [
+			{
+				"name": "Python1",
+				"type": "DatabricksSparkPython",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pythonFile": "/Users/kesharma@microsoft.com/pythonTest",
+					"parameters": []
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"csvFileName": {
+				"type": "string",
+				"defaultValue": "SharePoint_UserDetails_2020-12-15.csv"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-02-07T08:53:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

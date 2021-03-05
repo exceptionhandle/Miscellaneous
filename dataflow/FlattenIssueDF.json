@@ -1,0 +1,95 @@
+{
+	"name": "FlattenIssueDF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "psi101002_20201119_2225",
+						"type": "DatasetReference"
+					},
+					"name": "InputJson"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkAudit"
+				},
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkEvent"
+				},
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkChecks"
+				},
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkChecksComps"
+				},
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkSurcharges"
+				},
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkChecksPayments"
+				},
+				{
+					"dataset": {
+						"referenceName": "FlattenIssueCsvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkResponsibleEmployees"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FlattenCheck"
+				},
+				{
+					"name": "FlattenEvents"
+				},
+				{
+					"name": "AggregateCheckCount"
+				},
+				{
+					"name": "AuditLine"
+				},
+				{
+					"name": "FlattenComps"
+				},
+				{
+					"name": "FlattenSurcharge"
+				},
+				{
+					"name": "FlattenPayments"
+				},
+				{
+					"name": "FlattenResponsibleEmpolyees"
+				}
+			],
+			"script": "parameters{\n\tsource_location as string ('adhocextract/FlattenIssueInput'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tstoreId as string,\n\t\tdob as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as boolean,\n\t\tlink as string,\n\t\tchecks as (items as (responsibleEmployeeId as string, categories as (id as string, name as string, type as string)[], netAmount as double, orderMode as (id as string, label as string), period as (id as string, label as string), originalPrice as double, quantity as double, seat as string, revenue as boolean, processedInKitchen as boolean, giftCard as boolean, id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], responsibleEmployees as (shiftId as string, isTippableEmployee as boolean, roleId as string, roleName as string, id as string, name as string, time as string)[], terminalId as string, grossAmount as double, grandAmount as double, id as string, printedCheckId as string, netAmount as double, total as double, isRefund as boolean, training as boolean, closed as boolean, groupInfo as (id as string, label as string), guestCounting as (guests as double, mode as string), revenueCenter as (id as string, label as string), period as (id as string, label as string), comps as (type as string, note as string, linkedItems as (id as string, amount as double)[], id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], surcharges as (rate as double, type as string, accounting as string, linkedItems as string[], taxableSales as double, id as string, typeId as string, label as string, amount as double, createdOn as string)[], payments as (tip as double, type as string, card as string, id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], events as (time as string, type as string)[], isTaxExemptApplied as boolean)[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument',\n\twildcardPaths:['FlattenIssueInput/*']) ~> InputJson\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\t{check.terminalId} = checks.terminalId,\n\t\t{checks.grossAmount} = checks.grossAmount,\n\t\tcheckgrandAmount = checks.grandAmount,\n\t\tcheckid = checks.id,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tchecknetAmount = checks.netAmount,\n\t\tcheckstotal = checks.total,\n\t\tcheckisRefund = checks.isRefund,\n\t\tcheckstraining = checks.training,\n\t\tchecksclosed = checks.closed,\n\t\tchecksgroupInfoid = checks.groupInfo.id,\n\t\tchecksgroupInfolabel = checks.groupInfo.label,\n\t\tchecksperiodid = checks.period.id,\n\t\tchecksperiodlabel = checks.period.label,\n\t\tchecksisTaxExemptApplied = checks.isTaxExemptApplied,\n\t\titems = checks.items,\n\t\tresponsibleEmployees = checks.responsibleEmployees,\n\t\tevents = checks.events,\n\t\tsurcharges = checks.surcharges,\n\t\tpayments = checks.payments,\n\t\tcomps = checks.comps,\n\t\t{revenueCenter.id} = checks.revenueCenter.id,\n\t\t{revenueCenter.label} = checks.revenueCenter.label,\n\t\t{guestCounting.guests} = checks.guestCounting.guests,\n\t\t{guestCounting.mode} = checks.guestCounting.mode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenCheck\nFlattenCheck foldDown(unroll(events, events),\n\tmapColumn(\n\t\tstoreId,\n\t\tchecksisTaxExemptApplied = events.time,\n\t\titems = events.type,\n\t\tcheckprintedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenEvents\nFlattenCheck aggregate(RowCount = countDistinct(storeId, checkprintedCheckId )) ~> AggregateCheckCount\nAggregateCheckCount derive(Pipeline = \"Step 2 : NCR Refine\",\n\t\t{Date of Business} = $dob,\n\t\t{Batch Window} = $batch_window,\n\t\t{Row Count} = RowCount,\n\t\t{Pipeline Start Dttm} = $start_time,\n\t\t{Pipeline End Dttm} = toString(fromUTC(currentTimestamp(),'MST'),\"HH:mm:ss\"),\n\t\t{Pipeline Status} = \"Success\") ~> AuditLine\nFlattenCheck foldDown(unroll(comps, comps),\n\tmapColumn(\n\t\tstoreId,\n\t\tcomps,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenComps\nFlattenCheck foldDown(unroll(surcharges, surcharges),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tsurcharges,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenSurcharge\nFlattenCheck foldDown(unroll(payments, payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tpayments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nFlattenCheck foldDown(unroll(responsibleEmployees, responsibleEmployees),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tresponsibleEmpolyees = responsibleEmployees,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenResponsibleEmpolyees\nAuditLine sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat('Audit_', toString(currentUTC(),'yyyyMMdd_HHmm'),'.csv'))],\n\tmapColumn(\n\t\tPipeline,\n\t\t{Date of Business},\n\t\t{Batch Window},\n\t\t{Row Count},\n\t\t{Pipeline Start Dttm},\n\t\t{Pipeline End Dttm},\n\t\t{Pipeline Status}\n\t),\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkAudit\nFlattenEvents sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tchecksisTaxExemptApplied,\n\t\titems,\n\t\tcheckprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkEvent\nFlattenCheck sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tlink,\n\t\tterminalId = {check.terminalId},\n\t\tgrossAmount = {checks.grossAmount},\n\t\tcheckgrandAmount,\n\t\tcheckid,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tchecknetAmount,\n\t\tcheckstotal,\n\t\tcheckisRefund,\n\t\tcheckstraining,\n\t\tchecksclosed,\n\t\tchecksgroupInfoid,\n\t\tchecksgroupInfolabel,\n\t\tchecksperiodid,\n\t\tchecksperiodlabel,\n\t\tchecksisTaxExemptApplied,\n\t\t{guestCounting.guests},\n\t\t{guestCounting.mode},\n\t\t{revenueCenter.id},\n\t\t{revenueCenter.label}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecks\nFlattenComps sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = comps.amount,\n\t\tcreatedOn = comps.createdOn,\n\t\tid = comps.id,\n\t\tlabel = comps.label,\n\t\tnote = comps.note,\n\t\t{responsibleEmployees.employee.id} = comps.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = comps.responsibleEmployees.employee.name,\n\t\ttype = comps.type,\n\t\ttypeId = comps.typeId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksComps\nFlattenSurcharge sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\t{surchages.linkedItems} = surcharges.linkedItems,\n\t\trate = surcharges.rate,\n\t\ttype = surcharges.type,\n\t\taccounting = surcharges.accounting,\n\t\ttaxableSales = surcharges.taxableSales,\n\t\tid = surcharges.id,\n\t\ttypeId = surcharges.typeId,\n\t\tlabel = surcharges.label,\n\t\tamount = surcharges.amount,\n\t\tcreatedOn = surcharges.createdOn,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkSurcharges\nFlattenPayments sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksPayments\nFlattenResponsibleEmpolyees sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\t{responsibleEmployees.employee.id} = responsibleEmpolyees.id,\n\t\tisTippableEmployee = responsibleEmpolyees.isTippableEmployee,\n\t\t{responsibleEmployees.employee.name} = responsibleEmpolyees.name,\n\t\troleId = responsibleEmpolyees.roleId,\n\t\troleName = responsibleEmpolyees.roleName,\n\t\tshiftId = responsibleEmpolyees.shiftId,\n\t\ttime = responsibleEmpolyees.time\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkResponsibleEmployees"
+		}
+	}
+}

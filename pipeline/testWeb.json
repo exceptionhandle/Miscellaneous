@@ -1,0 +1,93 @@
+{
+	"name": "testWeb",
+	"properties": {
+		"activities": [
+			{
+				"name": "a",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:01:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "@variables('NotificationServiceURI')",
+						"type": "Expression"
+					},
+					"method": "POST",
+					"headers": {
+						"x-ms-date": {
+							"value": "@utcnow('r')",
+							"type": "Expression"
+						},
+						"x-ms-version": "2019-07-07"
+					},
+					"body": {
+						"value": "<QueueMessage>  \n    <MessageText>@{pipeline().parameters.messageData}</MessageText>  \n</QueueMessage>",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "ServicePrincipal",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "secname"
+						},
+						"userTenant": {
+							"value": "@{variables('NotificationServiceTenantID')}",
+							"type": "Expression"
+						},
+						"username": "Expression",
+						"resource": "https://storage.azure.com/"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"notificationQueueName": {
+				"type": "string"
+			},
+			"messageData": {
+				"type": "string"
+			},
+			"notificationQueueAccountUri": {
+				"type": "string"
+			},
+			"odosInstanceId": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"NotificationServiceTenantId": {
+				"type": "String",
+				"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+			},
+			"NotificationServiceClientId": {
+				"type": "String",
+				"defaultValue": "@{pipeline().globalParameters.ODOSAppId}"
+			},
+			"NotificationServiceResource": {
+				"type": "String",
+				"defaultValue": "https://storage.azure.com/"
+			},
+			"NotificationServiceUri": {
+				"type": "String",
+				"defaultValue": "@{pipeline().parameters.notificationQueueAccountUri}@{pipeline().parameters.notificationQueueName}/messages"
+			}
+		},
+		"folder": {
+			"name": "notification-pipelines"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-02-02T01:59:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

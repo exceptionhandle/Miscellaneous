@@ -1,0 +1,47 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "http://www.google.com",
+					"method": "GET",
+					"disableCertValidation": true,
+					"authentication": {
+						"type": "ServicePrincipal",
+						"userTenant": {
+							"value": "@pipeline().RunId",
+							"type": "Expression"
+						},
+						"username": {
+							"value": "@pipeline().DataFactory",
+							"type": "Expression"
+						},
+						"resource": {
+							"value": "@pipeline().DataFactory",
+							"type": "Expression"
+						},
+						"password": {
+							"type": "SecureString",
+							"value": "**********"
+						}
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-26T14:55:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

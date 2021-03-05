@@ -1,0 +1,449 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "sample.json",
+				"container": "adhocextract"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"quizReport": {
+					"type": "object",
+					"properties": {
+						"@version": {
+							"type": "integer"
+						},
+						"@xmlns": {
+							"type": "string"
+						},
+						"@xmlns:xsi": {
+							"type": "string"
+						},
+						"@xsi:schemaLocation": {
+							"type": "string"
+						},
+						"groups": {
+							"type": "object",
+							"properties": {
+								"group": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"@answeredQuestions": {
+												"type": "integer"
+											},
+											"@awardedPercent": {
+												"type": "number"
+											},
+											"@awardedScore": {
+												"type": "integer"
+											},
+											"@name": {
+												"type": "string"
+											},
+											"@passingPercent": {
+												"type": "integer"
+											},
+											"@passingScore": {
+												"type": "integer"
+											},
+											"@totalQuestions": {
+												"type": "integer"
+											}
+										}
+									}
+								}
+							}
+						},
+						"questions": {
+							"type": "object",
+							"properties": {
+								"matchingQuestion": {
+									"type": "object",
+									"properties": {
+										"@awardedPoints": {
+											"type": "integer"
+										},
+										"@evaluationEnabled": {
+											"type": "boolean"
+										},
+										"@id": {
+											"type": "string"
+										},
+										"@maxAttempts": {
+											"type": "boolean"
+										},
+										"@maxPoints": {
+											"type": "integer"
+										},
+										"@status": {
+											"type": "string"
+										},
+										"@usedAttempts": {
+											"type": "boolean"
+										},
+										"direction": {
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												}
+											}
+										},
+										"feedback": {
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												}
+											}
+										},
+										"matches": {
+											"type": "object",
+											"properties": {
+												"match": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"@premiseIndex": {
+																"type": "integer"
+															},
+															"@responseIndex": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										},
+										"premises": {
+											"type": "object",
+											"properties": {
+												"premise": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"responses": {
+											"type": "object",
+											"properties": {
+												"response": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"userAnswer": {
+											"type": "object",
+											"properties": {
+												"match": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"@premiseIndex": {
+																"type": "integer"
+															},
+															"@responseIndex": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"multipleChoiceQuestion": {
+									"type": "object",
+									"properties": {
+										"@awardedPoints": {
+											"type": "boolean"
+										},
+										"@evaluationEnabled": {
+											"type": "boolean"
+										},
+										"@id": {
+											"type": "string"
+										},
+										"@maxAttempts": {
+											"type": "boolean"
+										},
+										"@maxPoints": {
+											"type": "integer"
+										},
+										"@status": {
+											"type": "string"
+										},
+										"@usedAttempts": {
+											"type": "boolean"
+										},
+										"answers": {
+											"type": "object",
+											"properties": {
+												"@correctAnswerIndex": {
+													"type": "integer"
+												},
+												"@userAnswerIndex": {
+													"type": "boolean"
+												},
+												"answer": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"direction": {
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												}
+											}
+										},
+										"feedback": {
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								},
+								"multipleResponseQuestion": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"@awardedPoints": {
+												"type": "boolean"
+											},
+											"@evaluationEnabled": {
+												"type": "boolean"
+											},
+											"@id": {
+												"type": "string"
+											},
+											"@maxAttempts": {
+												"type": "boolean"
+											},
+											"@maxPoints": {
+												"type": "integer"
+											},
+											"@status": {
+												"type": "string"
+											},
+											"@usedAttempts": {
+												"type": "boolean"
+											},
+											"answers": {
+												"type": "object",
+												"properties": {
+													"answer": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"@correct": {
+																	"type": "boolean"
+																},
+																"@selected": {
+																	"type": "boolean"
+																},
+																"text": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											},
+											"direction": {
+												"type": "object",
+												"properties": {
+													"text": {
+														"type": "string"
+													}
+												}
+											},
+											"feedback": {
+												"type": "object",
+												"properties": {
+													"text": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								},
+								"trueFalseQuestion": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"@awardedPoints": {
+												"type": "integer"
+											},
+											"@evaluationEnabled": {
+												"type": "boolean"
+											},
+											"@id": {
+												"type": "string"
+											},
+											"@maxAttempts": {
+												"type": "boolean"
+											},
+											"@maxPoints": {
+												"type": "integer"
+											},
+											"@status": {
+												"type": "string"
+											},
+											"@usedAttempts": {
+												"type": "boolean"
+											},
+											"answers": {
+												"type": "object",
+												"properties": {
+													"@correctAnswerIndex": {
+														"type": "boolean"
+													},
+													"@userAnswerIndex": {
+														"type": "boolean"
+													},
+													"answer": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"text": {
+																	"type": "boolean"
+																}
+															}
+														}
+													}
+												}
+											},
+											"direction": {
+												"type": "object",
+												"properties": {
+													"text": {
+														"type": "string"
+													}
+												}
+											},
+											"feedback": {
+												"type": "object",
+												"properties": {
+													"text": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"quizSettings": {
+							"type": "object",
+							"properties": {
+								"@maxScore": {
+									"type": "integer"
+								},
+								"@quizType": {
+									"type": "string"
+								},
+								"@timeLimit": {
+									"type": "boolean"
+								},
+								"passingPercent": {
+									"type": "integer"
+								},
+								"@maxNormalizedScore": {
+									"type": "integer"
+								}
+							}
+						},
+						"summary": {
+							"type": "object",
+							"properties": {
+								"@passed": {
+									"type": "boolean"
+								},
+								"@percent": {
+									"type": "integer"
+								},
+								"@score": {
+									"type": "integer"
+								},
+								"@time": {
+									"type": "integer"
+								},
+								"variables": {
+									"type": "object",
+									"properties": {
+										"variable": {
+											"type": "object",
+											"properties": {
+												"@name": {
+													"type": "string"
+												},
+												"@title": {
+													"type": "string"
+												},
+												"@value": {
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"SourceFilename": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

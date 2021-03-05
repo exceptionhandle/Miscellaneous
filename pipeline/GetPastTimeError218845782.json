@@ -1,0 +1,26 @@
+{
+	"name": "GetPastTimeError218845782",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "python",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"csvFileName": "SharePointUserDetails.csv"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-07T08:53:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,42 @@
+{
+	"name": "webhookSPN",
+	"properties": {
+		"description": "~0rMCL._lDdMDRs2GVgXT4GGg.kjnM90i0",
+		"activities": [
+			{
+				"name": "WebHook1",
+				"type": "WebHook",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshtriggerfunctions.azurewebsites.net/api/HttpTrigger1?code=tnT1dgzFKvwti/Qi46kUFjwdqD7QRlGvha7ZoJC6EzbNIUN8dSG3IA==",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json",
+						"Accept": "application/json"
+					},
+					"body": {
+						"UserName": "AprilTripPin"
+					},
+					"authentication": {
+						"type": "ServicePrincipal",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "functionCert"
+						},
+						"userTenant": "microsoft.com",
+						"username": "12fb64dd-9e56-4ffa-a3c6-e3d9228e913a",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-11T02:27:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

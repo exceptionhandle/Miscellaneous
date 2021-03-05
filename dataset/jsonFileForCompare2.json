@@ -1,0 +1,312 @@
+{
+	"name": "jsonFileForCompare2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "20200929203935_LSGQ_oasis_PBARCMAS.json",
+				"container": "adhocextract"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"ACCNUMBER": {
+					"type": "string"
+				},
+				"SEQNUMBER": {
+					"type": "integer"
+				},
+				"TRANSTYPE": {
+					"type": "integer"
+				},
+				"CONSULTDATE": {
+					"type": "string"
+				},
+				"ENTRYDATE": {
+					"type": "string"
+				},
+				"BANKSLIPNUMBER": {
+					"type": "integer"
+				},
+				"STATEMENTNUMBER": {
+					"type": "integer"
+				},
+				"BATCHNUMBER": {
+					"type": "integer"
+				},
+				"PATNUMBER": {
+					"type": "string"
+				},
+				"PATIENTNAME": {
+					"type": "string"
+				},
+				"THIRDPARTYNUMBER": {
+					"type": "string"
+				},
+				"DESCRIPTION1": {
+					"type": "string"
+				},
+				"DESCRIPTION2": {
+					"type": "string"
+				},
+				"DESCRIPTION3": {
+					"type": "string"
+				},
+				"DESCRIPTION4": {
+					"type": "string"
+				},
+				"REFERENCE": {
+					"type": "string"
+				},
+				"HICAPSREFERENCE": {
+					"type": "string"
+				},
+				"HICAPSCLAIMNUMBER": {
+					"type": "string"
+				},
+				"ITEMCODE": {
+					"type": "string"
+				},
+				"SUBITEMCODE": {
+					"type": "string"
+				},
+				"FREQUENCY": {
+					"type": "number"
+				},
+				"DRAWERNAME": {
+					"type": "string"
+				},
+				"BANK": {
+					"type": "string"
+				},
+				"BRANCH": {
+					"type": "string"
+				},
+				"CONSULTDRNUMBER": {
+					"type": "integer"
+				},
+				"CONSULTDRNAME": {
+					"type": "string"
+				},
+				"BILLDRNUMBER": {
+					"type": "integer"
+				},
+				"PRINTDATE": {
+					"type": "null"
+				},
+				"DELETEDATE": {
+					"type": "string"
+				},
+				"DELETED": {
+					"type": "integer"
+				},
+				"CANCELLED": {
+					"type": "integer"
+				},
+				"PURGED": {
+					"type": "integer"
+				},
+				"CANCELDATE": {
+					"type": "null"
+				},
+				"BANKEDDATE": {
+					"type": "null"
+				},
+				"BANKLOCNUMBER": {
+					"type": "integer"
+				},
+				"BANKSTATUS": {
+					"type": "string"
+				},
+				"COMMENT": {
+					"type": "string"
+				},
+				"USERNUMBER": {
+					"type": "integer"
+				},
+				"USERNAME": {
+					"type": "string"
+				},
+				"USERTIME": {
+					"type": "string"
+				},
+				"USERBRANCHNUMBER": {
+					"type": "integer"
+				},
+				"SHOWINBANKING": {
+					"type": "integer"
+				},
+				"LOCNO": {
+					"type": "integer"
+				},
+				"TOPRINT": {
+					"type": "integer"
+				},
+				"ONHOLD": {
+					"type": "integer"
+				},
+				"AMOUNT": {
+					"type": "number"
+				},
+				"PAID": {
+					"type": "number"
+				},
+				"CHEQUES": {
+					"type": "number"
+				},
+				"CASH": {
+					"type": "number"
+				},
+				"CREDITCARD": {
+					"type": "number"
+				},
+				"EFTPOS": {
+					"type": "number"
+				},
+				"DIRECTDEBIT": {
+					"type": "number"
+				},
+				"HICAPS": {
+					"type": "number"
+				},
+				"OTHERAMOUNT": {
+					"type": "number"
+				},
+				"THIRDPARTYAMOUNT": {
+					"type": "number"
+				},
+				"GSTAMOUNT": {
+					"type": "number"
+				},
+				"MARKEDAMOUNT": {
+					"type": "number"
+				},
+				"GSTNUMBER": {
+					"type": "integer"
+				},
+				"LABNUMBER": {
+					"type": "integer"
+				},
+				"COLORNUMBER": {
+					"type": "integer"
+				},
+				"STARTTIME": {
+					"type": "string"
+				},
+				"ENDTIME": {
+					"type": "string"
+				},
+				"MINUTES": {
+					"type": "integer"
+				},
+				"STATEKEY": {
+					"type": "string"
+				},
+				"THIRDPARTYPAYMENT": {
+					"type": "integer"
+				},
+				"MARKEDWRITEOFF": {
+					"type": "number"
+				},
+				"REPRINTFLAG": {
+					"type": "integer"
+				},
+				"AUDITFLAG": {
+					"type": "integer"
+				},
+				"RUNNUMBER": {
+					"type": "integer"
+				},
+				"HICAPSFLAG": {
+					"type": "integer"
+				},
+				"PURGEUSERNAME": {
+					"type": "string"
+				},
+				"ENTRYUSERNAME": {
+					"type": "string"
+				},
+				"PURGEDATE": {
+					"type": "null"
+				},
+				"THIRDPARTYGSTAMOUNT": {
+					"type": "number"
+				},
+				"NEWSLETTERCODE": {
+					"type": "string"
+				},
+				"BANKTYPE": {
+					"type": "integer"
+				},
+				"SOUNDNUMBER": {
+					"type": "integer"
+				},
+				"ENTRYUSERTIME": {
+					"type": "string"
+				},
+				"MEDCLAIMSFLAG": {
+					"type": "integer"
+				},
+				"MEDCLAIMSKEY": {
+					"type": "string"
+				},
+				"MEDCLAIMSEXCLUDE": {
+					"type": "integer"
+				},
+				"MEDCLAIMSLINENUMBER": {
+					"type": "integer"
+				},
+				"MEDCLAIMSREFNO": {
+					"type": "integer"
+				},
+				"MEDCLAIMSGROUPNO": {
+					"type": "integer"
+				},
+				"MEDCLAIMSSUBGROUPNO": {
+					"type": "integer"
+				},
+				"DELETEUSERNAME": {
+					"type": "string"
+				},
+				"DELETEBRANCHNUMBER": {
+					"type": "integer"
+				},
+				"PROCESSFLAG": {
+					"type": "integer"
+				},
+				"EASYCLAIMAMOUNT": {
+					"type": "number"
+				},
+				"EASYCLAIMFLAG": {
+					"type": "integer"
+				},
+				"MARKEDSNUMBER": {
+					"type": "null"
+				},
+				"SHOWINLAB": {
+					"type": "integer"
+				},
+				"SHOWINGST": {
+					"type": "integer"
+				},
+				"DELETETIME": {
+					"type": "string"
+				},
+				"SOEPAYFLAG": {
+					"type": "integer"
+				},
+				"TRANSACTIONREFERENCE": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

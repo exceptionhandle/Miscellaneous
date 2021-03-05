@@ -1,0 +1,19 @@
+{
+	"name": "databricksRepo",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-860887232373193.13.azuredatabricks.net",
+			"newClusterNodeType": "Standard_NC12",
+			"newClusterNumOfWorker": "1",
+			"newClusterVersion": "5.5.x-gpu-scala2.11",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyMWJkMGUxYS00OTM2LTQ4NDQtOTVlYi0zZmQ2YmY1ODhmMzgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

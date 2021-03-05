@@ -1,0 +1,21 @@
+{
+	"name": "AzureMLService1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "spn key: 59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=",
+		"annotations": [],
+		"type": "AzureMLService",
+		"typeProperties": {
+			"subscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
+			"resourceGroupName": "lijzhaFactory",
+			"mlWorkspaceName": "lijzhaMLV2",
+			"servicePrincipalId": "fe273844-c808-40b8-ad85-94a46f737731",
+			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmZTZhMzE1YS1mZjJlLTQ1ODktYjliNy01NWE2YmYxODc0ZGEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

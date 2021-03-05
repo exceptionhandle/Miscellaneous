@@ -1,0 +1,89 @@
+{
+	"name": "Json2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "sample.json",
+				"container": "adhocextract"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"age": {
+					"type": "integer"
+				},
+				"addresses": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"street": {
+								"type": "string"
+							},
+							"city": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							},
+							"contact": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"number": {
+											"type": "string"
+										},
+										"areaCode": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"friends": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"city": {
+								"type": "string"
+							},
+							"contact": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"number": {
+											"type": "string"
+										},
+										"areaCode": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

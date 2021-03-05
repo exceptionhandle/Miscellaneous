@@ -1,0 +1,32 @@
+{
+	"name": "xmldataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "currentOutput",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Flatten1"
+				}
+			],
+			"script": "source(output(\n\t\tquizReport as ({@version} as short, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as short, {@awardedPercent} as double, {@awardedScore} as short, {@name} as string, {@passingPercent} as short, {@passingScore} as short, {@totalQuestions} as short)[]), questions as (fillInTheBlankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], hotspotQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), hotspots as (freeform as ({@correct} as boolean, {@height} as double, {@label} as string, {@marked} as boolean, {@points} as string, {@width} as double, {@x} as double, {@y} as double)[]), userAnswer as (point as ({@x} as double, {@y} as double)[]))[], matchingQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]))[], multipleChoiceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string))[], multipleChoiceTextQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as short, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], numericQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as short, answers as (equal as short), direction as (text as string), feedback as (text as string))[], sequenceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@originalIndex} as short, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[], typeInQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as string, acceptableAnswers as (answer as string[]), direction as (text as string), feedback as (text as string))[], wordBankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, {_value_} as string)[], text as string[]), direction as (text as string), feedback as (text as string), words as string)[]), quizSettings as ({@maxNormalizedScore} as short, {@maxScore} as short, {@quizType} as string, {@timeLimit} as boolean, passingPercent as short), summary as ({@finishTimestamp} as timestamp, {@passed} as boolean, {@percent} as short, {@score} as short, {@time} as short, variables as (variable as ({@name} as string, {@title} as string, {@value} as string))))\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\trowUrlColumn: 'SourceFilename',\n\tinferDriftedColumnTypes: true,\n\tformat: 'xml',\n\tcontainer: 'adhocextract',\n\tvalidationMode: 'none',\n\tnamespaces: false,\n\twildcardPaths:['*.xml']) ~> source1\nsource1 foldDown(unroll(quizReport.questions.multipleChoiceQuestion, quizReport.questions.multipleChoiceQuestion),\n\tmapColumn(\n\t\tquestionid = quizReport.questions.multipleChoiceQuestion.{@id},\n\t\tQuestion = quizReport.questions.multipleChoiceQuestion.direction.text,\n\t\tstatus = quizReport.questions.multipleChoiceQuestion.{@status}\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nFlatten1 sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

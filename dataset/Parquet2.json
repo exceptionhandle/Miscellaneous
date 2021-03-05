@@ -1,0 +1,47 @@
+{
+	"name": "Parquet2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "SubscriptionProfile.parquet",
+				"folderPath": "CDM",
+				"container": "adhocextract"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "SubscriptionId",
+				"type": "UTF8"
+			},
+			{
+				"name": "SubscriptionCreatedDate",
+				"type": "TIMESTAMP_MICROS"
+			},
+			{
+				"name": "SubscriptionStartDate",
+				"type": "TIMESTAMP_MICROS"
+			},
+			{
+				"name": "SubscriptionStatusCurrent",
+				"type": "UTF8"
+			},
+			{
+				"name": "MCRecordCreatedDate",
+				"type": "TIMESTAMP_MICROS"
+			},
+			{
+				"name": "MCRecordUpdatedDate",
+				"type": "TIMESTAMP_MICROS"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

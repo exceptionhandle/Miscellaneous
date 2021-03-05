@@ -1,0 +1,18 @@
+{
+	"name": "AzureDatabricks1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "https://management.core.windows.net/\nhttps://login.microsoftonline.com/<tenantid>/oauth2/token\njob-3-run-1\nx6rm6~~96~srv~m0x_~SS23PH.QU7_wli3\naccess token: dapi16711286f53bcbaa3753acdc23f0bfcb\nKeshPremDb: accessToken: dapifd36ab87bcc34b6e54e26c290ad8db9e\ncluster node type: Standard_DS3_v2\nspark version: 2.4.3\ncluster ID: 0920-185412-happy305",
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-4252760204895882.2.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshPremDB",
+			"newClusterNodeType": "Standard_NC12",
+			"newClusterNumOfWorker": "1",
+			"newClusterVersion": "5.5.x-gpu-scala2.11",
+			"policyid": "ED5F86CD7C000363"
+		}
+	}
+}

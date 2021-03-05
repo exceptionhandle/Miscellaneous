@@ -1,0 +1,42 @@
+{
+	"name": "WebFunctionSPN",
+	"properties": {
+		"description": "function secret: 3nAPd5.QYUwjit4~w7v47W-jXtDbLz0_-W",
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshtriggerfunctions.azurewebsites.net/api/GETPUTPOST?code=bDhrkPugcicfbnEDhzx4g5uq8dLMu9rdPDlFIDU275wF8deJljUIYw==",
+					"method": "GET",
+					"authentication": {
+						"type": "ServicePrincipal",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "functionCert"
+						},
+						"userTenant": "microsoft.com",
+						"username": "12fb64dd-9e56-4ffa-a3c6-e3d9228e913a",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-11T00:58:05Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

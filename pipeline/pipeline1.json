@@ -1,0 +1,80 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://www.bing.com",
+					"connectVia": {
+						"referenceName": "integrationRuntimeWestEurope",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"disableCertValidation": {
+						"value": "@and(true, true)",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": {
+							"value": "@pipeline().DataFactory",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "WebHook1",
+				"type": "WebHook",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://www.bing.com",
+					"method": "POST",
+					"timeout": "00:10:00",
+					"reportStatusOnCallBack": {
+						"value": "@and(true, true)",
+						"type": "Expression"
+					},
+					"disableCertValidation": {
+						"value": "@and(true, true)",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "ClientCertificate",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "fdsfds"
+						},
+						"password": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "sdfds"
+						}
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-21T23:29:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

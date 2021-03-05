@@ -1,0 +1,179 @@
+{
+	"name": "web",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Web2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Web3",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+					"method": "POST",
+					"body": {
+						"value": "@concat(activity('Web2').output, activity('Web3').output)",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "Basic",
+						"username": "pipeline().parameters.url",
+						"password": {
+							"type": "SecureString",
+							"value": "**********"
+						}
+					}
+				}
+			},
+			{
+				"name": "Web2",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+					"method": "GET"
+				}
+			},
+			{
+				"name": "Web3",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+					"method": "GET",
+					"authentication": {
+						"type": "ClientCertificate",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "sarajCert"
+						},
+						"password": {
+							"type": "SecureString",
+							"value": "**********"
+						}
+					}
+				}
+			},
+			{
+				"name": "Until1",
+				"type": "Until",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@or(greater(activity('Web4').StatusCode,400),greater(activity('Web5').StatusCode,400))",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@less(activity('Web1').StatusCode,400)",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "Web5",
+										"type": "WebActivity",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"url": "https://www.shouldfail.com",
+											"method": "GET"
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "Web4",
+										"type": "WebActivity",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"url": "https://www.bing.com",
+											"method": "GET"
+										}
+									}
+								]
+							}
+						}
+					],
+					"timeout": "7.00:00:00"
+				}
+			}
+		],
+		"parameters": {
+			"url": {
+				"type": "string",
+				"defaultValue": "https://keshfunctiontest.azurewebsites.net/api/HttpTrigger1?code=Asvrb75j7VcHY8vVYNQvUSJauVmyCJab3AtAfxy2OptxlaLvf0boGA=="
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-02-17T19:38:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

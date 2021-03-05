@@ -1,0 +1,45 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "first",
+						"type": "DatasetReference"
+					},
+					"name": "CurrentJSONStream"
+				},
+				{
+					"dataset": {
+						"referenceName": "second",
+						"type": "DatasetReference"
+					},
+					"name": "StagingJSONStream"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "csvOutput",
+						"type": "DatasetReference"
+					},
+					"name": "SinkDelta"
+				}
+			],
+			"transformations": [
+				{
+					"name": "RowHashCurrent"
+				},
+				{
+					"name": "RowHashStaging"
+				},
+				{
+					"name": "GetDeltaRecords"
+				}
+			],
+			"script": "source(output(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tREPRINTFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tPURGEDATE as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tMEDCLAIMSFLAG as string,\n\t\tEASYCLAIMFLAG as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tHICAPS as double,\n\t\tPROCESSFLAG as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 1000000,\n\tdocumentForm: 'documentPerLine') ~> CurrentJSONStream\nsource(output(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tREPRINTFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tPURGEDATE as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tMEDCLAIMSFLAG as string,\n\t\tEASYCLAIMFLAG as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tHICAPS as double,\n\t\tPROCESSFLAG as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 1000000,\n\tdocumentForm: 'documentPerLine') ~> StagingJSONStream\nCurrentJSONStream derive(RowHash = crc32(ACCNUMBER,SEQNUMBER,TRANSTYPE,CONSULTDATE,ENTRYDATE,BANKSLIPNUMBER,STATEMENTNUMBER,BATCHNUMBER,PATNUMBER,PATIENTNAME,THIRDPARTYNUMBER,DESCRIPTION1,DESCRIPTION2,DESCRIPTION3,DESCRIPTION4,REFERENCE,HICAPSREFERENCE,HICAPSCLAIMNUMBER,ITEMCODE,SUBITEMCODE,FREQUENCY,DRAWERNAME,BANK,BRANCH,CONSULTDRNUMBER,CONSULTDRNAME,BILLDRNUMBER,PRINTDATE,DELETEDATE,DELETED,CANCELLED,PURGED,CANCELDATE,BANKEDDATE,BANKLOCNUMBER,BANKSTATUS,COMMENT,USERNUMBER,USERNAME,USERTIME,USERBRANCHNUMBER,SHOWINBANKING,LOCNO,TOPRINT,ONHOLD,AMOUNT,PAID,CHEQUES,CASH,CREDITCARD,EFTPOS,DIRECTDEBIT,HICAPS,OTHERAMOUNT,THIRDPARTYAMOUNT,GSTAMOUNT,MARKEDAMOUNT,GSTNUMBER,LABNUMBER,COLORNUMBER,STARTTIME,ENDTIME,MINUTES,STATEKEY,THIRDPARTYPAYMENT,MARKEDWRITEOFF,REPRINTFLAG,AUDITFLAG,RUNNUMBER,HICAPSFLAG,PURGEUSERNAME,ENTRYUSERNAME,PURGEDATE,THIRDPARTYGSTAMOUNT,NEWSLETTERCODE,BANKTYPE,SOUNDNUMBER,ENTRYUSERTIME,MEDCLAIMSFLAG,MEDCLAIMSKEY,MEDCLAIMSEXCLUDE,MEDCLAIMSLINENUMBER,MEDCLAIMSREFNO,MEDCLAIMSGROUPNO,MEDCLAIMSSUBGROUPNO,DELETEUSERNAME,DELETEBRANCHNUMBER,PROCESSFLAG,EASYCLAIMAMOUNT,EASYCLAIMFLAG,MARKEDSNUMBER,SHOWINLAB,SHOWINGST,DELETETIME)) ~> RowHashCurrent\nStagingJSONStream derive(RowHash = crc32(ACCNUMBER,SEQNUMBER,TRANSTYPE,CONSULTDATE,ENTRYDATE,BANKSLIPNUMBER,STATEMENTNUMBER,BATCHNUMBER,PATNUMBER,PATIENTNAME,THIRDPARTYNUMBER,DESCRIPTION1,DESCRIPTION2,DESCRIPTION3,DESCRIPTION4,REFERENCE,HICAPSREFERENCE,HICAPSCLAIMNUMBER,ITEMCODE,SUBITEMCODE,FREQUENCY,DRAWERNAME,BANK,BRANCH,CONSULTDRNUMBER,CONSULTDRNAME,BILLDRNUMBER,PRINTDATE,DELETEDATE,DELETED,CANCELLED,PURGED,CANCELDATE,BANKEDDATE,BANKLOCNUMBER,BANKSTATUS,COMMENT,USERNUMBER,USERNAME,USERTIME,USERBRANCHNUMBER,SHOWINBANKING,LOCNO,TOPRINT,ONHOLD,AMOUNT,PAID,CHEQUES,CASH,CREDITCARD,EFTPOS,DIRECTDEBIT,HICAPS,OTHERAMOUNT,THIRDPARTYAMOUNT,GSTAMOUNT,MARKEDAMOUNT,GSTNUMBER,LABNUMBER,COLORNUMBER,STARTTIME,ENDTIME,MINUTES,STATEKEY,THIRDPARTYPAYMENT,MARKEDWRITEOFF,REPRINTFLAG,AUDITFLAG,RUNNUMBER,HICAPSFLAG,PURGEUSERNAME,ENTRYUSERNAME,PURGEDATE,THIRDPARTYGSTAMOUNT,NEWSLETTERCODE,BANKTYPE,SOUNDNUMBER,ENTRYUSERTIME,MEDCLAIMSFLAG,MEDCLAIMSKEY,MEDCLAIMSEXCLUDE,MEDCLAIMSLINENUMBER,MEDCLAIMSREFNO,MEDCLAIMSGROUPNO,MEDCLAIMSSUBGROUPNO,DELETEUSERNAME,DELETEBRANCHNUMBER,PROCESSFLAG,EASYCLAIMAMOUNT,EASYCLAIMFLAG,MARKEDSNUMBER,SHOWINLAB,SHOWINGST,DELETETIME)) ~> RowHashStaging\nRowHashCurrent, RowHashStaging exists(RowHashCurrent@RowHash == RowHashStaging@RowHash,\n\tnegate:true,\n\tbroadcast: 'auto')~> GetDeltaRecords\nGetDeltaRecords sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkDelta"
+		}
+	}
+}

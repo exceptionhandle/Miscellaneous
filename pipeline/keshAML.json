@@ -1,0 +1,36 @@
+{
+	"name": "keshAML",
+	"properties": {
+		"activities": [
+			{
+				"name": "Machine Learning Execute Pipeline1",
+				"type": "AzureMLExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"experimentName": "test",
+					"mlPipelineParameters": {
+						"param_batch_size": 5,
+						"param_sleep_seconds": 60,
+						"param_should_throw": "false"
+					},
+					"mlPipelineId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureMLService1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-07T08:52:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

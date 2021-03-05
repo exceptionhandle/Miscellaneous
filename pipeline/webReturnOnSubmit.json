@@ -1,0 +1,53 @@
+{
+	"name": "webReturnOnSubmit",
+	"properties": {
+		"activities": [
+			{
+				"name": "ReturnOnSubmit",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/approvedWlongRunning?code=pbQwj/ISeQrJKxcWt45R2wAoHiaaR8kDHXebl5Ox4N8IG8e7af7djQ==",
+					"connectVia": {
+						"referenceName": "SelfHosted",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"ReturnOnSubmit": true
+				}
+			},
+			{
+				"name": "RunComplete",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/approvedWlongRunning?code=pbQwj/ISeQrJKxcWt45R2wAoHiaaR8kDHXebl5Ox4N8IG8e7af7djQ==",
+					"connectVia": {
+						"referenceName": "SelfHosted",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-07T19:52:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

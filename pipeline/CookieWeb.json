@@ -1,0 +1,39 @@
+{
+	"name": "CookieWeb",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctiontest.azurewebsites.net/api/CookieResponse?code=ebl0iLUiiUpUa0hua8heyO9aKTKPscT2Kx5mvLkCtgesLUO5bS8g1Q==",
+					"method": "GET",
+					"headers": {
+						"Cookie": {
+							"value": "@variables('secret_cookie')",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"variables": {
+			"secret_cookie": {
+				"type": "String",
+				"defaultValue": "cookievalue"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-02-07T08:52:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

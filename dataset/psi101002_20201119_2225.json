@@ -1,0 +1,416 @@
+{
+	"name": "psi101002_20201119_2225",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "adhocextract"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"storeId": {
+					"type": "string"
+				},
+				"dob": {
+					"type": "string"
+				},
+				"marker": {
+					"type": "integer"
+				},
+				"moreDataImmediatelyAvailable": {
+					"type": "boolean"
+				},
+				"link": {
+					"type": "string"
+				},
+				"checks": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"responsibleEmployeeId": {
+											"type": "string"
+										},
+										"categories": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"netAmount": {
+											"type": "number"
+										},
+										"orderMode": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"label": {
+													"type": "string"
+												}
+											}
+										},
+										"period": {
+											"type": "object",
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"label": {
+													"type": "string"
+												}
+											}
+										},
+										"originalPrice": {
+											"type": "number"
+										},
+										"quantity": {
+											"type": "number"
+										},
+										"seat": {
+											"type": "integer"
+										},
+										"revenue": {
+											"type": "boolean"
+										},
+										"processedInKitchen": {
+											"type": "boolean"
+										},
+										"giftCard": {
+											"type": "boolean"
+										},
+										"id": {
+											"type": "string"
+										},
+										"typeId": {
+											"type": "string"
+										},
+										"label": {
+											"type": "string"
+										},
+										"amount": {
+											"type": "number"
+										},
+										"createdOn": {
+											"type": "string"
+										},
+										"responsibleEmployees": {
+											"type": "object",
+											"properties": {
+												"employee": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"responsibleEmployees": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"shiftId": {
+											"type": "integer"
+										},
+										"isTippableEmployee": {
+											"type": "boolean"
+										},
+										"roleId": {
+											"type": "string"
+										},
+										"roleName": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										},
+										"time": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"terminalId": {
+								"type": "string"
+							},
+							"grossAmount": {
+								"type": "number"
+							},
+							"grandAmount": {
+								"type": "number"
+							},
+							"id": {
+								"type": "string"
+							},
+							"printedCheckId": {
+								"type": "string"
+							},
+							"netAmount": {
+								"type": "number"
+							},
+							"total": {
+								"type": "number"
+							},
+							"isRefund": {
+								"type": "boolean"
+							},
+							"training": {
+								"type": "boolean"
+							},
+							"closed": {
+								"type": "boolean"
+							},
+							"groupInfo": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"label": {
+										"type": "string"
+									}
+								}
+							},
+							"guestCounting": {
+								"type": "object",
+								"properties": {
+									"guests": {
+										"type": "number"
+									},
+									"mode": {
+										"type": "string"
+									}
+								}
+							},
+							"revenueCenter": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"label": {
+										"type": "string"
+									}
+								}
+							},
+							"period": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"label": {
+										"type": "string"
+									}
+								}
+							},
+							"comps": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"type": {
+											"type": "string"
+										},
+										"note": {
+											"type": "string"
+										},
+										"linkedItems": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"type": "string"
+													},
+													"amount": {
+														"type": "number"
+													}
+												}
+											}
+										},
+										"id": {
+											"type": "string"
+										},
+										"typeId": {
+											"type": "string"
+										},
+										"label": {
+											"type": "string"
+										},
+										"amount": {
+											"type": "number"
+										},
+										"createdOn": {
+											"type": "string"
+										},
+										"responsibleEmployees": {
+											"type": "object",
+											"properties": {
+												"employee": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"surcharges": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"rate": {
+											"type": "number"
+										},
+										"type": {
+											"type": "string"
+										},
+										"accounting": {
+											"type": "string"
+										},
+										"linkedItems": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"taxableSales": {
+											"type": "number"
+										},
+										"id": {
+											"type": "string"
+										},
+										"typeId": {
+											"type": "string"
+										},
+										"label": {
+											"type": "string"
+										},
+										"amount": {
+											"type": "number"
+										},
+										"createdOn": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"payments": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"tip": {
+											"type": "number"
+										},
+										"type": {
+											"type": "string"
+										},
+										"card": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"typeId": {
+											"type": "string"
+										},
+										"label": {
+											"type": "string"
+										},
+										"amount": {
+											"type": "number"
+										},
+										"createdOn": {
+											"type": "string"
+										},
+										"responsibleEmployees": {
+											"type": "object",
+											"properties": {
+												"employee": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"events": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"time": {
+											"type": "string"
+										},
+										"type": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"isTaxExemptApplied": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
