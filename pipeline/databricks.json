@@ -18,7 +18,7 @@
 					"notebookPath": "/Users/kesharma@microsoft.com/pythonNotebook"
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureDatabricksMSI",
+					"referenceName": "AzureDatabricks2",
 					"type": "LinkedServiceReference"
 				}
 			}
