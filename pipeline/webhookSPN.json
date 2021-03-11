@@ -19,7 +19,7 @@
 						"UserName": "AprilTripPin"
 					},
 					"authentication": {
-						"type": "ServicePrincipal",
+						"type": "ClientCertificate",
 						"pfx": {
 							"type": "AzureKeyVaultSecret",
 							"store": {
@@ -28,9 +28,7 @@
 							},
 							"secretName": "functionCert"
 						},
-						"userTenant": "microsoft.com",
-						"username": "12fb64dd-9e56-4ffa-a3c6-e3d9228e913a",
-						"resource": "https://management.azure.com/"
+						"disableCertValidation": true
 					}
 				}
 			}

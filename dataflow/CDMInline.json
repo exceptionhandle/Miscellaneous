@@ -1,0 +1,24 @@
+{
+	"name": "CDMInline",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"schemaLinkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tentity: 'ExtendedStandardSite.cdm.json/ExtendedStandardSite',\n\tformat: 'cdm',\n\tmanifestType: 'manifest',\n\tcorpusPath: '',\n\tcorpusStore: 'adlsgen2',\n\tadlsgen2_fileSystem: '',\n\tfolderPath: 'CDM_Inline_Repro',\n\tfileSystem: 'adhocextract') ~> source1"
+		}
+	}
+}
