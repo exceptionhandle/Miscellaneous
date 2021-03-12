@@ -1,19 +1,16 @@
 {
 	"name": "AzureDatabricks4",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureDatabricks",
 		"typeProperties": {
 			"domain": "https://adb-860887232373193.13.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
 			"newClusterNodeType": "Standard_NC12",
 			"newClusterNumOfWorker": "1",
-			"newClusterVersion": "5.5.x-gpu-scala2.11",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyOTQ1NmY0MS0yYmRjLTRmNDAtYTcyNC04N2Y2MjQ5NTkyMzkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
-		},
-		"connectVia": {
-			"referenceName": "SelfHosted",
-			"type": "IntegrationRuntimeReference"
+			"newClusterVersion": "5.5.x-gpu-ml-scala2.11"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
