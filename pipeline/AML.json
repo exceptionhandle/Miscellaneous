@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"experimentName": "testFromKWE",
+					"experimentName": "newTestFromKWE",
 					"mlPipelineParameters": {
 						"param_batch_size": 5,
 						"param_sleep_seconds": 60,
