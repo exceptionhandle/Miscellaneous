@@ -1,0 +1,38 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "KeshWestEurope"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureMLService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "spn key: 59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=",
+				"annotations": [],
+				"type": "AzureMLService",
+				"typeProperties": {
+					"subscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
+					"resourceGroupName": "keshADF_test",
+					"mlWorkspaceName": "keshWebTests",
+					"servicePrincipalId": "fe273844-c808-40b8-ad85-94a46f737731",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
