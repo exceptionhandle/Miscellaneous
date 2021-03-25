@@ -16,21 +16,60 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://keshtriggerfunctions.azurewebsites.net/api/GETPUTPOST?code=bDhrkPugcicfbnEDhzx4g5uq8dLMu9rdPDlFIDU275wF8deJljUIYw==",
-					"method": "GET",
-					"authentication": {
-						"type": "ServicePrincipal",
-						"pfx": {
-							"type": "AzureKeyVaultSecret",
-							"store": {
-								"referenceName": "AzureKeyVault1",
-								"type": "LinkedServiceReference"
-							},
-							"secretName": "functionCert"
-						},
-						"userTenant": "microsoft.com",
-						"username": "12fb64dd-9e56-4ffa-a3c6-e3d9228e913a",
-						"resource": "https://management.azure.com/"
+					"url": "https://keshfunctions.azurewebsites.net/api/HttpTrigger1?code=key",
+					"method": "POST",
+					"body": [
+						{
+							"stSubArray": [
+								{
+									"Id": 456,
+									"2ndSubArray": [
+										{
+											"Id": "abc",
+											"Descript": "text",
+											"3rdSubArray": [
+												{
+													"Id": "def",
+													"morefields": "text"
+												},
+												{
+													"Id": "ghi",
+													"morefields": "sample"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Web2",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/HttpTrigger1?code=key",
+					"method": "POST",
+					"body": {
+						"value": "@activity('Web1').output.stSubArray",
+						"type": "Expression"
 					}
 				}
 			}
