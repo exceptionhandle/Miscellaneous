@@ -1,0 +1,43 @@
+{
+	"name": "linkedService3",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "HDInsightOnDemand",
+		"typeProperties": {
+			"clusterType": "hadoop",
+			"clusterSize": 4,
+			"timeToLive": "00:15:00",
+			"version": "4.0",
+			"hostSubscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
+			"clusterResourceGroup": "keshADF_test",
+			"servicePrincipalId": "fe273844-c808-40b8-ad85-94a46f737731",
+			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+			"clusterNamePrefix": "",
+			"additionalLinkedServiceNames": [
+				{
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				}
+			],
+			"hcatalogLinkedServiceName": {
+				"referenceName": "AzureSqlDatabase1",
+				"type": "LinkedServiceReference"
+			},
+			"linkedServiceName": {
+				"referenceName": "AzureBlobStorage1",
+				"type": "LinkedServiceReference"
+			},
+			"headNodeSize": "",
+			"dataNodeSize": "",
+			"zookeeperNodeSize": "",
+			"subnetName": "",
+			"virtualNetworkId": "",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyN2YwZmVmYS0yMzlkLTRhYjUtYjc4MS0wMGJhZmQyYjg1OTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
