@@ -13,6 +13,10 @@
 			"newClusterVersion": "5.5.x-gpu-scala2.11",
 			"newClusterInitScripts": [],
 			"enableLocalDiskEncryption": true
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
