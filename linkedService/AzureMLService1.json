@@ -11,7 +11,11 @@
 			"mlWorkspaceName": "keshAMLVNetTest",
 			"servicePrincipalId": "fe273844-c808-40b8-ad85-94a46f737731",
 			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIktFU0hXRVNURVVST1BFXzk4ZWU3YTI3LWZkNjAtNGYxZi05Yzk0LWZiOGQ0NjliNDY1NSINCn0="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3N2YwMTQ2ZS1hZDg0LTRhMTItYmM3Mi1jZDgwOGJlZjUzNzYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
