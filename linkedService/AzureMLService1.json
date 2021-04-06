@@ -7,11 +7,11 @@
 		"type": "AzureMLService",
 		"typeProperties": {
 			"subscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
-			"resourceGroupName": "keshADF_test",
-			"mlWorkspaceName": "keshAMLVNetTest",
+			"resourceGroupName": "lijzhaFactory",
+			"mlWorkspaceName": "lijzhaMLV2",
 			"servicePrincipalId": "fe273844-c808-40b8-ad85-94a46f737731",
 			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3N2YwMTQ2ZS1hZDg0LTRhMTItYmM3Mi1jZDgwOGJlZjUzNzYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmZjkzZTNmNy0wODcxLTRkY2QtYWI1Yy1lMjAzOWVhZTM4NWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
