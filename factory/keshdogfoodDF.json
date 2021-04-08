@@ -1,0 +1,9 @@
+{
+	"name": "keshdogfoodDF",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "91bab95f-aa6c-4f61-a0ef-1dd3705674fd",
+		"tenantId": "f686d426-8d16-42db-81b7-ab578e110ccd"
+	}
+}
