@@ -42,6 +42,9 @@
 				"typeProperties": {
 					"url": "https://www.bing.com",
 					"method": "POST",
+					"body": {
+						"": ""
+					},
 					"timeout": "00:10:00",
 					"reportStatusOnCallBack": {
 						"value": "@and(true, true)",
