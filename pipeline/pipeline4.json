@@ -21,11 +21,7 @@
 						"type": "ServicePrincipal",
 						"userTenant": "f686d426-8d16-42db-81b7-ab578e110ccd",
 						"username": "bgrhrgf",
-						"resource": "bjihkjnkjnkjn",
-						"password": {
-							"type": "SecureString",
-							"value": "**********"
-						}
+						"resource": "bjihkjnkjnkjn"
 					}
 				}
 			}

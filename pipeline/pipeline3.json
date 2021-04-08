@@ -17,6 +17,9 @@
 				"typeProperties": {
 					"url": "https://www.bing.com",
 					"method": "POST",
+					"body": {
+						"gf": "hgfhf"
+					},
 					"authentication": {
 						"type": "Basic",
 						"username": {
@@ -42,6 +45,9 @@
 				"typeProperties": {
 					"url": "https://www.bing.com",
 					"method": "POST",
+					"body": {
+						"gf": "hgfhf"
+					},
 					"timeout": "00:10:00",
 					"authentication": {
 						"type": "ClientCertificate",
