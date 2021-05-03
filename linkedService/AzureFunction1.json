@@ -6,7 +6,7 @@
 		"type": "AzureFunction",
 		"typeProperties": {
 			"authentication": "MSI",
-			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
+			"functionAppUrl": "https://keshfunctionstest.azurewebsites.net",
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhMTk5ZmNhOC0zMzNjLTQ2MTktOTgzMS0yMTVlNjQ0OWIyOTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
