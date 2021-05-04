@@ -13,6 +13,192 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/web')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Web1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Web2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Web3",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"method": "POST",
+							"headers": {},
+							"body": {
+								"value": "@concat(activity('Web2').output, activity('Web3').output)",
+								"type": "Expression"
+							},
+							"authentication": {
+								"type": "Basic",
+								"username": "pipeline().parameters.url",
+								"password": {
+									"type": "SecureString",
+									"value": "**********"
+								}
+							}
+						}
+					},
+					{
+						"name": "Web2",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"method": "GET",
+							"headers": {}
+						}
+					},
+					{
+						"name": "Web3",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"method": "GET",
+							"headers": {},
+							"authentication": {
+								"type": "ClientCertificate",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "sarajCert"
+								},
+								"password": {
+									"type": "SecureString",
+									"value": "**********"
+								}
+							}
+						}
+					},
+					{
+						"name": "Until1",
+						"type": "Until",
+						"dependsOn": [
+							{
+								"activity": "Web1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@or(greater(activity('Web4').StatusCode,400),greater(activity('Web5').StatusCode,400))",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "If Condition1",
+									"type": "IfCondition",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@less(activity('Web1').StatusCode,400)",
+											"type": "Expression"
+										},
+										"ifFalseActivities": [
+											{
+												"name": "Web5",
+												"type": "WebActivity",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"url": "https://www.shouldfail.com",
+													"method": "GET",
+													"headers": {}
+												}
+											}
+										],
+										"ifTrueActivities": [
+											{
+												"name": "Web4",
+												"type": "WebActivity",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"url": "https://www.bing.com",
+													"method": "GET",
+													"headers": {}
+												}
+											}
+										]
+									}
+								}
+							],
+							"timeout": "7.00:00:00"
+						}
+					}
+				],
+				"parameters": {
+					"url": {
+						"type": "string",
+						"defaultValue": "https://keshfunctiontest.azurewebsites.net/api/HttpTrigger1?code=Asvrb75j7VcHY8vVYNQvUSJauVmyCJab3AtAfxy2OptxlaLvf0boGA=="
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T19:38:41Z"
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/webUserTenant')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -2240,320 +2426,6 @@
 									}
 								}
 							}
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/second')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "second.json",
-						"container": "adhocextract"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"ACCNUMBER": {
-							"type": "string"
-						},
-						"SEQNUMBER": {
-							"type": "integer"
-						},
-						"TRANSTYPE": {
-							"type": "integer"
-						},
-						"CONSULTDATE": {
-							"type": "string"
-						},
-						"ENTRYDATE": {
-							"type": "string"
-						},
-						"BANKSLIPNUMBER": {
-							"type": "integer"
-						},
-						"STATEMENTNUMBER": {
-							"type": "integer"
-						},
-						"BATCHNUMBER": {
-							"type": "integer"
-						},
-						"PATNUMBER": {
-							"type": "string"
-						},
-						"PATIENTNAME": {
-							"type": "string"
-						},
-						"THIRDPARTYNUMBER": {
-							"type": "string"
-						},
-						"DESCRIPTION1": {
-							"type": "string"
-						},
-						"DESCRIPTION2": {
-							"type": "string"
-						},
-						"DESCRIPTION3": {
-							"type": "string"
-						},
-						"DESCRIPTION4": {
-							"type": "string"
-						},
-						"REFERENCE": {
-							"type": "string"
-						},
-						"HICAPSREFERENCE": {
-							"type": "string"
-						},
-						"HICAPSCLAIMNUMBER": {
-							"type": "string"
-						},
-						"ITEMCODE": {
-							"type": "string"
-						},
-						"SUBITEMCODE": {
-							"type": "string"
-						},
-						"FREQUENCY": {
-							"type": "number"
-						},
-						"DRAWERNAME": {
-							"type": "string"
-						},
-						"BANK": {
-							"type": "string"
-						},
-						"BRANCH": {
-							"type": "string"
-						},
-						"CONSULTDRNUMBER": {
-							"type": "integer"
-						},
-						"CONSULTDRNAME": {
-							"type": "string"
-						},
-						"BILLDRNUMBER": {
-							"type": "integer"
-						},
-						"PRINTDATE": {
-							"type": "null"
-						},
-						"DELETEDATE": {
-							"type": "string"
-						},
-						"DELETED": {
-							"type": "integer"
-						},
-						"CANCELLED": {
-							"type": "integer"
-						},
-						"PURGED": {
-							"type": "integer"
-						},
-						"CANCELDATE": {
-							"type": "null"
-						},
-						"BANKEDDATE": {
-							"type": "null"
-						},
-						"BANKLOCNUMBER": {
-							"type": "integer"
-						},
-						"BANKSTATUS": {
-							"type": "string"
-						},
-						"COMMENT": {
-							"type": "string"
-						},
-						"USERNUMBER": {
-							"type": "integer"
-						},
-						"USERNAME": {
-							"type": "string"
-						},
-						"USERTIME": {
-							"type": "string"
-						},
-						"USERBRANCHNUMBER": {
-							"type": "integer"
-						},
-						"SHOWINBANKING": {
-							"type": "integer"
-						},
-						"LOCNO": {
-							"type": "integer"
-						},
-						"TOPRINT": {
-							"type": "integer"
-						},
-						"ONHOLD": {
-							"type": "integer"
-						},
-						"AMOUNT": {
-							"type": "number"
-						},
-						"PAID": {
-							"type": "number"
-						},
-						"CHEQUES": {
-							"type": "number"
-						},
-						"CASH": {
-							"type": "number"
-						},
-						"CREDITCARD": {
-							"type": "number"
-						},
-						"EFTPOS": {
-							"type": "number"
-						},
-						"DIRECTDEBIT": {
-							"type": "number"
-						},
-						"HICAPS": {
-							"type": "number"
-						},
-						"OTHERAMOUNT": {
-							"type": "number"
-						},
-						"THIRDPARTYAMOUNT": {
-							"type": "number"
-						},
-						"GSTAMOUNT": {
-							"type": "number"
-						},
-						"MARKEDAMOUNT": {
-							"type": "number"
-						},
-						"GSTNUMBER": {
-							"type": "integer"
-						},
-						"LABNUMBER": {
-							"type": "integer"
-						},
-						"COLORNUMBER": {
-							"type": "integer"
-						},
-						"STARTTIME": {
-							"type": "string"
-						},
-						"ENDTIME": {
-							"type": "string"
-						},
-						"MINUTES": {
-							"type": "integer"
-						},
-						"STATEKEY": {
-							"type": "string"
-						},
-						"THIRDPARTYPAYMENT": {
-							"type": "integer"
-						},
-						"MARKEDWRITEOFF": {
-							"type": "number"
-						},
-						"REPRINTFLAG": {
-							"type": "integer"
-						},
-						"AUDITFLAG": {
-							"type": "integer"
-						},
-						"RUNNUMBER": {
-							"type": "integer"
-						},
-						"HICAPSFLAG": {
-							"type": "integer"
-						},
-						"PURGEUSERNAME": {
-							"type": "string"
-						},
-						"ENTRYUSERNAME": {
-							"type": "string"
-						},
-						"PURGEDATE": {
-							"type": "null"
-						},
-						"THIRDPARTYGSTAMOUNT": {
-							"type": "number"
-						},
-						"NEWSLETTERCODE": {
-							"type": "string"
-						},
-						"BANKTYPE": {
-							"type": "integer"
-						},
-						"SOUNDNUMBER": {
-							"type": "integer"
-						},
-						"ENTRYUSERTIME": {
-							"type": "string"
-						},
-						"MEDCLAIMSFLAG": {
-							"type": "integer"
-						},
-						"MEDCLAIMSKEY": {
-							"type": "string"
-						},
-						"MEDCLAIMSEXCLUDE": {
-							"type": "integer"
-						},
-						"MEDCLAIMSLINENUMBER": {
-							"type": "integer"
-						},
-						"MEDCLAIMSREFNO": {
-							"type": "integer"
-						},
-						"MEDCLAIMSGROUPNO": {
-							"type": "integer"
-						},
-						"MEDCLAIMSSUBGROUPNO": {
-							"type": "integer"
-						},
-						"DELETEUSERNAME": {
-							"type": "string"
-						},
-						"DELETEBRANCHNUMBER": {
-							"type": "integer"
-						},
-						"PROCESSFLAG": {
-							"type": "integer"
-						},
-						"EASYCLAIMAMOUNT": {
-							"type": "number"
-						},
-						"EASYCLAIMFLAG": {
-							"type": "integer"
-						},
-						"MARKEDSNUMBER": {
-							"type": "null"
-						},
-						"SHOWINLAB": {
-							"type": "integer"
-						},
-						"SHOWINGST": {
-							"type": "integer"
-						},
-						"DELETETIME": {
-							"type": "string"
-						},
-						"SOEPAYFLAG": {
-							"type": "integer"
-						},
-						"TRANSACTIONREFERENCE": {
-							"type": "string"
 						}
 					}
 				}

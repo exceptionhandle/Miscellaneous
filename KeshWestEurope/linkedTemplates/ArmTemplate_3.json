@@ -11,10 +11,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
 		},
-		"AzureFunction1_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
-		},
 		"databricksRepo_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'databricksRepo'"
@@ -47,6 +43,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
 		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
 		"hdiVNetLS_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'hdiVNetLS'"
@@ -54,10 +54,6 @@
 		"keshhdioutboundvnet_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'keshhdioutboundvnet'"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		},
 		"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
 			"type": "string",
@@ -123,6 +119,10 @@
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
 		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
 		"hdiVNetLS_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "admin"
@@ -136,6 +136,320 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/second')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "second.json",
+						"container": "adhocextract"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"ACCNUMBER": {
+							"type": "string"
+						},
+						"SEQNUMBER": {
+							"type": "integer"
+						},
+						"TRANSTYPE": {
+							"type": "integer"
+						},
+						"CONSULTDATE": {
+							"type": "string"
+						},
+						"ENTRYDATE": {
+							"type": "string"
+						},
+						"BANKSLIPNUMBER": {
+							"type": "integer"
+						},
+						"STATEMENTNUMBER": {
+							"type": "integer"
+						},
+						"BATCHNUMBER": {
+							"type": "integer"
+						},
+						"PATNUMBER": {
+							"type": "string"
+						},
+						"PATIENTNAME": {
+							"type": "string"
+						},
+						"THIRDPARTYNUMBER": {
+							"type": "string"
+						},
+						"DESCRIPTION1": {
+							"type": "string"
+						},
+						"DESCRIPTION2": {
+							"type": "string"
+						},
+						"DESCRIPTION3": {
+							"type": "string"
+						},
+						"DESCRIPTION4": {
+							"type": "string"
+						},
+						"REFERENCE": {
+							"type": "string"
+						},
+						"HICAPSREFERENCE": {
+							"type": "string"
+						},
+						"HICAPSCLAIMNUMBER": {
+							"type": "string"
+						},
+						"ITEMCODE": {
+							"type": "string"
+						},
+						"SUBITEMCODE": {
+							"type": "string"
+						},
+						"FREQUENCY": {
+							"type": "number"
+						},
+						"DRAWERNAME": {
+							"type": "string"
+						},
+						"BANK": {
+							"type": "string"
+						},
+						"BRANCH": {
+							"type": "string"
+						},
+						"CONSULTDRNUMBER": {
+							"type": "integer"
+						},
+						"CONSULTDRNAME": {
+							"type": "string"
+						},
+						"BILLDRNUMBER": {
+							"type": "integer"
+						},
+						"PRINTDATE": {
+							"type": "null"
+						},
+						"DELETEDATE": {
+							"type": "string"
+						},
+						"DELETED": {
+							"type": "integer"
+						},
+						"CANCELLED": {
+							"type": "integer"
+						},
+						"PURGED": {
+							"type": "integer"
+						},
+						"CANCELDATE": {
+							"type": "null"
+						},
+						"BANKEDDATE": {
+							"type": "null"
+						},
+						"BANKLOCNUMBER": {
+							"type": "integer"
+						},
+						"BANKSTATUS": {
+							"type": "string"
+						},
+						"COMMENT": {
+							"type": "string"
+						},
+						"USERNUMBER": {
+							"type": "integer"
+						},
+						"USERNAME": {
+							"type": "string"
+						},
+						"USERTIME": {
+							"type": "string"
+						},
+						"USERBRANCHNUMBER": {
+							"type": "integer"
+						},
+						"SHOWINBANKING": {
+							"type": "integer"
+						},
+						"LOCNO": {
+							"type": "integer"
+						},
+						"TOPRINT": {
+							"type": "integer"
+						},
+						"ONHOLD": {
+							"type": "integer"
+						},
+						"AMOUNT": {
+							"type": "number"
+						},
+						"PAID": {
+							"type": "number"
+						},
+						"CHEQUES": {
+							"type": "number"
+						},
+						"CASH": {
+							"type": "number"
+						},
+						"CREDITCARD": {
+							"type": "number"
+						},
+						"EFTPOS": {
+							"type": "number"
+						},
+						"DIRECTDEBIT": {
+							"type": "number"
+						},
+						"HICAPS": {
+							"type": "number"
+						},
+						"OTHERAMOUNT": {
+							"type": "number"
+						},
+						"THIRDPARTYAMOUNT": {
+							"type": "number"
+						},
+						"GSTAMOUNT": {
+							"type": "number"
+						},
+						"MARKEDAMOUNT": {
+							"type": "number"
+						},
+						"GSTNUMBER": {
+							"type": "integer"
+						},
+						"LABNUMBER": {
+							"type": "integer"
+						},
+						"COLORNUMBER": {
+							"type": "integer"
+						},
+						"STARTTIME": {
+							"type": "string"
+						},
+						"ENDTIME": {
+							"type": "string"
+						},
+						"MINUTES": {
+							"type": "integer"
+						},
+						"STATEKEY": {
+							"type": "string"
+						},
+						"THIRDPARTYPAYMENT": {
+							"type": "integer"
+						},
+						"MARKEDWRITEOFF": {
+							"type": "number"
+						},
+						"REPRINTFLAG": {
+							"type": "integer"
+						},
+						"AUDITFLAG": {
+							"type": "integer"
+						},
+						"RUNNUMBER": {
+							"type": "integer"
+						},
+						"HICAPSFLAG": {
+							"type": "integer"
+						},
+						"PURGEUSERNAME": {
+							"type": "string"
+						},
+						"ENTRYUSERNAME": {
+							"type": "string"
+						},
+						"PURGEDATE": {
+							"type": "null"
+						},
+						"THIRDPARTYGSTAMOUNT": {
+							"type": "number"
+						},
+						"NEWSLETTERCODE": {
+							"type": "string"
+						},
+						"BANKTYPE": {
+							"type": "integer"
+						},
+						"SOUNDNUMBER": {
+							"type": "integer"
+						},
+						"ENTRYUSERTIME": {
+							"type": "string"
+						},
+						"MEDCLAIMSFLAG": {
+							"type": "integer"
+						},
+						"MEDCLAIMSKEY": {
+							"type": "string"
+						},
+						"MEDCLAIMSEXCLUDE": {
+							"type": "integer"
+						},
+						"MEDCLAIMSLINENUMBER": {
+							"type": "integer"
+						},
+						"MEDCLAIMSREFNO": {
+							"type": "integer"
+						},
+						"MEDCLAIMSGROUPNO": {
+							"type": "integer"
+						},
+						"MEDCLAIMSSUBGROUPNO": {
+							"type": "integer"
+						},
+						"DELETEUSERNAME": {
+							"type": "string"
+						},
+						"DELETEBRANCHNUMBER": {
+							"type": "integer"
+						},
+						"PROCESSFLAG": {
+							"type": "integer"
+						},
+						"EASYCLAIMAMOUNT": {
+							"type": "number"
+						},
+						"EASYCLAIMFLAG": {
+							"type": "integer"
+						},
+						"MARKEDSNUMBER": {
+							"type": "null"
+						},
+						"SHOWINLAB": {
+							"type": "integer"
+						},
+						"SHOWINGST": {
+							"type": "integer"
+						},
+						"DELETETIME": {
+							"type": "string"
+						},
+						"SOEPAYFLAG": {
+							"type": "integer"
+						},
+						"TRANSACTIONREFERENCE": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/stagingOutput')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
@@ -396,29 +710,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction1_functionKey')]"
-					},
-					"authentication": "MSI",
-					"audience": "https://keshfunctions.azurewebsites.net"
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/databricksRepo')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -614,6 +905,29 @@
 				"privateLinkResourceId": "[parameters('hdiPrivateEndpoint_properties_privateLinkResourceId')]",
 				"groupId": "[parameters('hdiPrivateEndpoint_properties_groupId')]",
 				"fqdns": "[parameters('hdiPrivateEndpoint_properties_fqdns')]"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"authenticationType": "MSI",
+					"resource": "https://keshfunctions.azurewebsites.net"
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
 			},
 			"dependsOn": []
 		},
@@ -903,44 +1217,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline5')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Azure Function1",
-						"type": "AzureFunctionActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"functionName": "Accepted",
-							"method": "GET",
-							"headers": {}
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction1",
-							"type": "LinkedServiceReference"
-						},
-						"authentication": {
-							"type": "Msi"
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureFunction1')]"
 			]
 		},
 		{
