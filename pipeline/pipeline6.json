@@ -1,0 +1,29 @@
+{
+	"name": "pipeline6",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshtriggerfunctions.azurewebsites.net/api/HttpTrigger1?code=tnT1dgzFKvwti/Qi46kUFjwdqD7QRlGvha7ZoJC6EzbNIUN8dSG3IA==",
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://keshtriggerfunctions.azurewebsites.net"
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}

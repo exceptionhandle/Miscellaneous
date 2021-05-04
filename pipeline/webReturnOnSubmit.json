@@ -15,34 +15,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://keshfunctions.azurewebsites.net/api/approvedWlongRunning?code=pbQwj/ISeQrJKxcWt45R2wAoHiaaR8kDHXebl5Ox4N8IG8e7af7djQ==",
-					"connectVia": {
-						"referenceName": "SelfHosted",
-						"type": "IntegrationRuntimeReference"
-					},
+					"url": "https://keshfunctions.azurewebsites.net/api/Accepted?code=u4weE2Zz52qyLSdhVZrYMvSX5KaGrsDCWtSto4pVePtvtEBaVpDr0g==",
 					"method": "GET",
-					"ReturnOnSubmit": true
-				}
-			},
-			{
-				"name": "RunComplete",
-				"type": "WebActivity",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://keshfunctions.azurewebsites.net/api/approvedWlongRunning?code=pbQwj/ISeQrJKxcWt45R2wAoHiaaR8kDHXebl5Ox4N8IG8e7af7djQ==",
-					"connectVia": {
-						"referenceName": "SelfHosted",
-						"type": "IntegrationRuntimeReference"
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
 					},
-					"method": "GET"
+					"ReturnOnSubmit": true
 				}
 			}
 		],
