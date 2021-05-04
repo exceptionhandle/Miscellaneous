@@ -1,0 +1,181 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "KeshWestEurope"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks7_accessToken": {
+			"value": ""
+		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
+		"AzureMLService1_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"RestService1_servicePrincipalKey": {
+			"value": ""
+		},
+		"adfdataflowtestgen2_accountKey": {
+			"value": ""
+		},
+		"cdmdemotest_accountKey": {
+			"value": ""
+		},
+		"databricksRepo_accessToken": {
+			"value": ""
+		},
+		"hdiVNetLS_password": {
+			"value": ""
+		},
+		"kesh_accountKey": {
+			"value": ""
+		},
+		"keshFunctionsTest_functionKey": {
+			"value": ""
+		},
+		"keshhdioutboundvnet_password": {
+			"value": ""
+		},
+		"lijzhastorage_connectionString": {
+			"value": ""
+		},
+		"linkedService2_clusterPassword": {
+			"value": ""
+		},
+		"linkedService2_clusterSshPassword": {
+			"value": ""
+		},
+		"linkedService2_servicePrincipalKey": {
+			"value": ""
+		},
+		"linkedService3_clusterPassword": {
+			"value": ""
+		},
+		"linkedService3_clusterSshPassword": {
+			"value": ""
+		},
+		"linkedService3_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://kesh.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keshKeyvault.vault.azure.net/"
+		},
+		"AzureMLService1_properties_typeProperties_subscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureMLService1_properties_typeProperties_resourceGroupName": {
+			"value": "lijzhaFactory"
+		},
+		"AzureMLService1_properties_typeProperties_servicePrincipalId": {
+			"value": "fe273844-c808-40b8-ad85-94a46f737731"
+		},
+		"AzureMLService1_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://keshfunctiontest.azurewebsites.net/api/logBody?code=ipcpyr1I5ouhakACX5CnwmNJvCweiS2lPcnKyTalYkpZyLeQiRq7CA=="
+		},
+		"RestService1_properties_typeProperties_servicePrincipalId": {
+			"value": "dsaddsadsadsada"
+		},
+		"RestService1_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"RestService1_properties_typeProperties_aadResourceId": {
+			"value": "asdsadsadsadas"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"value": "https://www.bing.com"
+		},
+		"adfdataflowtestgen2_properties_typeProperties_url": {
+			"value": "https://adfdataflowtestgen2.dfs.core.windows.net"
+		},
+		"cdmdemotest_properties_typeProperties_url": {
+			"value": "https://cdmdemotest.dfs.core.windows.net"
+		},
+		"hdiVNetLS_properties_typeProperties_userName": {
+			"value": "admin"
+		},
+		"kesh_properties_typeProperties_url": {
+			"value": "https://kesh.dfs.core.windows.net"
+		},
+		"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"keshhdioutboundvnet_properties_typeProperties_userName": {
+			"value": "admin"
+		},
+		"linkedService2_properties_typeProperties_hostSubscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService2_properties_typeProperties_clusterResourceGroup": {
+			"value": "keshADF_test"
+		},
+		"linkedService2_properties_typeProperties_servicePrincipalId": {
+			"value": "ghjgdskfds"
+		},
+		"linkedService2_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"linkedService3_properties_typeProperties_hostSubscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService3_properties_typeProperties_clusterResourceGroup": {
+			"value": "keshADF_test"
+		},
+		"linkedService3_properties_typeProperties_servicePrincipalId": {
+			"value": "fe273844-c808-40b8-ad85-94a46f737731"
+		},
+		"linkedService3_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"PrivateLinkSerHDI_properties_privateLinkResourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/headnode-c9e77827b58a46c6ae181f5e8890ee1a"
+		},
+		"PrivateLinkSerHDI_properties_groupId": {
+			"value": ""
+		},
+		"PrivateLinkSerHDI_properties_fqdns": {
+			"value": [
+				"keshhdieunat-int.azurehdinsight.net"
+			]
+		},
+		"hdiPrivateEndpoint_properties_privateLinkResourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/keshAMLPls"
+		},
+		"hdiPrivateEndpoint_properties_groupId": {
+			"value": ""
+		},
+		"hdiPrivateEndpoint_properties_fqdns": {
+			"value": [
+				"keshhdioutboundvnet-int.azurehdinsight.net"
+			]
+		}
+	}
+}
