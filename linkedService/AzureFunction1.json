@@ -8,11 +8,11 @@
 				"properties": {
 					"type": "ManagedIdentity",
 					"typeProperties": {
-						"resourceId": "https://keshtriggerfunctions.azurewebsites.net"
+						"resourceId": "b4b9fcab-7fb5-4e5e-9564-cc60eb649068"
 					}
 				}
 			},
-			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
+			"functionAppUrl": "https://keshtriggerfunctions.azurewebsites.net",
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhMTk5ZmNhOC0zMzNjLTQ2MTktOTgzMS0yMTVlNjQ0OWIyOTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
