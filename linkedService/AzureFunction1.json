@@ -3,8 +3,16 @@
 	"properties": {
 		"type": "AzureFunction",
 		"typeProperties": {
-			"authenticationType": "MSI",
-			"resource": "https://keshfunctions.azurewebsites.net",
+			"credential": {
+				"name": "msi82501",
+				"properties": {
+					"type": "ManagedIdentity",
+					"typeProperties": {
+						"resourceId": "dummyResourceId",
+						"principalId": "18ddb306-6ce1-4cae-8eef-2b48e1095ff2"
+					}
+				}
+			},
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhMTk5ZmNhOC0zMzNjLTQ2MTktOTgzMS0yMTVlNjQ0OWIyOTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
