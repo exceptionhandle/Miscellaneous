@@ -8,8 +8,7 @@
 				"properties": {
 					"type": "ManagedIdentity",
 					"typeProperties": {
-						"resourceId": "dummyResourceId",
-						"principalId": "18ddb306-6ce1-4cae-8eef-2b48e1095ff2"
+						"resourceId": "https://keshtriggerfunctions.azurewebsites.net"
 					}
 				}
 			},
