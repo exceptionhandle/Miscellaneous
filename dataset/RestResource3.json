@@ -1,0 +1,8 @@
+{
+	"name": "RestResource3",
+	"properties": {
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
