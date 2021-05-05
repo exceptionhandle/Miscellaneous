@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
-			"functionAppUrl": "https://keshtriggerfunctions.azurewebsites.net",
+			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
 			"credential": {
 				"name": "msi82501",
 				"properties": {
