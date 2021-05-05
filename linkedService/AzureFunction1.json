@@ -1,8 +1,11 @@
 {
 	"name": "AzureFunction1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
+			"functionAppUrl": "https://keshtriggerfunctions.azurewebsites.net",
 			"credential": {
 				"name": "msi82501",
 				"properties": {
@@ -12,14 +15,11 @@
 					}
 				}
 			},
-			"functionAppUrl": "https://keshtriggerfunctions.azurewebsites.net",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhMTk5ZmNhOC0zMzNjLTQ2MTktOTgzMS0yMTVlNjQ0OWIyOTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxYTExMGM2Mi1jYzRiLTRiNTctYjFmMS0yOTZjYTBlZjg0OTQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
 			"type": "IntegrationRuntimeReference"
-		},
-		"annotations": []
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+		}
+	}
 }
