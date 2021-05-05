@@ -8,7 +8,7 @@
 				"properties": {
 					"type": "ManagedIdentity",
 					"typeProperties": {
-						"resourceId": "keshUami"
+						"resourceId": "899e49ba-400a-413f-ad1b-9062bf67d6fa"
 					}
 				}
 			},
