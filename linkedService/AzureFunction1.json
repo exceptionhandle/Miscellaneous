@@ -12,7 +12,7 @@
 					"type": "ManagedIdentity",
 					"typeProperties": {
 						"principalid": "b4b9fcab-7fb5-4e5e-9564-cc60eb649068",
-						"resourceId": "Microsoft.ManagedIdentity/userAssignedIdentities/keshUami"
+						"resourceId": "b4b9fcab-7fb5-4e5e-9564-cc60eb649068"
 					}
 				}
 			},
