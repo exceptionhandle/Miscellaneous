@@ -11,7 +11,7 @@
 				"properties": {
 					"type": "ManagedIdentity",
 					"typeProperties": {
-						"principalid": "b4b9fcab-7fb5-4e5e-9564-cc60eb649068",
+						"principalid": "b4b9fcab-7fb5-4e5e-9564-cc60eb64906",
 						"resourceId": "https://keshfunctions.azurewebsites.net"
 					}
 				}
