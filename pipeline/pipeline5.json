@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "GETPUTPOST",
+					"functionName": "Accepted",
 					"method": "GET"
 				},
 				"linkedServiceName": {
