@@ -11,6 +11,7 @@
 				"properties": {
 					"type": "ManagedIdentity",
 					"typeProperties": {
+						"principalid": "b4b9fcab-7fb5-4e5e-9564-cc60eb649068",
 						"resourceId": "899e49ba-400a-413f-ad1b-9062bf67d6fa"
 					}
 				}
