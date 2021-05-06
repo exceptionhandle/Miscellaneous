@@ -8,15 +8,15 @@
 			"accountName": "kesheastusbatch",
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
 			"poolName": "keshVNetPoolCloudService",
+			"credential": {
+				"name": "msi82501",
+				"properties": {
+					"type": "ManagedIdentity"
+				}
+			},
 			"linkedServiceName": {
 				"referenceName": "AzureBlobStorage1",
-				"type": "LinkedServiceReference",
-				"credential": {
-					"name": "msi82501",
-					"properties": {
-						"type": "ManagedIdentity"
-					}
-				}
+				"type": "LinkedServiceReference"
 			},
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiYjQ3NDI2MS02NWViLTQ0ZGQtYWI2Zi04YTIyNDNmY2ZlNzYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
