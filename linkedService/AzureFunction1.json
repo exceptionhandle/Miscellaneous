@@ -7,20 +7,23 @@
 		"typeProperties": {
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
 			"credential": {
-				"name": "msi82501",
-				"properties": {
-					"type": "ManagedIdentity",
-					"typeProperties": {
-						"principalid": "b4b9fcab-7fb5-4e5e-9564-cc60eb649067",
-						"resourceId": "899e49ba-400a-413f-ad1b-9062bf67d6fa"
-					}
-				}
+				"referenceName": "myCredential",
+				"type": "CredentialReference"
 			},
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5ZmQ2NzUxZS1hYjE2LTQzMjItYTE4My1hYmYyYjNiMDZmNTYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
 			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"credential": {
+		"name": "myCredential",
+		"properties": {
+			"type": "ManagedIdentity",
+			"typeProperties": {
+				"resourceId": "https://keshfunctions.azurewebsites.net"
+			}
 		}
 	}
 }
