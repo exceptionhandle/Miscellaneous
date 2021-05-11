@@ -6,9 +6,9 @@
 		"type": "AzureBatch",
 		"typeProperties": {
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
-			"poolName": "testpool",
+			"poolName": "testpool1",
 			"credential": {
-				"name": "msi82501",
+				"name": "keshWestEuropeMsi",
 				"properties": {
 					"type": "ManagedIdentity"
 				}
