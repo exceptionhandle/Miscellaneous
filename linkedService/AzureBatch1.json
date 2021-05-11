@@ -5,7 +5,6 @@
 		"annotations": [],
 		"type": "AzureBatch",
 		"typeProperties": {
-			"accountName": "kesheastusbatch",
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
 			"poolName": "keshVNetPoolCloudService",
 			"credential": {
@@ -17,8 +16,7 @@
 			"linkedServiceName": {
 				"referenceName": "AzureBlobStorage1",
 				"type": "LinkedServiceReference"
-			},
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiYjQ3NDI2MS02NWViLTQ0ZGQtYWI2Zi04YTIyNDNmY2ZlNzYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			}
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
