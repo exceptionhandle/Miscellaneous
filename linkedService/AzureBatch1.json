@@ -5,6 +5,7 @@
 		"annotations": [],
 		"type": "AzureBatch",
 		"typeProperties": {
+			"accountName": "kesheastusbatch",
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
 			"poolName": "testpool1",
 			"credential": {
