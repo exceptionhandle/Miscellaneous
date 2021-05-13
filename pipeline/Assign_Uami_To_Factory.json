@@ -1,9 +1,9 @@
 {
-	"name": "webReturnOnSubmit",
+	"name": "Assign_Uami_To_Factory",
 	"properties": {
 		"activities": [
 			{
-				"name": "ReturnOnSubmit",
+				"name": "Assign_Uami",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
@@ -34,8 +34,6 @@
 				}
 			}
 		],
-		"annotations": [],
-		"lastPublishTime": "2021-02-07T19:52:19Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
