@@ -9,8 +9,7 @@
 			"credential": {
 				"referenceName": "myCredential",
 				"type": "CredentialReference"
-			},
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5ZmQ2NzUxZS1hYjE2LTQzMjItYTE4My1hYmYyYjNiMDZmNTYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			}
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
@@ -22,7 +21,7 @@
 		"properties": {
 			"type": "ManagedIdentity",
 			"typeProperties": {
-				"resourceId": "https://keshfunctions.azurewebsites.net"
+				"resourceId": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope?api-version=2018-06-01"
 			}
 		}
 	}
