@@ -6,7 +6,17 @@
 		"type": "AzureFunction",
 		"typeProperties": {
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2NmFhYTJjNS1iYjQyLTQwZGQtYThhNS0wODkzNjllOGU0ZjQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2NmFhYTJjNS1iYjQyLTQwZGQtYThhNS0wODkzNjllOGU0ZjQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ==",
+			"credential": {
+				"name": "myCredential",
+				"properties": {
+					"type": "ManagedIdentity",
+					"typeProperties": {
+						"principalId": "899e49ba-400a-413f-ad1b-9062bf67d6fa",
+						"resourceId": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope?api-version=2018-06-01"
+					}
+				}
+			}
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
