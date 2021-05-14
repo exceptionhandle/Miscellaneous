@@ -15,7 +15,11 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": ""
+					"scriptPath": "Nahi_de_raha_gth_JustCheckingProvisioning",
+					"scriptLinkedService": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "hdiLinkedService",
