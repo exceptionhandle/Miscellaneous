@@ -26,7 +26,7 @@
 				"type": "LinkedServiceReference"
 			},
 			"linkedServiceName": {
-				"referenceName": "AzureBlobStorage1",
+				"referenceName": "AzureBlobStorage2",
 				"type": "LinkedServiceReference"
 			},
 			"headNodeSize": "",
