@@ -18,7 +18,7 @@
 					"scriptPath": ""
 				},
 				"linkedServiceName": {
-					"referenceName": "hdiVNetLS",
+					"referenceName": "hdiLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			}
