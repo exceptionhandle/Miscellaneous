@@ -8,12 +8,6 @@
 			"accountName": "kesheastusbatch",
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
 			"poolName": "testpool1",
-			"credential": {
-				"name": "keshWestEuropeMsi",
-				"properties": {
-					"type": "ManagedIdentity"
-				}
-			},
 			"linkedServiceName": {
 				"referenceName": "AzureBlobStorage1",
 				"type": "LinkedServiceReference"
