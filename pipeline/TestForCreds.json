@@ -1,0 +1,33 @@
+{
+	"name": "TestForCreds",
+	"properties": {
+		"activities": [
+			{
+				"name": "WebTestForCreds",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+					"connectVia": {
+						"referenceName": "SelfHosted",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"credential": {
+						"referenceName": "uamiCred",
+						"type": "CredentialReference"
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}
