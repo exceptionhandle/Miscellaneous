@@ -19,7 +19,11 @@
 			"newClusterVersion": "5.5.x-gpu-scala2.11",
 			"newClusterInitScripts": [
 				""
-			]
+			],
+			"credential": {
+				"referenceName": "uamiCred",
+				"type": "CredentialReference"
+			}
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
