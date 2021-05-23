@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "cmd /c echo {\"\"test\"\":\"\"value\"\"} > outputs.json",
+					"command": "echo hello world",
 					"referenceObjects": {
 						"linkedServices": [],
 						"datasets": []
