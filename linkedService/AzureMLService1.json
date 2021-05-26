@@ -13,10 +13,10 @@
 				"referenceName": "uami",
 				"type": "CredentialReference"
 			}
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
 		}
-	},
-	"connectVia": {
-		"referenceName": "SelfHosted",
-		"type": "IntegrationRuntimeReference"
 	}
 }
