@@ -10,7 +10,7 @@
 			"resourceGroupName": "lijzhaFactory",
 			"mlWorkspaceName": "lijzhaMLV2",
 			"credential": {
-				"referenceName": "uamiCred",
+				"referenceName": "uami",
 				"type": "CredentialReference"
 			}
 		}
