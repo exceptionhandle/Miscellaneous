@@ -7,10 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "KeshWestEurope"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
 		"AzureDataLakeStorage1_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
@@ -19,10 +15,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
 		},
-		"AzureMLService1_servicePrincipalKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureMLService1'"
-		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
@@ -30,6 +22,10 @@
 		"AzureSynapseAnalytics1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'"
+		},
+		"RestService1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'RestService1'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -51,19 +47,70 @@
 			"type": "string",
 			"defaultValue": "lijzhaFactory"
 		},
-		"AzureMLService1_properties_typeProperties_servicePrincipalId": {
+		"RestService1_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "fe273844-c808-40b8-ad85-94a46f737731"
+			"defaultValue": "https://keshfunctiontest.azurewebsites.net/api/logBody?code=ipcpyr1I5ouhakACX5CnwmNJvCweiS2lPcnKyTalYkpZyLeQiRq7CA=="
 		},
-		"AzureMLService1_properties_typeProperties_tenant": {
+		"RestService1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "dsaddsadsadsada"
+		},
+		"RestService1_properties_typeProperties_tenant": {
 			"type": "string",
 			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"RestService1_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "asdsadsadsadas"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Assign_Uami_To_Factory')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Assign_Uami",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope?api-version=2018-06-01",
+							"method": "PUT",
+							"headers": {},
+							"body": {
+								"name": "KeshWestEurope",
+								"id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope",
+								"type": "Microsoft.DataFactory/factories",
+								"location": "west europe",
+								"identity": {
+									"type": "systemassigned,userassigned"
+								}
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://management.azure.com/"
+							},
+							"ReturnOnSubmit": true
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CookieWeb')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -133,7 +180,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-19T02:14:59Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -218,7 +265,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-11T00:58:05Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -339,43 +386,8 @@
 						}
 					}
 				],
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline5')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Azure Function1",
-						"type": "AzureFunctionActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"functionName": "Accepted",
-							"method": "GET",
-							"headers": {}
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction1",
-							"type": "LinkedServiceReference"
-						},
-						"authentication": {
-							"type": "Msi"
-						}
-					}
-				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -408,7 +420,8 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -441,7 +454,8 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:55Z"
 			},
 			"dependsOn": []
 		},
@@ -476,20 +490,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-07T19:52:19Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
-				}
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -604,19 +605,18 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=",
+				"description": "59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=\n,\n            \"servicePrincipalId\": \"fe273844-c808-40b8-ad85-94a46f737731\",\n            \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n            \"encryptedCredential\": \"ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEM1OTg4MjA0LTdDRkItNDQxQy04RjMzLTZEQkM3QjMxRjNGQl82NmI0ZDBkZS0xYWIyLTQ5ZTgtOTc3MS1jYTMyMzgwNTljYTciDQp9\"",
 				"annotations": [],
 				"type": "AzureMLService",
 				"typeProperties": {
 					"subscriptionId": "[parameters('AzureMLService1_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('AzureMLService1_properties_typeProperties_resourceGroupName')]",
 					"mlWorkspaceName": "lijzhaMLV2",
-					"servicePrincipalId": "[parameters('AzureMLService1_properties_typeProperties_servicePrincipalId')]",
-					"servicePrincipalKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureMLService1_servicePrincipalKey')]"
-					},
-					"tenant": "[parameters('AzureMLService1_properties_typeProperties_tenant')]"
+					"authentication": "MSI",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
 				}
 			},
 			"dependsOn": []
@@ -643,6 +643,28 @@
 				"type": "AzureSqlDW",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureSynapseAnalytics1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RestService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('RestService1_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "AadServicePrincipal",
+					"servicePrincipalId": "[parameters('RestService1_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('RestService1_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('RestService1_properties_typeProperties_tenant')]",
+					"aadResourceId": "[parameters('RestService1_properties_typeProperties_aadResourceId')]"
 				}
 			},
 			"dependsOn": []

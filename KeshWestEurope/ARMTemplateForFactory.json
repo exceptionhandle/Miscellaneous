@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "KeshWestEurope"
 		},
+		"AzureBatch1_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatch1'"
+		},
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
@@ -23,9 +27,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
 		},
-		"AzureMLService1_servicePrincipalKey": {
+		"AzureFunction1_functionKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureMLService1'"
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
 		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
@@ -50,6 +54,18 @@
 		"databricksRepo_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'databricksRepo'"
+		},
+		"hdiLinkedService_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'hdiLinkedService'"
+		},
+		"hdiLinkedService_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'hdiLinkedService'"
+		},
+		"hdiLinkedService_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'hdiLinkedService'"
 		},
 		"hdiVNetLS_password": {
 			"type": "secureString",
@@ -95,9 +111,29 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
 		},
-		"AzureFunction1_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		"ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureBatch1_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatch1_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch1_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureBlobStorage3_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -106,6 +142,10 @@
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -118,14 +158,6 @@
 		"AzureMLService1_properties_typeProperties_resourceGroupName": {
 			"type": "string",
 			"defaultValue": "lijzhaFactory"
-		},
-		"AzureMLService1_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "fe273844-c808-40b8-ad85-94a46f737731"
-		},
-		"AzureMLService1_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
 		},
 		"RestService1_properties_typeProperties_url": {
 			"type": "string",
@@ -154,6 +186,22 @@
 		"cdmdemotest_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://cdmdemotest.dfs.core.windows.net"
+		},
+		"hdiLinkedService_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"hdiLinkedService_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "keshADF_test"
+		},
+		"hdiLinkedService_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"hdiLinkedService_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
 		},
 		"hdiVNetLS_properties_typeProperties_userName": {
 			"type": "string",
@@ -203,6 +251,10 @@
 			"type": "string",
 			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
 		},
+		"storage_testCred_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
 		"PrivateLinkSerHDI_properties_privateLinkResourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/headnode-c9e77827b58a46c6ae181f5e8890ee1a"
@@ -230,10 +282,6 @@
 			"defaultValue": [
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		}
 	},
 	"variables": {
@@ -279,11 +327,54 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-07T08:53:28Z"
+				"lastPublishTime": "2021-05-04T06:48:57Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureMLService1')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Assign_Uami_To_Factory')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Assign_Uami",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope?api-version=2018-06-01",
+							"method": "PUT",
+							"headers": {},
+							"body": {
+								"name": "KeshWestEurope",
+								"id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope",
+								"type": "Microsoft.DataFactory/factories",
+								"location": "west europe",
+								"identity": {
+									"type": "systemassigned,userassigned"
+								}
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://management.azure.com/"
+							},
+							"ReturnOnSubmit": true
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CDM_Repro_Pipe')]",
@@ -443,14 +534,10 @@
 						],
 						"typeProperties": {
 							"source": {
-								"type": "JsonSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true
-								},
-								"formatSettings": {
-									"type": "JsonReadSettings"
-								}
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET"
 							},
 							"sink": {
 								"type": "DelimitedTextSink",
@@ -561,7 +648,7 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "Json2",
+								"referenceName": "RestResource3",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -576,10 +663,10 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-07T08:53:29Z"
+				"lastPublishTime": "2021-06-16T01:55:18Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Json2')]",
+				"[concat(variables('factoryId'), '/datasets/RestResource3')]",
 				"[concat(variables('factoryId'), '/datasets/csvOutput')]"
 			]
 		},
@@ -644,6 +731,43 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/RestResource1')]",
 				"[concat(variables('factoryId'), '/datasets/RestResource2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Custom_Mi')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Custom1",
+						"type": "Custom",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"command": "echo hello world",
+							"referenceObjects": {
+								"linkedServices": [],
+								"datasets": []
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureBatch1",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBatch1')]"
 			]
 		},
 		{
@@ -830,6 +954,45 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/TestForCreds')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "WebTestForCreds",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"connectVia": {
+								"referenceName": "SelfHosted",
+								"type": "IntegrationRuntimeReference"
+							},
+							"method": "GET",
+							"headers": {},
+							"credential": {
+								"referenceName": "uamiCred",
+								"type": "CredentialReference"
+							}
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/SelfHosted')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/WebCallPipeline')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -857,7 +1020,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-19T02:14:59Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -942,7 +1105,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-11T00:58:05Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -1025,6 +1188,92 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/cdm_model_pipe')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "cdm_model",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "cdm_model",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/cdm_model')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/createDelta')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "createDelta",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "createDelta",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/createDelta')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/databricks')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1052,7 +1301,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-01-30T01:12:39Z"
+				"lastPublishTime": "2021-05-04T06:48:57Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks2')]"
@@ -1107,6 +1356,49 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow6')]",
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/importSchemaFail')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "importSchemaFail",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dataflow7",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/dataflow7')]"
 			]
 		},
 		{
@@ -1185,7 +1477,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-01-30T02:06:21Z"
+				"lastPublishTime": "2021-05-04T06:48:56Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureMLService1')]"
@@ -1314,11 +1606,49 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-21T23:29:29Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeWestEurope')]",
 				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline10')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Hive1",
+						"type": "HDInsightHive",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"scriptPath": "Nahi_de_raha_gth_JustCheckingProvisioning",
+							"scriptLinkedService": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "hdiLinkedService",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]",
+				"[concat(variables('factoryId'), '/linkedServices/hdiLinkedService')]"
 			]
 		},
 		{
@@ -1445,7 +1775,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-26T23:24:28Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
@@ -1486,7 +1816,8 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -1522,7 +1853,8 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:56Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureFunction1')]"
@@ -1557,7 +1889,8 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -1590,9 +1923,47 @@
 						}
 					}
 				],
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:55Z"
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline8')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Custom1",
+						"type": "Custom",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"command": "helloworld.exe",
+							"referenceObjects": {
+								"linkedServices": [],
+								"datasets": []
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureBatch1",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBatch1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/pipelineFlattenIssueJsonToParquet')]",
@@ -2051,7 +2422,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-07T19:52:19Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		},
@@ -2146,7 +2517,7 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-11T02:27:07Z"
+				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
@@ -2289,6 +2660,655 @@
 					"quoteChar": "\""
 				},
 				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sample Row",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "AgreementSchemaAndSample.xlsx",
+						"folderPath": "importSchemaTestFolder",
+						"container": "adhocextract"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
 					{
 						"type": "String"
 					},
@@ -3231,6 +4251,24 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/RestService2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RestResource3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "RestService1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "RestResource",
+				"typeProperties": {},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/RestService1')]"
 			]
 		},
 		{
@@ -4830,6 +5868,55 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ADLSGen2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ADLSGen2_properties_typeProperties_url')]",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credential1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatch1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"accountName": "[parameters('AzureBatch1_properties_typeProperties_accountName')]",
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBatch1_accessKey')]"
+					},
+					"batchUri": "[parameters('AzureBatch1_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatch1_properties_typeProperties_poolName')]",
+					"linkedServiceName": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/SelfHosted')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -4838,9 +5925,55 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "[parameters('AzureBlobStorage2_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credential1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage3')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "[parameters('AzureBlobStorage3_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credential1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
@@ -5063,6 +6196,33 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					}
+				},
+				"credential": {
+					"referenceName": "credential1",
+					"type": "CredentialReference"
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/SelfHosted')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -5080,19 +6240,18 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=",
+				"description": "59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=\n,\n            \"servicePrincipalId\": \"fe273844-c808-40b8-ad85-94a46f737731\",\n            \"tenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\n            \"encryptedCredential\": \"ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEM1OTg4MjA0LTdDRkItNDQxQy04RjMzLTZEQkM3QjMxRjNGQl82NmI0ZDBkZS0xYWIyLTQ5ZTgtOTc3MS1jYTMyMzgwNTljYTciDQp9\"",
 				"annotations": [],
 				"type": "AzureMLService",
 				"typeProperties": {
 					"subscriptionId": "[parameters('AzureMLService1_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('AzureMLService1_properties_typeProperties_resourceGroupName')]",
 					"mlWorkspaceName": "lijzhaMLV2",
-					"servicePrincipalId": "[parameters('AzureMLService1_properties_typeProperties_servicePrincipalId')]",
-					"servicePrincipalKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureMLService1_servicePrincipalKey')]"
-					},
-					"tenant": "[parameters('AzureMLService1_properties_typeProperties_tenant')]"
+					"authentication": "MSI",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
 				}
 			},
 			"dependsOn": []
@@ -5219,6 +6378,62 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/SelfHosted')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/hdiLinkedService')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "jW~TzB9S__tx6EO2UFLX.B.Da7AIt999Aq",
+				"annotations": [],
+				"type": "HDInsightOnDemand",
+				"typeProperties": {
+					"clusterType": "hadoop",
+					"clusterSize": 4,
+					"timeToLive": "00:15:00",
+					"version": "4.0",
+					"hostSubscriptionId": "[parameters('hdiLinkedService_properties_typeProperties_hostSubscriptionId')]",
+					"clusterResourceGroup": "[parameters('hdiLinkedService_properties_typeProperties_clusterResourceGroup')]",
+					"servicePrincipalId": "[parameters('hdiLinkedService_properties_typeProperties_servicePrincipalId')]",
+					"tenant": "[parameters('hdiLinkedService_properties_typeProperties_tenant')]",
+					"clusterNamePrefix": "testcluster",
+					"clusterPassword": {
+						"type": "SecureString",
+						"value": "[parameters('hdiLinkedService_clusterPassword')]"
+					},
+					"clusterSshPassword": {
+						"type": "SecureString",
+						"value": "[parameters('hdiLinkedService_clusterSshPassword')]"
+					},
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('hdiLinkedService_servicePrincipalKey')]"
+					},
+					"additionalLinkedServiceNames": [
+						{
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						}
+					],
+					"hcatalogLinkedServiceName": {
+						"referenceName": "AzureSqlDatabase1",
+						"type": "LinkedServiceReference"
+					},
+					"linkedServiceName": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"headNodeSize": "",
+					"dataNodeSize": "",
+					"zookeeperNodeSize": "",
+					"subnetName": "",
+					"virtualNetworkId": ""
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
 			]
 		},
 		{
@@ -5450,6 +6665,26 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/storage_testCred')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "[parameters('storage_testCred_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/credentials/credential1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SelfHosted')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -5580,6 +6815,16 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/selfhostedthink1')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/CDM_Repro')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -5609,7 +6854,7 @@
 						}
 					],
 					"transformations": [],
-					"script": "source(output(\n\t\tSubscriptionId as string,\n\t\tSubscriptionCreatedDate as timestamp,\n\t\tSubscriptionStartDate as timestamp,\n\t\tSubscriptionStatusCurrent as string,\n\t\tMCRecordCreatedDate as timestamp,\n\t\tMCRecordUpdatedDate as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> AzureSubscriptionProfileRead\nAzureSubscriptionProfileRead sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tSubscriptionId as string,\n\t\tSubscriptionCreatedDate as string,\n\t\tSubscriptionStartDate as string,\n\t\tSubscriptionStatusCurrent as string,\n\t\tMCRecordCreatedDate as string,\n\t\tMCRecordUpdatedDate as string\n\t),\n\tentity: 'SubscriptionProfile.cdm.json/SubscriptionProfile',\n\tformat: 'cdm',\n\tmanifestType: 'manifest',\n\tpartitionPath: (concat(toString(currentUTC(),'yyyy'),'/',toString(currentUTC(),'MM'),'/',toString(currentUTC(),'dd'))),\n\tfolderPath: 'CDM',\n\tfileSystem: 'adhocextract',\n\tsubformat: 'parquet',\n\tcorpusPath: 'CDM',\n\tcorpusStore: 'adlsgen2',\n\tadlsgen2_fileSystem: 'adhocextract',\n\ttruncate: false,\n\tmapColumn(\n\t\tSubscriptionId,\n\t\tSubscriptionCreatedDate,\n\t\tSubscriptionStartDate,\n\t\tSubscriptionStatusCurrent,\n\t\tMCRecordCreatedDate,\n\t\tMCRecordUpdatedDate\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> AzureSubscriptionProfileOutEDL"
+					"script": "source(output(\n\t\tSubscriptionId as string,\n\t\tSubscriptionCreatedDate as timestamp,\n\t\tSubscriptionStartDate as timestamp,\n\t\tSubscriptionStatusCurrent as string,\n\t\tMCRecordCreatedDate as timestamp,\n\t\tMCRecordUpdatedDate as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'parquet') ~> AzureSubscriptionProfileRead\nAzureSubscriptionProfileRead sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tSubscriptionId as string,\n\t\tSubscriptionCreatedDate as string,\n\t\tSubscriptionStartDate as string,\n\t\tSubscriptionStatusCurrent as string,\n\t\tMCRecordCreatedDate as string,\n\t\tMCRecordUpdatedDate as string\n\t),\n\tentity: 'SubscriptionProfile.cdm.json/SubscriptionProfile',\n\tformat: 'cdm',\n\tmanifestType: 'manifest',\n\tpartitionPath: (concat(toString(currentUTC(),'yyyy'),'/',toString(currentUTC(),'MM'),'/',toString(currentUTC(),'dd'))),\n\tfolderPath: 'CDM',\n\tfileSystem: 'adhocextract',\n\tsubformat: 'parquet',\n\tcorpusPath: 'CDM',\n\tcorpusStore: 'adlsgen2',\n\tadlsgen2_fileSystem: 'adhocextract',\n\ttruncate: false,\n\tumask: 0022,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tSubscriptionId,\n\t\tSubscriptionCreatedDate,\n\t\tSubscriptionStartDate,\n\t\tSubscriptionStatusCurrent,\n\t\tMCRecordCreatedDate,\n\t\tMCRecordUpdatedDate\n\t)) ~> AzureSubscriptionProfileOutEDL"
 				}
 			},
 			"dependsOn": [
@@ -5643,7 +6888,7 @@
 						}
 					],
 					"transformations": [],
-					"script": "source(output(\n\t\tId as string,\n\t\tSinkCreatedOn as timestamp,\n\t\tSinkModifiedOn as timestamp,\n\t\tstatecode as long,\n\t\tstatuscode as long,\n\t\tmsft_entrywindowinterval as long,\n\t\tmodifiedonbehalfby as string,\n\t\tmodifiedonbehalfby_entitytype as string,\n\t\tmsft_addresscountryid as string,\n\t\tmsft_addresscountryid_entitytype as string,\n\t\towninguser as string,\n\t\towninguser_entitytype as string,\n\t\tcreatedonbehalfby as string,\n\t\tcreatedonbehalfby_entitytype as string,\n\t\towningbusinessunit as string,\n\t\towningbusinessunit_entitytype as string,\n\t\towningteam as string,\n\t\towningteam_entitytype as string,\n\t\tmodifiedby as string,\n\t\tmodifiedby_entitytype as string,\n\t\tcreatedby as string,\n\t\tcreatedby_entitytype as string,\n\t\tmsft_addressstateprovinceid as string,\n\t\tmsft_addressstateprovinceid_entitytype as string,\n\t\tmsft_facilitytypeid as string,\n\t\tmsft_facilitytypeid_entitytype as string,\n\t\tmsft_facilitygroupid as string,\n\t\tmsft_facilitygroupid_entitytype as string,\n\t\tmsft_reopenphaseid as string,\n\t\tmsft_reopenphaseid_entitytype as string,\n\t\townerid as string,\n\t\townerid_entitytype as string,\n\t\tcreatedonbehalfbyyominame as string,\n\t\tmsft_facilitygroupidname as string,\n\t\towneridname as string,\n\t\tcreatedon as timestamp,\n\t\toverriddencreatedon as timestamp,\n\t\tmsft_addresslatitude as string,\n\t\tmsft_addressstreet2 as string,\n\t\tstageid as string,\n\t\timportsequencenumber as long,\n\t\tmodifiedbyyominame as string,\n\t\tmsft_addressstreet1 as string,\n\t\tmsft_facilitynumber as string,\n\t\tutcconversiontimezonecode as long,\n\t\tcreatedbyyominame as string,\n\t\tmsft_facilityid as string,\n\t\tmodifiedbyname as string,\n\t\ttimezoneruleversionnumber as long,\n\t\ttraversedpath as string,\n\t\tmsft_addresscountryidname as string,\n\t\towneridtype as string,\n\t\tmsft_addresslongitude as string,\n\t\tprocessid as string,\n\t\tmsft_addresscountry as string,\n\t\towneridyominame as string,\n\t\tmodifiedon as timestamp,\n\t\tmsft_addressstateprovince as string,\n\t\tmsft_description as string,\n\t\tmodifiedonbehalfbyyominame as string,\n\t\tcreatedbyname as string,\n\t\tmsft_reopenphaseidname as string,\n\t\tmsft_addressstateprovinceidname as string,\n\t\tcreatedonbehalfbyname as string,\n\t\tmsft_facilitytypeidname as string,\n\t\tmsft_addresspostalcode as string,\n\t\tmodifiedonbehalfbyname as string,\n\t\tmsft_addresscity as string,\n\t\tversionnumber as long,\n\t\tmsft_name as string,\n\t\trts_entitytype as long,\n\t\trts_ld as string,\n\t\trts_campuscode as string,\n\t\trts_physicalcos as string,\n\t\trts_boe as string,\n\t\trts_sitetype as string,\n\t\trts_campusname as string,\n\t\trts_internalname as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 3,\n\tentity: 'msft_facility',\n\tformat: 'cdm',\n\tmanifestType: 'manifest',\n\tlocal: true,\n\tfolderPath: 'CMD_test',\n\tfileSystem: 'adhocextract',\n\ttimestampFormats: ['yyyy-MM-dd\\'T\\'HH:mm:ss','yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'','MM/dd/yyyy HH:mm']) ~> source1\nsource1 sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string,\n\t\tColumn_27 as string,\n\t\tColumn_28 as string,\n\t\tColumn_29 as string,\n\t\tColumn_30 as string,\n\t\tColumn_31 as string,\n\t\tColumn_32 as string,\n\t\tColumn_33 as string,\n\t\tColumn_34 as string,\n\t\tColumn_35 as string,\n\t\tColumn_36 as string,\n\t\tColumn_37 as string,\n\t\tColumn_38 as string,\n\t\tColumn_39 as string,\n\t\tColumn_40 as string,\n\t\tColumn_41 as string,\n\t\tColumn_42 as string,\n\t\tColumn_43 as string,\n\t\tColumn_44 as string,\n\t\tColumn_45 as string,\n\t\tColumn_46 as string,\n\t\tColumn_47 as string,\n\t\tColumn_48 as string,\n\t\tColumn_49 as string,\n\t\tColumn_50 as string,\n\t\tColumn_51 as string,\n\t\tColumn_52 as string,\n\t\tColumn_53 as string,\n\t\tColumn_54 as string,\n\t\tColumn_55 as string,\n\t\tColumn_56 as string,\n\t\tColumn_57 as string,\n\t\tColumn_58 as string,\n\t\tColumn_59 as string,\n\t\tColumn_60 as string,\n\t\tColumn_61 as string,\n\t\tColumn_62 as string,\n\t\tColumn_63 as string,\n\t\tColumn_64 as string,\n\t\tColumn_65 as string,\n\t\tColumn_66 as string,\n\t\tColumn_67 as string,\n\t\tColumn_68 as string,\n\t\tColumn_69 as string,\n\t\tColumn_70 as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+					"script": "source(output(\n\t\tId as string,\n\t\tSinkCreatedOn as timestamp,\n\t\tSinkModifiedOn as timestamp,\n\t\tstatecode as long,\n\t\tstatuscode as long,\n\t\tmsft_entrywindowinterval as long,\n\t\tmodifiedonbehalfby as string,\n\t\tmodifiedonbehalfby_entitytype as string,\n\t\tmsft_addresscountryid as string,\n\t\tmsft_addresscountryid_entitytype as string,\n\t\towninguser as string,\n\t\towninguser_entitytype as string,\n\t\tcreatedonbehalfby as string,\n\t\tcreatedonbehalfby_entitytype as string,\n\t\towningbusinessunit as string,\n\t\towningbusinessunit_entitytype as string,\n\t\towningteam as string,\n\t\towningteam_entitytype as string,\n\t\tmodifiedby as string,\n\t\tmodifiedby_entitytype as string,\n\t\tcreatedby as string,\n\t\tcreatedby_entitytype as string,\n\t\tmsft_addressstateprovinceid as string,\n\t\tmsft_addressstateprovinceid_entitytype as string,\n\t\tmsft_facilitytypeid as string,\n\t\tmsft_facilitytypeid_entitytype as string,\n\t\tmsft_facilitygroupid as string,\n\t\tmsft_facilitygroupid_entitytype as string,\n\t\tmsft_reopenphaseid as string,\n\t\tmsft_reopenphaseid_entitytype as string,\n\t\townerid as string,\n\t\townerid_entitytype as string,\n\t\tcreatedonbehalfbyyominame as string,\n\t\tmsft_facilitygroupidname as string,\n\t\towneridname as string,\n\t\tcreatedon as timestamp,\n\t\toverriddencreatedon as timestamp,\n\t\tmsft_addresslatitude as string,\n\t\tmsft_addressstreet2 as string,\n\t\tstageid as string,\n\t\timportsequencenumber as long,\n\t\tmodifiedbyyominame as string,\n\t\tmsft_addressstreet1 as string,\n\t\tmsft_facilitynumber as string,\n\t\tutcconversiontimezonecode as long,\n\t\tcreatedbyyominame as string,\n\t\tmsft_facilityid as string,\n\t\tmodifiedbyname as string,\n\t\ttimezoneruleversionnumber as long,\n\t\ttraversedpath as string,\n\t\tmsft_addresscountryidname as string,\n\t\towneridtype as string,\n\t\tmsft_addresslongitude as string,\n\t\tprocessid as string,\n\t\tmsft_addresscountry as string,\n\t\towneridyominame as string,\n\t\tmodifiedon as timestamp,\n\t\tmsft_addressstateprovince as string,\n\t\tmsft_description as string,\n\t\tmodifiedonbehalfbyyominame as string,\n\t\tcreatedbyname as string,\n\t\tmsft_reopenphaseidname as string,\n\t\tmsft_addressstateprovinceidname as string,\n\t\tcreatedonbehalfbyname as string,\n\t\tmsft_facilitytypeidname as string,\n\t\tmsft_addresspostalcode as string,\n\t\tmodifiedonbehalfbyname as string,\n\t\tmsft_addresscity as string,\n\t\tversionnumber as long,\n\t\tmsft_name as string,\n\t\trts_entitytype as long,\n\t\trts_ld as string,\n\t\trts_campuscode as string,\n\t\trts_physicalcos as string,\n\t\trts_boe as string,\n\t\trts_sitetype as string,\n\t\trts_campusname as string,\n\t\trts_internalname as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 3,\n\tignoreNoFilesFound: false,\n\tentity: 'msft_facility',\n\tformat: 'cdm',\n\tmanifestType: 'manifest',\n\tlocal: true,\n\tfolderPath: 'CMD_test',\n\tfileSystem: 'adhocextract',\n\ttimestampFormats: ['yyyy-MM-dd\\'T\\'HH:mm:ss','yyyy-MM-dd\\'T\\'HH:mm:ss\\'Z\\'','MM/dd/yyyy HH:mm']) ~> source1\nsource1 sink(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string,\n\t\tColumn_27 as string,\n\t\tColumn_28 as string,\n\t\tColumn_29 as string,\n\t\tColumn_30 as string,\n\t\tColumn_31 as string,\n\t\tColumn_32 as string,\n\t\tColumn_33 as string,\n\t\tColumn_34 as string,\n\t\tColumn_35 as string,\n\t\tColumn_36 as string,\n\t\tColumn_37 as string,\n\t\tColumn_38 as string,\n\t\tColumn_39 as string,\n\t\tColumn_40 as string,\n\t\tColumn_41 as string,\n\t\tColumn_42 as string,\n\t\tColumn_43 as string,\n\t\tColumn_44 as string,\n\t\tColumn_45 as string,\n\t\tColumn_46 as string,\n\t\tColumn_47 as string,\n\t\tColumn_48 as string,\n\t\tColumn_49 as string,\n\t\tColumn_50 as string,\n\t\tColumn_51 as string,\n\t\tColumn_52 as string,\n\t\tColumn_53 as string,\n\t\tColumn_54 as string,\n\t\tColumn_55 as string,\n\t\tColumn_56 as string,\n\t\tColumn_57 as string,\n\t\tColumn_58 as string,\n\t\tColumn_59 as string,\n\t\tColumn_60 as string,\n\t\tColumn_61 as string,\n\t\tColumn_62 as string,\n\t\tColumn_63 as string,\n\t\tColumn_64 as string,\n\t\tColumn_65 as string,\n\t\tColumn_66 as string,\n\t\tColumn_67 as string,\n\t\tColumn_68 as string,\n\t\tColumn_69 as string,\n\t\tColumn_70 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
 			},
 			"dependsOn": [
@@ -5744,7 +6989,7 @@
 							"name": "FlattenResponsibleEmpolyees"
 						}
 					],
-					"script": "parameters{\n\tsource_location as string ('adhocextract/FlattenIssueInput'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tstoreId as string,\n\t\tdob as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as boolean,\n\t\tlink as string,\n\t\tchecks as (items as (responsibleEmployeeId as string, categories as (id as string, name as string, type as string)[], netAmount as double, orderMode as (id as string, label as string), period as (id as string, label as string), originalPrice as double, quantity as double, seat as string, revenue as boolean, processedInKitchen as boolean, giftCard as boolean, id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], responsibleEmployees as (shiftId as string, isTippableEmployee as boolean, roleId as string, roleName as string, id as string, name as string, time as string)[], terminalId as string, grossAmount as double, grandAmount as double, id as string, printedCheckId as string, netAmount as double, total as double, isRefund as boolean, training as boolean, closed as boolean, groupInfo as (id as string, label as string), guestCounting as (guests as double, mode as string), revenueCenter as (id as string, label as string), period as (id as string, label as string), comps as (type as string, note as string, linkedItems as (id as string, amount as double)[], id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], surcharges as (rate as double, type as string, accounting as string, linkedItems as string[], taxableSales as double, id as string, typeId as string, label as string, amount as double, createdOn as string)[], payments as (tip as double, type as string, card as string, id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], events as (time as string, type as string)[], isTaxExemptApplied as boolean)[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument',\n\twildcardPaths:['FlattenIssueInput/*']) ~> InputJson\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\t{check.terminalId} = checks.terminalId,\n\t\t{checks.grossAmount} = checks.grossAmount,\n\t\tcheckgrandAmount = checks.grandAmount,\n\t\tcheckid = checks.id,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tchecknetAmount = checks.netAmount,\n\t\tcheckstotal = checks.total,\n\t\tcheckisRefund = checks.isRefund,\n\t\tcheckstraining = checks.training,\n\t\tchecksclosed = checks.closed,\n\t\tchecksgroupInfoid = checks.groupInfo.id,\n\t\tchecksgroupInfolabel = checks.groupInfo.label,\n\t\tchecksperiodid = checks.period.id,\n\t\tchecksperiodlabel = checks.period.label,\n\t\tchecksisTaxExemptApplied = checks.isTaxExemptApplied,\n\t\titems = checks.items,\n\t\tresponsibleEmployees = checks.responsibleEmployees,\n\t\tevents = checks.events,\n\t\tsurcharges = checks.surcharges,\n\t\tpayments = checks.payments,\n\t\tcomps = checks.comps,\n\t\t{revenueCenter.id} = checks.revenueCenter.id,\n\t\t{revenueCenter.label} = checks.revenueCenter.label,\n\t\t{guestCounting.guests} = checks.guestCounting.guests,\n\t\t{guestCounting.mode} = checks.guestCounting.mode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenCheck\nFlattenCheck foldDown(unroll(events, events),\n\tmapColumn(\n\t\tstoreId,\n\t\tchecksisTaxExemptApplied = events.time,\n\t\titems = events.type,\n\t\tcheckprintedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenEvents\nFlattenCheck aggregate(RowCount = countDistinct(storeId, checkprintedCheckId )) ~> AggregateCheckCount\nAggregateCheckCount derive(Pipeline = \"Step 2 : NCR Refine\",\n\t\t{Date of Business} = $dob,\n\t\t{Batch Window} = $batch_window,\n\t\t{Row Count} = RowCount,\n\t\t{Pipeline Start Dttm} = $start_time,\n\t\t{Pipeline End Dttm} = toString(fromUTC(currentTimestamp(),'MST'),\"HH:mm:ss\"),\n\t\t{Pipeline Status} = \"Success\") ~> AuditLine\nFlattenCheck foldDown(unroll(comps, comps),\n\tmapColumn(\n\t\tstoreId,\n\t\tcomps,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenComps\nFlattenCheck foldDown(unroll(surcharges, surcharges),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tsurcharges,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenSurcharge\nFlattenCheck foldDown(unroll(payments, payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tpayments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nFlattenCheck foldDown(unroll(responsibleEmployees, responsibleEmployees),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tresponsibleEmpolyees = responsibleEmployees,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenResponsibleEmpolyees\nAuditLine sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat('Audit_', toString(currentUTC(),'yyyyMMdd_HHmm'),'.csv'))],\n\tmapColumn(\n\t\tPipeline,\n\t\t{Date of Business},\n\t\t{Batch Window},\n\t\t{Row Count},\n\t\t{Pipeline Start Dttm},\n\t\t{Pipeline End Dttm},\n\t\t{Pipeline Status}\n\t),\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkAudit\nFlattenEvents sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tchecksisTaxExemptApplied,\n\t\titems,\n\t\tcheckprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkEvent\nFlattenCheck sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tlink,\n\t\tterminalId = {check.terminalId},\n\t\tgrossAmount = {checks.grossAmount},\n\t\tcheckgrandAmount,\n\t\tcheckid,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tchecknetAmount,\n\t\tcheckstotal,\n\t\tcheckisRefund,\n\t\tcheckstraining,\n\t\tchecksclosed,\n\t\tchecksgroupInfoid,\n\t\tchecksgroupInfolabel,\n\t\tchecksperiodid,\n\t\tchecksperiodlabel,\n\t\tchecksisTaxExemptApplied,\n\t\t{guestCounting.guests},\n\t\t{guestCounting.mode},\n\t\t{revenueCenter.id},\n\t\t{revenueCenter.label}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecks\nFlattenComps sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = comps.amount,\n\t\tcreatedOn = comps.createdOn,\n\t\tid = comps.id,\n\t\tlabel = comps.label,\n\t\tnote = comps.note,\n\t\t{responsibleEmployees.employee.id} = comps.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = comps.responsibleEmployees.employee.name,\n\t\ttype = comps.type,\n\t\ttypeId = comps.typeId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksComps\nFlattenSurcharge sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\t{surchages.linkedItems} = surcharges.linkedItems,\n\t\trate = surcharges.rate,\n\t\ttype = surcharges.type,\n\t\taccounting = surcharges.accounting,\n\t\ttaxableSales = surcharges.taxableSales,\n\t\tid = surcharges.id,\n\t\ttypeId = surcharges.typeId,\n\t\tlabel = surcharges.label,\n\t\tamount = surcharges.amount,\n\t\tcreatedOn = surcharges.createdOn,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkSurcharges\nFlattenPayments sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksPayments\nFlattenResponsibleEmpolyees sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\t{responsibleEmployees.employee.id} = responsibleEmpolyees.id,\n\t\tisTippableEmployee = responsibleEmpolyees.isTippableEmployee,\n\t\t{responsibleEmployees.employee.name} = responsibleEmpolyees.name,\n\t\troleId = responsibleEmpolyees.roleId,\n\t\troleName = responsibleEmpolyees.roleName,\n\t\tshiftId = responsibleEmpolyees.shiftId,\n\t\ttime = responsibleEmpolyees.time\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkResponsibleEmployees"
+					"script": "parameters{\n\tsource_location as string ('adhocextract/FlattenIssueInput'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tstoreId as string,\n\t\tdob as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as boolean,\n\t\tlink as string,\n\t\tchecks as (items as (responsibleEmployeeId as string, categories as (id as string, name as string, type as string)[], netAmount as double, orderMode as (id as string, label as string), period as (id as string, label as string), originalPrice as double, quantity as double, seat as string, revenue as boolean, processedInKitchen as boolean, giftCard as boolean, id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], responsibleEmployees as (shiftId as string, isTippableEmployee as boolean, roleId as string, roleName as string, id as string, name as string, time as string)[], terminalId as string, grossAmount as double, grandAmount as double, id as string, printedCheckId as string, netAmount as double, total as double, isRefund as boolean, training as boolean, closed as boolean, groupInfo as (id as string, label as string), guestCounting as (guests as double, mode as string), revenueCenter as (id as string, label as string), period as (id as string, label as string), comps as (type as string, note as string, linkedItems as (id as string, amount as double)[], id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], surcharges as (rate as double, type as string, accounting as string, linkedItems as string[], taxableSales as double, id as string, typeId as string, label as string, amount as double, createdOn as string)[], payments as (tip as double, type as string, card as string, id as string, typeId as string, label as string, amount as double, createdOn as string, responsibleEmployees as (employee as (id as string, name as string)))[], events as (time as string, type as string)[], isTaxExemptApplied as boolean)[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument',\n\twildcardPaths:['FlattenIssueInput/*']) ~> InputJson\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\t{check.terminalId} = checks.terminalId,\n\t\t{checks.grossAmount} = checks.grossAmount,\n\t\tcheckgrandAmount = checks.grandAmount,\n\t\tcheckid = checks.id,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tchecknetAmount = checks.netAmount,\n\t\tcheckstotal = checks.total,\n\t\tcheckisRefund = checks.isRefund,\n\t\tcheckstraining = checks.training,\n\t\tchecksclosed = checks.closed,\n\t\tchecksgroupInfoid = checks.groupInfo.id,\n\t\tchecksgroupInfolabel = checks.groupInfo.label,\n\t\tchecksperiodid = checks.period.id,\n\t\tchecksperiodlabel = checks.period.label,\n\t\tchecksisTaxExemptApplied = checks.isTaxExemptApplied,\n\t\titems = checks.items,\n\t\tresponsibleEmployees = checks.responsibleEmployees,\n\t\tevents = checks.events,\n\t\tsurcharges = checks.surcharges,\n\t\tpayments = checks.payments,\n\t\tcomps = checks.comps,\n\t\t{revenueCenter.id} = checks.revenueCenter.id,\n\t\t{revenueCenter.label} = checks.revenueCenter.label,\n\t\t{guestCounting.guests} = checks.guestCounting.guests,\n\t\t{guestCounting.mode} = checks.guestCounting.mode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenCheck\nFlattenCheck foldDown(unroll(events, events),\n\tmapColumn(\n\t\tstoreId,\n\t\tchecksisTaxExemptApplied = events.time,\n\t\titems = events.type,\n\t\tcheckprintedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenEvents\nFlattenCheck aggregate(RowCount = countDistinct(storeId, checkprintedCheckId )) ~> AggregateCheckCount\nAggregateCheckCount derive(Pipeline = \"Step 2 : NCR Refine\",\n\t\t{Date of Business} = $dob,\n\t\t{Batch Window} = $batch_window,\n\t\t{Row Count} = RowCount,\n\t\t{Pipeline Start Dttm} = $start_time,\n\t\t{Pipeline End Dttm} = toString(fromUTC(currentTimestamp(),'MST'),\"HH:mm:ss\"),\n\t\t{Pipeline Status} = \"Success\") ~> AuditLine\nFlattenCheck foldDown(unroll(comps, comps),\n\tmapColumn(\n\t\tstoreId,\n\t\tcomps,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenComps\nFlattenCheck foldDown(unroll(surcharges, surcharges),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tsurcharges,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenSurcharge\nFlattenCheck foldDown(unroll(payments, payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tpayments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nFlattenCheck foldDown(unroll(responsibleEmployees, responsibleEmployees),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tresponsibleEmpolyees = responsibleEmployees,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenResponsibleEmpolyees\nAuditLine sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tpartitionFileNames:[(concat('Audit_', toString(currentUTC(),'yyyyMMdd_HHmm'),'.csv'))],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tPipeline,\n\t\t{Date of Business},\n\t\t{Batch Window},\n\t\t{Row Count},\n\t\t{Pipeline Start Dttm},\n\t\t{Pipeline End Dttm},\n\t\t{Pipeline Status}\n\t),\n\tpartitionBy('hash', 1)) ~> SinkAudit\nFlattenEvents sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tchecksisTaxExemptApplied,\n\t\titems,\n\t\tcheckprintedCheckId\n\t)) ~> SinkEvent\nFlattenCheck sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tlink,\n\t\tterminalId = {check.terminalId},\n\t\tgrossAmount = {checks.grossAmount},\n\t\tcheckgrandAmount,\n\t\tcheckid,\n\t\tprintedCheckId = checkprintedCheckId,\n\t\tchecknetAmount,\n\t\tcheckstotal,\n\t\tcheckisRefund,\n\t\tcheckstraining,\n\t\tchecksclosed,\n\t\tchecksgroupInfoid,\n\t\tchecksgroupInfolabel,\n\t\tchecksperiodid,\n\t\tchecksperiodlabel,\n\t\tchecksisTaxExemptApplied,\n\t\t{guestCounting.guests},\n\t\t{guestCounting.mode},\n\t\t{revenueCenter.id},\n\t\t{revenueCenter.label}\n\t)) ~> SinkChecks\nFlattenComps sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = comps.amount,\n\t\tcreatedOn = comps.createdOn,\n\t\tid = comps.id,\n\t\tlabel = comps.label,\n\t\tnote = comps.note,\n\t\t{responsibleEmployees.employee.id} = comps.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = comps.responsibleEmployees.employee.name,\n\t\ttype = comps.type,\n\t\ttypeId = comps.typeId\n\t)) ~> SinkChecksComps\nFlattenSurcharge sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\t{surchages.linkedItems} = surcharges.linkedItems,\n\t\trate = surcharges.rate,\n\t\ttype = surcharges.type,\n\t\taccounting = surcharges.accounting,\n\t\ttaxableSales = surcharges.taxableSales,\n\t\tid = surcharges.id,\n\t\ttypeId = surcharges.typeId,\n\t\tlabel = surcharges.label,\n\t\tamount = surcharges.amount,\n\t\tcreatedOn = surcharges.createdOn,\n\t\tprintedCheckId\n\t)) ~> SinkSurcharges\nFlattenPayments sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t)) ~> SinkChecksPayments\nFlattenResponsibleEmpolyees sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\t{responsibleEmployees.employee.id} = responsibleEmpolyees.id,\n\t\tisTippableEmployee = responsibleEmpolyees.isTippableEmployee,\n\t\t{responsibleEmployees.employee.name} = responsibleEmpolyees.name,\n\t\troleId = responsibleEmpolyees.roleId,\n\t\troleName = responsibleEmpolyees.roleName,\n\t\tshiftId = responsibleEmpolyees.shiftId,\n\t\ttime = responsibleEmpolyees.time\n\t)) ~> SinkResponsibleEmployees"
 				}
 			},
 			"dependsOn": [
@@ -5868,12 +7113,79 @@
 							"name": "FlattenChecks"
 						}
 					],
-					"script": "parameters{\n\tsource_location as string ('Inbound/Raw/NCR_Pulse/Sales/Stream/Incremental/20201119/2225'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tchecks as (clears as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string)), type as string, typeId as integer)[], closed as boolean, comps as (amount as double, createdOn as string, id as integer, label as string, linkedItems as (amount as double, id as integer)[], note as string, responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[], events as (time as string, type as string)[], grandAmount as double, grossAmount as double, groupInfo as (id as integer, label as string), guestCounting as (guests as double, mode as string), id as integer, isRefund as boolean, isTaxExemptApplied as boolean, items as (amount as double, categories as (id as short, name as string, type as string)[], createdOn as string, giftCard as boolean, id as integer, label as string, modifierInfo as (id as (id as short, label as string), type as string), netAmount as double, orderMode as (id as short, label as string), originalPrice as double, parentItemId as integer, period as (id as short, label as string), processedInKitchen as boolean, quantity as double, responsibleEmployeeId as integer, responsibleEmployees as (employee as (id as integer, name as string)), revenue as boolean, seat as boolean, typeId as integer)[], netAmount as double, payments as (amount as double, card as string, createdOn as string, id as integer, label as string, responsibleEmployees as (employee as (id as integer, name as string)), tip as double, type as string, typeId as short)[], period as (id as short, label as string), printedCheckId as integer, responsibleEmployees as (id as integer, isTippableEmployee as boolean, name as string, roleId as short, roleName as string, shiftId as boolean, time as string)[], revenueCenter as (id as short, label as string), surcharges as (accounting as string, amount as double, createdOn as string, id as string, label as string, linkedItems as integer[], rate as double, taxableSales as double, type as string, typeId as short)[], terminalId as short, total as double, training as boolean, voids as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[])[],\n\t\tdob as string,\n\t\tlink as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as string,\n\t\tstoreId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument') ~> InputJson\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\t{check.terminalId} = checks.terminalId,\n\t\t{checks.grossAmount} = checks.grossAmount,\n\t\tcheckgrandAmount = checks.grandAmount,\n\t\tcheckid = checks.id,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tchecknetAmount = checks.netAmount,\n\t\tcheckstotal = checks.total,\n\t\tcheckisRefund = checks.isRefund,\n\t\tcheckstraining = checks.training,\n\t\tchecksclosed = checks.closed,\n\t\tchecksgroupInfoid = checks.groupInfo.id,\n\t\tchecksgroupInfolabel = checks.groupInfo.label,\n\t\tchecksperiodid = checks.period.id,\n\t\tchecksperiodlabel = checks.period.label,\n\t\tchecksisTaxExemptApplied = checks.isTaxExemptApplied,\n\t\t{revenueCenter.id} = checks.revenueCenter.id,\n\t\t{revenueCenter.label} = checks.revenueCenter.label,\n\t\t{guestCounting.guests} = checks.guestCounting.guests,\n\t\t{guestCounting.mode} = checks.guestCounting.mode\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: false) ~> FlattenCheck\nInputJson foldDown(unroll(checks.events, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\teventTime = checks.events.time,\n\t\teventType = checks.events.type,\n\t\tdob,\n\t\tcheckprintedCheckId = checks.printedCheckId\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenEvents\nFlattenChecks aggregate(RowCount = countDistinct(storeId, checkprintedCheckId )) ~> AggregateCheckCount\nAggregateCheckCount derive(Pipeline = \"Step 2 : NCR Refine\",\n\t\t{Date of Business} = $dob,\n\t\t{Batch Window} = $batch_window,\n\t\t{Row Count} = RowCount,\n\t\t{Pipeline Start Dttm} = $start_time,\n\t\t{Pipeline End Dttm} = toString(fromUTC(currentTimestamp(),'MST'),\"HH:mm:ss\"),\n\t\t{Pipeline Status} = \"Success\") ~> AuditLine\nInputJson foldDown(unroll(checks.voids, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tvoids = checks.voids,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenVoids\nInputJson foldDown(unroll(checks.comps, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tcomps = checks.comps,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenComps\nInputJson foldDown(unroll(checks.surcharges, checks.surcharges),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tsurcharges = checks.surcharges,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenSurcharge\nInputJson foldDown(unroll(checks.payments, checks.payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tpayments = checks.payments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nInputJson foldDown(unroll(checks.responsibleEmployees, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tresponsibleEmpolyees = checks.responsibleEmployees,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenResponsibleEmpolyees\nInputJson foldDown(unroll(checks.items, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\titems = checks.items\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenItems\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tdob,\n\t\tlink,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tstoreId\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenChecks\nFlattenCheck sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\tterminalId = {check.terminalId},\n\t\tgrossAmount = {checks.grossAmount},\n\t\tcheckgrandAmount,\n\t\tcheckid,\n\t\tcheckprintedCheckId,\n\t\tchecknetAmount,\n\t\tcheckstotal,\n\t\tcheckisRefund,\n\t\tcheckstraining,\n\t\tchecksclosed,\n\t\tchecksgroupInfoid,\n\t\tchecksgroupInfolabel,\n\t\tchecksperiodid,\n\t\tchecksperiodlabel,\n\t\tchecksisTaxExemptApplied,\n\t\tid = {revenueCenter.id},\n\t\tlabel = {revenueCenter.label},\n\t\tguests = {guestCounting.guests},\n\t\tmode = {guestCounting.mode}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecks\nFlattenVoids sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tamount = voids.amount,\n\t\tcreatedOn = voids.createdOn,\n\t\tid = voids.id,\n\t\tlabel = voids.label,\n\t\t{voids.linkedItems} = voids.linkedItems,\n\t\t{responsibleEmployees.employee.id} = voids.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = voids.responsibleEmployees.employee.name,\n\t\ttype = voids.type,\n\t\ttypeId = voids.typeId,\n\t\t{responsibleEmployees.employee.manager.id} = voids.responsibleEmployees.manager.id,\n\t\t{responsibleEmployees.employee.manager.name} = voids.responsibleEmployees.manager.name,\n\t\tprintedCheckId = checkprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkVoids\nAuditLine sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat('Audit_', toString(currentUTC(),'yyyyMMdd_HHmm'),'.csv'))],\n\tmapColumn(\n\t\tPipeline,\n\t\t{Date of Business},\n\t\t{Batch Window},\n\t\t{Row Count},\n\t\t{Pipeline Start Dttm},\n\t\t{Pipeline End Dttm},\n\t\t{Pipeline Status}\n\t),\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkAudit\nFlattenEvents sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkEvent\nFlattenComps sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = comps.amount,\n\t\tcreatedOn = comps.createdOn,\n\t\tid = comps.id,\n\t\tlabel = comps.label,\n\t\tnote = comps.note,\n\t\t{responsibleEmployees.employee.id} = comps.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = comps.responsibleEmployees.employee.name,\n\t\ttype = comps.type,\n\t\ttypeId = comps.typeId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksComps\nFlattenSurcharge sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\t{surchages.linkedItems} = surcharges.linkedItems,\n\t\trate = surcharges.rate,\n\t\ttype = surcharges.type,\n\t\taccounting = surcharges.accounting,\n\t\ttaxableSales = surcharges.taxableSales,\n\t\tid = surcharges.id,\n\t\ttypeId = surcharges.typeId,\n\t\tlabel = surcharges.label,\n\t\tamount = surcharges.amount,\n\t\tcreatedOn = surcharges.createdOn,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkSurcharges\nFlattenPayments sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksPayments\nFlattenResponsibleEmpolyees sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\t{responsibleEmployees.employee.id} = responsibleEmpolyees.id,\n\t\tisTippableEmployee = responsibleEmpolyees.isTippableEmployee,\n\t\t{responsibleEmployees.employee.name} = responsibleEmpolyees.name,\n\t\troleId = responsibleEmpolyees.roleId,\n\t\troleName = responsibleEmpolyees.roleName,\n\t\tshiftId = responsibleEmpolyees.shiftId,\n\t\ttime = responsibleEmpolyees.time\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkResponsibleEmployees\nFlattenItems sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = items.amount,\n\t\tcreatedOn = items.createdOn,\n\t\tgiftCard = items.giftCard,\n\t\tid = items.id,\n\t\tlabel = items.label,\n\t\t{modifierInfo.id.id} = items.modifierInfo.id.id,\n\t\t{modifierInfo.id.label} = items.modifierInfo.id.label,\n\t\t{modifierInfo.type} = items.modifierInfo.type,\n\t\tnetAmount = items.netAmount,\n\t\t{orderMode.id} = items.orderMode.id,\n\t\t{orderMode.label} = items.orderMode.label,\n\t\toriginalPrice = items.originalPrice,\n\t\tparentItemId = items.parentItemId,\n\t\t{period.id} = items.period.id,\n\t\t{period.label} = items.period.label,\n\t\tprocessedInKitchen = items.processedInKitchen,\n\t\tquantity = items.quantity,\n\t\t{responsibleEmployees.employee.id} = items.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = items.responsibleEmployees.employee.name,\n\t\trevenue = items.revenue,\n\t\tseat = items.seat,\n\t\ttypeId = items.typeId,\n\t\tresponsibleEmployeeId = items.responsibleEmployeeId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksItems"
+					"script": "parameters{\n\tsource_location as string ('Inbound/Raw/NCR_Pulse/Sales/Stream/Incremental/20201119/2225'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tchecks as (clears as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string)), type as string, typeId as integer)[], closed as boolean, comps as (amount as double, createdOn as string, id as integer, label as string, linkedItems as (amount as double, id as integer)[], note as string, responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[], events as (time as string, type as string)[], grandAmount as double, grossAmount as double, groupInfo as (id as integer, label as string), guestCounting as (guests as double, mode as string), id as integer, isRefund as boolean, isTaxExemptApplied as boolean, items as (amount as double, categories as (id as short, name as string, type as string)[], createdOn as string, giftCard as boolean, id as integer, label as string, modifierInfo as (id as (id as short, label as string), type as string), netAmount as double, orderMode as (id as short, label as string), originalPrice as double, parentItemId as integer, period as (id as short, label as string), processedInKitchen as boolean, quantity as double, responsibleEmployeeId as integer, responsibleEmployees as (employee as (id as integer, name as string)), revenue as boolean, seat as boolean, typeId as integer)[], netAmount as double, payments as (amount as double, card as string, createdOn as string, id as integer, label as string, responsibleEmployees as (employee as (id as integer, name as string)), tip as double, type as string, typeId as short)[], period as (id as short, label as string), printedCheckId as integer, responsibleEmployees as (id as integer, isTippableEmployee as boolean, name as string, roleId as short, roleName as string, shiftId as boolean, time as string)[], revenueCenter as (id as short, label as string), surcharges as (accounting as string, amount as double, createdOn as string, id as string, label as string, linkedItems as integer[], rate as double, taxableSales as double, type as string, typeId as short)[], terminalId as short, total as double, training as boolean, voids as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[])[],\n\t\tdob as string,\n\t\tlink as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as string,\n\t\tstoreId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument') ~> InputJson\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\t{check.terminalId} = checks.terminalId,\n\t\t{checks.grossAmount} = checks.grossAmount,\n\t\tcheckgrandAmount = checks.grandAmount,\n\t\tcheckid = checks.id,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tchecknetAmount = checks.netAmount,\n\t\tcheckstotal = checks.total,\n\t\tcheckisRefund = checks.isRefund,\n\t\tcheckstraining = checks.training,\n\t\tchecksclosed = checks.closed,\n\t\tchecksgroupInfoid = checks.groupInfo.id,\n\t\tchecksgroupInfolabel = checks.groupInfo.label,\n\t\tchecksperiodid = checks.period.id,\n\t\tchecksperiodlabel = checks.period.label,\n\t\tchecksisTaxExemptApplied = checks.isTaxExemptApplied,\n\t\t{revenueCenter.id} = checks.revenueCenter.id,\n\t\t{revenueCenter.label} = checks.revenueCenter.label,\n\t\t{guestCounting.guests} = checks.guestCounting.guests,\n\t\t{guestCounting.mode} = checks.guestCounting.mode\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: false) ~> FlattenCheck\nInputJson foldDown(unroll(checks.events, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\teventTime = checks.events.time,\n\t\teventType = checks.events.type,\n\t\tdob,\n\t\tcheckprintedCheckId = checks.printedCheckId\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenEvents\nFlattenChecks aggregate(RowCount = countDistinct(storeId, checkprintedCheckId )) ~> AggregateCheckCount\nAggregateCheckCount derive(Pipeline = \"Step 2 : NCR Refine\",\n\t\t{Date of Business} = $dob,\n\t\t{Batch Window} = $batch_window,\n\t\t{Row Count} = RowCount,\n\t\t{Pipeline Start Dttm} = $start_time,\n\t\t{Pipeline End Dttm} = toString(fromUTC(currentTimestamp(),'MST'),\"HH:mm:ss\"),\n\t\t{Pipeline Status} = \"Success\") ~> AuditLine\nInputJson foldDown(unroll(checks.voids, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tvoids = checks.voids,\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenVoids\nInputJson foldDown(unroll(checks.comps, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tcomps = checks.comps,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenComps\nInputJson foldDown(unroll(checks.surcharges, checks.surcharges),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tsurcharges = checks.surcharges,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenSurcharge\nInputJson foldDown(unroll(checks.payments, checks.payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tpayments = checks.payments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nInputJson foldDown(unroll(checks.responsibleEmployees, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tresponsibleEmpolyees = checks.responsibleEmployees,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenResponsibleEmpolyees\nInputJson foldDown(unroll(checks.items, checks),\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\titems = checks.items\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenItems\nInputJson foldDown(unroll(checks, checks),\n\tmapColumn(\n\t\tcheckprintedCheckId = checks.printedCheckId,\n\t\tdob,\n\t\tlink,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tstoreId\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenChecks\nFlattenCheck sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tmarker,\n\t\tmoreDataImmediatelyAvailable,\n\t\tlink,\n\t\tterminalId = {check.terminalId},\n\t\tgrossAmount = {checks.grossAmount},\n\t\tcheckgrandAmount,\n\t\tcheckid,\n\t\tcheckprintedCheckId,\n\t\tchecknetAmount,\n\t\tcheckstotal,\n\t\tcheckisRefund,\n\t\tcheckstraining,\n\t\tchecksclosed,\n\t\tchecksgroupInfoid,\n\t\tchecksgroupInfolabel,\n\t\tchecksperiodid,\n\t\tchecksperiodlabel,\n\t\tchecksisTaxExemptApplied,\n\t\tid = {revenueCenter.id},\n\t\tlabel = {revenueCenter.label},\n\t\tguests = {guestCounting.guests},\n\t\tmode = {guestCounting.mode}\n\t)) ~> SinkChecks\nFlattenVoids sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tamount = voids.amount,\n\t\tcreatedOn = voids.createdOn,\n\t\tid = voids.id,\n\t\tlabel = voids.label,\n\t\t{voids.linkedItems} = voids.linkedItems,\n\t\t{responsibleEmployees.employee.id} = voids.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = voids.responsibleEmployees.employee.name,\n\t\ttype = voids.type,\n\t\ttypeId = voids.typeId,\n\t\t{responsibleEmployees.employee.manager.id} = voids.responsibleEmployees.manager.id,\n\t\t{responsibleEmployees.employee.manager.name} = voids.responsibleEmployees.manager.name,\n\t\tprintedCheckId = checkprintedCheckId\n\t)) ~> SinkVoids\nAuditLine sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat('Audit_', toString(currentUTC(),'yyyyMMdd_HHmm'),'.csv'))],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tPipeline,\n\t\t{Date of Business},\n\t\t{Batch Window},\n\t\t{Row Count},\n\t\t{Pipeline Start Dttm},\n\t\t{Pipeline End Dttm},\n\t\t{Pipeline Status}\n\t),\n\tpartitionBy('hash', 1)) ~> SinkAudit\nFlattenEvents sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkEvent\nFlattenComps sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = comps.amount,\n\t\tcreatedOn = comps.createdOn,\n\t\tid = comps.id,\n\t\tlabel = comps.label,\n\t\tnote = comps.note,\n\t\t{responsibleEmployees.employee.id} = comps.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = comps.responsibleEmployees.employee.name,\n\t\ttype = comps.type,\n\t\ttypeId = comps.typeId\n\t)) ~> SinkChecksComps\nFlattenSurcharge sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\t{surchages.linkedItems} = surcharges.linkedItems,\n\t\trate = surcharges.rate,\n\t\ttype = surcharges.type,\n\t\taccounting = surcharges.accounting,\n\t\ttaxableSales = surcharges.taxableSales,\n\t\tid = surcharges.id,\n\t\ttypeId = surcharges.typeId,\n\t\tlabel = surcharges.label,\n\t\tamount = surcharges.amount,\n\t\tcreatedOn = surcharges.createdOn,\n\t\tprintedCheckId\n\t)) ~> SinkSurcharges\nFlattenPayments sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t)) ~> SinkChecksPayments\nFlattenResponsibleEmpolyees sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\t{responsibleEmployees.employee.id} = responsibleEmpolyees.id,\n\t\tisTippableEmployee = responsibleEmpolyees.isTippableEmployee,\n\t\t{responsibleEmployees.employee.name} = responsibleEmpolyees.name,\n\t\troleId = responsibleEmpolyees.roleId,\n\t\troleName = responsibleEmpolyees.roleName,\n\t\tshiftId = responsibleEmpolyees.shiftId,\n\t\ttime = responsibleEmpolyees.time\n\t)) ~> SinkResponsibleEmployees\nFlattenItems sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\tprintedCheckId,\n\t\tamount = items.amount,\n\t\tcreatedOn = items.createdOn,\n\t\tgiftCard = items.giftCard,\n\t\tid = items.id,\n\t\tlabel = items.label,\n\t\t{modifierInfo.id.id} = items.modifierInfo.id.id,\n\t\t{modifierInfo.id.label} = items.modifierInfo.id.label,\n\t\t{modifierInfo.type} = items.modifierInfo.type,\n\t\tnetAmount = items.netAmount,\n\t\t{orderMode.id} = items.orderMode.id,\n\t\t{orderMode.label} = items.orderMode.label,\n\t\toriginalPrice = items.originalPrice,\n\t\tparentItemId = items.parentItemId,\n\t\t{period.id} = items.period.id,\n\t\t{period.label} = items.period.label,\n\t\tprocessedInKitchen = items.processedInKitchen,\n\t\tquantity = items.quantity,\n\t\t{responsibleEmployees.employee.id} = items.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = items.responsibleEmployees.employee.name,\n\t\trevenue = items.revenue,\n\t\tseat = items.seat,\n\t\ttypeId = items.typeId,\n\t\tresponsibleEmployeeId = items.responsibleEmployeeId\n\t)) ~> SinkChecksItems"
 				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/psi101002_20201119_2225')]",
 				"[concat(variables('factoryId'), '/datasets/csvOutput')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/cdm_model')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"linkedService": {
+								"referenceName": "kesh",
+								"type": "LinkedServiceReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "kesh",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"script": "source(output(\n\t\tContactId as string,\n\t\tPurchaseId as string,\n\t\tProductId as string,\n\t\tPurchasedOn as string,\n\t\tTotalPrice as double,\n\t\tActivityTypeDisplay as string,\n\t\tSubject as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: '/eCommerce_eCommercePurchases',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'CustomerInsights_e053ffe7-796e-4bcf-ab0f-923857e6ba77/BKW Dataplattform',\n\tfileSystem: 'crm-data') ~> source1\nsource1 sink(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tformat: 'delimited',\n\tfileSystem: 'adhocextract',\n\tfolderPath: (\"x/y z\"),\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false,\n\trowUrlColumn:'ContactId',\n\tumask: 0022,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/kesh')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/createDelta')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Excel1",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"script": "source(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string,\n\t\tColumn_27 as string,\n\t\tColumn_28 as string,\n\t\tColumn_29 as string,\n\t\tColumn_30 as string,\n\t\tColumn_31 as string,\n\t\tColumn_32 as string,\n\t\tColumn_33 as string,\n\t\tColumn_34 as string,\n\t\tColumn_35 as string,\n\t\tColumn_36 as string,\n\t\tColumn_37 as string,\n\t\tColumn_38 as string,\n\t\tColumn_39 as string,\n\t\tColumn_40 as string,\n\t\tColumn_41 as string,\n\t\tColumn_42 as string,\n\t\tColumn_43 as string,\n\t\tColumn_44 as string,\n\t\tColumn_45 as string,\n\t\tColumn_46 as string,\n\t\tColumn_47 as string,\n\t\tColumn_48 as string,\n\t\tColumn_49 as string,\n\t\tColumn_50 as string,\n\t\tColumn_51 as string,\n\t\tColumn_52 as string,\n\t\tColumn_53 as string,\n\t\tColumn_54 as string,\n\t\tColumn_55 as string,\n\t\tColumn_56 as string,\n\t\tColumn_57 as string,\n\t\tColumn_58 as string,\n\t\tColumn_59 as string,\n\t\tColumn_60 as string,\n\t\tColumn_61 as string,\n\t\tColumn_62 as string,\n\t\tColumn_63 as string,\n\t\tColumn_64 as string,\n\t\tColumn_65 as string,\n\t\tColumn_66 as string,\n\t\tColumn_67 as string,\n\t\tColumn_68 as string,\n\t\tColumn_69 as string,\n\t\tColumn_70 as string,\n\t\tColumn_71 as string,\n\t\tColumn_72 as string,\n\t\tColumn_73 as string,\n\t\tColumn_74 as string,\n\t\tColumn_75 as string,\n\t\tColumn_76 as string,\n\t\tColumn_77 as string,\n\t\tColumn_78 as string,\n\t\tColumn_79 as string,\n\t\tColumn_80 as string,\n\t\tColumn_81 as string,\n\t\tColumn_82 as string,\n\t\tColumn_83 as string,\n\t\tColumn_84 as string,\n\t\tColumn_85 as string,\n\t\tColumn_86 as string,\n\t\tColumn_87 as string,\n\t\tColumn_88 as string,\n\t\tColumn_89 as string,\n\t\tColumn_90 as string,\n\t\tColumn_91 as string,\n\t\tColumn_92 as string,\n\t\tColumn_93 as string,\n\t\tColumn_94 as string,\n\t\tColumn_95 as string,\n\t\tColumn_96 as string,\n\t\tColumn_97 as string,\n\t\tColumn_98 as string,\n\t\tColumn_99 as string,\n\t\tColumn_100 as string,\n\t\tColumn_101 as string,\n\t\tColumn_102 as string,\n\t\tColumn_103 as string,\n\t\tColumn_104 as string,\n\t\tColumn_105 as string,\n\t\tColumn_106 as string,\n\t\tColumn_107 as string,\n\t\tColumn_108 as string,\n\t\tColumn_109 as string,\n\t\tColumn_110 as string,\n\t\tColumn_111 as string,\n\t\tColumn_112 as string,\n\t\tColumn_113 as string,\n\t\tColumn_114 as string,\n\t\tColumn_115 as string,\n\t\tColumn_116 as string,\n\t\tColumn_117 as string,\n\t\tColumn_118 as string,\n\t\tColumn_119 as string,\n\t\tColumn_120 as string,\n\t\tColumn_121 as string,\n\t\tColumn_122 as string,\n\t\tColumn_123 as string,\n\t\tColumn_124 as string,\n\t\tColumn_125 as string,\n\t\tColumn_126 as string,\n\t\tColumn_127 as string,\n\t\tColumn_128 as string,\n\t\tColumn_129 as string,\n\t\tColumn_130 as string,\n\t\tColumn_131 as string,\n\t\tColumn_132 as string,\n\t\tColumn_133 as string,\n\t\tColumn_134 as string,\n\t\tColumn_135 as string,\n\t\tColumn_136 as string,\n\t\tColumn_137 as string,\n\t\tColumn_138 as string,\n\t\tColumn_139 as string,\n\t\tColumn_140 as string,\n\t\tColumn_141 as string,\n\t\tColumn_142 as string,\n\t\tColumn_143 as string,\n\t\tColumn_144 as string,\n\t\tColumn_145 as string,\n\t\tColumn_146 as string,\n\t\tColumn_147 as string,\n\t\tColumn_148 as string,\n\t\tColumn_149 as string,\n\t\tColumn_150 as string,\n\t\tColumn_151 as string,\n\t\tColumn_152 as string,\n\t\tColumn_153 as string,\n\t\tColumn_154 as string,\n\t\tColumn_155 as string,\n\t\tColumn_156 as string,\n\t\tColumn_157 as string,\n\t\tColumn_158 as string,\n\t\tColumn_159 as string,\n\t\tColumn_160 as string,\n\t\tColumn_161 as string,\n\t\tColumn_162 as string,\n\t\tColumn_163 as string,\n\t\tColumn_164 as string,\n\t\tColumn_165 as string,\n\t\tColumn_166 as string,\n\t\tColumn_167 as string,\n\t\tColumn_168 as string,\n\t\tColumn_169 as string,\n\t\tColumn_170 as string,\n\t\tColumn_171 as string,\n\t\tColumn_172 as string,\n\t\tColumn_173 as string,\n\t\tColumn_174 as string,\n\t\tColumn_175 as string,\n\t\tColumn_176 as string,\n\t\tColumn_177 as string,\n\t\tColumn_178 as string,\n\t\tColumn_179 as string,\n\t\tColumn_180 as string,\n\t\tColumn_181 as string,\n\t\tColumn_182 as string,\n\t\tColumn_183 as string,\n\t\tColumn_184 as string,\n\t\tColumn_185 as string,\n\t\tColumn_186 as string,\n\t\tColumn_187 as string,\n\t\tColumn_188 as string,\n\t\tColumn_189 as string,\n\t\tColumn_190 as string,\n\t\tColumn_191 as string,\n\t\tColumn_192 as string,\n\t\tColumn_193 as string,\n\t\tColumn_194 as string,\n\t\tColumn_195 as string,\n\t\tColumn_196 as string,\n\t\tColumn_197 as string,\n\t\tColumn_198 as string,\n\t\tColumn_199 as string,\n\t\tColumn_200 as string,\n\t\tColumn_201 as string,\n\t\tColumn_202 as string,\n\t\tColumn_203 as string,\n\t\tColumn_204 as string,\n\t\tColumn_205 as string,\n\t\tColumn_206 as string,\n\t\tColumn_207 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'delta',\n\tcontainer: 'adhocextract',\n\tfolderPath: 'deltaFolder',\n\tmergeSchema: false,\n\tautoCompact: false,\n\toptimizedWrite: false,\n\tvacuum: 0,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Excel1')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
 			]
 		},
 		{
@@ -5909,7 +7221,7 @@
 							"name": "DerivedColumn1"
 						}
 					],
-					"script": "source(output(\n\t\tquizReport as ({@version} as short, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as short, {@awardedPercent} as double, {@awardedScore} as short, {@name} as string, {@passingPercent} as short, {@passingScore} as short, {@totalQuestions} as short)[]), questions as (fillInTheBlankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], hotspotQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), hotspots as (freeform as ({@correct} as boolean, {@height} as double, {@label} as string, {@marked} as boolean, {@points} as string, {@width} as double, {@x} as double, {@y} as double)[]), userAnswer as (point as ({@x} as double, {@y} as double)[]))[], matchingQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]))[], multipleChoiceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string))[], multipleChoiceTextQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as short, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], numericQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as short, answers as (equal as short), direction as (text as string), feedback as (text as string))[], sequenceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@originalIndex} as short, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[], typeInQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as string, acceptableAnswers as (answer as string[]), direction as (text as string), feedback as (text as string))[], wordBankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, {_value_} as string)[], text as string[]), direction as (text as string), feedback as (text as string), words as string)[]), quizSettings as ({@maxNormalizedScore} as short, {@maxScore} as short, {@quizType} as string, {@timeLimit} as boolean, passingPercent as short), summary as ({@finishTimestamp} as timestamp, {@passed} as boolean, {@percent} as short, {@score} as short, {@time} as short, variables as (variable as ({@name} as string, {@title} as string, {@value} as string))))\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\trowUrlColumn: 'SourceFilename',\n\tinferDriftedColumnTypes: true,\n\tformat: 'xml',\n\tcontainer: 'adhocextract',\n\tvalidationMode: 'none',\n\tnamespaces: false,\n\twildcardPaths:['*.xml']) ~> source1\nDerivedColumn1 foldDown(unroll(quizReport.questions.multipleChoiceQuestion, quizReport.questions.multipleChoiceQuestion),\n\tmapColumn(\n\t\tquestionid = quizReport.questions.multipleChoiceQuestion.{@id},\n\t\tQuestion = quizReport.questions.multipleChoiceQuestion.direction.text,\n\t\tstatus = quizReport.questions.multipleChoiceQuestion.{@status}\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nsource1 derive(SourceFilename = SourceFilename,\n\t\tsubSourceFilename = toString(iifNull(toString(toTimestamp(\"2018-03-01 11:12:10.615\")),toString(currentTimestamp())))) ~> DerivedColumn1\nFlatten1 sink(input(\n\t\tquizReport as ({@version} as string, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as string, {@awardedPercent} as double, {@awardedScore} as string, {@name} as string, {@passingPercent} as string, {@passingScore} as string, {@totalQuestions} as string)[]), questions as (matchingQuestion as ({@awardedPoints} as string, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as string, {@responseIndex} as string)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as string, {@responseIndex} as string)[])), multipleChoiceQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as string, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string)), multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as string, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[]), quizSettings as ({@maxScore} as string, {@quizType} as string, {@timeLimit} as boolean, passingPercent as string, {@maxNormalizedScore} as string), summary as ({@passed} as boolean, {@percent} as string, {@score} as string, {@time} as string, variables as (variable as ({@name} as string, {@title} as string, {@value} as string)))),\n\t\tSourceFilename as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+					"script": "source(output(\n\t\tquizReport as ({@version} as short, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as short, {@awardedPercent} as double, {@awardedScore} as short, {@name} as string, {@passingPercent} as short, {@passingScore} as short, {@totalQuestions} as short)[]), questions as (fillInTheBlankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], hotspotQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), hotspots as (freeform as ({@correct} as boolean, {@height} as double, {@label} as string, {@marked} as boolean, {@points} as string, {@width} as double, {@x} as double, {@y} as double)[]), userAnswer as (point as ({@x} as double, {@y} as double)[]))[], matchingQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]))[], multipleChoiceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string))[], multipleChoiceTextQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as short, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], numericQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as short, answers as (equal as short), direction as (text as string), feedback as (text as string))[], sequenceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@originalIndex} as short, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[], typeInQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as string, acceptableAnswers as (answer as string[]), direction as (text as string), feedback as (text as string))[], wordBankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, {_value_} as string)[], text as string[]), direction as (text as string), feedback as (text as string), words as string)[]), quizSettings as ({@maxNormalizedScore} as short, {@maxScore} as short, {@quizType} as string, {@timeLimit} as boolean, passingPercent as short), summary as ({@finishTimestamp} as timestamp, {@passed} as boolean, {@percent} as short, {@score} as short, {@time} as short, variables as (variable as ({@name} as string, {@title} as string, {@value} as string))))\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\trowUrlColumn: 'SourceFilename',\n\tformat: 'xml',\n\tcontainer: 'adhocextract',\n\tvalidationMode: 'none',\n\tnamespaces: false,\n\twildcardPaths:['*.xml']) ~> source1\nDerivedColumn1 foldDown(unroll(quizReport.questions.multipleChoiceQuestion, quizReport.questions.multipleChoiceQuestion),\n\tmapColumn(\n\t\tquestionid = quizReport.questions.multipleChoiceQuestion.{@id},\n\t\tQuestion = quizReport.questions.multipleChoiceQuestion.direction.text,\n\t\tstatus = quizReport.questions.multipleChoiceQuestion.{@status}\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nsource1 derive(SourceFilename = SourceFilename,\n\t\tsubSourceFilename = toString(iifNull(toString(toTimestamp(\"2018-03-01 11:12:10.615\")),toString(currentTimestamp())))) ~> DerivedColumn1\nFlatten1 sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tinput(\n\t\tquizReport as ({@version} as string, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as string, {@awardedPercent} as double, {@awardedScore} as string, {@name} as string, {@passingPercent} as string, {@passingScore} as string, {@totalQuestions} as string)[]), questions as (matchingQuestion as ({@awardedPoints} as string, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as string, {@responseIndex} as string)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as string, {@responseIndex} as string)[])), multipleChoiceQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as string, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string)), multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as string, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as string, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[]), quizSettings as ({@maxScore} as string, {@quizType} as string, {@timeLimit} as boolean, passingPercent as string, {@maxNormalizedScore} as string), summary as ({@passed} as boolean, {@percent} as string, {@score} as string, {@time} as string, variables as (variable as ({@name} as string, {@title} as string, {@value} as string)))),\n\t\tSourceFilename as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
 			},
 			"dependsOn": [
@@ -5956,7 +7268,7 @@
 							"name": "Flatten5"
 						}
 					],
-					"script": "source(output(\n\t\tname as string,\n\t\tage as string,\n\t\taddresses as (street as string, city as string, type as string, contact as (number as string, areaCode as string)[])[],\n\t\tfriends as (name as string, city as string, contact as (number as string, areaCode as string)[])[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 100,\n\tdocumentForm: 'singleDocument') ~> source3\nsource3 foldDown(unroll(addresses),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet = addresses.street,\n\t\tcity = addresses.city,\n\t\ttype = addresses.type,\n\t\tcontact = addresses.contact,\n\t\tfriends\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten2\nFlatten4 foldDown(unroll(friends, friends),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet,\n\t\tcity,\n\t\ttype,\n\t\tnumber,\n\t\tareaCode,\n\t\t{friends.name} = friends.name,\n\t\t{friends.city} = friends.city,\n\t\tcontact = friends.contact\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten3\nFlatten2 foldDown(unroll(contact, contact),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet,\n\t\tcity,\n\t\ttype,\n\t\tnumber = contact.number,\n\t\tareaCode = contact.areaCode,\n\t\tfriends\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten4\nFlatten3 foldDown(unroll(contact, contact),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet,\n\t\tcity,\n\t\ttype,\n\t\t{address.number} = number,\n\t\t{address.areaCode} = areaCode,\n\t\t{friends.name},\n\t\t{friends.city},\n\t\tnumber = contact.number,\n\t\tareaCode = contact.areaCode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten5\nFlatten5 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+					"script": "source(output(\n\t\tname as string,\n\t\tage as string,\n\t\taddresses as (street as string, city as string, type as string, contact as (number as string, areaCode as string)[])[],\n\t\tfriends as (name as string, city as string, contact as (number as string, areaCode as string)[])[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument') ~> source3\nsource3 foldDown(unroll(addresses),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet = addresses.street,\n\t\tcity = addresses.city,\n\t\ttype = addresses.type,\n\t\tcontact = addresses.contact,\n\t\tfriends\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten2\nFlatten4 foldDown(unroll(friends, friends),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet,\n\t\tcity,\n\t\ttype,\n\t\tnumber,\n\t\tareaCode,\n\t\t{friends.name} = friends.name,\n\t\t{friends.city} = friends.city,\n\t\tcontact = friends.contact\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten3\nFlatten2 foldDown(unroll(contact, contact),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet,\n\t\tcity,\n\t\ttype,\n\t\tnumber = contact.number,\n\t\tareaCode = contact.areaCode,\n\t\tfriends\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten4\nFlatten3 foldDown(unroll(contact, contact),\n\tmapColumn(\n\t\tname,\n\t\tage,\n\t\tstreet,\n\t\tcity,\n\t\ttype,\n\t\t{address.number} = number,\n\t\t{address.areaCode} = areaCode,\n\t\t{friends.name},\n\t\t{friends.city},\n\t\tnumber = contact.number,\n\t\tareaCode = contact.areaCode\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten5\nFlatten5 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
 			},
 			"dependsOn": [
@@ -6007,7 +7319,7 @@
 							"name": "GetDeltaRecords"
 						}
 					],
-					"script": "source(output(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tREPRINTFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tPURGEDATE as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tMEDCLAIMSFLAG as string,\n\t\tEASYCLAIMFLAG as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tHICAPS as double,\n\t\tPROCESSFLAG as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 1000000,\n\tdocumentForm: 'documentPerLine') ~> CurrentJSONStream\nsource(output(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tREPRINTFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tPURGEDATE as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tMEDCLAIMSFLAG as string,\n\t\tEASYCLAIMFLAG as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tHICAPS as double,\n\t\tPROCESSFLAG as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 1000000,\n\tdocumentForm: 'documentPerLine') ~> StagingJSONStream\nCurrentJSONStream derive(RowHash = crc32(ACCNUMBER,SEQNUMBER,TRANSTYPE,CONSULTDATE,ENTRYDATE,BANKSLIPNUMBER,STATEMENTNUMBER,BATCHNUMBER,PATNUMBER,PATIENTNAME,THIRDPARTYNUMBER,DESCRIPTION1,DESCRIPTION2,DESCRIPTION3,DESCRIPTION4,REFERENCE,HICAPSREFERENCE,HICAPSCLAIMNUMBER,ITEMCODE,SUBITEMCODE,FREQUENCY,DRAWERNAME,BANK,BRANCH,CONSULTDRNUMBER,CONSULTDRNAME,BILLDRNUMBER,PRINTDATE,DELETEDATE,DELETED,CANCELLED,PURGED,CANCELDATE,BANKEDDATE,BANKLOCNUMBER,BANKSTATUS,COMMENT,USERNUMBER,USERNAME,USERTIME,USERBRANCHNUMBER,SHOWINBANKING,LOCNO,TOPRINT,ONHOLD,AMOUNT,PAID,CHEQUES,CASH,CREDITCARD,EFTPOS,DIRECTDEBIT,HICAPS,OTHERAMOUNT,THIRDPARTYAMOUNT,GSTAMOUNT,MARKEDAMOUNT,GSTNUMBER,LABNUMBER,COLORNUMBER,STARTTIME,ENDTIME,MINUTES,STATEKEY,THIRDPARTYPAYMENT,MARKEDWRITEOFF,REPRINTFLAG,AUDITFLAG,RUNNUMBER,HICAPSFLAG,PURGEUSERNAME,ENTRYUSERNAME,PURGEDATE,THIRDPARTYGSTAMOUNT,NEWSLETTERCODE,BANKTYPE,SOUNDNUMBER,ENTRYUSERTIME,MEDCLAIMSFLAG,MEDCLAIMSKEY,MEDCLAIMSEXCLUDE,MEDCLAIMSLINENUMBER,MEDCLAIMSREFNO,MEDCLAIMSGROUPNO,MEDCLAIMSSUBGROUPNO,DELETEUSERNAME,DELETEBRANCHNUMBER,PROCESSFLAG,EASYCLAIMAMOUNT,EASYCLAIMFLAG,MARKEDSNUMBER,SHOWINLAB,SHOWINGST,DELETETIME)) ~> RowHashCurrent\nStagingJSONStream derive(RowHash = crc32(ACCNUMBER,SEQNUMBER,TRANSTYPE,CONSULTDATE,ENTRYDATE,BANKSLIPNUMBER,STATEMENTNUMBER,BATCHNUMBER,PATNUMBER,PATIENTNAME,THIRDPARTYNUMBER,DESCRIPTION1,DESCRIPTION2,DESCRIPTION3,DESCRIPTION4,REFERENCE,HICAPSREFERENCE,HICAPSCLAIMNUMBER,ITEMCODE,SUBITEMCODE,FREQUENCY,DRAWERNAME,BANK,BRANCH,CONSULTDRNUMBER,CONSULTDRNAME,BILLDRNUMBER,PRINTDATE,DELETEDATE,DELETED,CANCELLED,PURGED,CANCELDATE,BANKEDDATE,BANKLOCNUMBER,BANKSTATUS,COMMENT,USERNUMBER,USERNAME,USERTIME,USERBRANCHNUMBER,SHOWINBANKING,LOCNO,TOPRINT,ONHOLD,AMOUNT,PAID,CHEQUES,CASH,CREDITCARD,EFTPOS,DIRECTDEBIT,HICAPS,OTHERAMOUNT,THIRDPARTYAMOUNT,GSTAMOUNT,MARKEDAMOUNT,GSTNUMBER,LABNUMBER,COLORNUMBER,STARTTIME,ENDTIME,MINUTES,STATEKEY,THIRDPARTYPAYMENT,MARKEDWRITEOFF,REPRINTFLAG,AUDITFLAG,RUNNUMBER,HICAPSFLAG,PURGEUSERNAME,ENTRYUSERNAME,PURGEDATE,THIRDPARTYGSTAMOUNT,NEWSLETTERCODE,BANKTYPE,SOUNDNUMBER,ENTRYUSERTIME,MEDCLAIMSFLAG,MEDCLAIMSKEY,MEDCLAIMSEXCLUDE,MEDCLAIMSLINENUMBER,MEDCLAIMSREFNO,MEDCLAIMSGROUPNO,MEDCLAIMSSUBGROUPNO,DELETEUSERNAME,DELETEBRANCHNUMBER,PROCESSFLAG,EASYCLAIMAMOUNT,EASYCLAIMFLAG,MARKEDSNUMBER,SHOWINLAB,SHOWINGST,DELETETIME)) ~> RowHashStaging\nRowHashCurrent, RowHashStaging exists(RowHashCurrent@RowHash == RowHashStaging@RowHash,\n\tnegate:true,\n\tbroadcast: 'auto')~> GetDeltaRecords\nGetDeltaRecords sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkDelta"
+					"script": "source(output(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tREPRINTFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tPURGEDATE as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tMEDCLAIMSFLAG as string,\n\t\tEASYCLAIMFLAG as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tHICAPS as double,\n\t\tPROCESSFLAG as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 1000000,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> CurrentJSONStream\nsource(output(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tREPRINTFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tPURGEDATE as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tMEDCLAIMSFLAG as string,\n\t\tEASYCLAIMFLAG as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tHICAPS as double,\n\t\tPROCESSFLAG as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 1000000,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> StagingJSONStream\nCurrentJSONStream derive(RowHash = crc32(ACCNUMBER,SEQNUMBER,TRANSTYPE,CONSULTDATE,ENTRYDATE,BANKSLIPNUMBER,STATEMENTNUMBER,BATCHNUMBER,PATNUMBER,PATIENTNAME,THIRDPARTYNUMBER,DESCRIPTION1,DESCRIPTION2,DESCRIPTION3,DESCRIPTION4,REFERENCE,HICAPSREFERENCE,HICAPSCLAIMNUMBER,ITEMCODE,SUBITEMCODE,FREQUENCY,DRAWERNAME,BANK,BRANCH,CONSULTDRNUMBER,CONSULTDRNAME,BILLDRNUMBER,PRINTDATE,DELETEDATE,DELETED,CANCELLED,PURGED,CANCELDATE,BANKEDDATE,BANKLOCNUMBER,BANKSTATUS,COMMENT,USERNUMBER,USERNAME,USERTIME,USERBRANCHNUMBER,SHOWINBANKING,LOCNO,TOPRINT,ONHOLD,AMOUNT,PAID,CHEQUES,CASH,CREDITCARD,EFTPOS,DIRECTDEBIT,HICAPS,OTHERAMOUNT,THIRDPARTYAMOUNT,GSTAMOUNT,MARKEDAMOUNT,GSTNUMBER,LABNUMBER,COLORNUMBER,STARTTIME,ENDTIME,MINUTES,STATEKEY,THIRDPARTYPAYMENT,MARKEDWRITEOFF,REPRINTFLAG,AUDITFLAG,RUNNUMBER,HICAPSFLAG,PURGEUSERNAME,ENTRYUSERNAME,PURGEDATE,THIRDPARTYGSTAMOUNT,NEWSLETTERCODE,BANKTYPE,SOUNDNUMBER,ENTRYUSERTIME,MEDCLAIMSFLAG,MEDCLAIMSKEY,MEDCLAIMSEXCLUDE,MEDCLAIMSLINENUMBER,MEDCLAIMSREFNO,MEDCLAIMSGROUPNO,MEDCLAIMSSUBGROUPNO,DELETEUSERNAME,DELETEBRANCHNUMBER,PROCESSFLAG,EASYCLAIMAMOUNT,EASYCLAIMFLAG,MARKEDSNUMBER,SHOWINLAB,SHOWINGST,DELETETIME)) ~> RowHashCurrent\nStagingJSONStream derive(RowHash = crc32(ACCNUMBER,SEQNUMBER,TRANSTYPE,CONSULTDATE,ENTRYDATE,BANKSLIPNUMBER,STATEMENTNUMBER,BATCHNUMBER,PATNUMBER,PATIENTNAME,THIRDPARTYNUMBER,DESCRIPTION1,DESCRIPTION2,DESCRIPTION3,DESCRIPTION4,REFERENCE,HICAPSREFERENCE,HICAPSCLAIMNUMBER,ITEMCODE,SUBITEMCODE,FREQUENCY,DRAWERNAME,BANK,BRANCH,CONSULTDRNUMBER,CONSULTDRNAME,BILLDRNUMBER,PRINTDATE,DELETEDATE,DELETED,CANCELLED,PURGED,CANCELDATE,BANKEDDATE,BANKLOCNUMBER,BANKSTATUS,COMMENT,USERNUMBER,USERNAME,USERTIME,USERBRANCHNUMBER,SHOWINBANKING,LOCNO,TOPRINT,ONHOLD,AMOUNT,PAID,CHEQUES,CASH,CREDITCARD,EFTPOS,DIRECTDEBIT,HICAPS,OTHERAMOUNT,THIRDPARTYAMOUNT,GSTAMOUNT,MARKEDAMOUNT,GSTNUMBER,LABNUMBER,COLORNUMBER,STARTTIME,ENDTIME,MINUTES,STATEKEY,THIRDPARTYPAYMENT,MARKEDWRITEOFF,REPRINTFLAG,AUDITFLAG,RUNNUMBER,HICAPSFLAG,PURGEUSERNAME,ENTRYUSERNAME,PURGEDATE,THIRDPARTYGSTAMOUNT,NEWSLETTERCODE,BANKTYPE,SOUNDNUMBER,ENTRYUSERTIME,MEDCLAIMSFLAG,MEDCLAIMSKEY,MEDCLAIMSEXCLUDE,MEDCLAIMSLINENUMBER,MEDCLAIMSREFNO,MEDCLAIMSGROUPNO,MEDCLAIMSSUBGROUPNO,DELETEUSERNAME,DELETEBRANCHNUMBER,PROCESSFLAG,EASYCLAIMAMOUNT,EASYCLAIMFLAG,MARKEDSNUMBER,SHOWINLAB,SHOWINGST,DELETETIME)) ~> RowHashStaging\nRowHashCurrent, RowHashStaging exists(RowHashCurrent@RowHash == RowHashStaging@RowHash,\n\tnegate:true,\n\tbroadcast: 'auto')~> GetDeltaRecords\nGetDeltaRecords sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> SinkDelta"
 				}
 			},
 			"dependsOn": [
@@ -6042,7 +7354,7 @@
 						}
 					],
 					"transformations": [],
-					"script": "parameters{\n\tcsvFileName as string (\"filename.csv\")\n}\nsource(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> sharePointJson\nsharePointJson sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[($csvFileName)],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> toCSVinADL"
+					"script": "parameters{\n\tcsvFileName as string (\"filename.csv\")\n}\nsource(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> sharePointJson\nsharePointJson sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[($csvFileName)],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> toCSVinADL"
 				}
 			},
 			"dependsOn": [
@@ -6096,7 +7408,7 @@
 							"name": "SurrogateKey2"
 						}
 					],
-					"script": "source(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source2\nSurrogateKey1 derive(Column_1 = sink1#lookup(key)) ~> DerivedColumn1\nsource1 keyGenerate(output(key as long),\n\tstartAt: 1L) ~> SurrogateKey1\nsource2 keyGenerate(output(key as long),\n\tstartAt: 1L) ~> SurrogateKey2\nSurrogateKey2 sink(skipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tkeys:['key'],\n\tstore: 'cache',\n\tformat: 'inline',\n\toutput: false,\n\tsaveOrder: 1) ~> sink1\nDerivedColumn1 sink(input(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tHICAPS as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tREPRINTFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tPURGEDATE as string,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSFLAG as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tPROCESSFLAG as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tEASYCLAIMFLAG as string,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 2) ~> sink2"
+					"script": "source(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string,\n\t\tColumn_12 as string,\n\t\tColumn_13 as string,\n\t\tColumn_14 as string,\n\t\tColumn_15 as string,\n\t\tColumn_16 as string,\n\t\tColumn_17 as string,\n\t\tColumn_18 as string,\n\t\tColumn_19 as string,\n\t\tColumn_20 as string,\n\t\tColumn_21 as string,\n\t\tColumn_22 as string,\n\t\tColumn_23 as string,\n\t\tColumn_24 as string,\n\t\tColumn_25 as string,\n\t\tColumn_26 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source2\nSurrogateKey1 derive(Column_1 = sink1#lookup(key)) ~> DerivedColumn1\nsource1 keyGenerate(output(key as long),\n\tstartAt: 1L) ~> SurrogateKey1\nsource2 keyGenerate(output(key as long),\n\tstartAt: 1L) ~> SurrogateKey2\nSurrogateKey2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tkeys:['key'],\n\tstore: 'cache',\n\tformat: 'inline',\n\toutput: false,\n\tsaveOrder: 1) ~> sink1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tACCNUMBER as string,\n\t\tSEQNUMBER as string,\n\t\tTRANSTYPE as string,\n\t\tCONSULTDATE as string,\n\t\tENTRYDATE as string,\n\t\tBANKSLIPNUMBER as string,\n\t\tSTATEMENTNUMBER as string,\n\t\tBATCHNUMBER as string,\n\t\tPATNUMBER as string,\n\t\tPATIENTNAME as string,\n\t\tTHIRDPARTYNUMBER as string,\n\t\tDESCRIPTION1 as string,\n\t\tDESCRIPTION2 as string,\n\t\tDESCRIPTION3 as string,\n\t\tDESCRIPTION4 as string,\n\t\tREFERENCE as string,\n\t\tHICAPSREFERENCE as string,\n\t\tHICAPSCLAIMNUMBER as string,\n\t\tITEMCODE as string,\n\t\tSUBITEMCODE as string,\n\t\tFREQUENCY as double,\n\t\tDRAWERNAME as string,\n\t\tBANK as string,\n\t\tBRANCH as string,\n\t\tCONSULTDRNUMBER as string,\n\t\tCONSULTDRNAME as string,\n\t\tBILLDRNUMBER as string,\n\t\tPRINTDATE as string,\n\t\tDELETEDATE as string,\n\t\tDELETED as string,\n\t\tCANCELLED as string,\n\t\tPURGED as string,\n\t\tCANCELDATE as string,\n\t\tBANKEDDATE as string,\n\t\tBANKLOCNUMBER as string,\n\t\tBANKSTATUS as string,\n\t\tCOMMENT as string,\n\t\tUSERNUMBER as string,\n\t\tUSERNAME as string,\n\t\tUSERTIME as string,\n\t\tUSERBRANCHNUMBER as string,\n\t\tSHOWINBANKING as string,\n\t\tLOCNO as string,\n\t\tTOPRINT as string,\n\t\tONHOLD as string,\n\t\tAMOUNT as double,\n\t\tPAID as double,\n\t\tCHEQUES as double,\n\t\tCASH as double,\n\t\tCREDITCARD as double,\n\t\tEFTPOS as double,\n\t\tDIRECTDEBIT as double,\n\t\tHICAPS as double,\n\t\tOTHERAMOUNT as double,\n\t\tTHIRDPARTYAMOUNT as double,\n\t\tGSTAMOUNT as double,\n\t\tMARKEDAMOUNT as double,\n\t\tGSTNUMBER as string,\n\t\tLABNUMBER as string,\n\t\tCOLORNUMBER as string,\n\t\tSTARTTIME as string,\n\t\tENDTIME as string,\n\t\tMINUTES as string,\n\t\tSTATEKEY as string,\n\t\tTHIRDPARTYPAYMENT as string,\n\t\tMARKEDWRITEOFF as double,\n\t\tREPRINTFLAG as string,\n\t\tAUDITFLAG as string,\n\t\tRUNNUMBER as string,\n\t\tHICAPSFLAG as string,\n\t\tPURGEUSERNAME as string,\n\t\tENTRYUSERNAME as string,\n\t\tPURGEDATE as string,\n\t\tTHIRDPARTYGSTAMOUNT as double,\n\t\tNEWSLETTERCODE as string,\n\t\tBANKTYPE as string,\n\t\tSOUNDNUMBER as string,\n\t\tENTRYUSERTIME as string,\n\t\tMEDCLAIMSFLAG as string,\n\t\tMEDCLAIMSKEY as string,\n\t\tMEDCLAIMSEXCLUDE as string,\n\t\tMEDCLAIMSLINENUMBER as string,\n\t\tMEDCLAIMSREFNO as string,\n\t\tMEDCLAIMSGROUPNO as string,\n\t\tMEDCLAIMSSUBGROUPNO as string,\n\t\tDELETEUSERNAME as string,\n\t\tDELETEBRANCHNUMBER as string,\n\t\tPROCESSFLAG as string,\n\t\tEASYCLAIMAMOUNT as double,\n\t\tEASYCLAIMFLAG as string,\n\t\tMARKEDSNUMBER as string,\n\t\tSHOWINLAB as string,\n\t\tSHOWINGST as string,\n\t\tDELETETIME as string,\n\t\tSOEPAYFLAG as string,\n\t\tTRANSACTIONREFERENCE as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 2) ~> sink2"
 				}
 			},
 			"dependsOn": [
@@ -6139,6 +7451,40 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/dataflow7')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"linkedService": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "csvOutput",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: true,\n\tformat: 'delta',\n\tcontainer: 'adhocextract',\n\tfolderPath: 'importSchemaTestFolder') ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]",
+				"[concat(variables('factoryId'), '/datasets/csvOutput')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dataflowDB')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -6168,7 +7514,7 @@
 							"name": "DerivedColumn1"
 						}
 					],
-					"script": "source(output(\n\t\tColID as integer,\n\t\tColGUID as string,\n\t\tColInt as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source1\nsource1 derive(ColGUID = lower(ColGUID)) ~> DerivedColumn1\nDerivedColumn1 sink(input(\n\t\tunique as string,\n\t\tfirstcol as string,\n\t\tseccol as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink1"
+					"script": "source(output(\n\t\tColID as integer,\n\t\tColGUID as string,\n\t\tColInt as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> source1\nsource1 derive(ColGUID = lower(ColGUID)) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tunique as string,\n\t\tfirstcol as string,\n\t\tseccol as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink1"
 				}
 			},
 			"dependsOn": [
@@ -6205,7 +7551,7 @@
 							"name": "FlattenPayments"
 						}
 					],
-					"script": "parameters{\n\tsource_location as string ('Inbound/Raw/NCR_Pulse/Sales/Stream/Incremental/20201119/2225'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tchecks as (clears as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string)), type as string, typeId as integer)[], closed as boolean, comps as (amount as double, createdOn as string, id as integer, label as string, linkedItems as (amount as double, id as integer)[], note as string, responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[], events as (time as string, type as string)[], grandAmount as double, grossAmount as double, groupInfo as (id as integer, label as string), guestCounting as (guests as double, mode as string), id as integer, isRefund as boolean, isTaxExemptApplied as boolean, items as (amount as double, categories as (id as short, name as string, type as string)[], createdOn as string, giftCard as boolean, id as integer, label as string, modifierInfo as (id as (id as short, label as string), type as string), netAmount as double, orderMode as (id as short, label as string), originalPrice as double, parentItemId as integer, period as (id as short, label as string), processedInKitchen as boolean, quantity as double, responsibleEmployeeId as integer, responsibleEmployees as (employee as (id as integer, name as string)), revenue as boolean, seat as boolean, typeId as integer)[], netAmount as double, payments as (amount as double, card as string, createdOn as string, id as integer, label as string, responsibleEmployees as (employee as (id as integer, name as string)), tip as double, type as string, typeId as short)[], period as (id as short, label as string), printedCheckId as integer, responsibleEmployees as (id as integer, isTippableEmployee as boolean, name as string, roleId as short, roleName as string, shiftId as boolean, time as string)[], revenueCenter as (id as short, label as string), surcharges as (accounting as string, amount as double, createdOn as string, id as string, label as string, linkedItems as integer[], rate as double, taxableSales as double, type as string, typeId as short)[], terminalId as short, total as double, training as boolean, voids as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[])[],\n\t\tdob as string,\n\t\tlink as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as string,\n\t\tstoreId as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument',\n\twildcardPaths:['FlattenIssueInput']) ~> InputJson\nInputJson foldDown(unroll(checks.payments, checks.payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tpayments = checks.payments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nFlattenPayments sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SinkChecksPayments"
+					"script": "parameters{\n\tsource_location as string ('Inbound/Raw/NCR_Pulse/Sales/Stream/Incremental/20201119/2225'),\n\ttime_stamp as string (''),\n\tdob as string (''),\n\tbatch_window as string (''),\n\tstart_time as string ('')\n}\nsource(output(\n\t\tchecks as (clears as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string)), type as string, typeId as integer)[], closed as boolean, comps as (amount as double, createdOn as string, id as integer, label as string, linkedItems as (amount as double, id as integer)[], note as string, responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[], events as (time as string, type as string)[], grandAmount as double, grossAmount as double, groupInfo as (id as integer, label as string), guestCounting as (guests as double, mode as string), id as integer, isRefund as boolean, isTaxExemptApplied as boolean, items as (amount as double, categories as (id as short, name as string, type as string)[], createdOn as string, giftCard as boolean, id as integer, label as string, modifierInfo as (id as (id as short, label as string), type as string), netAmount as double, orderMode as (id as short, label as string), originalPrice as double, parentItemId as integer, period as (id as short, label as string), processedInKitchen as boolean, quantity as double, responsibleEmployeeId as integer, responsibleEmployees as (employee as (id as integer, name as string)), revenue as boolean, seat as boolean, typeId as integer)[], netAmount as double, payments as (amount as double, card as string, createdOn as string, id as integer, label as string, responsibleEmployees as (employee as (id as integer, name as string)), tip as double, type as string, typeId as short)[], period as (id as short, label as string), printedCheckId as integer, responsibleEmployees as (id as integer, isTippableEmployee as boolean, name as string, roleId as short, roleName as string, shiftId as boolean, time as string)[], revenueCenter as (id as short, label as string), surcharges as (accounting as string, amount as double, createdOn as string, id as string, label as string, linkedItems as integer[], rate as double, taxableSales as double, type as string, typeId as short)[], terminalId as short, total as double, training as boolean, voids as (amount as double, createdOn as string, id as string, label as string, linkedItems as (amount as double, id as integer)[], responsibleEmployees as (employee as (id as integer, name as string), manager as (id as integer, name as string)), type as string, typeId as short)[])[],\n\t\tdob as string,\n\t\tlink as string,\n\t\tmarker as string,\n\t\tmoreDataImmediatelyAvailable as string,\n\t\tstoreId as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'singleDocument',\n\twildcardPaths:['FlattenIssueInput']) ~> InputJson\nInputJson foldDown(unroll(checks.payments, checks.payments),\n\tmapColumn(\n\t\tstoreId,\n\t\tprintedCheckId = checks.printedCheckId,\n\t\tpayments = checks.payments,\n\t\tdob\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> FlattenPayments\nFlattenPayments sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tstoreId,\n\t\tdob,\n\t\ttip = payments.tip,\n\t\ttype = payments.type,\n\t\tcard = payments.card,\n\t\tid = payments.id,\n\t\ttypeId = payments.typeId,\n\t\tlabel = payments.label,\n\t\tamount = payments.amount,\n\t\tcreatedOn = payments.createdOn,\n\t\t{responsibleEmployees.employee.id} = payments.responsibleEmployees.employee.id,\n\t\t{responsibleEmployees.employee.name} = payments.responsibleEmployees.employee.name,\n\t\tprintedCheckId\n\t)) ~> SinkChecksPayments"
 				}
 			},
 			"dependsOn": [
@@ -6243,13 +7589,25 @@
 							"name": "Flatten1"
 						}
 					],
-					"script": "source(output(\n\t\tquizReport as ({@version} as short, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as short, {@awardedPercent} as double, {@awardedScore} as short, {@name} as string, {@passingPercent} as short, {@passingScore} as short, {@totalQuestions} as short)[]), questions as (fillInTheBlankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], hotspotQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), hotspots as (freeform as ({@correct} as boolean, {@height} as double, {@label} as string, {@marked} as boolean, {@points} as string, {@width} as double, {@x} as double, {@y} as double)[]), userAnswer as (point as ({@x} as double, {@y} as double)[]))[], matchingQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]))[], multipleChoiceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string))[], multipleChoiceTextQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as short, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], numericQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as short, answers as (equal as short), direction as (text as string), feedback as (text as string))[], sequenceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@originalIndex} as short, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[], typeInQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as string, acceptableAnswers as (answer as string[]), direction as (text as string), feedback as (text as string))[], wordBankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, {_value_} as string)[], text as string[]), direction as (text as string), feedback as (text as string), words as string)[]), quizSettings as ({@maxNormalizedScore} as short, {@maxScore} as short, {@quizType} as string, {@timeLimit} as boolean, passingPercent as short), summary as ({@finishTimestamp} as timestamp, {@passed} as boolean, {@percent} as short, {@score} as short, {@time} as short, variables as (variable as ({@name} as string, {@title} as string, {@value} as string))))\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\trowUrlColumn: 'SourceFilename',\n\tinferDriftedColumnTypes: true,\n\tformat: 'xml',\n\tcontainer: 'adhocextract',\n\tvalidationMode: 'none',\n\tnamespaces: false,\n\twildcardPaths:['*.xml']) ~> source1\nsource1 foldDown(unroll(quizReport.questions.multipleChoiceQuestion, quizReport.questions.multipleChoiceQuestion),\n\tmapColumn(\n\t\tquestionid = quizReport.questions.multipleChoiceQuestion.{@id},\n\t\tQuestion = quizReport.questions.multipleChoiceQuestion.direction.text,\n\t\tstatus = quizReport.questions.multipleChoiceQuestion.{@status}\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nFlatten1 sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+					"script": "source(output(\n\t\tquizReport as ({@version} as short, {@xmlns} as string, {@xmlns:xsi} as string, {@xsi:schemaLocation} as string, groups as (group as ({@answeredQuestions} as short, {@awardedPercent} as double, {@awardedScore} as short, {@name} as string, {@passingPercent} as short, {@passingScore} as short, {@totalQuestions} as short)[]), questions as (fillInTheBlankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], hotspotQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), hotspots as (freeform as ({@correct} as boolean, {@height} as double, {@label} as string, {@marked} as boolean, {@points} as string, {@width} as double, {@x} as double, {@y} as double)[]), userAnswer as (point as ({@x} as double, {@y} as double)[]))[], matchingQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, direction as (text as string), feedback as (text as string), matches as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]), premises as (premise as (text as string)[]), responses as (response as (text as string)[]), userAnswer as (match as ({@premiseIndex} as short, {@responseIndex} as short)[]))[], multipleChoiceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as string)[]), direction as (text as string), feedback as (text as string))[], multipleChoiceTextQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as short, answer as string[])[], text as string[]), direction as (text as string), feedback as (text as string))[], multipleResponseQuestion as ({@awardedPoints} as boolean, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@correct} as boolean, {@selected} as boolean, text as string)[]), direction as (text as string), feedback as (text as string))[], numericQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as short, answers as (equal as short), direction as (text as string), feedback as (text as string))[], sequenceQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as (answer as ({@originalIndex} as short, text as string)[]), direction as (text as string), feedback as (text as string))[], trueFalseQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, answers as ({@correctAnswerIndex} as boolean, {@userAnswerIndex} as boolean, answer as (text as boolean)[]), direction as (text as string), feedback as (text as string))[], typeInQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, {@userAnswer} as string, acceptableAnswers as (answer as string[]), direction as (text as string), feedback as (text as string))[], wordBankQuestion as ({@awardedPoints} as short, {@evaluationEnabled} as boolean, {@id} as string, {@maxAttempts} as boolean, {@maxPoints} as short, {@status} as string, {@usedAttempts} as boolean, details as (blank as ({@correct} as boolean, {@userAnswer} as string, {_value_} as string)[], text as string[]), direction as (text as string), feedback as (text as string), words as string)[]), quizSettings as ({@maxNormalizedScore} as short, {@maxScore} as short, {@quizType} as string, {@timeLimit} as boolean, passingPercent as short), summary as ({@finishTimestamp} as timestamp, {@passed} as boolean, {@percent} as short, {@score} as short, {@time} as short, variables as (variable as ({@name} as string, {@title} as string, {@value} as string))))\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\trowUrlColumn: 'SourceFilename',\n\tformat: 'xml',\n\tcontainer: 'adhocextract',\n\tvalidationMode: 'none',\n\tnamespaces: false,\n\twildcardPaths:['*.xml']) ~> source1\nsource1 foldDown(unroll(quizReport.questions.multipleChoiceQuestion, quizReport.questions.multipleChoiceQuestion),\n\tmapColumn(\n\t\tquestionid = quizReport.questions.multipleChoiceQuestion.{@id},\n\t\tQuestion = quizReport.questions.multipleChoiceQuestion.direction.text,\n\t\tstatus = quizReport.questions.multipleChoiceQuestion.{@status}\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nFlatten1 sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tinput(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]",
 				"[concat(variables('factoryId'), '/datasets/currentOutput')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/credential1')]",
+			"type": "Microsoft.DataFactory/factories/credentials",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "ManagedIdentity",
+				"typeProperties": {
+					"resourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/keshUami"
+				}
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/default')]",
@@ -6282,31 +7640,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction1_functionKey')]"
-					},
-					"authenticationType": "MSI",
-					"resource": "https://keshfunctions.azurewebsites.net"
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SelfHosted')]"
 			]
 		}
 	]

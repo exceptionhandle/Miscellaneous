@@ -7,90 +7,6 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "KeshWestEurope"
 		},
-		"AzureDatabricks7_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
-		},
-		"databricksRepo_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'databricksRepo'"
-		},
-		"keshFunctionsTest_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'keshFunctionsTest'"
-		},
-		"linkedService2_clusterPassword": {
-			"type": "secureString",
-			"metadata": "Secure string for 'clusterPassword' of 'linkedService2'"
-		},
-		"linkedService2_clusterSshPassword": {
-			"type": "secureString",
-			"metadata": "Secure string for 'clusterSshPassword' of 'linkedService2'"
-		},
-		"linkedService2_servicePrincipalKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService2'"
-		},
-		"linkedService3_clusterPassword": {
-			"type": "secureString",
-			"metadata": "Secure string for 'clusterPassword' of 'linkedService3'"
-		},
-		"linkedService3_clusterSshPassword": {
-			"type": "secureString",
-			"metadata": "Secure string for 'clusterSshPassword' of 'linkedService3'"
-		},
-		"linkedService3_servicePrincipalKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
-		},
-		"AzureFunction1_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
-		},
-		"hdiVNetLS_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'hdiVNetLS'"
-		},
-		"keshhdioutboundvnet_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'keshhdioutboundvnet'"
-		},
-		"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctiontest.azurewebsites.net"
-		},
-		"linkedService2_properties_typeProperties_hostSubscriptionId": {
-			"type": "string",
-			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
-		},
-		"linkedService2_properties_typeProperties_clusterResourceGroup": {
-			"type": "string",
-			"defaultValue": "keshADF_test"
-		},
-		"linkedService2_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "ghjgdskfds"
-		},
-		"linkedService2_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-		},
-		"linkedService3_properties_typeProperties_hostSubscriptionId": {
-			"type": "string",
-			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
-		},
-		"linkedService3_properties_typeProperties_clusterResourceGroup": {
-			"type": "string",
-			"defaultValue": "keshADF_test"
-		},
-		"linkedService3_properties_typeProperties_servicePrincipalId": {
-			"type": "string",
-			"defaultValue": "fe273844-c808-40b8-ad85-94a46f737731"
-		},
-		"linkedService3_properties_typeProperties_tenant": {
-			"type": "string",
-			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-		},
 		"PrivateLinkSerHDI_properties_privateLinkResourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/headnode-c9e77827b58a46c6ae181f5e8890ee1a"
@@ -118,751 +34,12 @@
 			"defaultValue": [
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
-		},
-		"hdiVNetLS_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "admin"
-		},
-		"keshhdioutboundvnet_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "admin"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/second')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "second.json",
-						"container": "adhocextract"
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"ACCNUMBER": {
-							"type": "string"
-						},
-						"SEQNUMBER": {
-							"type": "integer"
-						},
-						"TRANSTYPE": {
-							"type": "integer"
-						},
-						"CONSULTDATE": {
-							"type": "string"
-						},
-						"ENTRYDATE": {
-							"type": "string"
-						},
-						"BANKSLIPNUMBER": {
-							"type": "integer"
-						},
-						"STATEMENTNUMBER": {
-							"type": "integer"
-						},
-						"BATCHNUMBER": {
-							"type": "integer"
-						},
-						"PATNUMBER": {
-							"type": "string"
-						},
-						"PATIENTNAME": {
-							"type": "string"
-						},
-						"THIRDPARTYNUMBER": {
-							"type": "string"
-						},
-						"DESCRIPTION1": {
-							"type": "string"
-						},
-						"DESCRIPTION2": {
-							"type": "string"
-						},
-						"DESCRIPTION3": {
-							"type": "string"
-						},
-						"DESCRIPTION4": {
-							"type": "string"
-						},
-						"REFERENCE": {
-							"type": "string"
-						},
-						"HICAPSREFERENCE": {
-							"type": "string"
-						},
-						"HICAPSCLAIMNUMBER": {
-							"type": "string"
-						},
-						"ITEMCODE": {
-							"type": "string"
-						},
-						"SUBITEMCODE": {
-							"type": "string"
-						},
-						"FREQUENCY": {
-							"type": "number"
-						},
-						"DRAWERNAME": {
-							"type": "string"
-						},
-						"BANK": {
-							"type": "string"
-						},
-						"BRANCH": {
-							"type": "string"
-						},
-						"CONSULTDRNUMBER": {
-							"type": "integer"
-						},
-						"CONSULTDRNAME": {
-							"type": "string"
-						},
-						"BILLDRNUMBER": {
-							"type": "integer"
-						},
-						"PRINTDATE": {
-							"type": "null"
-						},
-						"DELETEDATE": {
-							"type": "string"
-						},
-						"DELETED": {
-							"type": "integer"
-						},
-						"CANCELLED": {
-							"type": "integer"
-						},
-						"PURGED": {
-							"type": "integer"
-						},
-						"CANCELDATE": {
-							"type": "null"
-						},
-						"BANKEDDATE": {
-							"type": "null"
-						},
-						"BANKLOCNUMBER": {
-							"type": "integer"
-						},
-						"BANKSTATUS": {
-							"type": "string"
-						},
-						"COMMENT": {
-							"type": "string"
-						},
-						"USERNUMBER": {
-							"type": "integer"
-						},
-						"USERNAME": {
-							"type": "string"
-						},
-						"USERTIME": {
-							"type": "string"
-						},
-						"USERBRANCHNUMBER": {
-							"type": "integer"
-						},
-						"SHOWINBANKING": {
-							"type": "integer"
-						},
-						"LOCNO": {
-							"type": "integer"
-						},
-						"TOPRINT": {
-							"type": "integer"
-						},
-						"ONHOLD": {
-							"type": "integer"
-						},
-						"AMOUNT": {
-							"type": "number"
-						},
-						"PAID": {
-							"type": "number"
-						},
-						"CHEQUES": {
-							"type": "number"
-						},
-						"CASH": {
-							"type": "number"
-						},
-						"CREDITCARD": {
-							"type": "number"
-						},
-						"EFTPOS": {
-							"type": "number"
-						},
-						"DIRECTDEBIT": {
-							"type": "number"
-						},
-						"HICAPS": {
-							"type": "number"
-						},
-						"OTHERAMOUNT": {
-							"type": "number"
-						},
-						"THIRDPARTYAMOUNT": {
-							"type": "number"
-						},
-						"GSTAMOUNT": {
-							"type": "number"
-						},
-						"MARKEDAMOUNT": {
-							"type": "number"
-						},
-						"GSTNUMBER": {
-							"type": "integer"
-						},
-						"LABNUMBER": {
-							"type": "integer"
-						},
-						"COLORNUMBER": {
-							"type": "integer"
-						},
-						"STARTTIME": {
-							"type": "string"
-						},
-						"ENDTIME": {
-							"type": "string"
-						},
-						"MINUTES": {
-							"type": "integer"
-						},
-						"STATEKEY": {
-							"type": "string"
-						},
-						"THIRDPARTYPAYMENT": {
-							"type": "integer"
-						},
-						"MARKEDWRITEOFF": {
-							"type": "number"
-						},
-						"REPRINTFLAG": {
-							"type": "integer"
-						},
-						"AUDITFLAG": {
-							"type": "integer"
-						},
-						"RUNNUMBER": {
-							"type": "integer"
-						},
-						"HICAPSFLAG": {
-							"type": "integer"
-						},
-						"PURGEUSERNAME": {
-							"type": "string"
-						},
-						"ENTRYUSERNAME": {
-							"type": "string"
-						},
-						"PURGEDATE": {
-							"type": "null"
-						},
-						"THIRDPARTYGSTAMOUNT": {
-							"type": "number"
-						},
-						"NEWSLETTERCODE": {
-							"type": "string"
-						},
-						"BANKTYPE": {
-							"type": "integer"
-						},
-						"SOUNDNUMBER": {
-							"type": "integer"
-						},
-						"ENTRYUSERTIME": {
-							"type": "string"
-						},
-						"MEDCLAIMSFLAG": {
-							"type": "integer"
-						},
-						"MEDCLAIMSKEY": {
-							"type": "string"
-						},
-						"MEDCLAIMSEXCLUDE": {
-							"type": "integer"
-						},
-						"MEDCLAIMSLINENUMBER": {
-							"type": "integer"
-						},
-						"MEDCLAIMSREFNO": {
-							"type": "integer"
-						},
-						"MEDCLAIMSGROUPNO": {
-							"type": "integer"
-						},
-						"MEDCLAIMSSUBGROUPNO": {
-							"type": "integer"
-						},
-						"DELETEUSERNAME": {
-							"type": "string"
-						},
-						"DELETEBRANCHNUMBER": {
-							"type": "integer"
-						},
-						"PROCESSFLAG": {
-							"type": "integer"
-						},
-						"EASYCLAIMAMOUNT": {
-							"type": "number"
-						},
-						"EASYCLAIMFLAG": {
-							"type": "integer"
-						},
-						"MARKEDSNUMBER": {
-							"type": "null"
-						},
-						"SHOWINLAB": {
-							"type": "integer"
-						},
-						"SHOWINGST": {
-							"type": "integer"
-						},
-						"DELETETIME": {
-							"type": "string"
-						},
-						"SOEPAYFLAG": {
-							"type": "integer"
-						},
-						"TRANSACTIONREFERENCE": {
-							"type": "string"
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/stagingOutput')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "adhocextract"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/xmlinput')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "IFP_OON_Outreach_Template_vw.csv",
-						"container": "adhocextractnew"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDatabricks2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "https://management.core.windows.net/\nhttps://login.microsoftonline.com/<tenantid>/oauth2/token\njob-3-run-1\nx6rm6~~96~srv~m0x_~SS23PH.QU7_wli3\naccess token: dapi16711286f53bcbaa3753acdc23f0bfcb\ncluster node type: Standard_DS3_v2\nspark version: 2.4.3\ncluster ID: 0920-185412-happy305",
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
-					"newClusterNodeType": "Standard_NC12",
-					"newClusterNumOfWorker": "1",
-					"newClusterVersion": "5.5.x-gpu-scala2.11",
-					"newClusterInitScripts": [],
-					"enableLocalDiskEncryption": true
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDatabricks7')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"name": {
-						"type": "String",
-						"defaultValue": "geetha"
-					}
-				},
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-8909143117346346.6.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricks7_accessToken')]"
-					},
-					"newClusterNodeType": "Standard_D3_v2",
-					"newClusterNumOfWorker": "1",
-					"newClusterSparkConf": {
-						"key": {
-							"value": "@linkedService().name",
-							"type": "Expression"
-						},
-						"key2": "trl"
-					},
-					"newClusterSparkEnvVars": {
-						"re": "re",
-						"typ": {
-							"value": "@linkedService().name",
-							"type": "Expression"
-						}
-					},
-					"newClusterCustomTags": {
-						"CarExcel": {
-							"value": "@linkedService().name",
-							"type": "Expression"
-						}
-					},
-					"newClusterVersion": "6.4.x-scala2.11",
-					"newClusterLogDestination": "@linkedService().name",
-					"newClusterInitScripts": [
-						{
-							"value": "@linkedService().name",
-							"type": "Expression"
-						},
-						"mano",
-						"telemetry",
-						{
-							"value": "paul",
-							"type": "Expression"
-						}
-					],
-					"newClusterDriverNodeType": "yes"
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDatabricksMSI')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "dapia8ac9c9f6e5971fa3c5047f0c5ada9b9",
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
-					"newClusterNodeType": "Standard_NC12",
-					"newClusterNumOfWorker": "2:4",
-					"newClusterSparkEnvVars": {
-						"": {
-							"value": "nlklk",
-							"type": "Expression"
-						}
-					},
-					"newClusterVersion": "5.5.x-gpu-scala2.11",
-					"newClusterInitScripts": [
-						""
-					]
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/databricksRepo')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('databricksRepo_accessToken')]"
-					},
-					"newClusterNodeType": "Standard_NC12",
-					"newClusterNumOfWorker": "1",
-					"newClusterVersion": "5.5.x-gpu-scala2.11",
-					"newClusterInitScripts": []
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/keshFunctionsTest')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('keshFunctionsTest_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('keshFunctionsTest_functionKey')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/linkedService2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HDInsightOnDemand",
-				"typeProperties": {
-					"clusterType": "hadoop",
-					"clusterSize": 4,
-					"timeToLive": "00:15:00",
-					"version": "3.6",
-					"hostSubscriptionId": "[parameters('linkedService2_properties_typeProperties_hostSubscriptionId')]",
-					"clusterResourceGroup": "[parameters('linkedService2_properties_typeProperties_clusterResourceGroup')]",
-					"servicePrincipalId": "[parameters('linkedService2_properties_typeProperties_servicePrincipalId')]",
-					"tenant": "[parameters('linkedService2_properties_typeProperties_tenant')]",
-					"clusterNamePrefix": "",
-					"clusterPassword": {
-						"type": "SecureString",
-						"value": "[parameters('linkedService2_clusterPassword')]"
-					},
-					"clusterSshPassword": {
-						"type": "SecureString",
-						"value": "[parameters('linkedService2_clusterSshPassword')]"
-					},
-					"servicePrincipalKey": {
-						"type": "SecureString",
-						"value": "[parameters('linkedService2_servicePrincipalKey')]"
-					},
-					"additionalLinkedServiceNames": [
-						{
-							"referenceName": "AzureBlobStorage1",
-							"type": "LinkedServiceReference"
-						}
-					],
-					"linkedServiceName": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
-					},
-					"headNodeSize": "",
-					"dataNodeSize": "",
-					"zookeeperNodeSize": "",
-					"subnetName": "",
-					"virtualNetworkId": ""
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/linkedService3')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HDInsightOnDemand",
-				"typeProperties": {
-					"clusterType": "hadoop",
-					"clusterSize": 4,
-					"timeToLive": "00:15:00",
-					"version": "4.0",
-					"hostSubscriptionId": "[parameters('linkedService3_properties_typeProperties_hostSubscriptionId')]",
-					"clusterResourceGroup": "[parameters('linkedService3_properties_typeProperties_clusterResourceGroup')]",
-					"servicePrincipalId": "[parameters('linkedService3_properties_typeProperties_servicePrincipalId')]",
-					"tenant": "[parameters('linkedService3_properties_typeProperties_tenant')]",
-					"clusterNamePrefix": "",
-					"clusterPassword": {
-						"type": "SecureString",
-						"value": "[parameters('linkedService3_clusterPassword')]"
-					},
-					"clusterSshPassword": {
-						"type": "SecureString",
-						"value": "[parameters('linkedService3_clusterSshPassword')]"
-					},
-					"servicePrincipalKey": {
-						"type": "SecureString",
-						"value": "[parameters('linkedService3_servicePrincipalKey')]"
-					},
-					"additionalLinkedServiceNames": [
-						{
-							"referenceName": "AzureBlobStorage1",
-							"type": "LinkedServiceReference"
-						}
-					],
-					"hcatalogLinkedServiceName": {
-						"referenceName": "AzureSqlDatabase1",
-						"type": "LinkedServiceReference"
-					},
-					"linkedServiceName": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
-					},
-					"headNodeSize": "",
-					"dataNodeSize": "",
-					"zookeeperNodeSize": "",
-					"subnetName": "",
-					"virtualNetworkId": ""
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/integrationRuntime5')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
@@ -887,6 +64,37 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/cdm_model')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"linkedService": {
+								"referenceName": "kesh",
+								"type": "LinkedServiceReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "kesh",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"script": "source(output(\n\t\tContactId as string,\n\t\tPurchaseId as string,\n\t\tProductId as string,\n\t\tPurchasedOn as string,\n\t\tTotalPrice as double,\n\t\tActivityTypeDisplay as string,\n\t\tSubject as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: '/eCommerce_eCommercePurchases',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'CustomerInsights_e053ffe7-796e-4bcf-ab0f-923857e6ba77/BKW Dataplattform',\n\tfileSystem: 'crm-data') ~> source1\nsource1 sink(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tformat: 'delimited',\n\tfileSystem: 'adhocextract',\n\tfolderPath: (\"x/y z\"),\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false,\n\trowUrlColumn:'ContactId',\n\tumask: 0022,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> sink1"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/default/PrivateLinkSerHDI')]",
 			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
 			"apiVersion": "2018-06-01",
@@ -905,195 +113,6 @@
 				"privateLinkResourceId": "[parameters('hdiPrivateEndpoint_properties_privateLinkResourceId')]",
 				"groupId": "[parameters('hdiPrivateEndpoint_properties_groupId')]",
 				"fqdns": "[parameters('hdiPrivateEndpoint_properties_fqdns')]"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction1_functionKey')]"
-					},
-					"authenticationType": "MSI",
-					"resource": "https://keshfunctions.azurewebsites.net"
-				},
-				"connectVia": {
-					"referenceName": "SelfHosted",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyData')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data1",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "adhocextract//sample.json"
-							},
-							{
-								"name": "Destination",
-								"value": "adhocextract//"
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "JsonSource",
-								"storeSettings": {
-									"type": "AzureBlobStorageReadSettings",
-									"recursive": true
-								},
-								"formatSettings": {
-									"type": "JsonReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"path": "$['name']"
-										},
-										"sink": {
-											"ordinal": 1
-										}
-									},
-									{
-										"source": {
-											"path": "$['age']"
-										},
-										"sink": {
-											"ordinal": 2
-										}
-									},
-									{
-										"source": {
-											"path": "$['addresses'][0]['street']"
-										},
-										"sink": {
-											"ordinal": 3
-										}
-									},
-									{
-										"source": {
-											"path": "$['addresses'][0]['city']"
-										},
-										"sink": {
-											"ordinal": 4
-										}
-									},
-									{
-										"source": {
-											"path": "$['addresses'][0]['type']"
-										},
-										"sink": {
-											"ordinal": 5
-										}
-									},
-									{
-										"source": {
-											"path": "$['addresses'][0]['contact'][0]['number']"
-										},
-										"sink": {
-											"ordinal": 6
-										}
-									},
-									{
-										"source": {
-											"path": "$['addresses'][0]['contact'][0]['areaCode']"
-										},
-										"sink": {
-											"ordinal": 7
-										}
-									},
-									{
-										"source": {
-											"path": "$['friends'][0]['name']"
-										},
-										"sink": {
-											"ordinal": 8
-										}
-									},
-									{
-										"source": {
-											"path": "$['friends'][0]['city']"
-										},
-										"sink": {
-											"ordinal": 9
-										}
-									},
-									{
-										"source": {
-											"path": "$['friends'][0]['contact'][0]['number']"
-										},
-										"sink": {
-											"ordinal": 10
-										}
-									},
-									{
-										"source": {
-											"path": "$['friends'][0]['contact'][0]['areaCode']"
-										},
-										"sink": {
-											"ordinal": 11
-										}
-									}
-								],
-								"mapComplexValuesToString": false
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "Json2",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "csvOutput",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-02-07T08:53:29Z"
 			},
 			"dependsOn": []
 		},
@@ -1186,6 +205,49 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/cdm_model_pipe')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "cdm_model",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "cdm_model",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/cdm_model')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/databricks')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1213,69 +275,1702 @@
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-01-30T01:12:39Z"
+				"lastPublishTime": "2021-05-04T06:48:57Z"
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks2')]"
-			]
+			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/hdiVNetLS')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/pipeline5')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"type": "HDInsight",
-				"typeProperties": {
-					"clusterUri": "https://keshhdivnet.azurehdinsight.net",
-					"userName": "[parameters('hdiVNetLS_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('hdiVNetLS_password')]"
-					},
-					"isEspEnabled": false,
-					"linkedServiceName": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
+				"activities": [
+					{
+						"name": "Azure Function1",
+						"type": "AzureFunctionActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"functionName": "Accepted",
+							"method": "GET",
+							"headers": {}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureFunction1",
+							"type": "LinkedServiceReference"
+						},
+						"authentication": {
+							"type": "Msi"
+						}
 					}
-				},
-				"connectVia": {
-					"referenceName": "integrationRuntime5",
-					"type": "IntegrationRuntimeReference"
-				}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:56Z"
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime5')]"
-			]
+			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/keshhdioutboundvnet')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
 				"annotations": [],
-				"type": "HDInsight",
+				"type": "DelimitedText",
 				"typeProperties": {
-					"clusterUri": "https://keshhdieunat-int.azurehdinsight.net",
-					"userName": "[parameters('keshhdioutboundvnet_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('keshhdioutboundvnet_password')]"
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IFP_OON_Outreach_Template_vw.csv",
+						"container": "adhocextractnew"
 					},
-					"isEspEnabled": false,
-					"linkedServiceName": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "CMD_test",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sample Row",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "AgreementSchemaAndSample.xlsx",
+						"folderPath": "importSchemaTestFolder",
+						"container": "adhocextract"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FlattenIssueCsvOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "Testoutput",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "sample.json",
+						"container": "adhocextract"
 					}
 				},
-				"connectVia": {
-					"referenceName": "integrationRuntime5",
-					"type": "IntegrationRuntimeReference"
+				"schema": {
+					"type": "object",
+					"properties": {
+						"quizReport": {
+							"type": "object",
+							"properties": {
+								"@version": {
+									"type": "integer"
+								},
+								"@xmlns": {
+									"type": "string"
+								},
+								"@xmlns:xsi": {
+									"type": "string"
+								},
+								"@xsi:schemaLocation": {
+									"type": "string"
+								},
+								"groups": {
+									"type": "object",
+									"properties": {
+										"group": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"@answeredQuestions": {
+														"type": "integer"
+													},
+													"@awardedPercent": {
+														"type": "number"
+													},
+													"@awardedScore": {
+														"type": "integer"
+													},
+													"@name": {
+														"type": "string"
+													},
+													"@passingPercent": {
+														"type": "integer"
+													},
+													"@passingScore": {
+														"type": "integer"
+													},
+													"@totalQuestions": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"questions": {
+									"type": "object",
+									"properties": {
+										"matchingQuestion": {
+											"type": "object",
+											"properties": {
+												"@awardedPoints": {
+													"type": "integer"
+												},
+												"@evaluationEnabled": {
+													"type": "boolean"
+												},
+												"@id": {
+													"type": "string"
+												},
+												"@maxAttempts": {
+													"type": "boolean"
+												},
+												"@maxPoints": {
+													"type": "integer"
+												},
+												"@status": {
+													"type": "string"
+												},
+												"@usedAttempts": {
+													"type": "boolean"
+												},
+												"direction": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												},
+												"feedback": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												},
+												"matches": {
+													"type": "object",
+													"properties": {
+														"match": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"@premiseIndex": {
+																		"type": "integer"
+																	},
+																	"@responseIndex": {
+																		"type": "integer"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"premises": {
+													"type": "object",
+													"properties": {
+														"premise": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"text": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"responses": {
+													"type": "object",
+													"properties": {
+														"response": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"text": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"userAnswer": {
+													"type": "object",
+													"properties": {
+														"match": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"@premiseIndex": {
+																		"type": "integer"
+																	},
+																	"@responseIndex": {
+																		"type": "integer"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										},
+										"multipleChoiceQuestion": {
+											"type": "object",
+											"properties": {
+												"@awardedPoints": {
+													"type": "boolean"
+												},
+												"@evaluationEnabled": {
+													"type": "boolean"
+												},
+												"@id": {
+													"type": "string"
+												},
+												"@maxAttempts": {
+													"type": "boolean"
+												},
+												"@maxPoints": {
+													"type": "integer"
+												},
+												"@status": {
+													"type": "string"
+												},
+												"@usedAttempts": {
+													"type": "boolean"
+												},
+												"answers": {
+													"type": "object",
+													"properties": {
+														"@correctAnswerIndex": {
+															"type": "integer"
+														},
+														"@userAnswerIndex": {
+															"type": "boolean"
+														},
+														"answer": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"text": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"direction": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												},
+												"feedback": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										},
+										"multipleResponseQuestion": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"@awardedPoints": {
+														"type": "boolean"
+													},
+													"@evaluationEnabled": {
+														"type": "boolean"
+													},
+													"@id": {
+														"type": "string"
+													},
+													"@maxAttempts": {
+														"type": "boolean"
+													},
+													"@maxPoints": {
+														"type": "integer"
+													},
+													"@status": {
+														"type": "string"
+													},
+													"@usedAttempts": {
+														"type": "boolean"
+													},
+													"answers": {
+														"type": "object",
+														"properties": {
+															"answer": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"@correct": {
+																			"type": "boolean"
+																		},
+																		"@selected": {
+																			"type": "boolean"
+																		},
+																		"text": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"direction": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													},
+													"feedback": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"trueFalseQuestion": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"@awardedPoints": {
+														"type": "integer"
+													},
+													"@evaluationEnabled": {
+														"type": "boolean"
+													},
+													"@id": {
+														"type": "string"
+													},
+													"@maxAttempts": {
+														"type": "boolean"
+													},
+													"@maxPoints": {
+														"type": "integer"
+													},
+													"@status": {
+														"type": "string"
+													},
+													"@usedAttempts": {
+														"type": "boolean"
+													},
+													"answers": {
+														"type": "object",
+														"properties": {
+															"@correctAnswerIndex": {
+																"type": "boolean"
+															},
+															"@userAnswerIndex": {
+																"type": "boolean"
+															},
+															"answer": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"text": {
+																			"type": "boolean"
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"direction": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													},
+													"feedback": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"quizSettings": {
+									"type": "object",
+									"properties": {
+										"@maxScore": {
+											"type": "integer"
+										},
+										"@quizType": {
+											"type": "string"
+										},
+										"@timeLimit": {
+											"type": "boolean"
+										},
+										"passingPercent": {
+											"type": "integer"
+										},
+										"@maxNormalizedScore": {
+											"type": "integer"
+										}
+									}
+								},
+								"summary": {
+									"type": "object",
+									"properties": {
+										"@passed": {
+											"type": "boolean"
+										},
+										"@percent": {
+											"type": "integer"
+										},
+										"@score": {
+											"type": "integer"
+										},
+										"@time": {
+											"type": "integer"
+										},
+										"variables": {
+											"type": "object",
+											"properties": {
+												"variable": {
+													"type": "object",
+													"properties": {
+														"@name": {
+															"type": "string"
+														},
+														"@title": {
+															"type": "string"
+														},
+														"@value": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"SourceFilename": {
+							"type": "string"
+						}
+					}
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime5')]"
-			]
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "sample.json",
+						"container": "adhocextract"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"age": {
+							"type": "integer"
+						},
+						"addresses": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"street": {
+										"type": "string"
+									},
+									"city": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"contact": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"number": {
+													"type": "string"
+												},
+												"areaCode": {
+													"type": "integer"
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"friends": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"city": {
+										"type": "string"
+									},
+									"contact": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"number": {
+													"type": "string"
+												},
+												"areaCode": {
+													"type": "integer"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "adhocextract"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "SubscriptionProfile.parquet",
+						"folderPath": "CDM",
+						"container": "adhocextract"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "SubscriptionId",
+						"type": "UTF8"
+					},
+					{
+						"name": "SubscriptionCreatedDate",
+						"type": "TIMESTAMP_MICROS"
+					},
+					{
+						"name": "SubscriptionStartDate",
+						"type": "TIMESTAMP_MICROS"
+					},
+					{
+						"name": "SubscriptionStatusCurrent",
+						"type": "UTF8"
+					},
+					{
+						"name": "MCRecordCreatedDate",
+						"type": "TIMESTAMP_MICROS"
+					},
+					{
+						"name": "MCRecordUpdatedDate",
+						"type": "TIMESTAMP_MICROS"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ParquetOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "Testoutput",
+						"container": "adhocextract"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/csvOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/currentOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
 		}
 	]
 }
