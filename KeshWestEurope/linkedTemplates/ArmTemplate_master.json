@@ -27,10 +27,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
 		},
-		"AzureFunction1_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
-		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
@@ -111,6 +107,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
 		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://keshgen2.dfs.core.windows.net"
@@ -142,10 +142,6 @@
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://keshgen2.dfs.core.windows.net"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -283,6 +279,10 @@
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
 		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -322,9 +322,6 @@
 					"AzureSynapseAnalytics1_connectionString": {
 						"value": "[parameters('AzureSynapseAnalytics1_connectionString')]"
 					},
-					"RestService1_servicePrincipalKey": {
-						"value": "[parameters('RestService1_servicePrincipalKey')]"
-					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -339,18 +336,6 @@
 					},
 					"AzureMLService1_properties_typeProperties_resourceGroupName": {
 						"value": "[parameters('AzureMLService1_properties_typeProperties_resourceGroupName')]"
-					},
-					"RestService1_properties_typeProperties_url": {
-						"value": "[parameters('RestService1_properties_typeProperties_url')]"
-					},
-					"RestService1_properties_typeProperties_servicePrincipalId": {
-						"value": "[parameters('RestService1_properties_typeProperties_servicePrincipalId')]"
-					},
-					"RestService1_properties_typeProperties_tenant": {
-						"value": "[parameters('RestService1_properties_typeProperties_tenant')]"
-					},
-					"RestService1_properties_typeProperties_aadResourceId": {
-						"value": "[parameters('RestService1_properties_typeProperties_aadResourceId')]"
 					}
 				}
 			},
@@ -370,6 +355,9 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"RestService1_servicePrincipalKey": {
+						"value": "[parameters('RestService1_servicePrincipalKey')]"
+					},
 					"adfdataflowtestgen2_accountKey": {
 						"value": "[parameters('adfdataflowtestgen2_accountKey')]"
 					},
@@ -382,6 +370,21 @@
 					"lijzhastorage_connectionString": {
 						"value": "[parameters('lijzhastorage_connectionString')]"
 					},
+					"AzureFunction1_functionKey": {
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					},
+					"RestService1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('RestService1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"RestService1_properties_typeProperties_tenant": {
+						"value": "[parameters('RestService1_properties_typeProperties_tenant')]"
+					},
+					"RestService1_properties_typeProperties_aadResourceId": {
+						"value": "[parameters('RestService1_properties_typeProperties_aadResourceId')]"
+					},
 					"RestService2_properties_typeProperties_url": {
 						"value": "[parameters('RestService2_properties_typeProperties_url')]"
 					},
@@ -393,6 +396,9 @@
 					},
 					"kesh_properties_typeProperties_url": {
 						"value": "[parameters('kesh_properties_typeProperties_url')]"
+					},
+					"AzureFunction1_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]"
 					}
 				}
 			},
@@ -420,9 +426,6 @@
 					"AzureDatabricks7_accessToken": {
 						"value": "[parameters('AzureDatabricks7_accessToken')]"
 					},
-					"AzureFunction1_functionKey": {
-						"value": "[parameters('AzureFunction1_functionKey')]"
-					},
 					"databricksRepo_accessToken": {
 						"value": "[parameters('databricksRepo_accessToken')]"
 					},
@@ -438,14 +441,8 @@
 					"AzureBlobStorage3_properties_typeProperties_serviceEndpoint": {
 						"value": "[parameters('AzureBlobStorage3_properties_typeProperties_serviceEndpoint')]"
 					},
-					"AzureFunction1_properties_typeProperties_functionAppUrl": {
-						"value": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]"
-					},
 					"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
 						"value": "[parameters('keshFunctionsTest_properties_typeProperties_functionAppUrl')]"
-					},
-					"storage_testCred_properties_typeProperties_serviceEndpoint": {
-						"value": "[parameters('storage_testCred_properties_typeProperties_serviceEndpoint')]"
 					}
 				}
 			},
@@ -466,6 +463,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"storage_testCred_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('storage_testCred_properties_typeProperties_serviceEndpoint')]"
 					},
 					"PrivateLinkSerHDI_properties_privateLinkResourceId": {
 						"value": "[parameters('PrivateLinkSerHDI_properties_privateLinkResourceId')]"

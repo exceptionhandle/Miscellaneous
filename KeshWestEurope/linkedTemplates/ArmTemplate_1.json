@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "KeshWestEurope"
 		},
+		"RestService1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'RestService1'"
+		},
 		"adfdataflowtestgen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'adfdataflowtestgen2'"
@@ -23,6 +27,26 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lijzhastorage'"
 		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://keshfunctiontest.azurewebsites.net/api/logBody?code=ipcpyr1I5ouhakACX5CnwmNJvCweiS2lPcnKyTalYkpZyLeQiRq7CA=="
+		},
+		"RestService1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "dsaddsadsadsada"
+		},
+		"RestService1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"RestService1_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "asdsadsadsadas"
+		},
 		"RestService2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://www.bing.com"
@@ -38,12 +62,38 @@
 		"kesh_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://kesh.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/RestService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('RestService1_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "AadServicePrincipal",
+					"servicePrincipalId": "[parameters('RestService1_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('RestService1_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('RestService1_properties_typeProperties_tenant')]",
+					"aadResourceId": "[parameters('RestService1_properties_typeProperties_aadResourceId')]"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/RestService2')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -258,6 +308,27 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AML')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -414,173 +485,6 @@
 				],
 				"annotations": [],
 				"lastPublishTime": "2021-05-04T06:48:56Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Web1",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://www.bing.com",
-							"connectVia": {
-								"referenceName": "integrationRuntimeWestEurope",
-								"type": "IntegrationRuntimeReference"
-							},
-							"method": "GET",
-							"headers": {},
-							"disableCertValidation": {
-								"value": "@and(true, true)",
-								"type": "Expression"
-							},
-							"authentication": {
-								"type": "MSI",
-								"resource": {
-									"value": "@pipeline().DataFactory",
-									"type": "Expression"
-								}
-							}
-						}
-					},
-					{
-						"name": "WebHook1",
-						"type": "WebHook",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://www.bing.com",
-							"method": "POST",
-							"headers": {},
-							"body": {
-								"": ""
-							},
-							"timeout": "00:10:00",
-							"reportStatusOnCallBack": {
-								"value": "@and(true, true)",
-								"type": "Expression"
-							},
-							"disableCertValidation": {
-								"value": "@and(true, true)",
-								"type": "Expression"
-							},
-							"authentication": {
-								"type": "ClientCertificate",
-								"pfx": {
-									"type": "AzureKeyVaultSecret",
-									"store": {
-										"referenceName": "AzureKeyVault1",
-										"type": "LinkedServiceReference"
-									},
-									"secretName": "fdsfds"
-								},
-								"password": {
-									"type": "AzureKeyVaultSecret",
-									"store": {
-										"referenceName": "AzureKeyVault1",
-										"type": "LinkedServiceReference"
-									},
-									"secretName": "sdfds"
-								}
-							}
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-05-04T06:48:54Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeWestEurope')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Web1",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://www.bing.com",
-							"method": "POST",
-							"headers": {},
-							"body": {
-								"gf": "hgfhf"
-							},
-							"authentication": {
-								"type": "Basic",
-								"username": {
-									"value": "@pipeline().RunId",
-									"type": "Expression"
-								},
-								"password": {
-									"type": "AzureKeyVaultSecret",
-									"store": {
-										"referenceName": "AzureKeyVault1",
-										"type": "LinkedServiceReference"
-									},
-									"secretName": "sdfsd"
-								}
-							}
-						}
-					},
-					{
-						"name": "WebHook1",
-						"type": "WebHook",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://www.bing.com",
-							"method": "POST",
-							"headers": {},
-							"body": {
-								"gf": "hgfhf"
-							},
-							"timeout": "00:10:00",
-							"authentication": {
-								"type": "ClientCertificate",
-								"pfx": {
-									"type": "AzureKeyVaultSecret",
-									"store": {
-										"referenceName": "AzureKeyVault1",
-										"type": "LinkedServiceReference"
-									},
-									"secretName": "fdfdsfd"
-								},
-								"password": {
-									"type": "SecureString",
-									"value": "**********"
-								}
-							}
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-05-04T06:48:54Z"
 			},
 			"dependsOn": []
 		}
