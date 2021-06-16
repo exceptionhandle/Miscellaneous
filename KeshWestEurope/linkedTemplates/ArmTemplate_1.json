@@ -321,8 +321,10 @@
 						"value": "[parameters('AzureFunction1_functionKey')]"
 					},
 					"credential": {
-						"referenceName": "credential1",
-						"type": "CredentialReference"
+						"name": "credential1",
+						"properties": {
+							"type": "ManagedIdentity"
+						}
 					}
 				}
 			},
