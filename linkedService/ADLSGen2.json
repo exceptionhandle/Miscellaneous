@@ -1,12 +1,11 @@
 {
-	"name": "AzureBlobStorage2",
+	"name": "ADLSGen2",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
-		"type": "AzureBlobStorage",
+		"type": "AzureBlobFS",
 		"typeProperties": {
-			"serviceEndpoint": "https://keshgen2.blob.core.windows.net",
-			"accountKind": "StorageV2",
+			"url": "https://keshgen2.dfs.core.windows.net",
 			"credential": {
 				"referenceName": "credential1",
 				"type": "CredentialReference"

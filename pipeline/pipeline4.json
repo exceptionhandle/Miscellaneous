@@ -21,11 +21,17 @@
 						"type": "ServicePrincipal",
 						"userTenant": "f686d426-8d16-42db-81b7-ab578e110ccd",
 						"username": "bgrhrgf",
-						"resource": "bjihkjnkjnkjn"
+						"resource": "bjihkjnkjnkjn",
+						"password": {
+							"type": "SecureString",
+							"value": "**********"
+						}
 					}
 				}
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2021-05-04T06:48:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

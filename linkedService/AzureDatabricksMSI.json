@@ -1,5 +1,6 @@
 {
 	"name": "AzureDatabricksMSI",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "dapia8ac9c9f6e5971fa3c5047f0c5ada9b9",
 		"annotations": [],
@@ -19,16 +20,11 @@
 			"newClusterVersion": "5.5.x-gpu-scala2.11",
 			"newClusterInitScripts": [
 				""
-			],
-			"credential": {
-				"referenceName": "uamiCred",
-				"type": "CredentialReference"
-			}
+			]
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
 			"type": "IntegrationRuntimeReference"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }

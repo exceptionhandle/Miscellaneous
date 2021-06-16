@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"linkedService": {
-						"referenceName": "AzureBlobStorage1",
+						"referenceName": "AzureSynapseAnalytics1",
 						"type": "LinkedServiceReference"
 					},
 					"name": "source1"
@@ -14,15 +14,15 @@
 			],
 			"sinks": [
 				{
-					"linkedService": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
+					"dataset": {
+						"referenceName": "csvOutput",
+						"type": "DatasetReference"
 					},
 					"name": "sink1"
 				}
 			],
 			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'delimited',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false,\n\trowUrlColumn:'',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'query',\n\tstore: 'synapseanalytics',\n\tquery: 'SELECT PersonID FROM dbo.Persons',\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tstaged: true) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 		}
 	}
 }

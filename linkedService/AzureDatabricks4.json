@@ -1,5 +1,6 @@
 {
 	"name": "AzureDatabricks4",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureDatabricks",
@@ -11,6 +12,5 @@
 			"newClusterNumOfWorker": "1",
 			"newClusterVersion": "5.5.x-gpu-ml-scala2.11"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }

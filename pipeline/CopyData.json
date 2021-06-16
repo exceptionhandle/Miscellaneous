@@ -25,14 +25,10 @@
 				],
 				"typeProperties": {
 					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -143,7 +139,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Json2",
+						"referenceName": "RestResource3",
 						"type": "DatasetReference"
 					}
 				],
@@ -156,7 +152,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-02-07T08:53:29Z"
+		"lastPublishTime": "2021-06-16T01:55:18Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

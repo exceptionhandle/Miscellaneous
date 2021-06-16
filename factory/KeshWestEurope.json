@@ -1,4 +1,15 @@
 {
 	"name": "KeshWestEurope",
-	"location": "westeurope"
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "7a046544-9bf6-497d-b350-e0216ccbf831",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+		"userAssignedIdentities": {
+			"/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/keshUami": {
+				"clientId": "b4b9fcab-7fb5-4e5e-9564-cc60eb649068",
+				"principalId": "899e49ba-400a-413f-ad1b-9062bf67d6fa"
+			}
+		}
+	}
 }

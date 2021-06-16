@@ -22,7 +22,7 @@
 				}
 			],
 			"transformations": [],
-			"script": "parameters{\n\tcsvFileName as string (\"filename.csv\")\n}\nsource(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> sharePointJson\nsharePointJson sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[($csvFileName)],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> toCSVinADL"
+			"script": "parameters{\n\tcsvFileName as string (\"filename.csv\")\n}\nsource(output(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> sharePointJson\nsharePointJson sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[($csvFileName)],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> toCSVinADL"
 		}
 	}
 }
