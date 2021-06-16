@@ -8,8 +8,13 @@
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwNzk2YzBmNS0zY2YzLTQ3OGQtOTIxYi1hNzBmNDExMTI1ZTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ==",
 			"credential": {
-				"referenceName": "credential1",
-				"type": "CredentialReference"
+				"name": "credential1",
+				"properties": {
+					"type": "ManagedIdentity",
+					"typeProperties": {
+						"resourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/keshUami"
+					}
+				}
 			}
 		}
 	}
