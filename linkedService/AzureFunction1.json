@@ -11,10 +11,6 @@
 		"credential": {
 			"referenceName": "credential1",
 			"type": "CredentialReference"
-		},
-		"connectVia": {
-			"referenceName": "SelfHosted",
-			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
