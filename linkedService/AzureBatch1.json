@@ -17,8 +17,7 @@
 				"properties": {
 					"type": "ManagedIdentity"
 				}
-			},
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwYWQ2YmI2YS1hODA3LTRlYTYtOTI1My0xM2JkYzIzMWQ0ZjgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			}
 		},
 		"connectVia": {
 			"referenceName": "SelfHosted",
