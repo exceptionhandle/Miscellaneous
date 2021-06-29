@@ -1,6 +1,5 @@
 {
 	"name": "AzureDatabricks2",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "https://management.core.windows.net/\nhttps://login.microsoftonline.com/<tenantid>/oauth2/token\njob-3-run-1\nx6rm6~~96~srv~m0x_~SS23PH.QU7_wli3\naccess token: dapi16711286f53bcbaa3753acdc23f0bfcb\ncluster node type: Standard_DS3_v2\nspark version: 2.4.3\ncluster ID: 0920-185412-happy305",
 		"annotations": [],
@@ -14,10 +13,7 @@
 			"newClusterVersion": "5.5.x-gpu-scala2.11",
 			"newClusterInitScripts": [],
 			"enableLocalDiskEncryption": true
-		},
-		"connectVia": {
-			"referenceName": "SelfHosted",
-			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
