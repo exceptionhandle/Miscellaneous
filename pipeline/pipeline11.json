@@ -1,0 +1,43 @@
+{
+	"name": "pipeline11",
+	"properties": {
+		"activities": [
+			{
+				"name": "SPN_Certificate",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://keshweb.azuredatalakestore.net/webhdfs/v1/WebApp?op=GETFILESTATUS",
+					"method": "DELETE",
+					"headers": {
+						"content-Type": "application/json"
+					},
+					"body": "\"\"",
+					"authentication": {
+						"type": "ServicePrincipal",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "sarajCert"
+						},
+						"userTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+						"username": "880f97f2-183b-4cfc-a0e4-e9c5fd3c2090",
+						"resource": "https://management.core.windows.net/"
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}
