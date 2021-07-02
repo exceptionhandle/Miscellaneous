@@ -1,0 +1,119 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "KeshWestEurope"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline11')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "SPN_Certificate",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshweb.azuredatalakestore.net/webhdfs/v1/WebApp?op=GETFILESTATUS",
+							"method": "DELETE",
+							"headers": {
+								"content-Type": "application/json"
+							},
+							"body": "\"\"",
+							"authentication": {
+								"type": "ServicePrincipal",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "sarajCert"
+								},
+								"userTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+								"username": "880f97f2-183b-4cfc-a0e4-e9c5fd3c2090",
+								"resource": "https://management.core.windows.net/"
+							}
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline12')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Web1",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://prod-02.eastus.logic.azure.com:443/workflows/5964a328de594aab99573336ae70a8c3/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8B_bQZ0WWif_16Bc0J_yUAwM7C-MeuSyI1hPcJF1Axc",
+							"method": "POST",
+							"body": [
+								{
+									"name": "test1"
+								},
+								{
+									"name": "test2"
+								}
+							]
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricks2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "https://management.core.windows.net/\nhttps://login.microsoftonline.com/<tenantid>/oauth2/token\njob-3-run-1\nx6rm6~~96~srv~m0x_~SS23PH.QU7_wli3\naccess token: dapi16711286f53bcbaa3753acdc23f0bfcb\ncluster node type: Standard_DS3_v2\nspark version: 2.4.3\ncluster ID: 0920-185412-happy305",
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
+					"newClusterNodeType": "Standard_NC12",
+					"newClusterNumOfWorker": "1",
+					"newClusterVersion": "5.5.x-gpu-scala2.11",
+					"newClusterInitScripts": [],
+					"enableLocalDiskEncryption": true
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "KeshWestEurope"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'"
+		},
 		"RestService1_servicePrincipalKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'RestService1'"
@@ -26,10 +34,6 @@
 		"lijzhastorage_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'lijzhastorage'"
-		},
-		"AzureFunction1_functionKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
 		},
 		"RestService1_properties_typeProperties_url": {
 			"type": "string",
@@ -62,16 +66,38 @@
 		"kesh_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://kesh.dfs.core.windows.net"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSynapseAnalytics1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSynapseAnalytics1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/RestService1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -308,29 +334,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction1_functionKey')]"
-					},
-					"credential": {
-						"name": "credential1",
-						"properties": {
-							"type": "ManagedIdentity"
-						}
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AML')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -413,14 +416,14 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/keshAML')]",
+			"name": "[concat(parameters('factoryName'), '/databricks')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Machine Learning Execute Pipeline1",
-						"type": "AzureMLExecutePipeline",
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
 						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
@@ -431,62 +434,16 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"experimentName": "test",
-							"mlPipelineParameters": {
-								"param_batch_size": 5,
-								"param_sleep_seconds": 60,
-								"param_should_throw": "false"
-							},
-							"mlPipelineId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad"
+							"notebookPath": "/Users/kesharma@microsoft.com/pythonNotebook"
 						},
 						"linkedServiceName": {
-							"referenceName": "AzureMLService1",
+							"referenceName": "AzureDatabricks2",
 							"type": "LinkedServiceReference"
 						}
 					}
 				],
 				"annotations": [],
-				"lastPublishTime": "2021-02-07T08:52:17Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/keshAMLTestForDataPath')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Machine Learning Execute Pipeline1",
-						"type": "AzureMLExecutePipeline",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"experimentName": "test",
-							"mlPipelineParameters": {
-								"param_batch_size": {
-									"param_should_throw": "false"
-								},
-								"param_sleep_seconds": 60,
-								"param_should_throw": "false"
-							},
-							"mlPipelineId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureMLService1",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-05-04T06:48:56Z"
+				"lastPublishTime": "2021-05-04T06:48:57Z"
 			},
 			"dependsOn": []
 		}
