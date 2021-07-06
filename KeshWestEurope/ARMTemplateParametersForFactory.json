@@ -38,6 +38,9 @@
 		"AzureDatabricksMSI_accessToken": {
 			"value": ""
 		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
@@ -98,9 +101,6 @@
 		"linkedService3_servicePrincipalKey": {
 			"value": ""
 		},
-		"AzureFunction1_functionKey": {
-			"value": ""
-		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"value": "https://keshgen2.dfs.core.windows.net"
 		},
@@ -133,6 +133,9 @@
 		},
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"value": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://keshKeyvault.vault.azure.net/"
@@ -236,9 +239,6 @@
 			"value": [
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"value": "https://keshfunctions.azurewebsites.net"
 		}
 	}
 }
