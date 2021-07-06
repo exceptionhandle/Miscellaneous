@@ -8,8 +8,8 @@
 		"typeProperties": {
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
 			"authentication": "MSI",
-			"resourceId": "",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIktFU0hXRVNURVVST1BFX2M0NTA1NTk1LWZlZTctNGUxMS05MGEyLTI5MjUyN2VlM2RiNSINCn0="
+			"resourceId": "https://management.azure.com/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIktFU0hXRVNURVVST1BFX2RmMGYzMDg3LTE2MjMtNDc3Yi1iMTJkLWQ1OWRlZjVlNGZhNSINCn0="
 		}
 	}
 }
