@@ -1,0 +1,16 @@
+{
+	"name": "AzureBatchwithMI",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBatch",
+		"typeProperties": {
+			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
+			"poolName": "testpool1",
+			"accountName": "kesheastusbatch",
+			"linkedServiceName": {
+				"referenceName": "AzureBlobStorage1",
+				"type": "LinkedServiceReference"
+			}
+		}
+	}
+}
