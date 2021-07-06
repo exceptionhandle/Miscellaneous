@@ -6394,7 +6394,8 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureFunction1_functionKey')]"
 					},
-					"authentication": "Anonymous"
+					"authentication": "MSI",
+					"resourceId": "https://management.azure.com/"
 				}
 			},
 			"dependsOn": []
