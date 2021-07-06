@@ -22,7 +22,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureBatch1",
+					"referenceName": "AzureBatchwithMI",
 					"type": "LinkedServiceReference"
 				}
 			}
