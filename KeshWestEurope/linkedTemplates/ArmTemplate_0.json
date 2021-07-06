@@ -15,9 +15,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
 		},
-		"AzureFunction1_functionKey": {
+		"AzureDatabricks1_accessToken": {
 			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"AzureDatabricks2_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks2'"
+		},
+		"AzureDatabricks3_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks3'"
+		},
+		"AzureDatabricks4_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks4'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -26,10 +42,6 @@
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://keshgen2.dfs.core.windows.net"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -555,8 +567,10 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-4252760204895882.2.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshPremDB",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-scala2.11",
@@ -576,8 +590,10 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks2_accessToken')]"
+					},
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-scala2.11",
@@ -596,8 +612,10 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-4252760204895882.2.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshPremDB",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks3_accessToken')]"
+					},
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-scala2.11",
@@ -615,35 +633,14 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks4_accessToken')]"
+					},
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-ml-scala2.11",
 					"newClusterInitScripts": []
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureFunction",
-				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
-					"functionKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureFunction1_functionKey')]"
-					},
-					"credential": {
-						"name": "credential1",
-						"properties": {
-							"type": "ManagedIdentity"
-						}
-					}
 				}
 			},
 			"dependsOn": []
@@ -678,6 +675,19 @@
 						"referenceName": "credential1",
 						"type": "CredentialReference"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
 				}
 			},
 			"dependsOn": []

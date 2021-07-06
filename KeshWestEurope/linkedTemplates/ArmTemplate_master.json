@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessKey' of 'AzureBatch1'"
 		},
+		"AzureBatchwithMI_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatchwithMI'"
+		},
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
@@ -23,13 +27,29 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
 		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"AzureDatabricks2_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks2'"
+		},
+		"AzureDatabricks3_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks3'"
+		},
+		"AzureDatabricks4_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks4'"
+		},
 		"AzureDatabricks7_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
 		},
-		"AzureFunction1_functionKey": {
+		"AzureDatabricksMSI_accessToken": {
 			"type": "secureString",
-			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksMSI'"
 		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
@@ -111,13 +131,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
 		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://keshgen2.dfs.core.windows.net"
-		},
-		"AzureBatch1_properties_typeProperties_accountName": {
-			"type": "string",
-			"defaultValue": "kesheastusbatch"
 		},
 		"AzureBatch1_properties_typeProperties_batchUri": {
 			"type": "string",
@@ -126,6 +146,22 @@
 		"AzureBatch1_properties_typeProperties_poolName": {
 			"type": "string",
 			"defaultValue": "testpool1"
+		},
+		"AzureBatch1_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatchwithMI_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchwithMI_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatchwithMI_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
 		},
 		"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
 			"type": "string",
@@ -142,10 +178,6 @@
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://keshgen2.dfs.core.windows.net"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "https://keshfunctions.azurewebsites.net"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -283,6 +315,10 @@
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
 		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -316,17 +352,26 @@
 					"AzureDataLakeStorage2_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
 					},
-					"AzureFunction1_functionKey": {
-						"value": "[parameters('AzureFunction1_functionKey')]"
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
+					"AzureDatabricks2_accessToken": {
+						"value": "[parameters('AzureDatabricks2_accessToken')]"
+					},
+					"AzureDatabricks3_accessToken": {
+						"value": "[parameters('AzureDatabricks3_accessToken')]"
+					},
+					"AzureDatabricks4_accessToken": {
+						"value": "[parameters('AzureDatabricks4_accessToken')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
 					"AzureDataLakeStorage2_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
-					},
-					"AzureFunction1_properties_typeProperties_functionAppUrl": {
-						"value": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]"
 					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
@@ -355,9 +400,6 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureSqlDatabase1_connectionString": {
-						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
-					},
 					"AzureSynapseAnalytics1_connectionString": {
 						"value": "[parameters('AzureSynapseAnalytics1_connectionString')]"
 					},
@@ -375,6 +417,9 @@
 					},
 					"lijzhastorage_connectionString": {
 						"value": "[parameters('lijzhastorage_connectionString')]"
+					},
+					"AzureFunction1_functionKey": {
+						"value": "[parameters('AzureFunction1_functionKey')]"
 					},
 					"RestService1_properties_typeProperties_url": {
 						"value": "[parameters('RestService1_properties_typeProperties_url')]"
@@ -399,6 +444,9 @@
 					},
 					"kesh_properties_typeProperties_url": {
 						"value": "[parameters('kesh_properties_typeProperties_url')]"
+					},
+					"AzureFunction1_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]"
 					}
 				}
 			},
@@ -422,9 +470,6 @@
 					},
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
-					},
-					"AzureDatabricks7_accessToken": {
-						"value": "[parameters('AzureDatabricks7_accessToken')]"
 					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
@@ -454,6 +499,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureDatabricks7_accessToken": {
+						"value": "[parameters('AzureDatabricks7_accessToken')]"
+					},
+					"AzureDatabricksMSI_accessToken": {
+						"value": "[parameters('AzureDatabricksMSI_accessToken')]"
 					},
 					"databricksRepo_accessToken": {
 						"value": "[parameters('databricksRepo_accessToken')]"
@@ -508,6 +559,9 @@
 					"AzureBatch1_accessKey": {
 						"value": "[parameters('AzureBatch1_accessKey')]"
 					},
+					"AzureBatchwithMI_accessKey": {
+						"value": "[parameters('AzureBatchwithMI_accessKey')]"
+					},
 					"hdiLinkedService_clusterPassword": {
 						"value": "[parameters('hdiLinkedService_clusterPassword')]"
 					},
@@ -541,14 +595,23 @@
 					"linkedService3_servicePrincipalKey": {
 						"value": "[parameters('linkedService3_servicePrincipalKey')]"
 					},
-					"AzureBatch1_properties_typeProperties_accountName": {
-						"value": "[parameters('AzureBatch1_properties_typeProperties_accountName')]"
-					},
 					"AzureBatch1_properties_typeProperties_batchUri": {
 						"value": "[parameters('AzureBatch1_properties_typeProperties_batchUri')]"
 					},
 					"AzureBatch1_properties_typeProperties_poolName": {
 						"value": "[parameters('AzureBatch1_properties_typeProperties_poolName')]"
+					},
+					"AzureBatch1_properties_typeProperties_accountName": {
+						"value": "[parameters('AzureBatch1_properties_typeProperties_accountName')]"
+					},
+					"AzureBatchwithMI_properties_typeProperties_batchUri": {
+						"value": "[parameters('AzureBatchwithMI_properties_typeProperties_batchUri')]"
+					},
+					"AzureBatchwithMI_properties_typeProperties_poolName": {
+						"value": "[parameters('AzureBatchwithMI_properties_typeProperties_poolName')]"
+					},
+					"AzureBatchwithMI_properties_typeProperties_accountName": {
+						"value": "[parameters('AzureBatchwithMI_properties_typeProperties_accountName')]"
 					},
 					"hdiLinkedService_properties_typeProperties_hostSubscriptionId": {
 						"value": "[parameters('hdiLinkedService_properties_typeProperties_hostSubscriptionId')]"

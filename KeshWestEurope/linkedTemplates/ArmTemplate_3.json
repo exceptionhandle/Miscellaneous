@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "KeshWestEurope"
 		},
+		"AzureDatabricks7_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
+		},
+		"AzureDatabricksMSI_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksMSI'"
+		},
 		"databricksRepo_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'databricksRepo'"
@@ -57,6 +65,70 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricks7')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"name": {
+						"type": "String",
+						"defaultValue": "geetha"
+					}
+				},
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-8909143117346346.6.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks7_accessToken')]"
+					},
+					"newClusterNodeType": "Standard_D3_v2",
+					"newClusterNumOfWorker": "1",
+					"newClusterSparkConf": {
+						"key": {
+							"value": "@linkedService().name",
+							"type": "Expression"
+						},
+						"key2": "trl"
+					},
+					"newClusterSparkEnvVars": {
+						"re": "re",
+						"typ": {
+							"value": "@linkedService().name",
+							"type": "Expression"
+						}
+					},
+					"newClusterCustomTags": {
+						"CarExcel": {
+							"value": "@linkedService().name",
+							"type": "Expression"
+						}
+					},
+					"newClusterVersion": "6.4.x-scala2.11",
+					"newClusterLogDestination": "@linkedService().name",
+					"newClusterInitScripts": [
+						{
+							"value": "@linkedService().name",
+							"type": "Expression"
+						},
+						"mano",
+						"telemetry",
+						{
+							"value": "paul",
+							"type": "Expression"
+						}
+					],
+					"newClusterDriverNodeType": "yes"
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureDatabricksMSI')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -66,8 +138,10 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"authentication": "MSI",
-					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricksMSI_accessToken')]"
+					},
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "2:4",
 					"newClusterSparkEnvVars": {
@@ -125,7 +199,8 @@
 					"functionKey": {
 						"type": "SecureString",
 						"value": "[parameters('keshFunctionsTest_functionKey')]"
-					}
+					},
+					"authentication": "Anonymous"
 				},
 				"connectVia": {
 					"referenceName": "SelfHosted",
@@ -201,7 +276,7 @@
 						}
 					],
 					"transformations": [],
-					"script": "source(output(\n\t\tContactId as string,\n\t\tPurchaseId as string,\n\t\tProductId as string,\n\t\tPurchasedOn as string,\n\t\tTotalPrice as double,\n\t\tActivityTypeDisplay as string,\n\t\tSubject as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: '/eCommerce_eCommercePurchases',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'CustomerInsights_e053ffe7-796e-4bcf-ab0f-923857e6ba77/BKW Dataplattform',\n\tfileSystem: 'crm-data') ~> source1\nsource1 sink(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tformat: 'delimited',\n\tfileSystem: 'adhocextract',\n\tfolderPath: (\"x/y z\"),\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tqutoChar: '\\\"',\n\tcolumnNamesAsHeader: false,\n\trowUrlColumn:'ContactId',\n\tumask: 0022,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> sink1"
+					"script": "source(output(\n\t\tContactId as string,\n\t\tPurchaseId as string,\n\t\tProductId as string,\n\t\tPurchasedOn as string,\n\t\tTotalPrice as double,\n\t\tActivityTypeDisplay as string,\n\t\tSubject as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tignoreNoFilesFound: false,\n\tentity: '/eCommerce_eCommercePurchases',\n\tformat: 'cdm',\n\tmanifestType: 'model',\n\tfolderPath: 'CustomerInsights_e053ffe7-796e-4bcf-ab0f-923857e6ba77/BKW Dataplattform',\n\tfileSystem: 'crm-data') ~> source1\nsource1 sink(allowSchemaDrift: false,\n\tvalidateSchema: false,\n\tformat: 'delimited',\n\tfileSystem: 'adhocextract',\n\tfolderPath: (\"x/y z\"),\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: false,\n\trowUrlColumn:'ContactId',\n\tumask: 0022,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tqutoChar: '\\\"') ~> sink1"
 				}
 			},
 			"dependsOn": []
@@ -1931,29 +2006,6 @@
 						"type": "TIMESTAMP_MICROS"
 					}
 				]
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ParquetOutput')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": "Testoutput",
-						"container": "adhocextract"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
 			},
 			"dependsOn": []
 		}

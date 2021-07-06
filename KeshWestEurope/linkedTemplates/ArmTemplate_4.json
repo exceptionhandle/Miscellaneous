@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessKey' of 'AzureBatch1'"
 		},
+		"AzureBatchwithMI_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatchwithMI'"
+		},
 		"hdiLinkedService_clusterPassword": {
 			"type": "secureString",
 			"metadata": "Secure string for 'clusterPassword' of 'hdiLinkedService'"
@@ -55,10 +59,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
 		},
-		"AzureBatch1_properties_typeProperties_accountName": {
-			"type": "string",
-			"defaultValue": "kesheastusbatch"
-		},
 		"AzureBatch1_properties_typeProperties_batchUri": {
 			"type": "string",
 			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
@@ -66,6 +66,22 @@
 		"AzureBatch1_properties_typeProperties_poolName": {
 			"type": "string",
 			"defaultValue": "testpool1"
+		},
+		"AzureBatch1_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatchwithMI_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchwithMI_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatchwithMI_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
 		},
 		"hdiLinkedService_properties_typeProperties_hostSubscriptionId": {
 			"type": "string",
@@ -128,6 +144,29 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ParquetOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "Testoutput",
+						"container": "adhocextract"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/csvOutput')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
@@ -1714,21 +1753,44 @@
 				"annotations": [],
 				"type": "AzureBatch",
 				"typeProperties": {
-					"accountName": "[parameters('AzureBatch1_properties_typeProperties_accountName')]",
-					"accessKey": {
-						"type": "SecureString",
-						"value": "[parameters('AzureBatch1_accessKey')]"
-					},
 					"batchUri": "[parameters('AzureBatch1_properties_typeProperties_batchUri')]",
 					"poolName": "[parameters('AzureBatch1_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('AzureBatch1_properties_typeProperties_accountName')]",
 					"linkedServiceName": {
 						"referenceName": "AzureBlobStorage1",
 						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBatch1_accessKey')]"
 					}
 				},
 				"connectVia": {
 					"referenceName": "SelfHosted",
 					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatchwithMI')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('AzureBatchwithMI_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatchwithMI_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('AzureBatchwithMI_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBatchwithMI_accessKey')]"
+					}
 				}
 			},
 			"dependsOn": []
@@ -2173,7 +2235,7 @@
 							}
 						},
 						"linkedServiceName": {
-							"referenceName": "AzureBatch1",
+							"referenceName": "AzureBatchwithMI",
 							"type": "LinkedServiceReference"
 						}
 					}
@@ -2181,83 +2243,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBatch1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/keshhdioutboundvnet')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Spark1",
-						"type": "HDInsightSpark",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"rootPath": "hdi",
-							"entryFilePath": "hive",
-							"sparkJobLinkedService": {
-								"referenceName": "AzureBlobStorage1",
-								"type": "LinkedServiceReference"
-							}
-						},
-						"linkedServiceName": {
-							"referenceName": "hdiVNetLS",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-01-20T06:53:45Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hdiVNetLS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline10')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Hive1",
-						"type": "HDInsightHive",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"scriptPath": "Nahi_de_raha_gth_JustCheckingProvisioning",
-							"scriptLinkedService": {
-								"referenceName": "AzureBlobStorage1",
-								"type": "LinkedServiceReference"
-							}
-						},
-						"linkedServiceName": {
-							"referenceName": "hdiLinkedService",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/hdiLinkedService')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBatchwithMI')]"
 			]
 		}
 	]

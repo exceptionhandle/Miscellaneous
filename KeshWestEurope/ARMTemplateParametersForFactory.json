@@ -8,6 +8,9 @@
 		"AzureBatch1_accessKey": {
 			"value": ""
 		},
+		"AzureBatchwithMI_accessKey": {
+			"value": ""
+		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
@@ -17,10 +20,22 @@
 		"AzureDataLakeStorage2_accountKey": {
 			"value": ""
 		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks2_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks3_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks4_accessToken": {
+			"value": ""
+		},
 		"AzureDatabricks7_accessToken": {
 			"value": ""
 		},
-		"AzureFunction1_functionKey": {
+		"AzureDatabricksMSI_accessToken": {
 			"value": ""
 		},
 		"AzureSqlDatabase1_connectionString": {
@@ -83,17 +98,29 @@
 		"linkedService3_servicePrincipalKey": {
 			"value": ""
 		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"value": "https://keshgen2.dfs.core.windows.net"
-		},
-		"AzureBatch1_properties_typeProperties_accountName": {
-			"value": "kesheastusbatch"
 		},
 		"AzureBatch1_properties_typeProperties_batchUri": {
 			"value": "https://kesheastusbatch.eastus.batch.azure.com"
 		},
 		"AzureBatch1_properties_typeProperties_poolName": {
 			"value": "testpool1"
+		},
+		"AzureBatch1_properties_typeProperties_accountName": {
+			"value": "kesheastusbatch"
+		},
+		"AzureBatchwithMI_properties_typeProperties_batchUri": {
+			"value": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchwithMI_properties_typeProperties_poolName": {
+			"value": "testpool1"
+		},
+		"AzureBatchwithMI_properties_typeProperties_accountName": {
+			"value": "kesheastusbatch"
 		},
 		"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
 			"value": "https://keshgen2.blob.core.windows.net"
@@ -106,9 +133,6 @@
 		},
 		"AzureDataLakeStorage2_properties_typeProperties_url": {
 			"value": "https://keshgen2.dfs.core.windows.net"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"value": "https://keshfunctions.azurewebsites.net"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://keshKeyvault.vault.azure.net/"
@@ -212,6 +236,9 @@
 			"value": [
 				"keshhdioutboundvnet-int.azurehdinsight.net"
 			]
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
 		}
 	}
 }
