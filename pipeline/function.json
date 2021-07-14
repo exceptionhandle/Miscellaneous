@@ -19,7 +19,7 @@
 					"method": "GET"
 				},
 				"linkedServiceName": {
-					"referenceName": "keshFunctionWOAuth",
+					"referenceName": "AzureFunction2",
 					"type": "LinkedServiceReference"
 				}
 			}
