@@ -11,10 +11,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
 		},
-		"AzureDatabricksMSI_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksMSI'"
-		},
 		"databricksRepo_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'databricksRepo'"
@@ -138,10 +134,8 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricksMSI_accessToken')]"
-					},
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "2:4",
 					"newClusterSparkEnvVars": {

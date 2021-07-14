@@ -20,22 +20,7 @@
 		"AzureDataLakeStorage2_accountKey": {
 			"value": ""
 		},
-		"AzureDatabricks1_accessToken": {
-			"value": ""
-		},
-		"AzureDatabricks2_accessToken": {
-			"value": ""
-		},
-		"AzureDatabricks3_accessToken": {
-			"value": ""
-		},
-		"AzureDatabricks4_accessToken": {
-			"value": ""
-		},
 		"AzureDatabricks7_accessToken": {
-			"value": ""
-		},
-		"AzureDatabricksMSI_accessToken": {
 			"value": ""
 		},
 		"AzureFunction1_functionKey": {

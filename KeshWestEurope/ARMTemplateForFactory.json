@@ -27,29 +27,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
 		},
-		"AzureDatabricks1_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
-		},
-		"AzureDatabricks2_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks2'"
-		},
-		"AzureDatabricks3_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks3'"
-		},
-		"AzureDatabricks4_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks4'"
-		},
 		"AzureDatabricks7_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
-		},
-		"AzureDatabricksMSI_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksMSI'"
 		},
 		"AzureFunction1_functionKey": {
 			"type": "secureString",
@@ -349,7 +329,8 @@
 								"param_sleep_seconds": 60,
 								"param_should_throw": "false"
 							},
-							"mlPipelineId": "97e8fa30-1851-4d64-aa5d-67699788fa91",
+							"mlPipelineEndpointId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad",
+							"version": "0",
 							"dataPathAssignments": {
 								"input_datapath": {
 									"DataStoreName": "workspaceblobstore2"
@@ -6200,10 +6181,8 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-4252760204895882.2.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricks1_accessToken')]"
-					},
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshPremDB",
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-scala2.11",
@@ -6223,10 +6202,8 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricks2_accessToken')]"
-					},
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/",
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-scala2.11",
@@ -6245,10 +6222,8 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-4252760204895882.2.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricks3_accessToken')]"
-					},
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshPremDB",
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-scala2.11",
@@ -6266,10 +6241,8 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricks4_accessToken')]"
-					},
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "1",
 					"newClusterVersion": "5.5.x-gpu-ml-scala2.11",
@@ -6354,10 +6327,8 @@
 				"type": "AzureDatabricks",
 				"typeProperties": {
 					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricksMSI_accessToken')]"
-					},
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
 					"newClusterNodeType": "Standard_NC12",
 					"newClusterNumOfWorker": "2:4",
 					"newClusterSparkEnvVars": {
@@ -6394,8 +6365,7 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureFunction1_functionKey')]"
 					},
-					"authentication": "MSI",
-					"resourceId": "https://management.azure.com/"
+					"authentication": "Anonymous"
 				}
 			},
 			"dependsOn": []
@@ -6425,11 +6395,7 @@
 					"subscriptionId": "[parameters('AzureMLService1_properties_typeProperties_subscriptionId')]",
 					"resourceGroupName": "[parameters('AzureMLService1_properties_typeProperties_resourceGroupName')]",
 					"mlWorkspaceName": "lijzhaMLV2",
-					"authentication": "MSI",
-					"credential": {
-						"referenceName": "credential1",
-						"type": "CredentialReference"
-					}
+					"authentication": "MSI"
 				}
 			},
 			"dependsOn": []
