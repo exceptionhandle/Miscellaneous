@@ -21,7 +21,8 @@
 						"param_sleep_seconds": 60,
 						"param_should_throw": "false"
 					},
-					"mlPipelineId": "97e8fa30-1851-4d64-aa5d-67699788fa91",
+					"mlPipelineEndpointId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad",
+					"version": "0",
 					"dataPathAssignments": {
 						"input_datapath": {
 							"DataStoreName": "workspaceblobstore2"
