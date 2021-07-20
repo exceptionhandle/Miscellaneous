@@ -1,0 +1,2046 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Keshpupcanary"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline11')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "SPN_Certificate",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshweb.azuredatalakestore.net/webhdfs/v1/WebApp?op=GETFILESTATUS",
+							"method": "DELETE",
+							"headers": {
+								"content-Type": "application/json"
+							},
+							"body": "\"\"",
+							"authentication": {
+								"type": "ServicePrincipal",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "sarajCert"
+								},
+								"userTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+								"username": "880f97f2-183b-4cfc-a0e4-e9c5fd3c2090",
+								"resource": "https://management.core.windows.net/"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Web1",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshwoauthfunctions.azurewebsites.net/api/HttpTrigger1?code=4V4QJBT/1H6na5mieaFUXSjcOWOmJYC65JMwA1OYjnBqsXac8BziUA==",
+							"method": "GET",
+							"headers": {},
+							"authentication": {
+								"resource": "https://www.management.azure.com/",
+								"credential": {
+									"referenceName": "uamiCred",
+									"type": "CredentialReference"
+								}
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-06-21T11:26:49Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline3')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/kesharma@microsoft.com/pythonTest"
+						},
+						"linkedServiceName": {
+							"referenceName": "DBLS",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-07-06T18:51:19Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline4')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Notebook1",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/kesharma@microsoft.com/pythonTest"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks3",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-07-06T20:04:54Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/python')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Python1",
+						"type": "DatabricksSparkPython",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pythonFile": "/Users/kesharma@microsoft.com/pythonTest",
+							"parameters": []
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"csvFileName": {
+						"type": "string",
+						"defaultValue": "SharePoint_UserDetails_2020-12-15.csv"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-07T08:53:28Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/testWeb')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "a",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:01:00",
+							"retry": 3,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": {
+								"value": "@variables('NotificationServiceURI')",
+								"type": "Expression"
+							},
+							"method": "POST",
+							"headers": {
+								"x-ms-date": {
+									"value": "@utcnow('r')",
+									"type": "Expression"
+								},
+								"x-ms-version": "2019-07-07"
+							},
+							"body": {
+								"value": "<QueueMessage>  \n    <MessageText>@{pipeline().parameters.messageData}</MessageText>  \n</QueueMessage>",
+								"type": "Expression"
+							},
+							"authentication": {
+								"type": "ServicePrincipal",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "secname"
+								},
+								"userTenant": {
+									"value": "@{variables('NotificationServiceTenantID')}",
+									"type": "Expression"
+								},
+								"username": "Expression",
+								"resource": "https://storage.azure.com/"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"notificationQueueName": {
+						"type": "string"
+					},
+					"messageData": {
+						"type": "string"
+					},
+					"notificationQueueAccountUri": {
+						"type": "string"
+					},
+					"odosInstanceId": {
+						"type": "string"
+					}
+				},
+				"variables": {
+					"NotificationServiceTenantId": {
+						"type": "String",
+						"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+					},
+					"NotificationServiceClientId": {
+						"type": "String",
+						"defaultValue": "@{pipeline().globalParameters.ODOSAppId}"
+					},
+					"NotificationServiceResource": {
+						"type": "String",
+						"defaultValue": "https://storage.azure.com/"
+					},
+					"NotificationServiceUri": {
+						"type": "String",
+						"defaultValue": "@{pipeline().parameters.notificationQueueAccountUri}@{pipeline().parameters.notificationQueueName}/messages"
+					}
+				},
+				"folder": {
+					"name": "notification-pipelines"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-02T01:59:09Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/web')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Web1",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Web2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "Web3",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"method": "POST",
+							"headers": {},
+							"body": {
+								"value": "@concat(activity('Web2').output, activity('Web3').output)",
+								"type": "Expression"
+							},
+							"authentication": {
+								"type": "Basic",
+								"username": "pipeline().parameters.url",
+								"password": {
+									"type": "SecureString",
+									"value": "**********"
+								}
+							}
+						}
+					},
+					{
+						"name": "Web2",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"method": "GET",
+							"headers": {}
+						}
+					},
+					{
+						"name": "Web3",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshfunctions.azurewebsites.net/api/GetLargePayload?code=FiVnfFyI1mzPjycVEEV1X6ECHlqIX59uEfBZFkNjABv9sb1eAZV4Pw==",
+							"method": "GET",
+							"headers": {},
+							"authentication": {
+								"type": "ClientCertificate",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "sarajCert"
+								},
+								"password": {
+									"type": "SecureString",
+									"value": "**********"
+								}
+							}
+						}
+					},
+					{
+						"name": "Until1",
+						"type": "Until",
+						"dependsOn": [
+							{
+								"activity": "Web1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@or(greater(activity('Web4').StatusCode,400),greater(activity('Web5').StatusCode,400))",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "If Condition1",
+									"type": "IfCondition",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@less(activity('Web1').StatusCode,400)",
+											"type": "Expression"
+										},
+										"ifFalseActivities": [
+											{
+												"name": "Web5",
+												"type": "WebActivity",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"url": "https://www.shouldfail.com",
+													"method": "GET",
+													"headers": {}
+												}
+											}
+										],
+										"ifTrueActivities": [
+											{
+												"name": "Web4",
+												"type": "WebActivity",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "7.00:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"url": "https://www.bing.com",
+													"method": "GET",
+													"headers": {}
+												}
+											}
+										]
+									}
+								}
+							],
+							"timeout": "7.00:00:00"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"url": {
+						"type": "string",
+						"defaultValue": "https://keshfunctiontest.azurewebsites.net/api/HttpTrigger1?code=Asvrb75j7VcHY8vVYNQvUSJauVmyCJab3AtAfxy2OptxlaLvf0boGA=="
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-02-17T19:38:41Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/webUserTenant')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "SPN_Certificate",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshweb.azuredatalakestore.net/webhdfs/v1/WebApp?op=GETFILESTATUS",
+							"method": "GET",
+							"headers": {
+								"content-Type": "application/json"
+							},
+							"body": "\"\"",
+							"authentication": {
+								"type": "ServicePrincipal",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "sarajCert"
+								},
+								"userTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+								"username": "880f97f2-183b-4cfc-a0e4-e9c5fd3c2090",
+								"resource": "https://management.core.windows.net/"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-01-29T01:06:39Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/webhookSPN')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "~0rMCL._lDdMDRs2GVgXT4GGg.kjnM90i0",
+				"activities": [
+					{
+						"name": "WebHook1",
+						"type": "WebHook",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://keshtriggerfunctions.azurewebsites.net/api/HttpTrigger1?code=tnT1dgzFKvwti/Qi46kUFjwdqD7QRlGvha7ZoJC6EzbNIUN8dSG3IA==",
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json",
+								"Accept": "application/json"
+							},
+							"body": {
+								"UserName": "AprilTripPin"
+							},
+							"disableCertValidation": true,
+							"authentication": {
+								"type": "ClientCertificate",
+								"pfx": {
+									"type": "AzureKeyVaultSecret",
+									"store": {
+										"referenceName": "AzureKeyVault1",
+										"type": "LinkedServiceReference"
+									},
+									"secretName": "functionCert"
+								},
+								"password": {
+									"type": "SecureString",
+									"value": "**********"
+								}
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:54Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "unique",
+						"type": "nchar"
+					},
+					{
+						"name": "firstcol",
+						"type": "nchar"
+					},
+					{
+						"name": "seccol",
+						"type": "nchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "HugeTable"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "keshcanarygen2Storage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "adfgetstarted"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "CMD_test",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Excel1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sample Row",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "AgreementSchemaAndSample.xlsx",
+						"folderPath": "importSchemaTestFolder",
+						"container": "adhocextract"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FlattenIssueCsvOutput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "Testoutput",
+						"container": "adhocextract"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "sample.json",
+						"container": "adhocextract"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"quizReport": {
+							"type": "object",
+							"properties": {
+								"@version": {
+									"type": "integer"
+								},
+								"@xmlns": {
+									"type": "string"
+								},
+								"@xmlns:xsi": {
+									"type": "string"
+								},
+								"@xsi:schemaLocation": {
+									"type": "string"
+								},
+								"groups": {
+									"type": "object",
+									"properties": {
+										"group": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"@answeredQuestions": {
+														"type": "integer"
+													},
+													"@awardedPercent": {
+														"type": "number"
+													},
+													"@awardedScore": {
+														"type": "integer"
+													},
+													"@name": {
+														"type": "string"
+													},
+													"@passingPercent": {
+														"type": "integer"
+													},
+													"@passingScore": {
+														"type": "integer"
+													},
+													"@totalQuestions": {
+														"type": "integer"
+													}
+												}
+											}
+										}
+									}
+								},
+								"questions": {
+									"type": "object",
+									"properties": {
+										"matchingQuestion": {
+											"type": "object",
+											"properties": {
+												"@awardedPoints": {
+													"type": "integer"
+												},
+												"@evaluationEnabled": {
+													"type": "boolean"
+												},
+												"@id": {
+													"type": "string"
+												},
+												"@maxAttempts": {
+													"type": "boolean"
+												},
+												"@maxPoints": {
+													"type": "integer"
+												},
+												"@status": {
+													"type": "string"
+												},
+												"@usedAttempts": {
+													"type": "boolean"
+												},
+												"direction": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												},
+												"feedback": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												},
+												"matches": {
+													"type": "object",
+													"properties": {
+														"match": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"@premiseIndex": {
+																		"type": "integer"
+																	},
+																	"@responseIndex": {
+																		"type": "integer"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"premises": {
+													"type": "object",
+													"properties": {
+														"premise": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"text": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"responses": {
+													"type": "object",
+													"properties": {
+														"response": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"text": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"userAnswer": {
+													"type": "object",
+													"properties": {
+														"match": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"@premiseIndex": {
+																		"type": "integer"
+																	},
+																	"@responseIndex": {
+																		"type": "integer"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										},
+										"multipleChoiceQuestion": {
+											"type": "object",
+											"properties": {
+												"@awardedPoints": {
+													"type": "boolean"
+												},
+												"@evaluationEnabled": {
+													"type": "boolean"
+												},
+												"@id": {
+													"type": "string"
+												},
+												"@maxAttempts": {
+													"type": "boolean"
+												},
+												"@maxPoints": {
+													"type": "integer"
+												},
+												"@status": {
+													"type": "string"
+												},
+												"@usedAttempts": {
+													"type": "boolean"
+												},
+												"answers": {
+													"type": "object",
+													"properties": {
+														"@correctAnswerIndex": {
+															"type": "integer"
+														},
+														"@userAnswerIndex": {
+															"type": "boolean"
+														},
+														"answer": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"text": {
+																		"type": "string"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"direction": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												},
+												"feedback": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										},
+										"multipleResponseQuestion": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"@awardedPoints": {
+														"type": "boolean"
+													},
+													"@evaluationEnabled": {
+														"type": "boolean"
+													},
+													"@id": {
+														"type": "string"
+													},
+													"@maxAttempts": {
+														"type": "boolean"
+													},
+													"@maxPoints": {
+														"type": "integer"
+													},
+													"@status": {
+														"type": "string"
+													},
+													"@usedAttempts": {
+														"type": "boolean"
+													},
+													"answers": {
+														"type": "object",
+														"properties": {
+															"answer": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"@correct": {
+																			"type": "boolean"
+																		},
+																		"@selected": {
+																			"type": "boolean"
+																		},
+																		"text": {
+																			"type": "string"
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"direction": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													},
+													"feedback": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										},
+										"trueFalseQuestion": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"@awardedPoints": {
+														"type": "integer"
+													},
+													"@evaluationEnabled": {
+														"type": "boolean"
+													},
+													"@id": {
+														"type": "string"
+													},
+													"@maxAttempts": {
+														"type": "boolean"
+													},
+													"@maxPoints": {
+														"type": "integer"
+													},
+													"@status": {
+														"type": "string"
+													},
+													"@usedAttempts": {
+														"type": "boolean"
+													},
+													"answers": {
+														"type": "object",
+														"properties": {
+															"@correctAnswerIndex": {
+																"type": "boolean"
+															},
+															"@userAnswerIndex": {
+																"type": "boolean"
+															},
+															"answer": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"text": {
+																			"type": "boolean"
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"direction": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													},
+													"feedback": {
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								"quizSettings": {
+									"type": "object",
+									"properties": {
+										"@maxScore": {
+											"type": "integer"
+										},
+										"@quizType": {
+											"type": "string"
+										},
+										"@timeLimit": {
+											"type": "boolean"
+										},
+										"passingPercent": {
+											"type": "integer"
+										},
+										"@maxNormalizedScore": {
+											"type": "integer"
+										}
+									}
+								},
+								"summary": {
+									"type": "object",
+									"properties": {
+										"@passed": {
+											"type": "boolean"
+										},
+										"@percent": {
+											"type": "integer"
+										},
+										"@score": {
+											"type": "integer"
+										},
+										"@time": {
+											"type": "integer"
+										},
+										"variables": {
+											"type": "object",
+											"properties": {
+												"variable": {
+													"type": "object",
+													"properties": {
+														"@name": {
+															"type": "string"
+														},
+														"@title": {
+															"type": "string"
+														},
+														"@value": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"SourceFilename": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

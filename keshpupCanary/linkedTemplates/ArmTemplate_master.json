@@ -1,0 +1,1271 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Keshpupcanary"
+		},
+		"AML_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AML'"
+		},
+		"AzureBatch2_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatch2'"
+		},
+		"AzureBatch_test_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatch_test'"
+		},
+		"AzureBlobStorage1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
+		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"AzureDatabricks3_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks3'"
+		},
+		"AzureDatabricks4_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks4'"
+		},
+		"AzureDatabricks7_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
+		},
+		"AzureDatabricksMSI_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksMSI'"
+		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
+		"AzureFunction2_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction2'"
+		},
+		"AzureFunction3_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction3'"
+		},
+		"AzureFunction4_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction4'"
+		},
+		"AzureFunction5_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction5'"
+		},
+		"AzureFunction6_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction6'"
+		},
+		"AzureFunctionCreds_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunctionCreds'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'"
+		},
+		"DBLS_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'DBLS'"
+		},
+		"RestService1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'RestService1'"
+		},
+		"adfdataflowtestgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adfdataflowtestgen2'"
+		},
+		"cdmdemotest_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'cdmdemotest'"
+		},
+		"databricksRepo_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'databricksRepo'"
+		},
+		"functionWithCred_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'functionWithCred'"
+		},
+		"hdiLinkedService_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'hdiLinkedService'"
+		},
+		"hdiLinkedService_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'hdiLinkedService'"
+		},
+		"hdiLinkedService_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'hdiLinkedService'"
+		},
+		"hdiVNetLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'hdiVNetLS'"
+		},
+		"heshhdistorageblob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'heshhdistorageblob'"
+		},
+		"kesh_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'kesh'"
+		},
+		"keshFunction2_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'keshFunction2'"
+		},
+		"keshFunctionWOAuth_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'keshFunctionWOAuth'"
+		},
+		"keshFunctionsTest_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'keshFunctionsTest'"
+		},
+		"keshcanarygen2Storage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'keshcanarygen2Storage'"
+		},
+		"keshfunctions_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'keshfunctions'"
+		},
+		"keshhdioutboundvnet_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'keshhdioutboundvnet'"
+		},
+		"keshwoAuthFunctions_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'keshwoAuthFunctions'"
+		},
+		"lijzhastorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'lijzhastorage'"
+		},
+		"linkedService1_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'linkedService1'"
+		},
+		"linkedService1_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'linkedService1'"
+		},
+		"linkedService1_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService1'"
+		},
+		"linkedService2_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'linkedService2'"
+		},
+		"linkedService2_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'linkedService2'"
+		},
+		"linkedService2_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService2'"
+		},
+		"linkedService3_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'linkedService3'"
+		},
+		"linkedService3_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'linkedService3'"
+		},
+		"linkedService3_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'linkedService3'"
+		},
+		"testFunction_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'testFunction'"
+		},
+		"ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AML_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AML_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "keshADF_test"
+		},
+		"AML_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "fe273844-c808-40b8-ad85-94a46f737731"
+		},
+		"AML_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"AzureBatch1_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch1_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatch2_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://batchurl"
+		},
+		"AzureBatch2_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "poolname"
+		},
+		"AzureBatch2_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "accountname"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatch_test_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch_test_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatch_test_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatchwithMI_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchwithMI_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatchwithMI_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://kesh.blob.core.windows.net"
+		},
+		"AzureBlobStorage1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"AzureBlobStorage1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "principalid"
+		},
+		"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureBlobStorage3_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://kesh.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
+		"AzureFunction2_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctionwoauth.azurewebsites.net"
+		},
+		"AzureFunction3_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshwoauthfunctions.azurewebsites.net"
+		},
+		"AzureFunction4_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshwoauthfunctions.azurewebsites.net"
+		},
+		"AzureFunction5_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshtriggerfunctions.azurewebsites.net"
+		},
+		"AzureFunction6_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"AzureFunctionCreds_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keshKeyvault.vault.azure.net/"
+		},
+		"AzureMLService1_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureMLService1_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "lijzhaFactory"
+		},
+		"AzureMLService2_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureMLService2_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "lijzhaFactory"
+		},
+		"AzureML_creds_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureML_creds_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "lijzhaFactory"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://keshfunctiontest.azurewebsites.net/api/logBody?code=ipcpyr1I5ouhakACX5CnwmNJvCweiS2lPcnKyTalYkpZyLeQiRq7CA=="
+		},
+		"RestService1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "dsaddsadsadsada"
+		},
+		"RestService1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"RestService1_properties_typeProperties_aadResourceId": {
+			"type": "string",
+			"defaultValue": "asdsadsadsadas"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.bing.com"
+		},
+		"adfdataflowtestgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfdataflowtestgen2.dfs.core.windows.net"
+		},
+		"cdmdemotest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://cdmdemotest.dfs.core.windows.net"
+		},
+		"functionWithCred_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
+		"hdiLinkedService_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"hdiLinkedService_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "keshADF_test"
+		},
+		"hdiLinkedService_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"hdiLinkedService_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"hdiVNetLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
+		"kesh_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://kesh.dfs.core.windows.net"
+		},
+		"keshFunction2_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
+		"keshFunctionWOAuth_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctionwoauth.azurewebsites.net"
+		},
+		"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"keshfunctions_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshpythonfunctions.azurewebsites.net"
+		},
+		"keshhdioutboundvnet_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
+		"keshkeyvault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keshKeyvault.vault.azure.net/"
+		},
+		"keshwoAuthFunctions_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshwoauthfunctions.azurewebsites.net"
+		},
+		"linkedService1_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService1_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "keshadf_check"
+		},
+		"linkedService1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"linkedService1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"linkedService1_properties_typeProperties_clusterUserName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
+		"linkedService1_properties_typeProperties_clusterSshUserName": {
+			"type": "string",
+			"defaultValue": "sshuser"
+		},
+		"linkedService2_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService2_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "keshadf_check"
+		},
+		"linkedService2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"linkedService2_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"linkedService2_properties_typeProperties_clusterUserName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
+		"linkedService2_properties_typeProperties_clusterSshUserName": {
+			"type": "string",
+			"defaultValue": "sshuser"
+		},
+		"linkedService3_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService3_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "keshADF_test"
+		},
+		"linkedService3_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "fe273844-c808-40b8-ad85-94a46f737731"
+		},
+		"linkedService3_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"storage_testCred_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
+		"testFunction_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope/integrationruntimes/selfhostedthink1"
+		},
+		"selfhostedShared_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope/integrationruntimes/SelfHosted"
+		},
+		"sharedselfhosted_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope/integrationruntimes/selfhostedthink1"
+		},
+		"AzureMLService1_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.MachineLearningServices/workspaces/keshAMLtestWorkspace"
+		},
+		"AzureMLService1_properties_groupId": {
+			"type": "string",
+			"defaultValue": "amlworkspace"
+		},
+		"AzureMLService1_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"ml-keshamltestworks-eastus-a87471b7-2a6f-42ab-b278-f6feae37099e.notebooks.azure.net"
+			]
+		},
+		"KeshAmlVnetPE_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.MachineLearningServices/workspaces/keshAMLVNetTest"
+		},
+		"KeshAmlVnetPE_properties_groupId": {
+			"type": "string",
+			"defaultValue": "amlworkspace"
+		},
+		"KeshAmlVnetPE_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"ml-keshamlvnettest-eastus-0c0d0686-c8c1-4a89-b8bd-8581d260797e.notebooks.azure.net"
+			]
+		},
+		"PrivateLinkSerHDI_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/headnode-c9e77827b58a46c6ae181f5e8890ee1a"
+		},
+		"PrivateLinkSerHDI_properties_groupId": {
+			"type": "string",
+			"defaultValue": ""
+		},
+		"PrivateLinkSerHDI_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"keshhdieunat-int.azurehdinsight.net"
+			]
+		},
+		"hdiPrivateEndpoint_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/keshAMLPls"
+		},
+		"hdiPrivateEndpoint_properties_groupId": {
+			"type": "string",
+			"defaultValue": ""
+		},
+		"hdiPrivateEndpoint_properties_fqdns": {
+			"type": "array",
+			"defaultValue": [
+				"keshhdioutboundvnet-int.azurehdinsight.net"
+			]
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "keshpupCanary_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_servicePrincipalKey": {
+						"value": "[parameters('AzureBlobStorage1_servicePrincipalKey')]"
+					},
+					"AzureDataLakeStorage2_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+					},
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
+					"AzureDatabricks3_accessToken": {
+						"value": "[parameters('AzureDatabricks3_accessToken')]"
+					},
+					"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorage1_properties_typeProperties_serviceEndpoint')]"
+					},
+					"AzureBlobStorage1_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureBlobStorage1_properties_typeProperties_tenant')]"
+					},
+					"AzureBlobStorage1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureBlobStorage1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDatabricks4_accessToken": {
+						"value": "[parameters('AzureDatabricks4_accessToken')]"
+					},
+					"AzureFunction2_functionKey": {
+						"value": "[parameters('AzureFunction2_functionKey')]"
+					},
+					"AzureFunction3_functionKey": {
+						"value": "[parameters('AzureFunction3_functionKey')]"
+					},
+					"AzureFunction5_functionKey": {
+						"value": "[parameters('AzureFunction5_functionKey')]"
+					},
+					"AzureFunction6_functionKey": {
+						"value": "[parameters('AzureFunction6_functionKey')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"AzureSynapseAnalytics1_connectionString": {
+						"value": "[parameters('AzureSynapseAnalytics1_connectionString')]"
+					},
+					"DBLS_accessToken": {
+						"value": "[parameters('DBLS_accessToken')]"
+					},
+					"RestService1_servicePrincipalKey": {
+						"value": "[parameters('RestService1_servicePrincipalKey')]"
+					},
+					"adfdataflowtestgen2_accountKey": {
+						"value": "[parameters('adfdataflowtestgen2_accountKey')]"
+					},
+					"cdmdemotest_accountKey": {
+						"value": "[parameters('cdmdemotest_accountKey')]"
+					},
+					"heshhdistorageblob_connectionString": {
+						"value": "[parameters('heshhdistorageblob_connectionString')]"
+					},
+					"AzureFunction2_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction2_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureFunction3_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction3_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureFunction5_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction5_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureFunction6_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction6_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureMLService2_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AzureMLService2_properties_typeProperties_subscriptionId')]"
+					},
+					"AzureMLService2_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AzureMLService2_properties_typeProperties_resourceGroupName')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					},
+					"RestService1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('RestService1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"RestService1_properties_typeProperties_tenant": {
+						"value": "[parameters('RestService1_properties_typeProperties_tenant')]"
+					},
+					"RestService1_properties_typeProperties_aadResourceId": {
+						"value": "[parameters('RestService1_properties_typeProperties_aadResourceId')]"
+					},
+					"RestService2_properties_typeProperties_url": {
+						"value": "[parameters('RestService2_properties_typeProperties_url')]"
+					},
+					"adfdataflowtestgen2_properties_typeProperties_url": {
+						"value": "[parameters('adfdataflowtestgen2_properties_typeProperties_url')]"
+					},
+					"cdmdemotest_properties_typeProperties_url": {
+						"value": "[parameters('cdmdemotest_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"kesh_accountKey": {
+						"value": "[parameters('kesh_accountKey')]"
+					},
+					"keshFunction2_functionKey": {
+						"value": "[parameters('keshFunction2_functionKey')]"
+					},
+					"keshFunctionWOAuth_functionKey": {
+						"value": "[parameters('keshFunctionWOAuth_functionKey')]"
+					},
+					"keshcanarygen2Storage_connectionString": {
+						"value": "[parameters('keshcanarygen2Storage_connectionString')]"
+					},
+					"keshfunctions_functionKey": {
+						"value": "[parameters('keshfunctions_functionKey')]"
+					},
+					"keshwoAuthFunctions_functionKey": {
+						"value": "[parameters('keshwoAuthFunctions_functionKey')]"
+					},
+					"lijzhastorage_connectionString": {
+						"value": "[parameters('lijzhastorage_connectionString')]"
+					},
+					"testFunction_functionKey": {
+						"value": "[parameters('testFunction_functionKey')]"
+					},
+					"kesh_properties_typeProperties_url": {
+						"value": "[parameters('kesh_properties_typeProperties_url')]"
+					},
+					"keshFunction2_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('keshFunction2_properties_typeProperties_functionAppUrl')]"
+					},
+					"keshFunctionWOAuth_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('keshFunctionWOAuth_properties_typeProperties_functionAppUrl')]"
+					},
+					"keshfunctions_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('keshfunctions_properties_typeProperties_functionAppUrl')]"
+					},
+					"keshkeyvault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('keshkeyvault_properties_typeProperties_baseUrl')]"
+					},
+					"keshwoAuthFunctions_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('keshwoAuthFunctions_properties_typeProperties_functionAppUrl')]"
+					},
+					"testFunction_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('testFunction_properties_typeProperties_functionAppUrl')]"
+					},
+					"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('integrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"selfhostedShared_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('selfhostedShared_properties_typeProperties_linkedInfo_resourceId')]"
+					},
+					"sharedselfhosted_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('sharedselfhosted_properties_typeProperties_linkedInfo_resourceId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_3')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_5",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_5.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_4')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_6",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_6.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBatch2_accessKey": {
+						"value": "[parameters('AzureBatch2_accessKey')]"
+					},
+					"AzureBatch_test_accessKey": {
+						"value": "[parameters('AzureBatch_test_accessKey')]"
+					},
+					"AzureDatabricks7_accessToken": {
+						"value": "[parameters('AzureDatabricks7_accessToken')]"
+					},
+					"AzureDatabricksMSI_accessToken": {
+						"value": "[parameters('AzureDatabricksMSI_accessToken')]"
+					},
+					"AzureFunction1_functionKey": {
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"AzureFunction4_functionKey": {
+						"value": "[parameters('AzureFunction4_functionKey')]"
+					},
+					"ADLSGen2_properties_typeProperties_url": {
+						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
+					},
+					"AzureBatch1_properties_typeProperties_batchUri": {
+						"value": "[parameters('AzureBatch1_properties_typeProperties_batchUri')]"
+					},
+					"AzureBatch1_properties_typeProperties_poolName": {
+						"value": "[parameters('AzureBatch1_properties_typeProperties_poolName')]"
+					},
+					"AzureBatch2_properties_typeProperties_batchUri": {
+						"value": "[parameters('AzureBatch2_properties_typeProperties_batchUri')]"
+					},
+					"AzureBatch2_properties_typeProperties_poolName": {
+						"value": "[parameters('AzureBatch2_properties_typeProperties_poolName')]"
+					},
+					"AzureBatch2_properties_typeProperties_accountName": {
+						"value": "[parameters('AzureBatch2_properties_typeProperties_accountName')]"
+					},
+					"AzureBatchWAccessKey_properties_typeProperties_batchUri": {
+						"value": "[parameters('AzureBatchWAccessKey_properties_typeProperties_batchUri')]"
+					},
+					"AzureBatchWAccessKey_properties_typeProperties_poolName": {
+						"value": "[parameters('AzureBatchWAccessKey_properties_typeProperties_poolName')]"
+					},
+					"AzureBatchWAccessKey_properties_typeProperties_accountName": {
+						"value": "[parameters('AzureBatchWAccessKey_properties_typeProperties_accountName')]"
+					},
+					"AzureBatch_test_properties_typeProperties_batchUri": {
+						"value": "[parameters('AzureBatch_test_properties_typeProperties_batchUri')]"
+					},
+					"AzureBatch_test_properties_typeProperties_poolName": {
+						"value": "[parameters('AzureBatch_test_properties_typeProperties_poolName')]"
+					},
+					"AzureBatch_test_properties_typeProperties_accountName": {
+						"value": "[parameters('AzureBatch_test_properties_typeProperties_accountName')]"
+					},
+					"AzureBatchwithMI_properties_typeProperties_batchUri": {
+						"value": "[parameters('AzureBatchwithMI_properties_typeProperties_batchUri')]"
+					},
+					"AzureBatchwithMI_properties_typeProperties_poolName": {
+						"value": "[parameters('AzureBatchwithMI_properties_typeProperties_poolName')]"
+					},
+					"AzureBatchwithMI_properties_typeProperties_accountName": {
+						"value": "[parameters('AzureBatchwithMI_properties_typeProperties_accountName')]"
+					},
+					"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorage2_properties_typeProperties_serviceEndpoint')]"
+					},
+					"AzureBlobStorage3_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('AzureBlobStorage3_properties_typeProperties_serviceEndpoint')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureFunction1_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureFunction4_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunction4_properties_typeProperties_functionAppUrl')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_5')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_7",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_7.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureFunctionCreds_functionKey": {
+						"value": "[parameters('AzureFunctionCreds_functionKey')]"
+					},
+					"databricksRepo_accessToken": {
+						"value": "[parameters('databricksRepo_accessToken')]"
+					},
+					"functionWithCred_functionKey": {
+						"value": "[parameters('functionWithCred_functionKey')]"
+					},
+					"hdiLinkedService_clusterPassword": {
+						"value": "[parameters('hdiLinkedService_clusterPassword')]"
+					},
+					"hdiLinkedService_clusterSshPassword": {
+						"value": "[parameters('hdiLinkedService_clusterSshPassword')]"
+					},
+					"hdiLinkedService_servicePrincipalKey": {
+						"value": "[parameters('hdiLinkedService_servicePrincipalKey')]"
+					},
+					"keshFunctionsTest_functionKey": {
+						"value": "[parameters('keshFunctionsTest_functionKey')]"
+					},
+					"linkedService1_clusterPassword": {
+						"value": "[parameters('linkedService1_clusterPassword')]"
+					},
+					"linkedService1_clusterSshPassword": {
+						"value": "[parameters('linkedService1_clusterSshPassword')]"
+					},
+					"linkedService1_servicePrincipalKey": {
+						"value": "[parameters('linkedService1_servicePrincipalKey')]"
+					},
+					"linkedService2_clusterPassword": {
+						"value": "[parameters('linkedService2_clusterPassword')]"
+					},
+					"linkedService2_clusterSshPassword": {
+						"value": "[parameters('linkedService2_clusterSshPassword')]"
+					},
+					"linkedService2_servicePrincipalKey": {
+						"value": "[parameters('linkedService2_servicePrincipalKey')]"
+					},
+					"linkedService3_clusterPassword": {
+						"value": "[parameters('linkedService3_clusterPassword')]"
+					},
+					"linkedService3_clusterSshPassword": {
+						"value": "[parameters('linkedService3_clusterSshPassword')]"
+					},
+					"linkedService3_servicePrincipalKey": {
+						"value": "[parameters('linkedService3_servicePrincipalKey')]"
+					},
+					"AzureFunctionCreds_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunctionCreds_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureMLService1_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AzureMLService1_properties_typeProperties_subscriptionId')]"
+					},
+					"AzureMLService1_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AzureMLService1_properties_typeProperties_resourceGroupName')]"
+					},
+					"AzureML_creds_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AzureML_creds_properties_typeProperties_subscriptionId')]"
+					},
+					"AzureML_creds_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AzureML_creds_properties_typeProperties_resourceGroupName')]"
+					},
+					"functionWithCred_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('functionWithCred_properties_typeProperties_functionAppUrl')]"
+					},
+					"hdiLinkedService_properties_typeProperties_hostSubscriptionId": {
+						"value": "[parameters('hdiLinkedService_properties_typeProperties_hostSubscriptionId')]"
+					},
+					"hdiLinkedService_properties_typeProperties_clusterResourceGroup": {
+						"value": "[parameters('hdiLinkedService_properties_typeProperties_clusterResourceGroup')]"
+					},
+					"hdiLinkedService_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('hdiLinkedService_properties_typeProperties_servicePrincipalId')]"
+					},
+					"hdiLinkedService_properties_typeProperties_tenant": {
+						"value": "[parameters('hdiLinkedService_properties_typeProperties_tenant')]"
+					},
+					"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('keshFunctionsTest_properties_typeProperties_functionAppUrl')]"
+					},
+					"linkedService1_properties_typeProperties_hostSubscriptionId": {
+						"value": "[parameters('linkedService1_properties_typeProperties_hostSubscriptionId')]"
+					},
+					"linkedService1_properties_typeProperties_clusterResourceGroup": {
+						"value": "[parameters('linkedService1_properties_typeProperties_clusterResourceGroup')]"
+					},
+					"linkedService1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('linkedService1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"linkedService1_properties_typeProperties_tenant": {
+						"value": "[parameters('linkedService1_properties_typeProperties_tenant')]"
+					},
+					"linkedService1_properties_typeProperties_clusterUserName": {
+						"value": "[parameters('linkedService1_properties_typeProperties_clusterUserName')]"
+					},
+					"linkedService1_properties_typeProperties_clusterSshUserName": {
+						"value": "[parameters('linkedService1_properties_typeProperties_clusterSshUserName')]"
+					},
+					"linkedService2_properties_typeProperties_hostSubscriptionId": {
+						"value": "[parameters('linkedService2_properties_typeProperties_hostSubscriptionId')]"
+					},
+					"linkedService2_properties_typeProperties_clusterResourceGroup": {
+						"value": "[parameters('linkedService2_properties_typeProperties_clusterResourceGroup')]"
+					},
+					"linkedService2_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('linkedService2_properties_typeProperties_servicePrincipalId')]"
+					},
+					"linkedService2_properties_typeProperties_tenant": {
+						"value": "[parameters('linkedService2_properties_typeProperties_tenant')]"
+					},
+					"linkedService2_properties_typeProperties_clusterUserName": {
+						"value": "[parameters('linkedService2_properties_typeProperties_clusterUserName')]"
+					},
+					"linkedService2_properties_typeProperties_clusterSshUserName": {
+						"value": "[parameters('linkedService2_properties_typeProperties_clusterSshUserName')]"
+					},
+					"linkedService3_properties_typeProperties_hostSubscriptionId": {
+						"value": "[parameters('linkedService3_properties_typeProperties_hostSubscriptionId')]"
+					},
+					"linkedService3_properties_typeProperties_clusterResourceGroup": {
+						"value": "[parameters('linkedService3_properties_typeProperties_clusterResourceGroup')]"
+					},
+					"linkedService3_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('linkedService3_properties_typeProperties_servicePrincipalId')]"
+					},
+					"linkedService3_properties_typeProperties_tenant": {
+						"value": "[parameters('linkedService3_properties_typeProperties_tenant')]"
+					},
+					"storage_testCred_properties_typeProperties_serviceEndpoint": {
+						"value": "[parameters('storage_testCred_properties_typeProperties_serviceEndpoint')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_6')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_8",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_8.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureMLService1_properties_privateLinkResourceId": {
+						"value": "[parameters('AzureMLService1_properties_privateLinkResourceId')]"
+					},
+					"AzureMLService1_properties_groupId": {
+						"value": "[parameters('AzureMLService1_properties_groupId')]"
+					},
+					"AzureMLService1_properties_fqdns": {
+						"value": "[parameters('AzureMLService1_properties_fqdns')]"
+					},
+					"KeshAmlVnetPE_properties_privateLinkResourceId": {
+						"value": "[parameters('KeshAmlVnetPE_properties_privateLinkResourceId')]"
+					},
+					"KeshAmlVnetPE_properties_groupId": {
+						"value": "[parameters('KeshAmlVnetPE_properties_groupId')]"
+					},
+					"KeshAmlVnetPE_properties_fqdns": {
+						"value": "[parameters('KeshAmlVnetPE_properties_fqdns')]"
+					},
+					"PrivateLinkSerHDI_properties_privateLinkResourceId": {
+						"value": "[parameters('PrivateLinkSerHDI_properties_privateLinkResourceId')]"
+					},
+					"PrivateLinkSerHDI_properties_groupId": {
+						"value": "[parameters('PrivateLinkSerHDI_properties_groupId')]"
+					},
+					"PrivateLinkSerHDI_properties_fqdns": {
+						"value": "[parameters('PrivateLinkSerHDI_properties_fqdns')]"
+					},
+					"hdiPrivateEndpoint_properties_privateLinkResourceId": {
+						"value": "[parameters('hdiPrivateEndpoint_properties_privateLinkResourceId')]"
+					},
+					"hdiPrivateEndpoint_properties_groupId": {
+						"value": "[parameters('hdiPrivateEndpoint_properties_groupId')]"
+					},
+					"hdiPrivateEndpoint_properties_fqdns": {
+						"value": "[parameters('hdiPrivateEndpoint_properties_fqdns')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_7')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_9",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_9.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AML_servicePrincipalKey": {
+						"value": "[parameters('AML_servicePrincipalKey')]"
+					},
+					"hdiVNetLS_password": {
+						"value": "[parameters('hdiVNetLS_password')]"
+					},
+					"keshhdioutboundvnet_password": {
+						"value": "[parameters('keshhdioutboundvnet_password')]"
+					},
+					"AML_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AML_properties_typeProperties_subscriptionId')]"
+					},
+					"AML_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AML_properties_typeProperties_resourceGroupName')]"
+					},
+					"AML_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AML_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AML_properties_typeProperties_tenant": {
+						"value": "[parameters('AML_properties_typeProperties_tenant')]"
+					},
+					"hdiVNetLS_properties_typeProperties_userName": {
+						"value": "[parameters('hdiVNetLS_properties_typeProperties_userName')]"
+					},
+					"keshhdioutboundvnet_properties_typeProperties_userName": {
+						"value": "[parameters('keshhdioutboundvnet_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_8')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_10",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_10.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_9')]"
+			]
+		},
+		{
+			"name": "keshpupCanary_ArmTemplate_11",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_11.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'keshpupCanary_ArmTemplate_10')]"
+			]
+		}
+	]
+}

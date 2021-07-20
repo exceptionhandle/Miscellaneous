@@ -1,0 +1,571 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "Keshpupcanary"
+		},
+		"AzureBatch2_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatch2'"
+		},
+		"AzureBatch_test_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatch_test'"
+		},
+		"AzureDatabricks7_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks7'"
+		},
+		"AzureDatabricksMSI_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksMSI'"
+		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
+		"AzureFunction4_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction4'"
+		},
+		"ADLSGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureBatch1_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch1_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatch2_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://batchurl"
+		},
+		"AzureBatch2_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "poolname"
+		},
+		"AzureBatch2_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "accountname"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatch_test_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch_test_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatch_test_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBatchwithMI_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchwithMI_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "testpool1"
+		},
+		"AzureBatchwithMI_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "kesheastusbatch"
+		},
+		"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureBlobStorage3_properties_typeProperties_serviceEndpoint": {
+			"type": "string",
+			"defaultValue": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://kesh.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshfunctions.azurewebsites.net"
+		},
+		"AzureFunction4_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://keshwoauthfunctions.azurewebsites.net"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/xmlinput')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "IFP_OON_Outreach_Template_vw.csv",
+						"container": "adhocextractnew"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ADLSGen2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ADLSGen2_properties_typeProperties_url')]",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatch1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('AzureBatch1_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatch1_properties_typeProperties_poolName')]",
+					"linkedServiceName": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SelfhostedIR-1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatch2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('AzureBatch2_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatch2_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('AzureBatch2_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBatch2_accessKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatchWAccessKey')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('AzureBatchWAccessKey_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatchWAccessKey_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('AzureBatchWAccessKey_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "keshcanarygen2Storage",
+						"type": "LinkedServiceReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatch_test')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('AzureBatch_test_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatch_test_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('AzureBatch_test_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "keshcanarygen2Storage",
+						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBatch_test_accessKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SelfhostedIR-1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBatchwithMI')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('AzureBatchwithMI_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('AzureBatchwithMI_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('AzureBatchwithMI_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "[parameters('AzureBlobStorage2_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage3')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"serviceEndpoint": "[parameters('AzureBlobStorage3_properties_typeProperties_serviceEndpoint')]",
+					"accountKind": "StorageV2",
+					"credential": {
+						"referenceName": "credential1",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"credential": {
+						"referenceName": "uamiCred",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricks2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-1317585329732026.6.azuredatabricks.net",
+					"authentication": "MSI",
+					"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshDatabrickEU",
+					"newClusterNodeType": "Standard_NC12",
+					"newClusterNumOfWorker": "1",
+					"newClusterVersion": "5.5.x-gpu-scala2.11",
+					"newClusterInitScripts": [],
+					"credential": {
+						"referenceName": "uamiCred",
+						"type": "CredentialReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricks7')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"name": {
+						"type": "String",
+						"defaultValue": "geetha"
+					}
+				},
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-8909143117346346.6.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricks7_accessToken')]"
+					},
+					"newClusterNodeType": "Standard_D3_v2",
+					"newClusterNumOfWorker": "1",
+					"newClusterSparkConf": {
+						"key": {
+							"value": "@linkedService().name",
+							"type": "Expression"
+						},
+						"key2": "trl"
+					},
+					"newClusterSparkEnvVars": {
+						"re": "re",
+						"typ": {
+							"value": "@linkedService().name",
+							"type": "Expression"
+						}
+					},
+					"newClusterCustomTags": {
+						"CarExcel": {
+							"value": "@linkedService().name",
+							"type": "Expression"
+						}
+					},
+					"newClusterVersion": "6.4.x-scala2.11",
+					"newClusterLogDestination": "@linkedService().name",
+					"newClusterInitScripts": [
+						{
+							"value": "@linkedService().name",
+							"type": "Expression"
+						},
+						"mano",
+						"telemetry",
+						{
+							"value": "paul",
+							"type": "Expression"
+						}
+					],
+					"newClusterDriverNodeType": "yes"
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDatabricksMSI')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "dapia8ac9c9f6e5971fa3c5047f0c5ada9b9",
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-860887232373193.13.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDatabricksMSI_accessToken')]"
+					},
+					"newClusterNodeType": "Standard_NC12",
+					"newClusterNumOfWorker": "2:4",
+					"newClusterSparkEnvVars": {
+						"": {
+							"value": "nlklk",
+							"type": "Expression"
+						}
+					},
+					"newClusterVersion": "5.5.x-gpu-scala2.11",
+					"newClusterInitScripts": [
+						""
+					]
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"authentication": "Anonymous",
+					"resourceid": "https://management.azure.com/"
+				},
+				"connectVia": {
+					"referenceName": "MyIR",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction4')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "https://keshwoauthfunctions.azurewebsites.net/api/HttpTrigger1?code=4V4QJBT/1H6na5mieaFUXSjcOWOmJYC65JMwA1OYjnBqsXac8BziUA==",
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "[parameters('AzureFunction4_properties_typeProperties_functionAppUrl')]",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction4_functionKey')]"
+					},
+					"authentication": "MSI"
+				},
+				"connectVia": {
+					"referenceName": "SelfhostedIR-1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

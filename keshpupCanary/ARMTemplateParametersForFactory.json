@@ -1,0 +1,446 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Keshpupcanary"
+		},
+		"AML_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureBatch2_accessKey": {
+			"value": ""
+		},
+		"AzureBatch_test_accessKey": {
+			"value": ""
+		},
+		"AzureBlobStorage1_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks3_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks4_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks7_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricksMSI_accessToken": {
+			"value": ""
+		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
+		"AzureFunction2_functionKey": {
+			"value": ""
+		},
+		"AzureFunction3_functionKey": {
+			"value": ""
+		},
+		"AzureFunction4_functionKey": {
+			"value": ""
+		},
+		"AzureFunction5_functionKey": {
+			"value": ""
+		},
+		"AzureFunction6_functionKey": {
+			"value": ""
+		},
+		"AzureFunctionCreds_functionKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"DBLS_accessToken": {
+			"value": ""
+		},
+		"RestService1_servicePrincipalKey": {
+			"value": ""
+		},
+		"adfdataflowtestgen2_accountKey": {
+			"value": ""
+		},
+		"cdmdemotest_accountKey": {
+			"value": ""
+		},
+		"databricksRepo_accessToken": {
+			"value": ""
+		},
+		"functionWithCred_functionKey": {
+			"value": ""
+		},
+		"hdiLinkedService_clusterPassword": {
+			"value": ""
+		},
+		"hdiLinkedService_clusterSshPassword": {
+			"value": ""
+		},
+		"hdiLinkedService_servicePrincipalKey": {
+			"value": ""
+		},
+		"hdiVNetLS_password": {
+			"value": ""
+		},
+		"heshhdistorageblob_connectionString": {
+			"value": ""
+		},
+		"kesh_accountKey": {
+			"value": ""
+		},
+		"keshFunction2_functionKey": {
+			"value": ""
+		},
+		"keshFunctionWOAuth_functionKey": {
+			"value": ""
+		},
+		"keshFunctionsTest_functionKey": {
+			"value": ""
+		},
+		"keshcanarygen2Storage_connectionString": {
+			"value": ""
+		},
+		"keshfunctions_functionKey": {
+			"value": ""
+		},
+		"keshhdioutboundvnet_password": {
+			"value": ""
+		},
+		"keshwoAuthFunctions_functionKey": {
+			"value": ""
+		},
+		"lijzhastorage_connectionString": {
+			"value": ""
+		},
+		"linkedService1_clusterPassword": {
+			"value": ""
+		},
+		"linkedService1_clusterSshPassword": {
+			"value": ""
+		},
+		"linkedService1_servicePrincipalKey": {
+			"value": ""
+		},
+		"linkedService2_clusterPassword": {
+			"value": ""
+		},
+		"linkedService2_clusterSshPassword": {
+			"value": ""
+		},
+		"linkedService2_servicePrincipalKey": {
+			"value": ""
+		},
+		"linkedService3_clusterPassword": {
+			"value": ""
+		},
+		"linkedService3_clusterSshPassword": {
+			"value": ""
+		},
+		"linkedService3_servicePrincipalKey": {
+			"value": ""
+		},
+		"testFunction_functionKey": {
+			"value": ""
+		},
+		"ADLSGen2_properties_typeProperties_url": {
+			"value": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AML_properties_typeProperties_subscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AML_properties_typeProperties_resourceGroupName": {
+			"value": "keshADF_test"
+		},
+		"AML_properties_typeProperties_servicePrincipalId": {
+			"value": "fe273844-c808-40b8-ad85-94a46f737731"
+		},
+		"AML_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"AzureBatch1_properties_typeProperties_batchUri": {
+			"value": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch1_properties_typeProperties_poolName": {
+			"value": "testpool1"
+		},
+		"AzureBatch2_properties_typeProperties_batchUri": {
+			"value": "https://batchurl"
+		},
+		"AzureBatch2_properties_typeProperties_poolName": {
+			"value": "poolname"
+		},
+		"AzureBatch2_properties_typeProperties_accountName": {
+			"value": "accountname"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_batchUri": {
+			"value": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_poolName": {
+			"value": "testpool1"
+		},
+		"AzureBatchWAccessKey_properties_typeProperties_accountName": {
+			"value": "kesheastusbatch"
+		},
+		"AzureBatch_test_properties_typeProperties_batchUri": {
+			"value": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatch_test_properties_typeProperties_poolName": {
+			"value": "testpool1"
+		},
+		"AzureBatch_test_properties_typeProperties_accountName": {
+			"value": "kesheastusbatch"
+		},
+		"AzureBatchwithMI_properties_typeProperties_batchUri": {
+			"value": "https://kesheastusbatch.eastus.batch.azure.com"
+		},
+		"AzureBatchwithMI_properties_typeProperties_poolName": {
+			"value": "testpool1"
+		},
+		"AzureBatchwithMI_properties_typeProperties_accountName": {
+			"value": "kesheastusbatch"
+		},
+		"AzureBlobStorage1_properties_typeProperties_serviceEndpoint": {
+			"value": "https://kesh.blob.core.windows.net"
+		},
+		"AzureBlobStorage1_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"AzureBlobStorage1_properties_typeProperties_servicePrincipalId": {
+			"value": "principalid"
+		},
+		"AzureBlobStorage2_properties_typeProperties_serviceEndpoint": {
+			"value": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureBlobStorage3_properties_typeProperties_serviceEndpoint": {
+			"value": "https://keshgen2.blob.core.windows.net"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://kesh.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://keshgen2.dfs.core.windows.net"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
+		},
+		"AzureFunction2_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctionwoauth.azurewebsites.net"
+		},
+		"AzureFunction3_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshwoauthfunctions.azurewebsites.net"
+		},
+		"AzureFunction4_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshwoauthfunctions.azurewebsites.net"
+		},
+		"AzureFunction5_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshtriggerfunctions.azurewebsites.net"
+		},
+		"AzureFunction6_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"AzureFunctionCreds_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keshKeyvault.vault.azure.net/"
+		},
+		"AzureMLService1_properties_typeProperties_subscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureMLService1_properties_typeProperties_resourceGroupName": {
+			"value": "lijzhaFactory"
+		},
+		"AzureMLService2_properties_typeProperties_subscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureMLService2_properties_typeProperties_resourceGroupName": {
+			"value": "lijzhaFactory"
+		},
+		"AzureML_creds_properties_typeProperties_subscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"AzureML_creds_properties_typeProperties_resourceGroupName": {
+			"value": "lijzhaFactory"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://keshfunctiontest.azurewebsites.net/api/logBody?code=ipcpyr1I5ouhakACX5CnwmNJvCweiS2lPcnKyTalYkpZyLeQiRq7CA=="
+		},
+		"RestService1_properties_typeProperties_servicePrincipalId": {
+			"value": "dsaddsadsadsada"
+		},
+		"RestService1_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"RestService1_properties_typeProperties_aadResourceId": {
+			"value": "asdsadsadsadas"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"value": "https://www.bing.com"
+		},
+		"adfdataflowtestgen2_properties_typeProperties_url": {
+			"value": "https://adfdataflowtestgen2.dfs.core.windows.net"
+		},
+		"cdmdemotest_properties_typeProperties_url": {
+			"value": "https://cdmdemotest.dfs.core.windows.net"
+		},
+		"functionWithCred_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
+		},
+		"hdiLinkedService_properties_typeProperties_hostSubscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"hdiLinkedService_properties_typeProperties_clusterResourceGroup": {
+			"value": "keshADF_test"
+		},
+		"hdiLinkedService_properties_typeProperties_servicePrincipalId": {
+			"value": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"hdiLinkedService_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"hdiVNetLS_properties_typeProperties_userName": {
+			"value": "admin"
+		},
+		"kesh_properties_typeProperties_url": {
+			"value": "https://kesh.dfs.core.windows.net"
+		},
+		"keshFunction2_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctions.azurewebsites.net"
+		},
+		"keshFunctionWOAuth_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctionwoauth.azurewebsites.net"
+		},
+		"keshFunctionsTest_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"keshfunctions_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshpythonfunctions.azurewebsites.net"
+		},
+		"keshhdioutboundvnet_properties_typeProperties_userName": {
+			"value": "admin"
+		},
+		"keshkeyvault_properties_typeProperties_baseUrl": {
+			"value": "https://keshKeyvault.vault.azure.net/"
+		},
+		"keshwoAuthFunctions_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshwoauthfunctions.azurewebsites.net"
+		},
+		"linkedService1_properties_typeProperties_hostSubscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService1_properties_typeProperties_clusterResourceGroup": {
+			"value": "keshadf_check"
+		},
+		"linkedService1_properties_typeProperties_servicePrincipalId": {
+			"value": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"linkedService1_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"linkedService1_properties_typeProperties_clusterUserName": {
+			"value": "admin"
+		},
+		"linkedService1_properties_typeProperties_clusterSshUserName": {
+			"value": "sshuser"
+		},
+		"linkedService2_properties_typeProperties_hostSubscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService2_properties_typeProperties_clusterResourceGroup": {
+			"value": "keshadf_check"
+		},
+		"linkedService2_properties_typeProperties_servicePrincipalId": {
+			"value": "d6805320-317d-4c6b-8bb8-d88ed08ea6df"
+		},
+		"linkedService2_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"linkedService2_properties_typeProperties_clusterUserName": {
+			"value": "admin"
+		},
+		"linkedService2_properties_typeProperties_clusterSshUserName": {
+			"value": "sshuser"
+		},
+		"linkedService3_properties_typeProperties_hostSubscriptionId": {
+			"value": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+		},
+		"linkedService3_properties_typeProperties_clusterResourceGroup": {
+			"value": "keshADF_test"
+		},
+		"linkedService3_properties_typeProperties_servicePrincipalId": {
+			"value": "fe273844-c808-40b8-ad85-94a46f737731"
+		},
+		"linkedService3_properties_typeProperties_tenant": {
+			"value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+		},
+		"storage_testCred_properties_typeProperties_serviceEndpoint": {
+			"value": "https://keshgen2.blob.core.windows.net"
+		},
+		"testFunction_properties_typeProperties_functionAppUrl": {
+			"value": "https://keshfunctiontest.azurewebsites.net"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope/integrationruntimes/selfhostedthink1"
+		},
+		"selfhostedShared_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope/integrationruntimes/SelfHosted"
+		},
+		"sharedselfhosted_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope/integrationruntimes/selfhostedthink1"
+		},
+		"AzureMLService1_properties_privateLinkResourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.MachineLearningServices/workspaces/keshAMLtestWorkspace"
+		},
+		"AzureMLService1_properties_groupId": {
+			"value": "amlworkspace"
+		},
+		"AzureMLService1_properties_fqdns": {
+			"value": [
+				"ml-keshamltestworks-eastus-a87471b7-2a6f-42ab-b278-f6feae37099e.notebooks.azure.net"
+			]
+		},
+		"KeshAmlVnetPE_properties_privateLinkResourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.MachineLearningServices/workspaces/keshAMLVNetTest"
+		},
+		"KeshAmlVnetPE_properties_groupId": {
+			"value": "amlworkspace"
+		},
+		"KeshAmlVnetPE_properties_fqdns": {
+			"value": [
+				"ml-keshamlvnettest-eastus-0c0d0686-c8c1-4a89-b8bd-8581d260797e.notebooks.azure.net"
+			]
+		},
+		"PrivateLinkSerHDI_properties_privateLinkResourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/headnode-c9e77827b58a46c6ae181f5e8890ee1a"
+		},
+		"PrivateLinkSerHDI_properties_groupId": {
+			"value": ""
+		},
+		"PrivateLinkSerHDI_properties_fqdns": {
+			"value": [
+				"keshhdieunat-int.azurehdinsight.net"
+			]
+		},
+		"hdiPrivateEndpoint_properties_privateLinkResourceId": {
+			"value": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Network/privateLinkServices/keshAMLPls"
+		},
+		"hdiPrivateEndpoint_properties_groupId": {
+			"value": ""
+		},
+		"hdiPrivateEndpoint_properties_fqdns": {
+			"value": [
+				"keshhdioutboundvnet-int.azurehdinsight.net"
+			]
+		}
+	}
+}
