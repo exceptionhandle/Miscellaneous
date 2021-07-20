@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessKey' of 'AzureBatch2'"
 		},
+		"AzureBatchWAccessKey_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatchWAccessKey'"
+		},
 		"AzureBatch_test_accessKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessKey' of 'AzureBatch_test'"
@@ -296,6 +300,10 @@
 					"linkedServiceName": {
 						"referenceName": "keshcanarygen2Storage",
 						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureBatchWAccessKey_accessKey')]"
 					}
 				}
 			},

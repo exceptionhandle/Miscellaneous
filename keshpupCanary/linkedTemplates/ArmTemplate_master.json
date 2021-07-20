@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessKey' of 'AzureBatch2'"
 		},
+		"AzureBatchWAccessKey_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'AzureBatchWAccessKey'"
+		},
 		"AzureBatch_test_accessKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessKey' of 'AzureBatch_test'"
@@ -890,6 +894,9 @@
 					},
 					"AzureBatch2_accessKey": {
 						"value": "[parameters('AzureBatch2_accessKey')]"
+					},
+					"AzureBatchWAccessKey_accessKey": {
+						"value": "[parameters('AzureBatchWAccessKey_accessKey')]"
 					},
 					"AzureBatch_test_accessKey": {
 						"value": "[parameters('AzureBatch_test_accessKey')]"

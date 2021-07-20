@@ -11,6 +11,9 @@
 		"AzureBatch2_accessKey": {
 			"value": ""
 		},
+		"AzureBatchWAccessKey_accessKey": {
+			"value": ""
+		},
 		"AzureBatch_test_accessKey": {
 			"value": ""
 		},
