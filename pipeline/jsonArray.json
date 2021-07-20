@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "jsonArray",
 	"properties": {
 		"activities": [
 			{
@@ -15,20 +15,21 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://keshwoauthfunctions.azurewebsites.net/api/HttpTrigger1?code=4V4QJBT/1H6na5mieaFUXSjcOWOmJYC65JMwA1OYjnBqsXac8BziUA==",
-					"method": "GET",
-					"authentication": {
-						"resource": "https://www.management.azure.com/",
-						"credential": {
-							"referenceName": "uamiCred",
-							"type": "CredentialReference"
+					"url": "https://prod-02.eastus.logic.azure.com:443/workflows/5964a328de594aab99573336ae70a8c3/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8B_bQZ0WWif_16Bc0J_yUAwM7C-MeuSyI1hPcJF1Axc",
+					"method": "POST",
+					"body": [
+						{
+							"name": "test1"
+						},
+						{
+							"name": "test2"
 						}
-					}
+					]
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-06-21T11:26:49Z"
+		"lastPublishTime": "2021-07-03T00:15:55Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

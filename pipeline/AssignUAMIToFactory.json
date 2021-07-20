@@ -1,0 +1,41 @@
+{
+	"name": "AssignUAMIToFactory",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/keshpupCanary?api-version=2018-06-01",
+					"method": "PUT",
+					"body": {
+						"name": "keshpupCanary",
+						"id": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/keshpupCanary",
+						"type": "Microsoft.DataFactory/factories",
+						"location": "eastus2euap",
+						"identity": {
+							"type": "systemassigned,userassigned"
+						}
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					},
+					"ReturnOnSubmit": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-23T06:05:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

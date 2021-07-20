@@ -1,10 +1,10 @@
 {
-	"name": "pipeline1",
+	"name": "AMLUami",
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Machine Learning Execute Pipeline1",
+				"type": "AzureMLExecutePipeline",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,20 +15,18 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "adfgetstarted/hivescripts/partitionweblogs.hql",
-					"scriptLinkedService": {
-						"referenceName": "heshhdistorageblob",
-						"type": "LinkedServiceReference"
-					}
+					"experimentName": "check",
+					"mlPipelineEndpointId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad",
+					"version": "0"
 				},
 				"linkedServiceName": {
-					"referenceName": "linkedService2",
+					"referenceName": "AzureML_creds",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-24T13:41:24Z"
+		"lastPublishTime": "2021-06-16T20:57:24Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

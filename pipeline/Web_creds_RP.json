@@ -1,9 +1,9 @@
 {
-	"name": "pipeline2",
+	"name": "Web_creds_RP",
 	"properties": {
 		"activities": [
 			{
-				"name": "Web1",
+				"name": "CheckCreds",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
@@ -15,10 +15,14 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://keshwoauthfunctions.azurewebsites.net/api/HttpTrigger1?code=4V4QJBT/1H6na5mieaFUXSjcOWOmJYC65JMwA1OYjnBqsXac8BziUA==",
+					"url": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/KeshWestEurope?api-version=2018-06-01",
+					"connectVia": {
+						"referenceName": "MyIR",
+						"type": "IntegrationRuntimeReference"
+					},
 					"method": "GET",
 					"authentication": {
-						"resource": "https://www.management.azure.com/",
+						"resource": "https://management.azure.com",
 						"credential": {
 							"referenceName": "uamiCred",
 							"type": "CredentialReference"
@@ -28,7 +32,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-06-21T11:26:49Z"
+		"lastPublishTime": "2021-06-16T20:26:28Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

@@ -1,0 +1,21 @@
+{
+	"name": "AML",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=\n\ne87e775f-270b-4c91-aebc-0cb346ecf11e",
+		"annotations": [],
+		"type": "AzureMLService",
+		"typeProperties": {
+			"subscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
+			"resourceGroupName": "keshADF_test",
+			"mlWorkspaceName": "keshAMLtestWorkspace",
+			"servicePrincipalId": "fe273844-c808-40b8-ad85-94a46f737731",
+			"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDJDMTM0MjQzLUI2OUQtNDA0OC1BMUEwLTlCMUIyQjBBOUVENV8wZTBhZDNhZS0yZDE4LTQ2MmYtOWQyMi1kMGU1NTc2OTA5NWQiDQp9"
+		},
+		"connectVia": {
+			"referenceName": "VnetIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

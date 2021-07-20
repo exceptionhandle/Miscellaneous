@@ -1,7 +1,8 @@
 {
-	"name": "AzureDatabricks1",
+	"name": "DBLS",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"description": "dapi1aff1e74b6a409b515669c7c454cf1b7",
 		"annotations": [],
 		"type": "AzureDatabricks",
 		"typeProperties": {

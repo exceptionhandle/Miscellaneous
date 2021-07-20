@@ -1,10 +1,10 @@
 {
-	"name": "pipeline1",
+	"name": "Custom",
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Custom1",
+				"type": "Custom",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,20 +15,25 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "adfgetstarted/hivescripts/partitionweblogs.hql",
-					"scriptLinkedService": {
-						"referenceName": "heshhdistorageblob",
+					"command": "echo hello world",
+					"resourceLinkedService": {
+						"referenceName": "keshcanarygen2Storage",
 						"type": "LinkedServiceReference"
+					},
+					"folderPath": "adfgetstarted/hivescripts",
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "linkedService2",
+					"referenceName": "AzureBatchWAccessKey",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-24T13:41:24Z"
+		"lastPublishTime": "2021-07-20T02:41:07Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

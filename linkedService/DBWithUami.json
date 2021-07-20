@@ -1,5 +1,5 @@
 {
-	"name": "AzureDatabricks2",
+	"name": "DBWithUami",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
@@ -9,9 +9,9 @@
 				"referenceName": "uamiCred",
 				"type": "CredentialReference"
 			},
-			"domain": "https://adb-1317585329732026.6.azuredatabricks.net",
+			"domain": "https://adb-860887232373193.13.azuredatabricks.net",
 			"authentication": "MSI",
-			"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshDatabrickEU",
+			"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
 			"newClusterNodeType": "Standard_NC12",
 			"newClusterNumOfWorker": "1",
 			"newClusterVersion": "5.5.x-gpu-scala2.11",

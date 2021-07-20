@@ -1,0 +1,32 @@
+{
+	"name": "Webhook_creds",
+	"properties": {
+		"activities": [
+			{
+				"name": "TriggerPipeline",
+				"type": "WebHook",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/keshADFTutorialDataFactory/pipelines/web/createRun?api-version=2018-07-01-preview",
+					"method": "POST",
+					"body": {
+						"test": "another"
+					},
+					"timeout": "00:01:00",
+					"reportStatusOnCallBack": false,
+					"authentication": {
+						"resource": "https://management.azure.com/",
+						"credential": {
+							"referenceName": "uamiCred",
+							"type": "CredentialReference"
+						}
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-06-16T22:33:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

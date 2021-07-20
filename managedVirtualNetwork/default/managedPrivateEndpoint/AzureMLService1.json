@@ -1,0 +1,10 @@
+{
+	"name": "AzureMLService1",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.MachineLearningServices/workspaces/keshAMLtestWorkspace",
+		"groupId": "amlworkspace",
+		"fqdns": [
+			"ml-keshamltestworks-eastus-a87471b7-2a6f-42ab-b278-f6feae37099e.notebooks.azure.net"
+		]
+	}
+}

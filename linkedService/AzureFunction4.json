@@ -1,0 +1,19 @@
+{
+	"name": "AzureFunction4",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "https://keshwoauthfunctions.azurewebsites.net/api/HttpTrigger1?code=4V4QJBT/1H6na5mieaFUXSjcOWOmJYC65JMwA1OYjnBqsXac8BziUA==",
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://keshwoauthfunctions.azurewebsites.net",
+			"authentication": "MSI",
+			"resourceId": "",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3OWEzMzhhNS0yMTA2LTRkOTEtYmY1ZS1jODQzNjQ4MGFmNWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfhostedIR-1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

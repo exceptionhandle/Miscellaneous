@@ -1,5 +1,5 @@
 {
-	"name": "AzureBatch1",
+	"name": "AzureBatch_test",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
@@ -7,10 +7,12 @@
 		"typeProperties": {
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
 			"poolName": "testpool1",
+			"accountName": "kesheastusbatch",
 			"linkedServiceName": {
-				"referenceName": "AzureBlobStorage1",
+				"referenceName": "keshcanarygen2Storage",
 				"type": "LinkedServiceReference"
-			}
+			},
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxOTI5MGExNy04MjY4LTQ4NTUtOTUyYy1lNmM1ZWVhMjc2MmQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "SelfhostedIR-1",

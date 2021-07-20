@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Web1",
-				"type": "WebActivity",
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,60 +15,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://www.bing.com",
-					"method": "POST",
-					"body": {
-						"gf": "hgfhf"
-					},
-					"authentication": {
-						"type": "Basic",
-						"username": {
-							"value": "@pipeline().RunId",
-							"type": "Expression"
-						},
-						"password": {
-							"type": "AzureKeyVaultSecret",
-							"store": {
-								"referenceName": "AzureKeyVault1",
-								"type": "LinkedServiceReference"
-							},
-							"secretName": "sdfsd"
-						}
-					}
-				}
-			},
-			{
-				"name": "WebHook1",
-				"type": "WebHook",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://www.bing.com",
-					"method": "POST",
-					"body": {
-						"gf": "hgfhf"
-					},
-					"timeout": "00:10:00",
-					"authentication": {
-						"type": "ClientCertificate",
-						"pfx": {
-							"type": "AzureKeyVaultSecret",
-							"store": {
-								"referenceName": "AzureKeyVault1",
-								"type": "LinkedServiceReference"
-							},
-							"secretName": "fdfdsfd"
-						},
-						"password": {
-							"type": "SecureString",
-							"value": "**********"
-						}
-					}
+					"notebookPath": "/Users/kesharma@microsoft.com/pythonTest"
+				},
+				"linkedServiceName": {
+					"referenceName": "DBLS",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-04T06:48:54Z"
+		"lastPublishTime": "2021-07-06T18:51:19Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

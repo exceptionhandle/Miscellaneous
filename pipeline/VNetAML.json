@@ -1,10 +1,10 @@
 {
-	"name": "pipeline1",
+	"name": "VNetAML",
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Machine Learning Execute Pipeline1",
+				"type": "AzureMLExecutePipeline",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,20 +15,17 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "adfgetstarted/hivescripts/partitionweblogs.hql",
-					"scriptLinkedService": {
-						"referenceName": "heshhdistorageblob",
-						"type": "LinkedServiceReference"
-					}
+					"experimentName": "test",
+					"mlPipelineEndpointId": "399308d2-81cc-4e80-913c-92245968ce5a"
 				},
 				"linkedServiceName": {
-					"referenceName": "linkedService2",
+					"referenceName": "AML",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-24T13:41:24Z"
+		"lastPublishTime": "2021-05-28T02:22:01Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

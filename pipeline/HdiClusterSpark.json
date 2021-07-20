@@ -1,10 +1,10 @@
 {
-	"name": "pipeline1",
+	"name": "HdiClusterSpark",
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Spark1",
+				"type": "HDInsightSpark",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,20 +15,21 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "adfgetstarted/hivescripts/partitionweblogs.hql",
-					"scriptLinkedService": {
-						"referenceName": "heshhdistorageblob",
+					"rootPath": "sparkcontainer",
+					"entryFilePath": "testExample.jar",
+					"sparkJobLinkedService": {
+						"referenceName": "keshcanarygen2Storage",
 						"type": "LinkedServiceReference"
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "linkedService2",
+					"referenceName": "linkedService1",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-24T13:41:24Z"
+		"lastPublishTime": "2021-05-24T09:03:08Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

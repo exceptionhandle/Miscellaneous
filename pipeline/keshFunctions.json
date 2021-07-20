@@ -1,10 +1,10 @@
 {
-	"name": "pipeline1",
+	"name": "keshFunctions",
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Azure Function1",
+				"type": "AzureFunctionActivity",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,20 +15,17 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "adfgetstarted/hivescripts/partitionweblogs.hql",
-					"scriptLinkedService": {
-						"referenceName": "heshhdistorageblob",
-						"type": "LinkedServiceReference"
-					}
+					"functionName": "Accepted",
+					"method": "GET"
 				},
 				"linkedServiceName": {
-					"referenceName": "linkedService2",
+					"referenceName": "keshFunction2",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-24T13:41:24Z"
+		"lastPublishTime": "2021-07-07T18:14:13Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

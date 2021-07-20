@@ -1,0 +1,19 @@
+{
+	"name": "functionWithCred",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "https://keshfunctions.azurewebsites.net/api/Accepted?code=u4weE2Zz52qyLSdhVZrYMvSX5KaGrsDCWtSto4pVePtvtEBaVpDr0g==",
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
+			"authentication": "MSI",
+			"resourceId": "https://management.azure.com/",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2MDE0ZjgyYS1lMjg5LTRlODgtODFhMC0yOTQ2MmQ3NDMxZGMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfhostedIR-1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

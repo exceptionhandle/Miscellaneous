@@ -1,18 +1,21 @@
 {
-	"name": "AzureMLService1",
+	"name": "AzureML_creds",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
-		"description": "59EjmHpWVTLeKSHittHv1RmNzcjA2yrDqU8g7A+PKIs=\n\ne87e775f-270b-4c91-aebc-0cb346ecf11e",
 		"annotations": [],
 		"type": "AzureMLService",
 		"typeProperties": {
 			"subscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
 			"resourceGroupName": "lijzhaFactory",
 			"mlWorkspaceName": "lijzhaMLV2",
-			"authentication": "MSI"
+			"authentication": "MSI",
+			"credential": {
+				"referenceName": "uamiCred",
+				"type": "CredentialReference"
+			}
 		},
 		"connectVia": {
-			"referenceName": "selfhostedShared",
+			"referenceName": "integrationRuntime1",
 			"type": "IntegrationRuntimeReference"
 		}
 	}

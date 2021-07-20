@@ -1,16 +1,17 @@
 {
-	"name": "AzureFunction1",
+	"name": "AzureFunctionCreds",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
+			"authentication": "MSI",
 			"credential": {
 				"referenceName": "uamiCred",
 				"type": "CredentialReference"
 			},
-			"resourceid": "https://management.azure.com/",
+			"resourceId": "https://management.azure.com/",
 			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4YmNkZGY1Ny0yZjA0LTQyN2QtODkwMy02YTQ2MDRjZTVlNjEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
