@@ -10,6 +10,7 @@
 				"referenceName": "uamiCred",
 				"type": "CredentialReference"
 			}
-		}
+		},
+		"description": "df"
 	}
 }
