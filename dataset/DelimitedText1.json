@@ -2,15 +2,17 @@
 	"name": "DelimitedText1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "keshcanarygen2Storage",
+			"referenceName": "kesh",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "adfgetstarted"
+				"type": "AzureBlobFSLocation",
+				"fileName": "datetime.txt",
+				"folderPath": "ExpressionCheck",
+				"fileSystem": "adhocextract"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
