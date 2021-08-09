@@ -11,9 +11,18 @@
 					"referenceName": "AzureKeyVault1",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "secretname"
+				"secretName": {
+					"value": "@linkedService().test",
+					"type": "Expression"
+				}
 			},
 			"authentication": "Anonymous"
+		},
+		"parameters": {
+			"test": {
+				"type": "string",
+				"defaultValue": "value"
+			}
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
