@@ -19,7 +19,7 @@
 					"method": "GET"
 				},
 				"linkedServiceName": {
-					"referenceName": "keshFunction2",
+					"referenceName": "testakv",
 					"type": "LinkedServiceReference"
 				}
 			}
