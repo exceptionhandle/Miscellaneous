@@ -1,8 +1,8 @@
 {
 	"name": "testakv",
 	"properties": {
-		"annotations": [],
 		"type": "AzureFunction",
+		"annotations": [],
 		"typeProperties": {
 			"functionAppUrl": "https://keshfunctions.azurewebsites.net",
 			"functionKey": {
@@ -21,9 +21,8 @@
 		"parameters": {
 			"test": {
 				"type": "string",
-				"defaultValue": "value"
+				"defaultValue": "/lpq2uPXU8EcxjjK2/x4FOcBcVNw8J4gqZjktUIZeFTZPuDMAbHDGQ==&clientId=default"
 			}
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }
