@@ -19,7 +19,7 @@
 			"clusterSshUserName": "sshuser",
 			"additionalLinkedServiceNames": [],
 			"linkedServiceName": {
-				"referenceName": "keshcanarygen2Storage",
+				"referenceName": "kesh",
 				"type": "LinkedServiceReference"
 			},
 			"headNodeSize": "",
@@ -27,7 +27,11 @@
 			"zookeeperNodeSize": "",
 			"subnetName": "",
 			"virtualNetworkId": "",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDJDMTM0MjQzLUI2OUQtNDA0OC1BMUEwLTlCMUIyQjBBOUVENV83OTYwNDc1OC05ZDVlLTRkYjgtYWRlYi1mMmMzNDMwOTM0OGIiDQp9"
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1M2I1YzllYS1hZmI1LTQ3MWMtYWY4OS0yMjZiMGZjZWQ3NWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SelfHosted",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
