@@ -1,0 +1,66 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "KeshWestEurope"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/linkedService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "6dtDAI_M~1YUYWt3~OfB~f8Q~Fh~kO10--\n\nr8ATaSRcdbhM.9a6R-2.~A_wRXCI4nHMv2\n\n3_dCkPglpRPq756y~r_n9R-kYoF4xC~-pu\n\n.MP3f__GYV~.Wv7n8RSa1-5LMK2wr11DWZ\n\nY0UitC0BaGvV_z.gwknbbP8vF_144Q7_47\n\nfor: dc52f6e7-f0b1-4cc9-9573-e4aa7070e419\nZ7c/VXJKbsbEMf3g/+buNUx6QmddzaseG7qzTztSKyw=\n\nd6805320-317d-4c6b-8bb8-d88ed08ea6df\nv6EBPrB1J_uksvliHk-Q2Ve2.4D5I_373l",
+				"annotations": [],
+				"type": "HDInsightOnDemand",
+				"typeProperties": {
+					"clusterType": "spark",
+					"clusterSize": 4,
+					"timeToLive": "00:45:00",
+					"version": "4.0",
+					"hostSubscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
+					"clusterResourceGroup": "keshadf_check",
+					"servicePrincipalId": "d6805320-317d-4c6b-8bb8-d88ed08ea6df",
+					"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+					"clusterNamePrefix": "HdiKeshPupCheck",
+					"clusterUserName": "admin",
+					"clusterPassword": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"clusterSshUserName": "sshuser",
+					"clusterSshPassword": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"additionalLinkedServiceNames": [],
+					"linkedServiceName": {
+						"referenceName": "kesh",
+						"type": "LinkedServiceReference"
+					},
+					"headNodeSize": "",
+					"dataNodeSize": "",
+					"zookeeperNodeSize": "",
+					"subnetName": "",
+					"virtualNetworkId": ""
+				},
+				"connectVia": {
+					"referenceName": "SelfHosted",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
