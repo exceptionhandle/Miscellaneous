@@ -11,6 +11,10 @@
 				"referenceName": "AzureBlobStorage1",
 				"type": "LinkedServiceReference"
 			}
+		},
+		"connectVia": {
+			"referenceName": "SelfhostedIR-1",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
