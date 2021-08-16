@@ -5,7 +5,7 @@
 		"type": "AzureBatch",
 		"typeProperties": {
 			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
-			"poolName": "testpool1",
+			"poolName": "testpoolUami",
 			"accountName": "kesheastusbatch",
 			"linkedServiceName": {
 				"referenceName": "AzureBlobStorage1",
