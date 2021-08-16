@@ -13,7 +13,7 @@
 			}
 		},
 		"connectVia": {
-			"referenceName": "SelfhostedIR-1",
+			"referenceName": "SelfHosted",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
