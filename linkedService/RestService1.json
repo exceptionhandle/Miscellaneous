@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://kesh.blob.core.windows.net/adhocextract/CDM/2021/02/24/SubscriptionProfile-1059b4fbf760456cb09c831d1b46a063-00001.parquet?sp=r&st=2021-08-25T19:26:17Z&se=2021-08-26T03:26:17Z&spr=https&sv=2020-08-04&sr=b&sig=79q6pWdN1zt6S1zAgWBu%2BFMaB4CBs7uSnYRQsFpubOo%3D",
+			"url": "https://kesh.blob.core.windows.net/adhocextract/98e79d76-a45a-e911-a970-000d3a39c2c9?sp=r&st=2021-08-25T19:27:32Z&se=2021-08-26T03:27:32Z&spr=https&sv=2020-08-04&sr=b&sig=y2Q%2FPAEclJTS9LWG9sqvX90bXIu5DCjY%2B%2F5CMAh9f9o%3D",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "ManagedServiceIdentity",
 			"aadResourceId": "https://management.azure.com/"
