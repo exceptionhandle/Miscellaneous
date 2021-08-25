@@ -15,15 +15,20 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "echo hello world",
+					"command": "echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;echo hello world;",
 					"resourceLinkedService": {
 						"referenceName": "keshcanarygen2Storage",
 						"type": "LinkedServiceReference"
 					},
-					"folderPath": "adfgetstarted/hivescripts",
+					"folderPath": "custom",
 					"referenceObjects": {
 						"linkedServices": [],
-						"datasets": []
+						"datasets": [
+							{
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference"
+							}
+						]
 					}
 				},
 				"linkedServiceName": {
