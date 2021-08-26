@@ -8,7 +8,7 @@
 			"url": "https://management.azure.com/subscriptions/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "ManagedServiceIdentity",
-			"aadResourceId": "https://management.azure.com/"
+			"aadResourceId": "https://management.core.windows.net/"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
