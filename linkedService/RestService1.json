@@ -6,7 +6,8 @@
 		"typeProperties": {
 			"url": "https://keshfunctions.azurewebsites.net/api/HttpTrigger7",
 			"enableServerCertificateValidation": true,
-			"authenticationType": "Anonymous"
+			"authenticationType": "ManagedServiceIdentity",
+			"aadResourceId": "https://management.azure.com/"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
