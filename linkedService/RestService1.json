@@ -1,7 +1,7 @@
 {
 	"name": "RestService1",
 	"properties": {
-		"description": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/Keshpupcanary/pipelines/Keshpupcanary?api-version=2018-06-01",
+		"description": "https://management.azure.com/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.DataFactory/factories/Keshpupcanary/pipelines/CopyRest?api-version=2018-06-01",
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
