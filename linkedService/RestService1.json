@@ -4,9 +4,10 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://kesh.blob.core.windows.net/adhocextract/98e79d76-a45a-e911-a970-000d3a39c2c9",
+			"url": "https://keshfunctions.azurewebsites.net/api/HttpTrigger7",
 			"enableServerCertificateValidation": true,
-			"authenticationType": "Anonymous"
+			"authenticationType": "ManagedServiceIdentity",
+			"aadResourceId": "https://management.azure.com/"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
