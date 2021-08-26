@@ -1,5 +1,5 @@
 {
-	"name": "dataflow7",
+	"name": "RestDataflow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
