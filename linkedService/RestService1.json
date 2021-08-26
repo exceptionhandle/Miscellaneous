@@ -7,7 +7,8 @@
 		"typeProperties": {
 			"url": "https://management.azure.com/subscriptions/",
 			"enableServerCertificateValidation": true,
-			"authenticationType": "Anonymous"
+			"authenticationType": "ManagedServiceIdentity",
+			"aadResourceId": "https://management.azure.com/"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
