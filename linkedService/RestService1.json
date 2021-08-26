@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://keshfunctions.azurewebsites.net/api/HttpTrigger7",
+			"url": "https://keshfunctions.azurewebsites.net/api/HttpCookieResponse?code=cXgUblaZqjw5AnD4xCMjnxTMBqSMkxTRoTyg/f0hhpx9A7VvGIaXIA==",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "ManagedServiceIdentity",
 			"aadResourceId": "https://management.azure.com/"
