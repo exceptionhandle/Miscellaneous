@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://graph.facebook.com",
+			"url": "https://graph.facebook.com/v11.0/0/feed HTTP/1.1",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
