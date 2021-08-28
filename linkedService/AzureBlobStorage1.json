@@ -1,6 +1,12 @@
 {
 	"name": "AzureBlobStorage1",
 	"properties": {
+		"parameters": {
+			"pipeline3": {
+				"type": "string",
+				"defaultValue": "fdsfds"
+			}
+		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
