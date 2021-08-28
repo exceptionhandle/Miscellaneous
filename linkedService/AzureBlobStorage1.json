@@ -3,8 +3,7 @@
 	"properties": {
 		"parameters": {
 			"pipeline3": {
-				"type": "string",
-				"defaultValue": "fdsfds"
+				"type": "string"
 			}
 		},
 		"annotations": [],
