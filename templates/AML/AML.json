@@ -1,0 +1,68 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"AzureMLService2": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AML')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Machine Learning Execute Pipeline1",
+						"type": "AzureMLExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"experimentName": "newTestFromKWE",
+							"mlPipelineParameters": {
+								"param_batch_size": 5,
+								"param_sleep_seconds": 60,
+								"param_should_throw": "false"
+							},
+							"mlPipelineEndpointId": "b91ecfe6-f614-4c1a-a7f8-7df5aa9e41ad",
+							"version": "0",
+							"dataPathAssignments": {
+								"input_datapath": {
+									"DataStoreName": "workspaceblobstore2"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "[parameters('AzureMLService2')]",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"parameters": {
+					"mlWorkspaceName": {
+						"type": "string",
+						"defaultValue": "lijzhaMLV2"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-05-04T06:48:57Z"
+			},
+			"dependsOn": []
+		}
+	]
+}
