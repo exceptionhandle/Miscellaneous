@@ -11,9 +11,9 @@
 				"referenceName": "uamiCred",
 				"type": "CredentialReference"
 			},
-			"newClusterNodeType": "Standard_NC12",
+			"newClusterNodeType": "Standard_DS3_v2",
 			"newClusterNumOfWorker": "1",
-			"newClusterVersion": "5.5.x-gpu-scala2.11",
+			"newClusterVersion": "6.4.x-esr-scala2.11",
 			"newClusterInitScripts": []
 		}
 	},
