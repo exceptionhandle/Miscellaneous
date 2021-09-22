@@ -5,11 +5,11 @@
 		"type": "AzureBlobStorage",
 		"typeProperties": {
 			"serviceEndpoint": "https://customactivitytest.blob.core.windows.net",
-			"accountKind": "Storage",
 			"credential": {
 				"referenceName": "uamiCred",
 				"type": "CredentialReference"
-			}
+			},
+			"accountKind": "Storage"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
