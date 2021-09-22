@@ -15,7 +15,12 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "echo hello world",
+					"command": "cmd /c echo {\"\"test\"\":\"\"value\"\"} > outputs.json",
+					"resourceLinkedService": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "testresources/folder1/folder2",
 					"referenceObjects": {
 						"linkedServices": [],
 						"datasets": []
