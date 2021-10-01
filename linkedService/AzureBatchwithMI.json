@@ -4,17 +4,13 @@
 		"annotations": [],
 		"type": "AzureBatch",
 		"typeProperties": {
-			"batchUri": "https://kesheastusbatch.eastus.batch.azure.com",
-			"poolName": "testpoolUami",
+			"batchUri": "https://cutomactivityuamitest.eastus.batch.azure.com",
+			"poolName": "testuamii",
 			"accountName": "kesheastusbatch",
 			"linkedServiceName": {
-				"referenceName": "AzureBlobStorage1",
+				"referenceName": "customactivitytest",
 				"type": "LinkedServiceReference"
 			}
-		},
-		"connectVia": {
-			"referenceName": "shirthink1",
-			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
