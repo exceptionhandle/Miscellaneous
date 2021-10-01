@@ -11,6 +11,10 @@
 				"referenceName": "customactivitytest",
 				"type": "LinkedServiceReference"
 			}
+		},
+		"connectVia": {
+			"referenceName": "shirthink1",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
