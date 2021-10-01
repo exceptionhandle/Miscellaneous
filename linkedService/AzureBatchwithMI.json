@@ -13,7 +13,7 @@
 			}
 		},
 		"connectVia": {
-			"referenceName": "shirthink1",
+			"referenceName": "SelfhostedIR-1",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
