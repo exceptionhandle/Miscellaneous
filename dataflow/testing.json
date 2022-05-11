@@ -46,6 +46,7 @@
 				"     requestInterval: ($parameter1),",
 				"     queryParameters = [$parameter2 -> $parameter2, 'abc' -> $parameter2],",
 				"     httpMethod: 'GET',",
+				"     bodyColumnName: 'body',",
 				"     requestFormat: ['type' -> 'json'],",
 				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> externalCall1",
 				"externalCall1 sink(allowSchemaDrift: true,",
