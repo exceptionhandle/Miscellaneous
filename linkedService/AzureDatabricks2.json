@@ -1,21 +1,21 @@
 {
 	"name": "AzureDatabricks2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureDatabricks",
 		"typeProperties": {
-			"domain": "https://adb-860887232373193.13.azuredatabricks.net",
+			"domain": "https://adb-1317585329732026.6.azuredatabricks.net",
 			"authentication": "MSI",
-			"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshWorkSpace",
+			"workspaceResourceId": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/keshADF_test/providers/Microsoft.Databricks/workspaces/keshDatabrickEU",
 			"credential": {
 				"referenceName": "uamiCred",
 				"type": "CredentialReference"
 			},
-			"newClusterNodeType": "Standard_DS3_v2",
+			"newClusterNodeType": "Standard_NC12",
 			"newClusterNumOfWorker": "1",
-			"newClusterVersion": "8.2.x-scala2.12",
+			"newClusterVersion": "5.5.x-gpu-scala2.11",
 			"newClusterInitScripts": []
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }

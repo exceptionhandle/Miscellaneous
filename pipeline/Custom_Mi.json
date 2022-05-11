@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "cmd /c echo {\"\"test\"\":\"\"value\"\"} > outputs.json",
+					"command": "cmd /c echo {\"test\":\"value\"} > outputs.json",
 					"resourceLinkedService": {
 						"referenceName": "AzureBlobStorage1",
 						"type": "LinkedServiceReference"
@@ -32,6 +32,8 @@
 				}
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2021-09-22T02:34:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

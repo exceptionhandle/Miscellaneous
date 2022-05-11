@@ -1,13 +1,13 @@
 {
-	"name": "CDM_load_issue",
+	"name": "Call_pipeline_W_ColumnRef",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Call_DF_W_ColumnRef",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "7.00:00:00",
+					"timeout": "1.00:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "CDM_load_issue",
+						"referenceName": "Call_W_ColumnRef",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -27,8 +27,11 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Call_DF_pipeline"
+		},
 		"annotations": [],
-		"lastPublishTime": "2021-02-27T10:29:52Z"
+		"lastPublishTime": "2022-05-05T17:07:03Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

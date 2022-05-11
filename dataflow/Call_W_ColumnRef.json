@@ -1,0 +1,110 @@
+{
+	"name": "Call_W_ColumnRef",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "kesh",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ExternalCall1",
+					"linkedService": {
+						"referenceName": "RestService4",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Flatten1"
+				},
+				{
+					"name": "Select1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as short,",
+				"          language as string,",
+				"          text as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'json',",
+				"     fileSystem: 'adhocextract',",
+				"     folderPath: 'smallFile',",
+				"     fileName: 'ArrayOfJson.json',",
+				"     documentForm: 'arrayOfDocuments',",
+				"     preferredIntegralType: 'integer',",
+				"     booleanFormat: ['true', 'false']) ~> source1",
+				"DerivedColumn1 call(output(",
+				"          headers as [string,string],",
+				"          body as (documents as (redactedText as string, id as string, entities as (text as string, category as string, offset as integer, length as integer, confidenceScore as double)[])[])",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     format: 'rest',",
+				"     store: 'restservice',",
+				"     timeout: 30,",
+				"     requestInterval: 0,",
+				"     headers = [headerKey -> headerValue, header1Key -> header1Value],",
+				"     queryParameters = ['piiCategories' -> 'Person,Email,PhoneNumber,Date', queryParameterKey -> queryParameterValue],",
+				"     httpMethod: 'POST',",
+				"     headerColumnName: 'headers',",
+				"     bodyColumnName: 'body',",
+				"     requestFormat: ['type' -> 'json'],",
+				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'singleDocument']) ~> ExternalCall1",
+				"source1 derive(documents = array(@(id=id,",
+				"          language=language,",
+				"          text=text)),",
+				"          headerKey = 'Content-Type',",
+				"          headerValue = 'application/json',",
+				"          header1Key = 'Ocp-Apim-Subscription-Key',",
+				"          header1Value = \"ce367a8c7bbc444b82688572e732a3f7\",",
+				"          queryParameterKey = 'stringIndexType',",
+				"          queryParameterValue = 'TextElement_v8&piiCategories=Person,Email,PhoneNumber') ~> DerivedColumn1",
+				"Select1 foldDown(unroll(body.documents),",
+				"     mapColumn(",
+				"          OriginalText,",
+				"          redactedText = body.documents.redactedText,",
+				"          id = body.documents.id,",
+				"          entities = body.documents.entities",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> Flatten1",
+				"ExternalCall1 select(mapColumn(",
+				"          body,",
+				"          OriginalText = text",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Select1",
+				"Flatten1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
+				"     fileSystem: 'adhocextract',",
+				"     folderPath: 'smallFile/output',",
+				"     preCommands: [],",
+				"     postCommands: []) ~> sink1"
+			]
+		}
+	}
+}

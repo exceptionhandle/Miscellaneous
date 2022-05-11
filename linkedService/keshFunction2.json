@@ -1,5 +1,6 @@
 {
 	"name": "keshFunction2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "https://keshfunctions.azurewebsites.net/api/Accepted?code=u4weE2Zz52qyLSdhVZrYMvSX5KaGrsDCWtSto4pVePtvtEBaVpDr0g==",
 		"annotations": [],
@@ -17,6 +18,5 @@
 			"authentication": "MSI",
 			"resourceId": "https://management.azure.com/"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }

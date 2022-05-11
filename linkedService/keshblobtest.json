@@ -1,0 +1,12 @@
+{
+	"name": "keshblobtest",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://kesh.blob.core.windows.net",
+			"accountKind": "StorageV2"
+		}
+	}
+}

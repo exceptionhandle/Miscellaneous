@@ -2,7 +2,7 @@
 	"name": "csvOutput",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "keshcanarygen2Storage",
+			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

@@ -1,14 +1,15 @@
 {
-	"name": "integrationRuntime1",
+	"name": "integrationRuntime6",
 	"properties": {
 		"type": "Managed",
 		"typeProperties": {
 			"computeProperties": {
-				"location": "West Europe",
+				"location": "AutoResolve",
 				"dataFlowProperties": {
-					"computeType": "ComputeOptimized",
+					"computeType": "General",
 					"coreCount": 8,
-					"timeToLive": 0
+					"timeToLive": 10,
+					"cleanup": false
 				}
 			}
 		}

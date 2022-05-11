@@ -1,19 +1,14 @@
 {
 	"name": "AzureMLService2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureMLService",
 		"typeProperties": {
 			"subscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5",
 			"resourceGroupName": "lijzhaFactory",
-			"mlWorkspaceName": "@{linkedService().mlWorkspaceName}",
+			"mlWorkspaceName": "lijzhaMLV2",
 			"authentication": "MSI"
-		},
-		"parameters": {
-			"mlWorkspaceName": {
-				"type": "String",
-				"defaultValue": "lijzhaMLV2"
-			}
 		}
 	}
 }

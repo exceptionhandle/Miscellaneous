@@ -13,6 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"functionName": "test",
 					"method": "GET"
@@ -23,6 +24,8 @@
 				}
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2021-08-11T11:37:56Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

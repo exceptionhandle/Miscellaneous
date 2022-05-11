@@ -3,11 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "7.00:00:00",
+					"timeout": "1.00:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -15,18 +15,27 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "hive1/Unnamed",
-					"scriptLinkedService": {
-						"referenceName": "linkedService5",
-						"type": "LinkedServiceReference"
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "linkedService6",
-					"type": "LinkedServiceReference"
+					"dataflow": {
+						"referenceName": "dataflow7",
+						"type": "DataFlowReference"
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "xyz/zab"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2022-04-06T07:01:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

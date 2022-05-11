@@ -1,0 +1,79 @@
+{
+	"name": "callIssue",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "kesh",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "externalCall1",
+					"linkedService": {
+						"referenceName": "RestService1",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     bearerToken as string,",
+				"     fileSystem as string,",
+				"     folderPath as string,",
+				"     requestInterval as integer",
+				"}",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'adhocExtract',",
+				"     folderPath: ($folderPath),",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: false) ~> source1",
+				"source1 call(allowSchemaDrift: true,",
+				"     format: 'rest',",
+				"     store: 'restservice',",
+				"     timeout: 30,",
+				"     requestInterval: ($requestInterval),",
+				"     headers = ['Authorization' -> ($bearerToken), 'Content-Type' -> 'application/json+fhir'],",
+				"     httpMethod: 'POST',",
+				"     entity: 'Immunization',",
+				"     requestFormat: ['type' -> 'json'],",
+				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> externalCall1",
+				"externalCall1 derive(status = regexExtract(toString(byName('status')), '(\\\\d+)')) ~> derivedColumn1",
+				"derivedColumn1 derive(resultFolder = concat($folderPath, '/result/', status)) ~> derivedColumn2",
+				"derivedColumn2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     rowFolderUrlColumn:'resultFolder',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
+				"     fileSystem: ($fileSystem),",
+				"     preCommands: [],",
+				"     postCommands: []) ~> sink1"
+			]
+		}
+	}
+}

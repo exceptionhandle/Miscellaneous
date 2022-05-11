@@ -30,19 +30,13 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureMLService2",
+					"referenceName": "AzureMLService1",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
-		"parameters": {
-			"mlWorkspaceName": {
-				"type": "string",
-				"defaultValue": "lijzhaMLV2"
-			}
-		},
 		"annotations": [],
-		"lastPublishTime": "2021-05-04T06:48:57Z"
+		"lastPublishTime": "2021-07-14T15:01:06Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

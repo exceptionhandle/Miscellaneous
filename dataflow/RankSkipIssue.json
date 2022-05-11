@@ -1,0 +1,66 @@
+{
+	"name": "RankSkipIssue",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "kesh",
+						"type": "LinkedServiceReference"
+					},
+					"name": "DateData"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "RankDays"
+				},
+				{
+					"name": "GroupByDays"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     fromDate as string ('1970-01-01'),",
+				"     optYearWildcard as string ('*'),",
+				"     optMonthWildcard as string ('*'),",
+				"     optDayWildcard as string ('*'),",
+				"     TargetSubFolder as string (''),",
+				"     discardLeadingDays as integer (0)",
+				"}",
+				"source(output(",
+				"          date as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet',",
+				"     fileSystem: 'adhocextract',",
+				"     wildcardPaths:['smallFile/rankingIssue/RankingIssueParquet/*']) ~> DateData",
+				"DateData rank(asc(date, true),",
+				"     output(DayRank as long),",
+				"     dense: true) ~> RankDays",
+				"RankDays aggregate(groupBy(DayRank),",
+				"     totalcount = count()) ~> GroupByDays",
+				"GroupByDays sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['avareprooutput.csv'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
+				"     partitionBy('hash', 1),",
+				"     preCommands: [],",
+				"     postCommands: []) ~> sink1"
+			]
+		}
+	}
+}

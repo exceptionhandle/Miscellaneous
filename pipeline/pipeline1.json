@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Hive1",
-				"type": "HDInsightHive",
+				"name": "Web1",
+				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,20 +15,69 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"scriptPath": "adfgetstarted/hivescripts/partitionweblogs.hql",
-					"scriptLinkedService": {
-						"referenceName": "heshhdistorageblob",
-						"type": "LinkedServiceReference"
+					"url": "https://www.bing.com",
+					"connectVia": {
+						"referenceName": "integrationRuntimeWestEurope",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"disableCertValidation": {
+						"value": "@and(true, true)",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": {
+							"value": "@pipeline().DataFactory",
+							"type": "Expression"
+						}
 					}
-				},
-				"linkedServiceName": {
-					"referenceName": "linkedService2",
-					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "WebHook1",
+				"type": "WebHook",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://www.bing.com",
+					"method": "POST",
+					"body": {
+						"": ""
+					},
+					"timeout": "00:10:00",
+					"reportStatusOnCallBack": {
+						"value": "@and(true, true)",
+						"type": "Expression"
+					},
+					"disableCertValidation": {
+						"value": "@and(true, true)",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "ClientCertificate",
+						"pfx": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "fdsfds"
+						},
+						"password": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "AzureKeyVault1",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "sdfds"
+						}
+					}
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-05-24T13:41:24Z"
+		"lastPublishTime": "2021-05-04T06:48:54Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

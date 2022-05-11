@@ -15,23 +15,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://keshfunctions.azurewebsites.net/api/HttpTrigger6",
-					"method": "POST",
-					"body": {
-						"test": "body"
-					},
-					"linkedServices": [
-						{
-							"referenceName": "AzureBatchwithMI",
-							"type": "LinkedServiceReference"
-						}
-					],
-					"datasets": [
-						{
-							"referenceName": "csvOutput",
-							"type": "DatasetReference"
-						}
-					],
+					"url": "https://keshfunctions.azurewebsites.net/api/Accepted?code=u4weE2Zz52qyLSdhVZrYMvSX5KaGrsDCWtSto4pVePtvtEBaVpDr0g==",
+					"method": "GET",
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://management.azure.com/"

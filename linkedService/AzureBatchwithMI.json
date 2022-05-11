@@ -1,19 +1,20 @@
 {
 	"name": "AzureBatchwithMI",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureBatch",
 		"typeProperties": {
 			"batchUri": "https://cutomactivityuamitest.eastus.batch.azure.com",
-			"poolName": "testuamii",
-			"accountName": "kesheastusbatch",
+			"poolName": "testpooluami",
+			"accountName": "cutomactivityuamitest",
 			"linkedServiceName": {
-				"referenceName": "customactivitytest",
+				"referenceName": "AzureBlobStorage1",
 				"type": "LinkedServiceReference"
 			}
 		},
 		"connectVia": {
-			"referenceName": "SelfhostedIR-1",
+			"referenceName": "shirthink1",
 			"type": "IntegrationRuntimeReference"
 		}
 	}

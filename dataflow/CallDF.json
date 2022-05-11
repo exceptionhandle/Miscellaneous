@@ -1,0 +1,32 @@
+{
+	"name": "CallDF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "RestService2",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ExternalCall1",
+					"linkedService": {
+						"referenceName": "RestService2",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"script": "source(output(\n\t\tid as short,\n\t\tlanguage as string,\n\t\ttext as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'rest',\n\ttimeout: 30,\n\trequestInterval: 0,\n\thttpMethod: 'GET',\n\tresponseFormat: ['type' -> 'json', 'documentForm' -> 'singleDocument']) ~> source1\nsource1 call(output(\n\t\theaders as [string,string],\n\t\tbody as (documents as (redactedText as string, id as string, entities as (text as string, category as string, offset as integer, length as integer, confidenceScore as double)[])[])\n\t),\n\tallowSchemaDrift: true,\n\tformat: 'rest',\n\tstore: 'restservice',\n\ttimeout: 30,\n\trequestInterval: 0,\n\theaders = [text -> language, id -> text],\n\tqueryParameters = [text -> text],\n\thttpMethod: 'POST',\n\trowRelativeUrl: 'id',\n\theaderColumnName: 'headers',\n\tbodyColumnName: 'body',\n\tpaginationRules = [id -> text, language],\n\trequestFormat: ['type' -> 'json'],\n\tresponseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> ExternalCall1\nExternalCall1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tstore: 'cache',\n\tformat: 'inline',\n\toutput: false,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tid,\n\t\tlanguage,\n\t\ttext,\n\t\tbody,\n\t\theaders\n\t)) ~> sink1"
+		}
+	}
+}
