@@ -1,0 +1,17 @@
+{
+	"name": "testing",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-2659955454141799.19.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/0ee78edb-a0ad-456c-a0a2-901bf542c102/resourceGroups/sparkGrp/providers/Microsoft.Databricks/workspaces/sparkTestWEU",
+			"newClusterNodeType": "Standard_DS3_v2",
+			"newClusterNumOfWorker": "2:4",
+			"newClusterVersion": "10.1.x-scala2.12",
+			"newClusterInitScripts": [],
+			"clusterOption": "Autoscaling"
+		}
+	}
+}
