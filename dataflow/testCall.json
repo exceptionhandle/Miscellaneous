@@ -5,6 +5,10 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"linkedService": {
+						"referenceName": "ADLSGen2",
+						"type": "LinkedServiceReference"
+					},
 					"name": "source1"
 				}
 			],
@@ -37,7 +41,13 @@
 				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     fileSystem: 'load',",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delimited',",
+				"     fileSystem: 'adhocextract',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: false,",
 				"     folderPath: ($folderPath)) ~> source1",
 				"source1 call(output(",
 				"          headers as [string,string],",
@@ -63,7 +73,10 @@
 				"     rowFolderUrlColumn:'resultFolder',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     format: 'json',",
+				"     store: 'cache',",
+				"     format: 'inline',",
+				"     output: false,",
+				"     saveOrder: 1,",
 				"     fileSystem: ($fileSystem),",
 				"     preCommands: [],",
 				"     postCommands: []) ~> sink1"
