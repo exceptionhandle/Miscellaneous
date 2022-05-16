@@ -1,0 +1,73 @@
+{
+	"name": "testCall",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "VaccinationAPICall",
+					"linkedService": {
+						"referenceName": "RestService1",
+						"type": "LinkedServiceReference"
+					}
+				},
+				{
+					"name": "MapStatus"
+				},
+				{
+					"name": "AddFolderPath"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     bearerToken as string,",
+				"     fileSystem as string,",
+				"     folderPath as string,",
+				"     requestInterval as integer",
+				"}",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     fileSystem: 'load',",
+				"     folderPath: ($folderPath)) ~> source1",
+				"source1 call(output(",
+				"          headers as [string,string],",
+				"          status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     format: 'rest',",
+				"     store: 'restservice',",
+				"     timeout: 30,",
+				"     requestInterval: ($requestInterval),",
+				"     headers = ['Authorization' -> ($bearerToken), 'Content-Type' -> 'application/json+fhir'],",
+				"     httpMethod: 'POST',",
+				"     entity: 'Immunization',",
+				"     headerColumnName: 'headers',",
+				"     statusColumnName: 'status',",
+				"     addResponseCode: true,",
+				"     requestFormat: ['type' -> 'json'],",
+				"     responseFormat: ['type' -> 'json', 'documentForm' -> 'documentPerLine']) ~> VaccinationAPICall",
+				"VaccinationAPICall derive(status = regexExtract(toString(byName('status')), '(\\\\d+)')) ~> MapStatus",
+				"MapStatus derive(resultFolder = concat($folderPath, '/result/', status)) ~> AddFolderPath",
+				"AddFolderPath sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     rowFolderUrlColumn:'resultFolder',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     format: 'json',",
+				"     fileSystem: ($fileSystem),",
+				"     preCommands: [],",
+				"     postCommands: []) ~> sink1"
+			]
+		}
+	}
+}
