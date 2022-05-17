@@ -1,0 +1,12 @@
+{
+	"name": "kfcqabifunction",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://kfcqabifunction.azurewebsites.net/api/JsonDecompress",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
