@@ -1,0 +1,13 @@
+{
+	"name": "keshfunc",
+	"properties": {
+		"description": "keshfunc",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://keshfunc.azurewebsites.net/api/success?code=t2Dq7d06pr9s73j8wgfOi7mTDo4seLkbFUa84aY7thazisK02CqapA==",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
