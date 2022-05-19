@@ -1,0 +1,85 @@
+{
+	"name": "dataflow8",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "adfdataflowtestsqldatawarehouse",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				},
+				{
+					"linkedService": {
+						"referenceName": "adfdataflowtestsqldatawarehouse",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "mghorpadetest",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "moviesJoined"
+				},
+				{
+					"name": "moviesSelect"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'synapseanalytics',",
+				"     schemaName: 'dbo',",
+				"     tableName: 'sqlDW_keshCanary_test',",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     staged: true) ~> source1",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'table',",
+				"     store: 'synapseanalytics',",
+				"     schemaName: 'dbo',",
+				"     tableName: 'sqlDW_keshCanary_test',",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     staged: true) ~> source2",
+				"source1, source2 join(source1@movieId == source2@movieId,",
+				"     joinType:'left',",
+				"     broadcast: 'auto')~> moviesJoined",
+				"moviesJoined select(mapColumn(",
+				"          source1@movieId,",
+				"          {source2@title} = title,",
+				"          {source2@releaseDate} = releaseDate,",
+				"          {source2@rated} = rated,",
+				"          {source2@screenedOn} = screenedOn,",
+				"          {source2@ticketPrice} = ticketPrice",
+				"     ),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> moviesSelect",
+				"moviesSelect sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delimited',",
+				"     container: 'keshfilesystem',",
+				"     folderPath: 'outputeuap',",
+				"     columnDelimiter: ',',",
+				"     escapeChar: '\\\\',",
+				"     quoteChar: '\\\"',",
+				"     columnNamesAsHeader: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     preCommands: [],",
+				"     postCommands: []) ~> sink1"
+			]
+		}
+	}
+}
