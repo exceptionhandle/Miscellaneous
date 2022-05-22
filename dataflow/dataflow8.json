@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"linkedService": {
-						"referenceName": "mghorpadetest",
+						"referenceName": "keshtestgen2",
 						"type": "LinkedServiceReference"
 					},
 					"name": "sink1"
