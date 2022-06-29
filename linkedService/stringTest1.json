@@ -1,0 +1,12 @@
+{
+	"name": "stringTest1",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://keshfunc.azurewebsites.net/api/test?code=RDj05otNeRpvkGweawJRQu2Xxg5o668MDJlnzjE66CergrfRPGzrMg==",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
