@@ -5,14 +5,8 @@
 		"type": "AzureDatabricks",
 		"typeProperties": {
 			"domain": "https://adb-2659955454141799.19.azuredatabricks.net",
-			"accessToken": {
-				"type": "AzureKeyVaultSecret",
-				"store": {
-					"referenceName": "keshkeyvault",
-					"type": "LinkedServiceReference"
-				},
-				"secretName": "KeshStorage"
-			},
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/0ee78edb-a0ad-456c-a0a2-901bf542c102/resourceGroups/sparkGrp/providers/Microsoft.Databricks/workspaces/sparkTestWEU",
 			"newClusterNodeType": "Standard_DS3_v2",
 			"newClusterNumOfWorker": "1",
 			"newClusterSparkConf": {
@@ -23,9 +17,10 @@
 			"newClusterSparkEnvVars": {
 				"pyspark_python": "/databricks/python3/bin/python"
 			},
-			"newClusterVersion": "7.3.x-scala2.12",
+			"newClusterVersion": "10.4.x-scala2.12",
 			"newClusterInitScripts": [],
-			"clusterOption": "Fixed"
+			"clusterOption": "Fixed",
+			"policyId": "695F6D3A7E0001C2"
 		}
 	}
 }
